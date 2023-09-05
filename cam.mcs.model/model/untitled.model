@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:artifact_="http://cam.mcs.model/mcs">
+  <artifact_:MCSystem ceiling_priority="1">
+    <resources name="R0" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.0"/>
+    <resources name="R1" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.1"/>
+    <resources name="R2" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.2"/>
+    <resources name="R3" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.3"/>
+    <resources name="R4" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.4"/>
+    <resources name="R5" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.5"/>
+    <resources name="R6" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.6"/>
+    <resources name="R7" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.7"/>
+    <resources name="R8" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.8"/>
+    <resources name="R9" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.9"/>
+    <resources name="R10" initial_priority="1" ceiling_priority="3" acquisition="/1/@tasks.10"/>
+    <core/>
+  </artifact_:MCSystem>
+  <artifact_:TaskSet task_number="10" u="0.30000001192092896">
+    <tasks name="T0" priority="1" period="422" deadline="422" utilisation="0.0030355547671437806" computation_time="1.2810041117346753" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.0"/>
+    </tasks>
+    <tasks name="T1" priority="1" period="363" deadline="363" utilisation="0.06449871566969045" computation_time="23.413033788097636" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="12" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.1"/>
+    </tasks>
+    <tasks name="T2" priority="1" period="906" deadline="906" utilisation="5.738942511358243E-4" computation_time="0.5199481915290568" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="16" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.2"/>
+    </tasks>
+    <tasks name="T3" priority="1" period="332" deadline="332" utilisation="0.011624226311084907" computation_time="3.8592431352801895" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="5" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.3"/>
+    </tasks>
+    <tasks name="T4" priority="1" period="944" deadline="944" utilisation="0.0264254436929473" computation_time="24.945618846142253" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="6" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.4"/>
+    </tasks>
+    <tasks name="T5" priority="1" period="842" deadline="842" utilisation="0.0044111513473597385" computation_time="3.7141894344769" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="15" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.5"/>
+    </tasks>
+    <tasks name="T6" priority="1" period="874" deadline="874" utilisation="0.014033708802485835" computation_time="12.26546149337262" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="2" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.6"/>
+    </tasks>
+    <tasks name="T7" priority="1" period="661" deadline="661" utilisation="0.009510044689283367" computation_time="6.286139539616306" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="4" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.7"/>
+    </tasks>
+    <tasks name="T8" priority="1" period="433" deadline="433" utilisation="0.0936472221032331" computation_time="40.549247170699935" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="18" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.8"/>
+    </tasks>
+    <tasks name="T9" priority="1" period="917" deadline="917" utilisation="0.012746034472561469" computation_time="11.688113611338867" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="17" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.9"/>
+    </tasks>
+    <tasks name="T10" priority="1" period="243" deadline="243" utilisation="0.05949401581400318" computation_time="14.457045842802772" wcet_low="4" wcet_high="5" dynamic_priority="7" offset="8" release_time="6" current_cs="-1">
+      <critical_sections name="cs" start="2" execution="3" semaphore="/0/@resources.10"/>
+    </tasks>
+  </artifact_:TaskSet>
+</xmi:XMI>
