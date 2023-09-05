@@ -19,6 +19,7 @@ class MCSystem extends MCSElement {
 	val Semaphore[*] resources;
 	val Task[*] tasks;
 	val Core core;
+	val TaskSet taskSet;
 }
 
 enum Status {

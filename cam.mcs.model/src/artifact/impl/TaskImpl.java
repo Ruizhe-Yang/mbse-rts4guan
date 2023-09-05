@@ -33,6 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link artifact.impl.TaskImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getPeriod <em>Period</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getDeadline <em>Deadline</em>}</li>
+ *   <li>{@link artifact.impl.TaskImpl#getUtilisation <em>Utilisation</em>}</li>
+ *   <li>{@link artifact.impl.TaskImpl#getComputation_time <em>Computation time</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getWcet_low <em>Wcet low</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getWcet_high <em>Wcet high</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getCriticality <em>Criticality</em>}</li>
@@ -105,6 +107,46 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @ordered
 	 */
 	protected int deadline = DEADLINE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getUtilisation() <em>Utilisation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUtilisation()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double UTILISATION_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getUtilisation() <em>Utilisation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getUtilisation()
+	 * @generated
+	 * @ordered
+	 */
+	protected double utilisation = UTILISATION_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getComputation_time() <em>Computation time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComputation_time()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final double COMPUTATION_TIME_EDEFAULT = 0.0;
+
+	/**
+	 * The cached value of the '{@link #getComputation_time() <em>Computation time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getComputation_time()
+	 * @generated
+	 * @ordered
+	 */
+	protected double computation_time = COMPUTATION_TIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWcet_low() <em>Wcet low</em>}' attribute.
@@ -350,6 +392,52 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 */
 	@Override
+	public double getUtilisation() {
+		return utilisation;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setUtilisation(double newUtilisation) {
+		double oldUtilisation = utilisation;
+		utilisation = newUtilisation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__UTILISATION, oldUtilisation, utilisation));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public double getComputation_time() {
+		return computation_time;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setComputation_time(double newComputation_time) {
+		double oldComputation_time = computation_time;
+		computation_time = newComputation_time;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__COMPUTATION_TIME, oldComputation_time, computation_time));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public int getWcet_low() {
 		return wcet_low;
 	}
@@ -546,6 +634,10 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				return getPeriod();
 			case ArtifactPackage.TASK__DEADLINE:
 				return getDeadline();
+			case ArtifactPackage.TASK__UTILISATION:
+				return getUtilisation();
+			case ArtifactPackage.TASK__COMPUTATION_TIME:
+				return getComputation_time();
 			case ArtifactPackage.TASK__WCET_LOW:
 				return getWcet_low();
 			case ArtifactPackage.TASK__WCET_HIGH:
@@ -583,6 +675,12 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				return;
 			case ArtifactPackage.TASK__DEADLINE:
 				setDeadline((Integer)newValue);
+				return;
+			case ArtifactPackage.TASK__UTILISATION:
+				setUtilisation((Double)newValue);
+				return;
+			case ArtifactPackage.TASK__COMPUTATION_TIME:
+				setComputation_time((Double)newValue);
 				return;
 			case ArtifactPackage.TASK__WCET_LOW:
 				setWcet_low((Integer)newValue);
@@ -630,6 +728,12 @@ public class TaskImpl extends MCSElementImpl implements Task {
 			case ArtifactPackage.TASK__DEADLINE:
 				setDeadline(DEADLINE_EDEFAULT);
 				return;
+			case ArtifactPackage.TASK__UTILISATION:
+				setUtilisation(UTILISATION_EDEFAULT);
+				return;
+			case ArtifactPackage.TASK__COMPUTATION_TIME:
+				setComputation_time(COMPUTATION_TIME_EDEFAULT);
+				return;
 			case ArtifactPackage.TASK__WCET_LOW:
 				setWcet_low(WCET_LOW_EDEFAULT);
 				return;
@@ -672,6 +776,10 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				return period != PERIOD_EDEFAULT;
 			case ArtifactPackage.TASK__DEADLINE:
 				return deadline != DEADLINE_EDEFAULT;
+			case ArtifactPackage.TASK__UTILISATION:
+				return utilisation != UTILISATION_EDEFAULT;
+			case ArtifactPackage.TASK__COMPUTATION_TIME:
+				return computation_time != COMPUTATION_TIME_EDEFAULT;
 			case ArtifactPackage.TASK__WCET_LOW:
 				return wcet_low != WCET_LOW_EDEFAULT;
 			case ArtifactPackage.TASK__WCET_HIGH:
@@ -708,6 +816,10 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		result.append(period);
 		result.append(", deadline: ");
 		result.append(deadline);
+		result.append(", utilisation: ");
+		result.append(utilisation);
+		result.append(", computation_time: ");
+		result.append(computation_time);
 		result.append(", wcet_low: ");
 		result.append(wcet_low);
 		result.append(", wcet_high: ");

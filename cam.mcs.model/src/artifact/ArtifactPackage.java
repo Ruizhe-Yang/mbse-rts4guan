@@ -458,13 +458,22 @@ public interface ArtifactPackage extends EPackage {
 	int MC_SYSTEM__CORE = MCS_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
+	 * The feature id for the '<em><b>Task Set</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__TASK_SET = MCS_ELEMENT_FEATURE_COUNT + 6;
+
+	/**
 	 * The number of structural features of the '<em>MC System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 6;
+	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link artifact.impl.TaskImpl <em>Task</em>}' class.
@@ -594,13 +603,31 @@ public interface ArtifactPackage extends EPackage {
 	int TASK__DEADLINE = MCS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The feature id for the '<em><b>Utilisation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__UTILISATION = MCS_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Computation time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__COMPUTATION_TIME = MCS_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
 	 * The feature id for the '<em><b>Wcet low</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__WCET_LOW = MCS_ELEMENT_FEATURE_COUNT + 3;
+	int TASK__WCET_LOW = MCS_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Wcet high</b></em>' attribute.
@@ -609,7 +636,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__WCET_HIGH = MCS_ELEMENT_FEATURE_COUNT + 4;
+	int TASK__WCET_HIGH = MCS_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
@@ -618,7 +645,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 5;
+	int TASK__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Dynamic priority</b></em>' attribute.
@@ -627,7 +654,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__DYNAMIC_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 6;
+	int TASK__DYNAMIC_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Offset</b></em>' attribute.
@@ -636,7 +663,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OFFSET = MCS_ELEMENT_FEATURE_COUNT + 7;
+	int TASK__OFFSET = MCS_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Release time</b></em>' attribute.
@@ -645,7 +672,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__RELEASE_TIME = MCS_ELEMENT_FEATURE_COUNT + 8;
+	int TASK__RELEASE_TIME = MCS_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Current cs</b></em>' attribute.
@@ -654,7 +681,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CURRENT_CS = MCS_ELEMENT_FEATURE_COUNT + 9;
+	int TASK__CURRENT_CS = MCS_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Critical sections</b></em>' containment reference list.
@@ -663,7 +690,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICAL_SECTIONS = MCS_ELEMENT_FEATURE_COUNT + 10;
+	int TASK__CRITICAL_SECTIONS = MCS_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -672,7 +699,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 11;
+	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The meta object id for the '{@link artifact.impl.CriticalSectionImpl <em>Critical Section</em>}' class.
@@ -1251,6 +1278,17 @@ public interface ArtifactPackage extends EPackage {
 	EReference getMCSystem_Core();
 
 	/**
+	 * Returns the meta object for the containment reference '{@link artifact.MCSystem#getTaskSet <em>Task Set</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Task Set</em>'.
+	 * @see artifact.MCSystem#getTaskSet()
+	 * @see #getMCSystem()
+	 * @generated
+	 */
+	EReference getMCSystem_TaskSet();
+
+	/**
 	 * Returns the meta object for class '{@link artifact.Task <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1292,6 +1330,28 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getTask_Deadline();
+
+	/**
+	 * Returns the meta object for the attribute '{@link artifact.Task#getUtilisation <em>Utilisation</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Utilisation</em>'.
+	 * @see artifact.Task#getUtilisation()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EAttribute getTask_Utilisation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link artifact.Task#getComputation_time <em>Computation time</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Computation time</em>'.
+	 * @see artifact.Task#getComputation_time()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EAttribute getTask_Computation_time();
 
 	/**
 	 * Returns the meta object for the attribute '{@link artifact.Task#getWcet_low <em>Wcet low</em>}'.
@@ -1677,6 +1737,14 @@ public interface ArtifactPackage extends EPackage {
 		EReference MC_SYSTEM__CORE = eINSTANCE.getMCSystem_Core();
 
 		/**
+		 * The meta object literal for the '<em><b>Task Set</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MC_SYSTEM__TASK_SET = eINSTANCE.getMCSystem_TaskSet();
+
+		/**
 		 * The meta object literal for the '{@link artifact.impl.TaskImpl <em>Task</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1709,6 +1777,22 @@ public interface ArtifactPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TASK__DEADLINE = eINSTANCE.getTask_Deadline();
+
+		/**
+		 * The meta object literal for the '<em><b>Utilisation</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK__UTILISATION = eINSTANCE.getTask_Utilisation();
+
+		/**
+		 * The meta object literal for the '<em><b>Computation time</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK__COMPUTATION_TIME = eINSTANCE.getTask_Computation_time();
 
 		/**
 		 * The meta object literal for the '<em><b>Wcet low</b></em>' attribute feature.

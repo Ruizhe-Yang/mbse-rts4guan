@@ -1,107 +1,35 @@
 var rand = new Native("java.util.Random");
-var system;
-
+var system = new MCSystem;
+var core = new Core;
 init();
+getRandomTaskSet(20, 0.5);
+run(1000);
+'run over.'.println();
 
-//var core = system.core;
-//run();
-
-//////////////////////////////////////////////
-operation test(){
-	randomTaskSet(10, 0.3);
-}
-
-operation TaskSet createOneTask(i : Real){
-	var index = i.asString();
-	var sem = createSemaphore("R"+index, false, 1, 3);
-	var task = createTask("T"+index, 1, 2, 10, 4, 5, 6, 7, 8); 
-	task.add_resource(sem);
-	var rand = new Native("java.util.Random");
-	task.set_release_time(rand.nextInt(20));
-	self.tasks.add(task);
-	return task;
-}
-
-operation randomTaskSet(n, U){
-	var taskSet = createTaskSet();
-	var sum_u = U;
-	taskSet.task_number = n;
-	taskSet.u = U.asDouble();
-	for (i in Sequence{0..n}) {
-		var task = taskSet.createOneTask(i);
-		task.utilisation = getRemainingUtilization(sum_u, n, i);
-		sum_u -= task.utilisation;
-		task.period = getRandomInt(1000);
-		task.computation_time = task.period * task.utilisation;
-		task.deadline = task.period;
-	}
-	var sum = 0.0;
-	for (t in taskSet.tasks){
-		sum += t.utilisation;
-	}
-	sum.println();
-}
-
-operation getRandomInt(n){
-	var rand = new Native("java.util.Random");
-	return rand.nextInt(n);
-}
-
-operation getRemainingUtilization(sum_u, n, i){
-	var p = getRandomDecimal();
-	return sum_u * (1 - p.pow(1.0/(n-i)));
-}
-
-operation getRandomDecimal(){
-	var rand = new Native("java.util.Random");
-	return rand.nextInt(100000).asReal()/100000;
-}
-
-operation createTaskSet(){
-	var taskSet = new TaskSet;
-	taskSet.task_number = 0;
-	return taskSet;
-}
 
 //////////////////////////////////////////////
-operation run() {
-	for(i in Sequence{0..10000}) {
+operation init() {
+	system.criticality = Criticality#low;
+	system.ceiling_priority = 1;
+	system.status = Status#LOW;	
+	core.time = 0;
+	system.core = core;
+}
+
+operation run(N : Integer) {
+	for(i in Sequence{0..N}) {
 		tick();	
-		execute(core.time);
+		core.time.execute();
 		print_status();
 	}
 }
 
-operation print_status() {
-	var time = core.time;
-	var task = "null";
-	if(core.current_task.isDefined())
-		task = core.current_task.name;
-	var queue = core.queue.collect(n|n.name);
-	("timestampe: " + time + "\n" + "current task: " + task + "\n" + queue).println();
-}
-
-operation init_tasks_and_resources() {
-	var sem1 = createSemaphore("R1", false, 1, 3);
-	var sem2 = createSemaphore("R2", false, 2, 3);
-	var sem3 = createSemaphore("R3", false, 3, 3);
-	var t1 = createTask("T1", 1, 2, 10, 4, 5, 6, 7, 8); 
-	t1.add_resource(sem1);
-	var t2 = createTask("T2", 1, 2, 20, 4, 5, 6, 7, 8); 
-	t2.add_resource(sem2);
-	var t3 = createTask("T3", 1, 2, 30, 4, 5, 6, 7, 8);
-	t3.add_resource(sem3);
-	t1.set_release_time(10);
-	t2.set_release_time(15);
-	t3.set_release_time(20);
-}
-
 
 //implement
-operation execute(current) {
-	for(t in system.tasks) {
+operation Integer execute() {
+	for(t in system.taskSet.tasks) {
 		//handles task releases
-		if(t.release_time = current) {
+		if(t.release_time = self) {
 			release_task(t);
 		}
 		handle_current();
@@ -139,7 +67,6 @@ operation handle_current() {
 				
 			}
 		}
-		
 		//critical section
 		if(t.deadline = curr - t.release_time) {
 			core.queue.add(t);
@@ -149,9 +76,6 @@ operation handle_current() {
 	}
 	
 }
-
-
-
 
 operation release_task(task) {
 	var t = core.current_task; //current running task
@@ -174,23 +98,6 @@ operation tick() {
 	core.time += 1;
 }
 
-
-operation init() {
-	system = new MCSystem;
-	system.criticality = Criticality#low;
-	system.ceiling_priority = 1;
-	system.status = Status#LOW;
-	
-	
-	var core = new Core;
-	core.time = 0;
-	system.core = core;
-//	init_tasks_and_resources();
-	test();
-	
-}
-
-
 operation acquire_lock(task, semaphore) {
 	if(sempahore.locked)
 		return false;
@@ -208,11 +115,58 @@ operation release_lock(task, semaphore) {
 	return false;
 }
 
+operation TaskSet createOneTask(i : Integer){
+	var index = i.asString();
+	var sem = createSemaphore("R"+index, false, 1, 3);
+	var task = createTask("T"+index, 1, 1, 1, 1, 1, 1, 1, 1); 
+	task.add_resource(sem);
+	task.set_release_time(getRandomInt(20));
+	self.tasks.add(task);
+	return task;
+}
+
+operation getRandomTaskSet(n : Integer, U : Real){
+	var taskSet = createTaskSet();
+	var sum_u = U;
+	taskSet.task_number = n;
+	taskSet.u = U.asDouble();
+	for (i in Sequence{0..n}) {
+		var task = taskSet.createOneTask(i);
+		task.utilisation = getRemainingUtilization(sum_u, n, i);
+		sum_u -= task.utilisation;
+		task.period = getRandomInt(1000);
+		task.computation_time = task.period * task.utilisation;
+		task.deadline = task.period;
+	}
+}
+
+operation getRandomInt(n){
+	var rand = new Native("java.util.Random");
+	return rand.nextInt(n);
+}
+
+operation getRemainingUtilization(sum_u, n, i){
+	var p = getRandomDecimal();
+	return sum_u * (1 - p.pow(1.0/(n-i)));
+}
+
+operation getRandomDecimal(){
+	var rand = new Native("java.util.Random");
+	return rand.nextInt(100000).asReal()/100000;
+}
+
+operation createTaskSet(){
+	var taskSet = new TaskSet;
+	taskSet.task_number = 0;
+	system.taskSet = taskSet;
+	return taskSet;
+}
+
 operation createCriticalSection(name, start, execution, sem) {
 	var cs = new CriticalSection;
 	cs.name = name;
 	cs.start = start; //relative start time
-	cs.execution = execution; //execution time in critical section 
+	cs.execution = execution; //execution time in critical section
 	cs.elapsed = 0; //time elapsed in the critical section
 	cs.semaphore = sem; // semaphore acquired by this critical section
 	return cs;
@@ -237,7 +191,6 @@ operation Task add_resource(sem) {
 	var cs = createCriticalSection("cs", 2, 3, sem);
 	sem.acquisition = self;
 	self.critical_sections.add(cs);
-//	task.semaphore.add(sem);
 }
 
 operation Task set_release_time(time) {
@@ -252,4 +205,13 @@ operation createSemaphore(name, locked, initial, ceiling) {
 	sem.ceiling_priority = ceiling;
 	system.resources.add(sem);
 	return sem;
+}
+
+operation print_status() {
+	var time = core.time;
+	var task = "null";
+	if(core.current_task.isDefined())
+		task = core.current_task.name;
+	var queue = core.queue.collect(n|n.name);
+	("timestampe:   " + time + "\n" + "current task: " + task + "\n" + queue + "\n").println();
 }

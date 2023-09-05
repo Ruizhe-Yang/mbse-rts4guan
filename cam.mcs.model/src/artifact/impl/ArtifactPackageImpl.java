@@ -288,6 +288,16 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
+	public EReference getMCSystem_TaskSet() {
+		return (EReference)mcSystemEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getTask() {
 		return taskEClass;
 	}
@@ -328,7 +338,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Wcet_low() {
+	public EAttribute getTask_Utilisation() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -338,7 +348,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Wcet_high() {
+	public EAttribute getTask_Computation_time() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -348,7 +358,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Criticality() {
+	public EAttribute getTask_Wcet_low() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -358,7 +368,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Dynamic_priority() {
+	public EAttribute getTask_Wcet_high() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -368,7 +378,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Offset() {
+	public EAttribute getTask_Criticality() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -378,7 +388,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Release_time() {
+	public EAttribute getTask_Dynamic_priority() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -388,7 +398,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Current_cs() {
+	public EAttribute getTask_Offset() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -398,8 +408,28 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getTask_Release_time() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(10);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTask_Current_cs() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(11);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getTask_Critical_sections() {
-		return (EReference)taskEClass.getEStructuralFeatures().get(10);
+		return (EReference)taskEClass.getEStructuralFeatures().get(12);
 	}
 
 	/**
@@ -605,11 +635,14 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		createEReference(mcSystemEClass, MC_SYSTEM__RESOURCES);
 		createEReference(mcSystemEClass, MC_SYSTEM__TASKS);
 		createEReference(mcSystemEClass, MC_SYSTEM__CORE);
+		createEReference(mcSystemEClass, MC_SYSTEM__TASK_SET);
 
 		taskEClass = createEClass(TASK);
 		createEAttribute(taskEClass, TASK__PRIORITY);
 		createEAttribute(taskEClass, TASK__PERIOD);
 		createEAttribute(taskEClass, TASK__DEADLINE);
+		createEAttribute(taskEClass, TASK__UTILISATION);
+		createEAttribute(taskEClass, TASK__COMPUTATION_TIME);
 		createEAttribute(taskEClass, TASK__WCET_LOW);
 		createEAttribute(taskEClass, TASK__WCET_HIGH);
 		createEAttribute(taskEClass, TASK__CRITICALITY);
@@ -695,11 +728,14 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		initEReference(getMCSystem_Resources(), this.getSemaphore(), null, "resources", null, 0, -1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_Tasks(), this.getTask(), null, "tasks", null, 0, -1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_Core(), this.getCore(), null, "core", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMCSystem_TaskSet(), this.getTaskSet(), null, "taskSet", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTask_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Period(), ecorePackage.getEInt(), "period", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Deadline(), ecorePackage.getEInt(), "deadline", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_Utilisation(), ecorePackage.getEDouble(), "utilisation", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_Computation_time(), ecorePackage.getEDouble(), "computation_time", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Wcet_low(), ecorePackage.getEInt(), "wcet_low", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Wcet_high(), ecorePackage.getEInt(), "wcet_high", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Criticality(), this.getCriticality(), "criticality", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

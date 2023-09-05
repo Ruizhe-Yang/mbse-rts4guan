@@ -16,6 +16,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link artifact.Task#getPriority <em>Priority</em>}</li>
  *   <li>{@link artifact.Task#getPeriod <em>Period</em>}</li>
  *   <li>{@link artifact.Task#getDeadline <em>Deadline</em>}</li>
+ *   <li>{@link artifact.Task#getUtilisation <em>Utilisation</em>}</li>
+ *   <li>{@link artifact.Task#getComputation_time <em>Computation time</em>}</li>
  *   <li>{@link artifact.Task#getWcet_low <em>Wcet low</em>}</li>
  *   <li>{@link artifact.Task#getWcet_high <em>Wcet high</em>}</li>
  *   <li>{@link artifact.Task#getCriticality <em>Criticality</em>}</li>
@@ -96,6 +98,50 @@ public interface Task extends MCSElement {
 	 * @generated
 	 */
 	void setDeadline(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Utilisation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Utilisation</em>' attribute.
+	 * @see #setUtilisation(double)
+	 * @see artifact.ArtifactPackage#getTask_Utilisation()
+	 * @model
+	 * @generated
+	 */
+	double getUtilisation();
+
+	/**
+	 * Sets the value of the '{@link artifact.Task#getUtilisation <em>Utilisation</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Utilisation</em>' attribute.
+	 * @see #getUtilisation()
+	 * @generated
+	 */
+	void setUtilisation(double value);
+
+	/**
+	 * Returns the value of the '<em><b>Computation time</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Computation time</em>' attribute.
+	 * @see #setComputation_time(double)
+	 * @see artifact.ArtifactPackage#getTask_Computation_time()
+	 * @model
+	 * @generated
+	 */
+	double getComputation_time();
+
+	/**
+	 * Sets the value of the '{@link artifact.Task#getComputation_time <em>Computation time</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Computation time</em>' attribute.
+	 * @see #getComputation_time()
+	 * @generated
+	 */
+	void setComputation_time(double value);
 
 	/**
 	 * Returns the value of the '<em><b>Wcet low</b></em>' attribute.

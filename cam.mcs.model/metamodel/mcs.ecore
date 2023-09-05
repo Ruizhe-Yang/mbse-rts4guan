@@ -17,6 +17,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="core" eType="#//Core" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="taskSet" eType="#//TaskSet"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Status">
     <eLiterals name="LOW"/>
