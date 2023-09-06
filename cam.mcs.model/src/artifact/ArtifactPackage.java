@@ -838,13 +838,22 @@ public interface ArtifactPackage extends EPackage {
 	int CRITICAL_SECTION__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
 
 	/**
+	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CRITICAL_SECTION__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Start</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CRITICAL_SECTION__START = MCS_ELEMENT_FEATURE_COUNT + 0;
+	int CRITICAL_SECTION__START = MCS_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Execution</b></em>' attribute.
@@ -853,7 +862,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CRITICAL_SECTION__EXECUTION = MCS_ELEMENT_FEATURE_COUNT + 1;
+	int CRITICAL_SECTION__EXECUTION = MCS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Elapsed</b></em>' attribute.
@@ -862,7 +871,16 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CRITICAL_SECTION__ELAPSED = MCS_ELEMENT_FEATURE_COUNT + 2;
+	int CRITICAL_SECTION__ELAPSED = MCS_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CRITICAL_SECTION__TASKS = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Semaphore</b></em>' reference.
@@ -871,7 +889,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CRITICAL_SECTION__SEMAPHORE = MCS_ELEMENT_FEATURE_COUNT + 3;
+	int CRITICAL_SECTION__SEMAPHORE = MCS_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>Critical Section</em>' class.
@@ -880,7 +898,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CRITICAL_SECTION_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 4;
+	int CRITICAL_SECTION_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link artifact.impl.SemaphoreImpl <em>Semaphore</em>}' class.
@@ -1010,7 +1028,7 @@ public interface ArtifactPackage extends EPackage {
 	int SEMAPHORE__CEILING_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Acquisition</b></em>' reference.
+	 * The feature id for the '<em><b>Acquisition</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1543,6 +1561,17 @@ public interface ArtifactPackage extends EPackage {
 	EClass getCriticalSection();
 
 	/**
+	 * Returns the meta object for the attribute '{@link artifact.CriticalSection#getCriticality <em>Criticality</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Criticality</em>'.
+	 * @see artifact.CriticalSection#getCriticality()
+	 * @see #getCriticalSection()
+	 * @generated
+	 */
+	EAttribute getCriticalSection_Criticality();
+
+	/**
 	 * Returns the meta object for the attribute '{@link artifact.CriticalSection#getStart <em>Start</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1574,6 +1603,17 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCriticalSection_Elapsed();
+
+	/**
+	 * Returns the meta object for the reference list '{@link artifact.CriticalSection#getTasks <em>Tasks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Tasks</em>'.
+	 * @see artifact.CriticalSection#getTasks()
+	 * @see #getCriticalSection()
+	 * @generated
+	 */
+	EReference getCriticalSection_Tasks();
 
 	/**
 	 * Returns the meta object for the reference '{@link artifact.CriticalSection#getSemaphore <em>Semaphore</em>}'.
@@ -1630,10 +1670,10 @@ public interface ArtifactPackage extends EPackage {
 	EAttribute getSemaphore_Ceiling_priority();
 
 	/**
-	 * Returns the meta object for the reference '{@link artifact.Semaphore#getAcquisition <em>Acquisition</em>}'.
+	 * Returns the meta object for the reference list '{@link artifact.Semaphore#getAcquisition <em>Acquisition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Acquisition</em>'.
+	 * @return the meta object for the reference list '<em>Acquisition</em>'.
 	 * @see artifact.Semaphore#getAcquisition()
 	 * @see #getSemaphore()
 	 * @generated
@@ -2002,6 +2042,14 @@ public interface ArtifactPackage extends EPackage {
 		EClass CRITICAL_SECTION = eINSTANCE.getCriticalSection();
 
 		/**
+		 * The meta object literal for the '<em><b>Criticality</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CRITICAL_SECTION__CRITICALITY = eINSTANCE.getCriticalSection_Criticality();
+
+		/**
 		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -2024,6 +2072,14 @@ public interface ArtifactPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CRITICAL_SECTION__ELAPSED = eINSTANCE.getCriticalSection_Elapsed();
+
+		/**
+		 * The meta object literal for the '<em><b>Tasks</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CRITICAL_SECTION__TASKS = eINSTANCE.getCriticalSection_Tasks();
 
 		/**
 		 * The meta object literal for the '<em><b>Semaphore</b></em>' reference feature.
@@ -2068,7 +2124,7 @@ public interface ArtifactPackage extends EPackage {
 		EAttribute SEMAPHORE__CEILING_PRIORITY = eINSTANCE.getSemaphore_Ceiling_priority();
 
 		/**
-		 * The meta object literal for the '<em><b>Acquisition</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Acquisition</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

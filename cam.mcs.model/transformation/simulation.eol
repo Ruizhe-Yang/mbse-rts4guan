@@ -5,6 +5,10 @@ var system = new MCSystem;
 var core = new Core;
 init();
 var taskSet = getRandomTaskSet(10, 0.5, 5);
+getCriticalSection(8);
+matchCriticalSection();
+getCriticalSectionsCeilingPriority();
+matchCriticalSectionCriticality();
 run();
 'run over.'.println();
 
@@ -32,8 +36,63 @@ operation run() {
 		else if (core.locked and IsAllTasksExecuted()){
 			gameOver();
 		}
+		handle_LOW();
 		tick();
 		print_status();
+	}
+}
+
+operation handle_LOW(){
+
+}
+
+operation matchCriticalSectionCriticality(){
+	for (cs in system.critical_sections){
+		for (task in cs.tasks){
+		 	if (task.criticality = Criticality#hi){
+		 		cs.criticality = Criticality#hi;
+		 		break;
+		 	}
+		}
+	}
+}
+
+operation getCriticalSectionsCeilingPriority(){
+	for (cs in system.critical_sections){
+		 for (task in cs.tasks){
+		 	if (cs.tasks.count(e|e.priority > task.priority) = 0){
+		 		cs.semaphore.ceiling_priority = task.priority;
+		 	}
+		 }
+	}
+}
+
+operation matchCriticalSection(){
+	for (i in Sequence{0..system.critical_sections.size()-1}){
+		var cs = system.critical_sections.at(i);
+		var task = taskSet.tasks.at(i);
+		cs.tasks.add(task);
+		task.critical_section = cs;
+		cs.semaphore.acquisition.add(task);
+	}
+	for (task in taskSet.tasks.select(e|e.name.asInteger()>system.critical_sections.size())){
+		var randomNumber = getRandomInt(system.critical_sections.size()+1);
+		if (randomNumber = 0){
+			task.critical_section = null;
+		}
+		else{
+			var cs = system.critical_sections.at(randomNumber-1);
+			cs.tasks.add(task);
+			task.critical_section = cs;
+			cs.semaphore.acquisition.add(task);
+		}
+	}
+}
+
+operation getCriticalSection(N : Integer){
+	for (i in Sequence{1..N}){
+		var sem = createSemaphore(i.asString(), false, 0, 0);
+		var cs = createCriticalSection(i.asString(), 0, 0, sem);
 	}
 }
 
@@ -116,7 +175,7 @@ operation acquire_lock(task, semaphore) {
 		return false;
 	else {
 		semaphore.locked = true;
-		semaphore.acquisition = task;
+		semaphore.acquisition.add(task);
 	}
 }
 
@@ -130,18 +189,14 @@ operation release_lock(task, semaphore) {
 
 operation TaskSet createOneTask(i : Integer){
 	var index = i.asString();
-	var sem = createSemaphore(index.asString(), false, 1, 3);
-	var cs = createCriticalSection("cs", 0, 0, sem);
 	var task = createTask(index.asString(), 1, 1, 1, 1, 1, 1, 1, 0);
-	sem.acquisition = task;
-	task.critical_section = cs;
 	task.set_release_time(INIT_RELEASE_TIME);
 	task.state = WorkingState#unstart;
 	self.tasks.add(task);
 	return task;
 }
 
-operation getRandomTaskSet(n : Integer, U : Real, line : Integer){
+operation getRandomTaskSet(n : Integer, U : Real, n_hi : Integer){
 	var taskSet = createTaskSet();
 	var sum_u = U;
 	taskSet.task_number = n;
@@ -155,23 +210,26 @@ operation getRandomTaskSet(n : Integer, U : Real, line : Integer){
 		else{
 			task.utilisation = sum_u;
 		}
-		if (i <= line){
-			task.criticality = Criticality#lo;
-		}
-		else{
-			task.criticality = Criticality#hi;
-		}
 		task.period = getRandomInt(INIT_PERIOD_CEILING);
 		task.computation_time = (task.period * task.utilisation).asInteger();
 		task.deadline = task.period;
 		task.wcet_low = task.computation_time;
 		task.wcet_high = (task.computation_time * 1.5).asInteger();
-		task.critical_section.execution = task.wcet_low;
+//		task.critical_section.execution = task.wcet_low;
 		task.timeleft = task.wcet_low;
 	}
 	for (task in taskSet.tasks){
 		task.priority = taskSet.tasks.count(e|e.deadline > task.deadline) + 1;
 		task.dynamic_priority = task.priority;
+	}
+	for (i in Sequence{1..n_hi}){
+		while(true){
+			var task = taskSet.tasks.at(getRandomInt(taskSet.tasks.size()));
+			if (task.criticality = Criticality#lo){
+				task.criticality = Criticality#hi;
+				break;
+			}
+		}
 	}
 	return taskSet;
 }

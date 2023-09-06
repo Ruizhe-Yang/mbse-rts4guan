@@ -6,12 +6,15 @@ import artifact.ArtifactPackage;
 import artifact.Semaphore;
 import artifact.Task;
 
+import java.util.Collection;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -91,14 +94,14 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	protected int ceiling_priority = CEILING_PRIORITY_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getAcquisition() <em>Acquisition</em>}' reference.
+	 * The cached value of the '{@link #getAcquisition() <em>Acquisition</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getAcquisition()
 	 * @generated
 	 * @ordered
 	 */
-	protected Task acquisition;
+	protected EList<Task> acquisition;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -194,38 +197,11 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	 * @generated
 	 */
 	@Override
-	public Task getAcquisition() {
-		if (acquisition != null && acquisition.eIsProxy()) {
-			InternalEObject oldAcquisition = (InternalEObject)acquisition;
-			acquisition = (Task)eResolveProxy(oldAcquisition);
-			if (acquisition != oldAcquisition) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArtifactPackage.SEMAPHORE__ACQUISITION, oldAcquisition, acquisition));
-			}
+	public EList<Task> getAcquisition() {
+		if (acquisition == null) {
+			acquisition = new EObjectResolvingEList<Task>(Task.class, this, ArtifactPackage.SEMAPHORE__ACQUISITION);
 		}
 		return acquisition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Task basicGetAcquisition() {
-		return acquisition;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setAcquisition(Task newAcquisition) {
-		Task oldAcquisition = acquisition;
-		acquisition = newAcquisition;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.SEMAPHORE__ACQUISITION, oldAcquisition, acquisition));
 	}
 
 	/**
@@ -243,8 +219,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 			case ArtifactPackage.SEMAPHORE__CEILING_PRIORITY:
 				return getCeiling_priority();
 			case ArtifactPackage.SEMAPHORE__ACQUISITION:
-				if (resolve) return getAcquisition();
-				return basicGetAcquisition();
+				return getAcquisition();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -254,6 +229,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
@@ -267,7 +243,8 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 				setCeiling_priority((Integer)newValue);
 				return;
 			case ArtifactPackage.SEMAPHORE__ACQUISITION:
-				setAcquisition((Task)newValue);
+				getAcquisition().clear();
+				getAcquisition().addAll((Collection<? extends Task>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -291,7 +268,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 				setCeiling_priority(CEILING_PRIORITY_EDEFAULT);
 				return;
 			case ArtifactPackage.SEMAPHORE__ACQUISITION:
-				setAcquisition((Task)null);
+				getAcquisition().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -312,7 +289,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 			case ArtifactPackage.SEMAPHORE__CEILING_PRIORITY:
 				return ceiling_priority != CEILING_PRIORITY_EDEFAULT;
 			case ArtifactPackage.SEMAPHORE__ACQUISITION:
-				return acquisition != null;
+				return acquisition != null && !acquisition.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

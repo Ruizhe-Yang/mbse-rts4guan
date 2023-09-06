@@ -2,6 +2,8 @@
  */
 package artifact;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -90,25 +92,15 @@ public interface Semaphore extends MCSElement {
 	void setCeiling_priority(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Acquisition</b></em>' reference.
+	 * Returns the value of the '<em><b>Acquisition</b></em>' reference list.
+	 * The list contents are of type {@link artifact.Task}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Acquisition</em>' reference.
-	 * @see #setAcquisition(Task)
+	 * @return the value of the '<em>Acquisition</em>' reference list.
 	 * @see artifact.ArtifactPackage#getSemaphore_Acquisition()
 	 * @model
 	 * @generated
 	 */
-	Task getAcquisition();
-
-	/**
-	 * Sets the value of the '{@link artifact.Semaphore#getAcquisition <em>Acquisition</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Acquisition</em>' reference.
-	 * @see #getAcquisition()
-	 * @generated
-	 */
-	void setAcquisition(Task value);
+	EList<Task> getAcquisition();
 
 } // Semaphore

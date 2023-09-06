@@ -496,7 +496,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCriticalSection_Start() {
+	public EAttribute getCriticalSection_Criticality() {
 		return (EAttribute)criticalSectionEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -506,7 +506,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCriticalSection_Execution() {
+	public EAttribute getCriticalSection_Start() {
 		return (EAttribute)criticalSectionEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -516,7 +516,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCriticalSection_Elapsed() {
+	public EAttribute getCriticalSection_Execution() {
 		return (EAttribute)criticalSectionEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -526,8 +526,28 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getCriticalSection_Elapsed() {
+		return (EAttribute)criticalSectionEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCriticalSection_Tasks() {
+		return (EReference)criticalSectionEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getCriticalSection_Semaphore() {
-		return (EReference)criticalSectionEClass.getEStructuralFeatures().get(3);
+		return (EReference)criticalSectionEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -715,9 +735,11 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		createEReference(taskEClass, TASK__CRITICAL_SECTION);
 
 		criticalSectionEClass = createEClass(CRITICAL_SECTION);
+		createEAttribute(criticalSectionEClass, CRITICAL_SECTION__CRITICALITY);
 		createEAttribute(criticalSectionEClass, CRITICAL_SECTION__START);
 		createEAttribute(criticalSectionEClass, CRITICAL_SECTION__EXECUTION);
 		createEAttribute(criticalSectionEClass, CRITICAL_SECTION__ELAPSED);
+		createEReference(criticalSectionEClass, CRITICAL_SECTION__TASKS);
 		createEReference(criticalSectionEClass, CRITICAL_SECTION__SEMAPHORE);
 
 		semaphoreEClass = createEClass(SEMAPHORE);
@@ -813,16 +835,18 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		initEReference(getTask_Critical_section(), this.getCriticalSection(), null, "critical_section", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(criticalSectionEClass, CriticalSection.class, "CriticalSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getCriticalSection_Criticality(), this.getCriticality(), "criticality", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCriticalSection_Start(), ecorePackage.getEInt(), "start", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCriticalSection_Execution(), ecorePackage.getEInt(), "execution", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCriticalSection_Elapsed(), ecorePackage.getEInt(), "elapsed", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCriticalSection_Tasks(), this.getTask(), null, "tasks", null, 0, -1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCriticalSection_Semaphore(), this.getSemaphore(), null, "semaphore", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semaphoreEClass, Semaphore.class, "Semaphore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSemaphore_Locked(), ecorePackage.getEBoolean(), "locked", null, 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemaphore_Initial_priority(), ecorePackage.getEInt(), "initial_priority", null, 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemaphore_Ceiling_priority(), ecorePackage.getEInt(), "ceiling_priority", null, 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getSemaphore_Acquisition(), this.getTask(), null, "acquisition", null, 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getSemaphore_Acquisition(), this.getTask(), null, "acquisition", null, 0, -1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskSetEClass, TaskSet.class, "TaskSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTaskSet_Task_number(), ecorePackage.getEInt(), "task_number", null, 0, 1, TaskSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -56,16 +56,20 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="critical_section" eType="#//CriticalSection"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CriticalSection" eSuperTypes="#//MCSElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="criticality" eType="#//Criticality"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="execution" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="elapsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
+        eType="#//Task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="semaphore" eType="#//Semaphore"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Semaphore" eSuperTypes="#//MCSElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="locked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="initial_priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ceiling_priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="acquisition" eType="#//Task"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="acquisition" upperBound="-1"
+        eType="#//Task"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TaskSet" eSuperTypes="#//MCSElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="task_number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

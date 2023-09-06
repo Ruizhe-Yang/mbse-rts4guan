@@ -2,6 +2,8 @@
  */
 package artifact;
 
+import org.eclipse.emf.common.util.EList;
+
 
 /**
  * <!-- begin-user-doc -->
@@ -12,9 +14,11 @@ package artifact;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link artifact.CriticalSection#getCriticality <em>Criticality</em>}</li>
  *   <li>{@link artifact.CriticalSection#getStart <em>Start</em>}</li>
  *   <li>{@link artifact.CriticalSection#getExecution <em>Execution</em>}</li>
  *   <li>{@link artifact.CriticalSection#getElapsed <em>Elapsed</em>}</li>
+ *   <li>{@link artifact.CriticalSection#getTasks <em>Tasks</em>}</li>
  *   <li>{@link artifact.CriticalSection#getSemaphore <em>Semaphore</em>}</li>
  * </ul>
  *
@@ -23,6 +27,31 @@ package artifact;
  * @generated
  */
 public interface CriticalSection extends MCSElement {
+	/**
+	 * Returns the value of the '<em><b>Criticality</b></em>' attribute.
+	 * The literals are from the enumeration {@link artifact.Criticality}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Criticality</em>' attribute.
+	 * @see artifact.Criticality
+	 * @see #setCriticality(Criticality)
+	 * @see artifact.ArtifactPackage#getCriticalSection_Criticality()
+	 * @model
+	 * @generated
+	 */
+	Criticality getCriticality();
+
+	/**
+	 * Sets the value of the '{@link artifact.CriticalSection#getCriticality <em>Criticality</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Criticality</em>' attribute.
+	 * @see artifact.Criticality
+	 * @see #getCriticality()
+	 * @generated
+	 */
+	void setCriticality(Criticality value);
+
 	/**
 	 * Returns the value of the '<em><b>Start</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -88,6 +117,18 @@ public interface CriticalSection extends MCSElement {
 	 * @generated
 	 */
 	void setElapsed(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Tasks</b></em>' reference list.
+	 * The list contents are of type {@link artifact.Task}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Tasks</em>' reference list.
+	 * @see artifact.ArtifactPackage#getCriticalSection_Tasks()
+	 * @model
+	 * @generated
+	 */
+	EList<Task> getTasks();
 
 	/**
 	 * Returns the value of the '<em><b>Semaphore</b></em>' reference.

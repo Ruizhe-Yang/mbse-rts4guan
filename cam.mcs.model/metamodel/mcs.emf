@@ -61,9 +61,11 @@ class Task extends MCSElement {
 }
 
 class CriticalSection extends MCSElement {
+	attr Criticality criticality;
 	attr int start; //relative start time
 	attr int execution; //execution time
 	attr int elapsed; //time spent in critical section
+	ref Task[*] tasks;
 	ref Semaphore semaphore;
 } 
 
@@ -71,7 +73,7 @@ class Semaphore extends MCSElement {
 	attr boolean locked;
 	attr int initial_priority;
 	attr int ceiling_priority;
-	ref Task acquisition;
+	ref Task[*] acquisition;
 }
 
 class TaskSet extends MCSElement{
