@@ -666,13 +666,22 @@ public interface ArtifactPackage extends EPackage {
 	int TASK__WCET_LOW = MCS_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Cstime</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__CSTIME = MCS_ELEMENT_FEATURE_COUNT + 8;
+
+	/**
 	 * The feature id for the '<em><b>Wcet high</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__WCET_HIGH = MCS_ELEMENT_FEATURE_COUNT + 8;
+	int TASK__WCET_HIGH = MCS_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
@@ -681,7 +690,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 9;
+	int TASK__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Dynamic priority</b></em>' attribute.
@@ -690,7 +699,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__DYNAMIC_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 10;
+	int TASK__DYNAMIC_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Offset</b></em>' attribute.
@@ -699,7 +708,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OFFSET = MCS_ELEMENT_FEATURE_COUNT + 11;
+	int TASK__OFFSET = MCS_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Release time</b></em>' attribute.
@@ -708,7 +717,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__RELEASE_TIME = MCS_ELEMENT_FEATURE_COUNT + 12;
+	int TASK__RELEASE_TIME = MCS_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Current cs</b></em>' attribute.
@@ -717,7 +726,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CURRENT_CS = MCS_ELEMENT_FEATURE_COUNT + 13;
+	int TASK__CURRENT_CS = MCS_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Critical section</b></em>' reference.
@@ -726,7 +735,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICAL_SECTION = MCS_ELEMENT_FEATURE_COUNT + 14;
+	int TASK__CRITICAL_SECTION = MCS_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -735,7 +744,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 15;
+	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The meta object id for the '{@link artifact.impl.CriticalSectionImpl <em>Critical Section</em>}' class.
@@ -1474,6 +1483,17 @@ public interface ArtifactPackage extends EPackage {
 	EAttribute getTask_Wcet_low();
 
 	/**
+	 * Returns the meta object for the attribute '{@link artifact.Task#getCstime <em>Cstime</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Cstime</em>'.
+	 * @see artifact.Task#getCstime()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EAttribute getTask_Cstime();
+
+	/**
 	 * Returns the meta object for the attribute '{@link artifact.Task#getWcet_high <em>Wcet high</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1974,6 +1994,14 @@ public interface ArtifactPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute TASK__WCET_LOW = eINSTANCE.getTask_Wcet_low();
+
+		/**
+		 * The meta object literal for the '<em><b>Cstime</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK__CSTIME = eINSTANCE.getTask_Cstime();
 
 		/**
 		 * The meta object literal for the '<em><b>Wcet high</b></em>' attribute feature.

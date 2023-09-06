@@ -39,6 +39,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link artifact.impl.TaskImpl#getUtilisation <em>Utilisation</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getComputation_time <em>Computation time</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getWcet_low <em>Wcet low</em>}</li>
+ *   <li>{@link artifact.impl.TaskImpl#getCstime <em>Cstime</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getWcet_high <em>Wcet high</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getCriticality <em>Criticality</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getDynamic_priority <em>Dynamic priority</em>}</li>
@@ -210,6 +211,26 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @ordered
 	 */
 	protected int wcet_low = WCET_LOW_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getCstime() <em>Cstime</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCstime()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CSTIME_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getCstime() <em>Cstime</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCstime()
+	 * @generated
+	 * @ordered
+	 */
+	protected int cstime = CSTIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWcet_high() <em>Wcet high</em>}' attribute.
@@ -550,6 +571,29 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 */
 	@Override
+	public int getCstime() {
+		return cstime;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setCstime(int newCstime) {
+		int oldCstime = cstime;
+		cstime = newCstime;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__CSTIME, oldCstime, cstime));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public int getWcet_high() {
 		return wcet_high;
 	}
@@ -746,6 +790,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				return getComputation_time();
 			case ArtifactPackage.TASK__WCET_LOW:
 				return getWcet_low();
+			case ArtifactPackage.TASK__CSTIME:
+				return getCstime();
 			case ArtifactPackage.TASK__WCET_HIGH:
 				return getWcet_high();
 			case ArtifactPackage.TASK__CRITICALITY:
@@ -797,6 +843,9 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				return;
 			case ArtifactPackage.TASK__WCET_LOW:
 				setWcet_low((Integer)newValue);
+				return;
+			case ArtifactPackage.TASK__CSTIME:
+				setCstime((Integer)newValue);
 				return;
 			case ArtifactPackage.TASK__WCET_HIGH:
 				setWcet_high((Integer)newValue);
@@ -855,6 +904,9 @@ public class TaskImpl extends MCSElementImpl implements Task {
 			case ArtifactPackage.TASK__WCET_LOW:
 				setWcet_low(WCET_LOW_EDEFAULT);
 				return;
+			case ArtifactPackage.TASK__CSTIME:
+				setCstime(CSTIME_EDEFAULT);
+				return;
 			case ArtifactPackage.TASK__WCET_HIGH:
 				setWcet_high(WCET_HIGH_EDEFAULT);
 				return;
@@ -904,6 +956,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				return computation_time != COMPUTATION_TIME_EDEFAULT;
 			case ArtifactPackage.TASK__WCET_LOW:
 				return wcet_low != WCET_LOW_EDEFAULT;
+			case ArtifactPackage.TASK__CSTIME:
+				return cstime != CSTIME_EDEFAULT;
 			case ArtifactPackage.TASK__WCET_HIGH:
 				return wcet_high != WCET_HIGH_EDEFAULT;
 			case ArtifactPackage.TASK__CRITICALITY:
@@ -948,6 +1002,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		result.append(computation_time);
 		result.append(", wcet_low: ");
 		result.append(wcet_low);
+		result.append(", cstime: ");
+		result.append(cstime);
 		result.append(", wcet_high: ");
 		result.append(wcet_high);
 		result.append(", criticality: ");

@@ -21,6 +21,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link artifact.Task#getUtilisation <em>Utilisation</em>}</li>
  *   <li>{@link artifact.Task#getComputation_time <em>Computation time</em>}</li>
  *   <li>{@link artifact.Task#getWcet_low <em>Wcet low</em>}</li>
+ *   <li>{@link artifact.Task#getCstime <em>Cstime</em>}</li>
  *   <li>{@link artifact.Task#getWcet_high <em>Wcet high</em>}</li>
  *   <li>{@link artifact.Task#getCriticality <em>Criticality</em>}</li>
  *   <li>{@link artifact.Task#getDynamic_priority <em>Dynamic priority</em>}</li>
@@ -213,6 +214,28 @@ public interface Task extends MCSElement {
 	 * @generated
 	 */
 	void setWcet_low(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Cstime</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Cstime</em>' attribute.
+	 * @see #setCstime(int)
+	 * @see artifact.ArtifactPackage#getTask_Cstime()
+	 * @model
+	 * @generated
+	 */
+	int getCstime();
+
+	/**
+	 * Sets the value of the '{@link artifact.Task#getCstime <em>Cstime</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Cstime</em>' attribute.
+	 * @see #getCstime()
+	 * @generated
+	 */
+	void setCstime(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Wcet high</b></em>' attribute.

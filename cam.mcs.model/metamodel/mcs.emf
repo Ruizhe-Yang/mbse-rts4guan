@@ -51,6 +51,7 @@ class Task extends MCSElement {
 	attr double utilisation;
 	attr int computation_time;
 	attr int wcet_low;
+	attr int cstime;
 	attr int wcet_high;
 	attr Criticality criticality;
 	attr int dynamic_priority;

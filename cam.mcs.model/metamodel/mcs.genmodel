@@ -46,6 +46,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/utilisation"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/computation_time"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/wcet_low"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/cstime"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/wcet_high"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/criticality"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/dynamic_priority"/>

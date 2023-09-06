@@ -1,6 +1,7 @@
-var INIT_PERIOD_CEILING = 2000;
+var INIT_PERIOD_CEILING = 10000;
 var INIT_RELEASE_TIME = 0;
-var MAX_RUNNING_TIME = 10000;
+var MAX_RUNNING_TIME = 100000;
+var PERIOD_NUMBER = 5;
 var system = new MCSystem;
 var core = new Core;
 init();
@@ -10,6 +11,9 @@ matchCriticalSection();
 getCriticalSectionsCeilingPriority();
 matchCriticalSectionCriticality();
 run();
+for (t in taskSet.tasks){
+	t.wcet_low.println();
+}
 'run over.'.println();
 
 operation init() {
@@ -23,28 +27,78 @@ operation init() {
 
 operation run() {
 	for(i in Sequence{0..MAX_RUNNING_TIME}) {
-		if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted()){
-			executeNewTask();
-		}
-		else if (IsTaskRunning()){
-			executeCurrentTaks();
-		}
-		else if (IsNoTaskRunning() and core.locked and IsUnstartedTaskExisted()){
-			core.releaseCurrentTask();
-			executeNewTask();
-		}
-		else if (core.locked and IsAllTasksExecuted()){
-			gameOver();
-		}
-		handle_LOW();
+		handle_default();
 		tick();
 		print_status();
 	}
 }
 
-operation handle_LOW(){
-
+operation executeNewTaskLOW(){
+	executeNewTask();
+	if (core.current_task.critical_section<>null){
+		core.current_task.dynamic_priority = core.current_task.critical_section.semaphore.ceiling_priority;
+	}
 }
+
+operation handle_LOW(){
+	if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted()){
+		executeNewTaskLOW();
+	}
+	else if (IsTaskRunning()){
+		executeCurrentTaks();
+	}
+	else if (IsNoTaskRunning() and core.locked and IsUnstartedTaskExisted()){
+		core.releaseCurrentTask();
+		executeNewTaskLOW();
+	}
+	else if (core.locked and IsAllTasksExecuted()){
+		gameOver();
+	}
+}
+
+operation task getPeriodSequence(){
+	var periodSequence = new Sequence;
+	for (i in Sequence{1..PERIOD_NUMBER}){
+		periodSequence.add(task.period*i);
+	}
+	return periodSequence;
+}
+//////////////////////////////////
+operation IsNoTaskShouldStart(){
+	var taskSequence = new Sequence;
+	for (task in taskSet.tasks){}
+}
+//////////////////////////////////
+operation handle_default(){
+	if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted() and IsNoTaskShouldStart()){
+	}
+	else if (IsTaskRunning()){
+		executeCurrentTaks();
+	}
+	else if (IsNoTaskRunning() and core.locked and IsUnstartedTaskExisted()){
+		core.releaseCurrentTask();
+		executeNewTask();
+	}
+	else if (core.locked and IsAllTasksExecuted()){
+		gameOver();
+	}
+}
+
+//operation handle_default(){
+//	if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted()){
+//		executeNewTask();
+//	}
+//	else if (IsTaskRunning()){
+//		executeCurrentTaks();
+//	}
+//	else if (IsNoTaskRunning() and core.locked and IsUnstartedTaskExisted()){
+//		core.releaseCurrentTask();
+//		executeNewTask();
+//	}
+//	else if (core.locked and IsAllTasksExecuted()){
+//		gameOver();
+//	}
+//}
 
 operation matchCriticalSectionCriticality(){
 	for (cs in system.critical_sections){
@@ -79,6 +133,7 @@ operation matchCriticalSection(){
 		var randomNumber = getRandomInt(system.critical_sections.size()+1);
 		if (randomNumber = 0){
 			task.critical_section = null;
+			task.cstime = 0;
 		}
 		else{
 			var cs = system.critical_sections.at(randomNumber-1);
@@ -214,8 +269,8 @@ operation getRandomTaskSet(n : Integer, U : Real, n_hi : Integer){
 		task.computation_time = (task.period * task.utilisation).asInteger();
 		task.deadline = task.period;
 		task.wcet_low = task.computation_time;
+		task.cstime = (task.wcet_low*0.25*getRandomDecimal()).asInteger();
 		task.wcet_high = (task.computation_time * 1.5).asInteger();
-//		task.critical_section.execution = task.wcet_low;
 		task.timeleft = task.wcet_low;
 	}
 	for (task in taskSet.tasks){
