@@ -8,6 +8,7 @@ abstract class MCSElement extends base.ArtifactElement {
 
 class Core extends MCSElement {
 	attr int time;
+	attr boolean locked;
 	ref Task current_task;
 	ref Task[*] queue;
 }
@@ -18,6 +19,7 @@ class MCSystem extends MCSElement {
 	attr Status status;
 	val Semaphore[*] resources;
 	val Task[*] tasks;
+	val CriticalSection[*] critical_sections;
 	val Core core;
 	val TaskSet taskSet;
 }
@@ -29,16 +31,25 @@ enum Status {
 }
 
 enum Criticality {
-	low = 1;
-	high = 2;
+	lo = 1;
+	hi = 2;
+}
+
+enum WorkingState{
+	unstart;
+	working;
+	hanging;
+	done;
 }
 
 class Task extends MCSElement {
+	attr WorkingState state;
+	attr int timeleft;
 	attr int priority;
 	attr int period;
 	attr int deadline;
 	attr double utilisation;
-	attr double computation_time;
+	attr int computation_time;
 	attr int wcet_low;
 	attr int wcet_high;
 	attr Criticality criticality;
@@ -46,7 +57,7 @@ class Task extends MCSElement {
 	attr int offset;
 	attr int release_time;
 	attr int current_cs; //current critical section, -1 = meiyou, 0,1,2,3.. = nasha
-	val CriticalSection[*] critical_sections;
+	ref CriticalSection critical_section;
 }
 
 class CriticalSection extends MCSElement {

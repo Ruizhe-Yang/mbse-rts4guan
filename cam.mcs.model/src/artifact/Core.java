@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link artifact.Core#getTime <em>Time</em>}</li>
+ *   <li>{@link artifact.Core#isLocked <em>Locked</em>}</li>
  *   <li>{@link artifact.Core#getCurrent_task <em>Current task</em>}</li>
  *   <li>{@link artifact.Core#getQueue <em>Queue</em>}</li>
  * </ul>
@@ -44,6 +45,28 @@ public interface Core extends MCSElement {
 	 * @generated
 	 */
 	void setTime(int value);
+
+	/**
+	 * Returns the value of the '<em><b>Locked</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Locked</em>' attribute.
+	 * @see #setLocked(boolean)
+	 * @see artifact.ArtifactPackage#getCore_Locked()
+	 * @model
+	 * @generated
+	 */
+	boolean isLocked();
+
+	/**
+	 * Sets the value of the '{@link artifact.Core#isLocked <em>Locked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Locked</em>' attribute.
+	 * @see #isLocked()
+	 * @generated
+	 */
+	void setLocked(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>Current task</b></em>' reference.

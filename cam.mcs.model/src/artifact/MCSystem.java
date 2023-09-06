@@ -18,6 +18,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link artifact.MCSystem#getStatus <em>Status</em>}</li>
  *   <li>{@link artifact.MCSystem#getResources <em>Resources</em>}</li>
  *   <li>{@link artifact.MCSystem#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link artifact.MCSystem#getCritical_sections <em>Critical sections</em>}</li>
  *   <li>{@link artifact.MCSystem#getCore <em>Core</em>}</li>
  *   <li>{@link artifact.MCSystem#getTaskSet <em>Task Set</em>}</li>
  * </ul>
@@ -122,6 +123,18 @@ public interface MCSystem extends MCSElement {
 	 * @generated
 	 */
 	EList<Task> getTasks();
+
+	/**
+	 * Returns the value of the '<em><b>Critical sections</b></em>' containment reference list.
+	 * The list contents are of type {@link artifact.CriticalSection}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Critical sections</em>' containment reference list.
+	 * @see artifact.ArtifactPackage#getMCSystem_Critical_sections()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<CriticalSection> getCritical_sections();
 
 	/**
 	 * Returns the value of the '<em><b>Core</b></em>' containment reference.

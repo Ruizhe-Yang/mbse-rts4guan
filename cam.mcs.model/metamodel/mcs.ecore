@@ -4,6 +4,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="MCSElement" abstract="true" eSuperTypes="http://cam.mcs.model/base#//ArtifactElement"/>
   <eClassifiers xsi:type="ecore:EClass" name="Core" eSuperTypes="#//MCSElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="locked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="current_task" eType="#//Task"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="queue" upperBound="-1"
         eType="#//Task"/>
@@ -16,6 +17,8 @@
         eType="#//Semaphore" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="critical_sections" upperBound="-1"
+        eType="#//CriticalSection" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="core" eType="#//Core" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="taskSet" eType="#//TaskSet"
         containment="true"/>
@@ -26,15 +29,23 @@
     <eLiterals name="HIGH" value="2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Criticality">
-    <eLiterals name="low" value="1"/>
-    <eLiterals name="high" value="2"/>
+    <eLiterals name="lo" value="1"/>
+    <eLiterals name="hi" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="WorkingState">
+    <eLiterals name="unstart"/>
+    <eLiterals name="working" value="1"/>
+    <eLiterals name="hanging" value="2"/>
+    <eLiterals name="done" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//MCSElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="state" eType="#//WorkingState"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timeleft" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="period" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="deadline" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="utilisation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="computation_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="computation_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wcet_low" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="wcet_high" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="criticality" eType="#//Criticality"/>
@@ -42,8 +53,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="offset" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="release_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="current_cs" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="critical_sections" upperBound="-1"
-        eType="#//CriticalSection" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="critical_section" eType="#//CriticalSection"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="CriticalSection" eSuperTypes="#//MCSElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="start" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>

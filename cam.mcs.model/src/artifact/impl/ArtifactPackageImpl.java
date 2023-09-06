@@ -14,6 +14,7 @@ import artifact.Status;
 import artifact.Task;
 import artifact.TaskSet;
 
+import artifact.WorkingState;
 import base.BasePackage;
 
 import base.impl.BasePackageImpl;
@@ -95,6 +96,13 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	private EEnum criticalityEEnum = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum workingStateEEnum = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -198,8 +206,18 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
+	public EAttribute getCore_Locked() {
+		return (EAttribute)coreEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getCore_Current_task() {
-		return (EReference)coreEClass.getEStructuralFeatures().get(1);
+		return (EReference)coreEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -209,7 +227,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 */
 	@Override
 	public EReference getCore_Queue() {
-		return (EReference)coreEClass.getEStructuralFeatures().get(2);
+		return (EReference)coreEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -278,7 +296,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getMCSystem_Core() {
+	public EReference getMCSystem_Critical_sections() {
 		return (EReference)mcSystemEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -288,8 +306,18 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getMCSystem_TaskSet() {
+	public EReference getMCSystem_Core() {
 		return (EReference)mcSystemEClass.getEStructuralFeatures().get(6);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getMCSystem_TaskSet() {
+		return (EReference)mcSystemEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -308,7 +336,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Priority() {
+	public EAttribute getTask_State() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -318,7 +346,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Period() {
+	public EAttribute getTask_Timeleft() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -328,7 +356,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Deadline() {
+	public EAttribute getTask_Priority() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -338,7 +366,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Utilisation() {
+	public EAttribute getTask_Period() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -348,7 +376,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Computation_time() {
+	public EAttribute getTask_Deadline() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -358,7 +386,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Wcet_low() {
+	public EAttribute getTask_Utilisation() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -368,7 +396,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Wcet_high() {
+	public EAttribute getTask_Computation_time() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -378,7 +406,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Criticality() {
+	public EAttribute getTask_Wcet_low() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -388,7 +416,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Dynamic_priority() {
+	public EAttribute getTask_Wcet_high() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -398,7 +426,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Offset() {
+	public EAttribute getTask_Criticality() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -408,7 +436,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Release_time() {
+	public EAttribute getTask_Dynamic_priority() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -418,7 +446,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Current_cs() {
+	public EAttribute getTask_Offset() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -428,8 +456,28 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EReference getTask_Critical_sections() {
-		return (EReference)taskEClass.getEStructuralFeatures().get(12);
+	public EAttribute getTask_Release_time() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(12);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getTask_Current_cs() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(13);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getTask_Critical_section() {
+		return (EReference)taskEClass.getEStructuralFeatures().get(14);
 	}
 
 	/**
@@ -598,6 +646,16 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
+	public EEnum getWorkingState() {
+		return workingStateEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public ArtifactFactory getArtifactFactory() {
 		return (ArtifactFactory)getEFactoryInstance();
 	}
@@ -625,6 +683,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 
 		coreEClass = createEClass(CORE);
 		createEAttribute(coreEClass, CORE__TIME);
+		createEAttribute(coreEClass, CORE__LOCKED);
 		createEReference(coreEClass, CORE__CURRENT_TASK);
 		createEReference(coreEClass, CORE__QUEUE);
 
@@ -634,10 +693,13 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		createEAttribute(mcSystemEClass, MC_SYSTEM__STATUS);
 		createEReference(mcSystemEClass, MC_SYSTEM__RESOURCES);
 		createEReference(mcSystemEClass, MC_SYSTEM__TASKS);
+		createEReference(mcSystemEClass, MC_SYSTEM__CRITICAL_SECTIONS);
 		createEReference(mcSystemEClass, MC_SYSTEM__CORE);
 		createEReference(mcSystemEClass, MC_SYSTEM__TASK_SET);
 
 		taskEClass = createEClass(TASK);
+		createEAttribute(taskEClass, TASK__STATE);
+		createEAttribute(taskEClass, TASK__TIMELEFT);
 		createEAttribute(taskEClass, TASK__PRIORITY);
 		createEAttribute(taskEClass, TASK__PERIOD);
 		createEAttribute(taskEClass, TASK__DEADLINE);
@@ -650,7 +712,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		createEAttribute(taskEClass, TASK__OFFSET);
 		createEAttribute(taskEClass, TASK__RELEASE_TIME);
 		createEAttribute(taskEClass, TASK__CURRENT_CS);
-		createEReference(taskEClass, TASK__CRITICAL_SECTIONS);
+		createEReference(taskEClass, TASK__CRITICAL_SECTION);
 
 		criticalSectionEClass = createEClass(CRITICAL_SECTION);
 		createEAttribute(criticalSectionEClass, CRITICAL_SECTION__START);
@@ -672,6 +734,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
 		criticalityEEnum = createEEnum(CRITICALITY);
+		workingStateEEnum = createEEnum(WORKING_STATE);
 	}
 
 	/**
@@ -718,6 +781,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 
 		initEClass(coreEClass, Core.class, "Core", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCore_Time(), ecorePackage.getEInt(), "time", null, 0, 1, Core.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCore_Locked(), ecorePackage.getEBoolean(), "locked", null, 0, 1, Core.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCore_Current_task(), this.getTask(), null, "current_task", null, 0, 1, Core.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCore_Queue(), this.getTask(), null, "queue", null, 0, -1, Core.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -727,15 +791,18 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		initEAttribute(getMCSystem_Status(), this.getStatus(), "status", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_Resources(), this.getSemaphore(), null, "resources", null, 0, -1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_Tasks(), this.getTask(), null, "tasks", null, 0, -1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getMCSystem_Critical_sections(), this.getCriticalSection(), null, "critical_sections", null, 0, -1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_Core(), this.getCore(), null, "core", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_TaskSet(), this.getTaskSet(), null, "taskSet", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTask_State(), this.getWorkingState(), "state", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_Timeleft(), ecorePackage.getEInt(), "timeleft", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Period(), ecorePackage.getEInt(), "period", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Deadline(), ecorePackage.getEInt(), "deadline", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Utilisation(), ecorePackage.getEDouble(), "utilisation", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTask_Computation_time(), ecorePackage.getEDouble(), "computation_time", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getTask_Computation_time(), ecorePackage.getEInt(), "computation_time", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Wcet_low(), ecorePackage.getEInt(), "wcet_low", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Wcet_high(), ecorePackage.getEInt(), "wcet_high", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Criticality(), this.getCriticality(), "criticality", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -743,7 +810,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		initEAttribute(getTask_Offset(), ecorePackage.getEInt(), "offset", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Release_time(), ecorePackage.getEInt(), "release_time", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Current_cs(), ecorePackage.getEInt(), "current_cs", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTask_Critical_sections(), this.getCriticalSection(), null, "critical_sections", null, 0, -1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getTask_Critical_section(), this.getCriticalSection(), null, "critical_section", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(criticalSectionEClass, CriticalSection.class, "CriticalSection", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCriticalSection_Start(), ecorePackage.getEInt(), "start", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -769,8 +836,14 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		addEEnumLiteral(statusEEnum, Status.HIGH);
 
 		initEEnum(criticalityEEnum, Criticality.class, "Criticality");
-		addEEnumLiteral(criticalityEEnum, Criticality.LOW);
-		addEEnumLiteral(criticalityEEnum, Criticality.HIGH);
+		addEEnumLiteral(criticalityEEnum, Criticality.LO);
+		addEEnumLiteral(criticalityEEnum, Criticality.HI);
+
+		initEEnum(workingStateEEnum, WorkingState.class, "WorkingState");
+		addEEnumLiteral(workingStateEEnum, WorkingState.UNSTART);
+		addEEnumLiteral(workingStateEEnum, WorkingState.WORKING);
+		addEEnumLiteral(workingStateEEnum, WorkingState.HANGING);
+		addEEnumLiteral(workingStateEEnum, WorkingState.DONE);
 
 		// Create resource
 		createResource(eNS_URI);

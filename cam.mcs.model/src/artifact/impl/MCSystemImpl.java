@@ -4,6 +4,7 @@ package artifact.impl;
 
 import artifact.ArtifactPackage;
 import artifact.Core;
+import artifact.CriticalSection;
 import artifact.Criticality;
 import artifact.MCSystem;
 import artifact.Semaphore;
@@ -39,6 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link artifact.impl.MCSystemImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link artifact.impl.MCSystemImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link artifact.impl.MCSystemImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link artifact.impl.MCSystemImpl#getCritical_sections <em>Critical sections</em>}</li>
  *   <li>{@link artifact.impl.MCSystemImpl#getCore <em>Core</em>}</li>
  *   <li>{@link artifact.impl.MCSystemImpl#getTaskSet <em>Task Set</em>}</li>
  * </ul>
@@ -54,7 +56,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Criticality CRITICALITY_EDEFAULT = Criticality.LOW;
+	protected static final Criticality CRITICALITY_EDEFAULT = Criticality.LO;
 
 	/**
 	 * The cached value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
@@ -125,6 +127,16 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	 * @ordered
 	 */
 	protected EList<Task> tasks;
+
+	/**
+	 * The cached value of the '{@link #getCritical_sections() <em>Critical sections</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCritical_sections()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<CriticalSection> critical_sections;
 
 	/**
 	 * The cached value of the '{@link #getCore() <em>Core</em>}' containment reference.
@@ -266,6 +278,19 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	 * @generated
 	 */
 	@Override
+	public EList<CriticalSection> getCritical_sections() {
+		if (critical_sections == null) {
+			critical_sections = new EObjectContainmentEList<CriticalSection>(CriticalSection.class, this, ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS);
+		}
+		return critical_sections;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Core getCore() {
 		return core;
 	}
@@ -362,6 +387,8 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
 			case ArtifactPackage.MC_SYSTEM__TASKS:
 				return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
+			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+				return ((InternalEList<?>)getCritical_sections()).basicRemove(otherEnd, msgs);
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				return basicSetCore(null, msgs);
 			case ArtifactPackage.MC_SYSTEM__TASK_SET:
@@ -388,6 +415,8 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return getResources();
 			case ArtifactPackage.MC_SYSTEM__TASKS:
 				return getTasks();
+			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+				return getCritical_sections();
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				return getCore();
 			case ArtifactPackage.MC_SYSTEM__TASK_SET:
@@ -422,6 +451,10 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				getTasks().clear();
 				getTasks().addAll((Collection<? extends Task>)newValue);
 				return;
+			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+				getCritical_sections().clear();
+				getCritical_sections().addAll((Collection<? extends CriticalSection>)newValue);
+				return;
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				setCore((Core)newValue);
 				return;
@@ -455,6 +488,9 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 			case ArtifactPackage.MC_SYSTEM__TASKS:
 				getTasks().clear();
 				return;
+			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+				getCritical_sections().clear();
+				return;
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				setCore((Core)null);
 				return;
@@ -483,6 +519,8 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return resources != null && !resources.isEmpty();
 			case ArtifactPackage.MC_SYSTEM__TASKS:
 				return tasks != null && !tasks.isEmpty();
+			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+				return critical_sections != null && !critical_sections.isEmpty();
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				return core != null;
 			case ArtifactPackage.MC_SYSTEM__TASK_SET:

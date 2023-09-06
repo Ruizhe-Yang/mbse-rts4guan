@@ -13,6 +13,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link artifact.Task#getState <em>State</em>}</li>
+ *   <li>{@link artifact.Task#getTimeleft <em>Timeleft</em>}</li>
  *   <li>{@link artifact.Task#getPriority <em>Priority</em>}</li>
  *   <li>{@link artifact.Task#getPeriod <em>Period</em>}</li>
  *   <li>{@link artifact.Task#getDeadline <em>Deadline</em>}</li>
@@ -25,7 +27,7 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link artifact.Task#getOffset <em>Offset</em>}</li>
  *   <li>{@link artifact.Task#getRelease_time <em>Release time</em>}</li>
  *   <li>{@link artifact.Task#getCurrent_cs <em>Current cs</em>}</li>
- *   <li>{@link artifact.Task#getCritical_sections <em>Critical sections</em>}</li>
+ *   <li>{@link artifact.Task#getCritical_section <em>Critical section</em>}</li>
  * </ul>
  *
  * @see artifact.ArtifactPackage#getTask()
@@ -33,6 +35,53 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Task extends MCSElement {
+	/**
+	 * Returns the value of the '<em><b>State</b></em>' attribute.
+	 * The literals are from the enumeration {@link artifact.WorkingState}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>State</em>' attribute.
+	 * @see artifact.WorkingState
+	 * @see #setState(WorkingState)
+	 * @see artifact.ArtifactPackage#getTask_State()
+	 * @model
+	 * @generated
+	 */
+	WorkingState getState();
+
+	/**
+	 * Sets the value of the '{@link artifact.Task#getState <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>State</em>' attribute.
+	 * @see artifact.WorkingState
+	 * @see #getState()
+	 * @generated
+	 */
+	void setState(WorkingState value);
+
+	/**
+	 * Returns the value of the '<em><b>Timeleft</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Timeleft</em>' attribute.
+	 * @see #setTimeleft(int)
+	 * @see artifact.ArtifactPackage#getTask_Timeleft()
+	 * @model
+	 * @generated
+	 */
+	int getTimeleft();
+
+	/**
+	 * Sets the value of the '{@link artifact.Task#getTimeleft <em>Timeleft</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Timeleft</em>' attribute.
+	 * @see #getTimeleft()
+	 * @generated
+	 */
+	void setTimeleft(int value);
+
 	/**
 	 * Returns the value of the '<em><b>Priority</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -126,12 +175,12 @@ public interface Task extends MCSElement {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Computation time</em>' attribute.
-	 * @see #setComputation_time(double)
+	 * @see #setComputation_time(int)
 	 * @see artifact.ArtifactPackage#getTask_Computation_time()
 	 * @model
 	 * @generated
 	 */
-	double getComputation_time();
+	int getComputation_time();
 
 	/**
 	 * Sets the value of the '{@link artifact.Task#getComputation_time <em>Computation time</em>}' attribute.
@@ -141,7 +190,7 @@ public interface Task extends MCSElement {
 	 * @see #getComputation_time()
 	 * @generated
 	 */
-	void setComputation_time(double value);
+	void setComputation_time(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Wcet low</b></em>' attribute.
@@ -301,15 +350,25 @@ public interface Task extends MCSElement {
 	void setCurrent_cs(int value);
 
 	/**
-	 * Returns the value of the '<em><b>Critical sections</b></em>' containment reference list.
-	 * The list contents are of type {@link artifact.CriticalSection}.
+	 * Returns the value of the '<em><b>Critical section</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Critical sections</em>' containment reference list.
-	 * @see artifact.ArtifactPackage#getTask_Critical_sections()
-	 * @model containment="true"
+	 * @return the value of the '<em>Critical section</em>' reference.
+	 * @see #setCritical_section(CriticalSection)
+	 * @see artifact.ArtifactPackage#getTask_Critical_section()
+	 * @model
 	 * @generated
 	 */
-	EList<CriticalSection> getCritical_sections();
+	CriticalSection getCritical_section();
+
+	/**
+	 * Sets the value of the '{@link artifact.Task#getCritical_section <em>Critical section</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Critical section</em>' reference.
+	 * @see #getCritical_section()
+	 * @generated
+	 */
+	void setCritical_section(CriticalSection value);
 
 } // Task

@@ -10,85 +10,131 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Criticality</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Working State</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see artifact.ArtifactPackage#getCriticality()
+ * @see artifact.ArtifactPackage#getWorkingState()
  * @model
  * @generated
  */
-public enum Criticality implements Enumerator {
+public enum WorkingState implements Enumerator {
 	/**
-	 * The '<em><b>Lo</b></em>' literal object.
+	 * The '<em><b>Unstart</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #LO_VALUE
+	 * @see #UNSTART_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	LO(1, "lo", "lo"), /**
-	 * The '<em><b>Hi</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #HI_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	HI(2, "hi", "hi");
+	UNSTART(0, "unstart", "unstart"),
 
 	/**
-	 * The '<em><b>Lo</b></em>' literal value.
+	 * The '<em><b>Working</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #LO
-	 * @model name="lo"
+	 * @see #WORKING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LO_VALUE = 1;
+	WORKING(1, "working", "working"),
 
 	/**
-	 * The '<em><b>Hi</b></em>' literal value.
+	 * The '<em><b>Hanging</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #HI
-	 * @model name="hi"
+	 * @see #HANGING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HI_VALUE = 2;
+	HANGING(2, "hanging", "hanging"),
 
 	/**
-	 * An array of all the '<em><b>Criticality</b></em>' enumerators.
+	 * The '<em><b>Done</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DONE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DONE(3, "done", "done");
+
+	/**
+	 * The '<em><b>Unstart</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #UNSTART
+	 * @model name="unstart"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int UNSTART_VALUE = 0;
+
+	/**
+	 * The '<em><b>Working</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #WORKING
+	 * @model name="working"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int WORKING_VALUE = 1;
+
+	/**
+	 * The '<em><b>Hanging</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HANGING
+	 * @model name="hanging"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HANGING_VALUE = 2;
+
+	/**
+	 * The '<em><b>Done</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DONE
+	 * @model name="done"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DONE_VALUE = 3;
+
+	/**
+	 * An array of all the '<em><b>Working State</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Criticality[] VALUES_ARRAY =
-		new Criticality[] {
-			LO,
-			HI,
+	private static final WorkingState[] VALUES_ARRAY =
+		new WorkingState[] {
+			UNSTART,
+			WORKING,
+			HANGING,
+			DONE,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Criticality</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Working State</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<Criticality> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<WorkingState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Criticality</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Working State</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Criticality get(String literal) {
+	public static WorkingState get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Criticality result = VALUES_ARRAY[i];
+			WorkingState result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -97,16 +143,16 @@ public enum Criticality implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Criticality</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Working State</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Criticality getByName(String name) {
+	public static WorkingState getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Criticality result = VALUES_ARRAY[i];
+			WorkingState result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -115,17 +161,19 @@ public enum Criticality implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Criticality</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Working State</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Criticality get(int value) {
+	public static WorkingState get(int value) {
 		switch (value) {
-			case LO_VALUE: return LO;
-			case HI_VALUE: return HI;
+			case UNSTART_VALUE: return UNSTART;
+			case WORKING_VALUE: return WORKING;
+			case HANGING_VALUE: return HANGING;
+			case DONE_VALUE: return DONE;
 		}
 		return null;
 	}
@@ -157,7 +205,7 @@ public enum Criticality implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Criticality(int value, String name, String literal) {
+	private WorkingState(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -204,4 +252,4 @@ public enum Criticality implements Enumerator {
 		return literal;
 	}
 	
-} //Criticality
+} //WorkingState

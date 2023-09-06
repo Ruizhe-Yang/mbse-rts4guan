@@ -80,6 +80,8 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 				return createStatusFromString(eDataType, initialValue);
 			case ArtifactPackage.CRITICALITY:
 				return createCriticalityFromString(eDataType, initialValue);
+			case ArtifactPackage.WORKING_STATE:
+				return createWorkingStateFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -97,6 +99,8 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 				return convertStatusToString(eDataType, instanceValue);
 			case ArtifactPackage.CRITICALITY:
 				return convertCriticalityToString(eDataType, instanceValue);
+			case ArtifactPackage.WORKING_STATE:
+				return convertWorkingStateToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
@@ -205,6 +209,26 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 	 * @generated
 	 */
 	public String convertCriticalityToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public WorkingState createWorkingStateFromString(EDataType eDataType, String initialValue) {
+		WorkingState result = WorkingState.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertWorkingStateToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 

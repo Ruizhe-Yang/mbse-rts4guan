@@ -7,6 +7,7 @@ import artifact.CriticalSection;
 import artifact.Criticality;
 import artifact.Task;
 
+import artifact.WorkingState;
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -30,6 +31,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link artifact.impl.TaskImpl#getState <em>State</em>}</li>
+ *   <li>{@link artifact.impl.TaskImpl#getTimeleft <em>Timeleft</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getPeriod <em>Period</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getDeadline <em>Deadline</em>}</li>
@@ -42,12 +45,52 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link artifact.impl.TaskImpl#getOffset <em>Offset</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getRelease_time <em>Release time</em>}</li>
  *   <li>{@link artifact.impl.TaskImpl#getCurrent_cs <em>Current cs</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getCritical_sections <em>Critical sections</em>}</li>
+ *   <li>{@link artifact.impl.TaskImpl#getCritical_section <em>Critical section</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class TaskImpl extends MCSElementImpl implements Task {
+	/**
+	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getState()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final WorkingState STATE_EDEFAULT = WorkingState.UNSTART;
+
+	/**
+	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getState()
+	 * @generated
+	 * @ordered
+	 */
+	protected WorkingState state = STATE_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getTimeleft() <em>Timeleft</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeleft()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int TIMELEFT_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getTimeleft() <em>Timeleft</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getTimeleft()
+	 * @generated
+	 * @ordered
+	 */
+	protected int timeleft = TIMELEFT_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -136,7 +179,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final double COMPUTATION_TIME_EDEFAULT = 0.0;
+	protected static final int COMPUTATION_TIME_EDEFAULT = 0;
 
 	/**
 	 * The cached value of the '{@link #getComputation_time() <em>Computation time</em>}' attribute.
@@ -146,7 +189,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected double computation_time = COMPUTATION_TIME_EDEFAULT;
+	protected int computation_time = COMPUTATION_TIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWcet_low() <em>Wcet low</em>}' attribute.
@@ -196,7 +239,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Criticality CRITICALITY_EDEFAULT = Criticality.LOW;
+	protected static final Criticality CRITICALITY_EDEFAULT = Criticality.LO;
 
 	/**
 	 * The cached value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
@@ -289,14 +332,14 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	protected int current_cs = CURRENT_CS_EDEFAULT;
 
 	/**
-	 * The cached value of the '{@link #getCritical_sections() <em>Critical sections</em>}' containment reference list.
+	 * The cached value of the '{@link #getCritical_section() <em>Critical section</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCritical_sections()
+	 * @see #getCritical_section()
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<CriticalSection> critical_sections;
+	protected CriticalSection critical_section;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -315,6 +358,52 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	protected EClass eStaticClass() {
 		return ArtifactPackage.Literals.TASK;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public WorkingState getState() {
+		return state;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setState(WorkingState newState) {
+		WorkingState oldState = state;
+		state = newState == null ? STATE_EDEFAULT : newState;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__STATE, oldState, state));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int getTimeleft() {
+		return timeleft;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setTimeleft(int newTimeleft) {
+		int oldTimeleft = timeleft;
+		timeleft = newTimeleft;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__TIMELEFT, oldTimeleft, timeleft));
 	}
 
 	/**
@@ -415,7 +504,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 */
 	@Override
-	public double getComputation_time() {
+	public int getComputation_time() {
 		return computation_time;
 	}
 
@@ -425,8 +514,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 */
 	@Override
-	public void setComputation_time(double newComputation_time) {
-		double oldComputation_time = computation_time;
+	public void setComputation_time(int newComputation_time) {
+		int oldComputation_time = computation_time;
 		computation_time = newComputation_time;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__COMPUTATION_TIME, oldComputation_time, computation_time));
@@ -599,11 +688,25 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 */
 	@Override
-	public EList<CriticalSection> getCritical_sections() {
-		if (critical_sections == null) {
-			critical_sections = new EObjectContainmentEList<CriticalSection>(CriticalSection.class, this, ArtifactPackage.TASK__CRITICAL_SECTIONS);
+	public CriticalSection getCritical_section() {
+		if (critical_section != null && critical_section.eIsProxy()) {
+			InternalEObject oldCritical_section = (InternalEObject)critical_section;
+			critical_section = (CriticalSection)eResolveProxy(oldCritical_section);
+			if (critical_section != oldCritical_section) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArtifactPackage.TASK__CRITICAL_SECTION, oldCritical_section, critical_section));
+			}
 		}
-		return critical_sections;
+		return critical_section;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public CriticalSection basicGetCritical_section() {
+		return critical_section;
 	}
 
 	/**
@@ -612,12 +715,11 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ArtifactPackage.TASK__CRITICAL_SECTIONS:
-				return ((InternalEList<?>)getCritical_sections()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
+	public void setCritical_section(CriticalSection newCritical_section) {
+		CriticalSection oldCritical_section = critical_section;
+		critical_section = newCritical_section;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__CRITICAL_SECTION, oldCritical_section, critical_section));
 	}
 
 	/**
@@ -628,6 +730,10 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ArtifactPackage.TASK__STATE:
+				return getState();
+			case ArtifactPackage.TASK__TIMELEFT:
+				return getTimeleft();
 			case ArtifactPackage.TASK__PRIORITY:
 				return getPriority();
 			case ArtifactPackage.TASK__PERIOD:
@@ -652,8 +758,9 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				return getRelease_time();
 			case ArtifactPackage.TASK__CURRENT_CS:
 				return getCurrent_cs();
-			case ArtifactPackage.TASK__CRITICAL_SECTIONS:
-				return getCritical_sections();
+			case ArtifactPackage.TASK__CRITICAL_SECTION:
+				if (resolve) return getCritical_section();
+				return basicGetCritical_section();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -667,6 +774,12 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ArtifactPackage.TASK__STATE:
+				setState((WorkingState)newValue);
+				return;
+			case ArtifactPackage.TASK__TIMELEFT:
+				setTimeleft((Integer)newValue);
+				return;
 			case ArtifactPackage.TASK__PRIORITY:
 				setPriority((Integer)newValue);
 				return;
@@ -680,7 +793,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				setUtilisation((Double)newValue);
 				return;
 			case ArtifactPackage.TASK__COMPUTATION_TIME:
-				setComputation_time((Double)newValue);
+				setComputation_time((Integer)newValue);
 				return;
 			case ArtifactPackage.TASK__WCET_LOW:
 				setWcet_low((Integer)newValue);
@@ -703,9 +816,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 			case ArtifactPackage.TASK__CURRENT_CS:
 				setCurrent_cs((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__CRITICAL_SECTIONS:
-				getCritical_sections().clear();
-				getCritical_sections().addAll((Collection<? extends CriticalSection>)newValue);
+			case ArtifactPackage.TASK__CRITICAL_SECTION:
+				setCritical_section((CriticalSection)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -719,6 +831,12 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ArtifactPackage.TASK__STATE:
+				setState(STATE_EDEFAULT);
+				return;
+			case ArtifactPackage.TASK__TIMELEFT:
+				setTimeleft(TIMELEFT_EDEFAULT);
+				return;
 			case ArtifactPackage.TASK__PRIORITY:
 				setPriority(PRIORITY_EDEFAULT);
 				return;
@@ -755,8 +873,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 			case ArtifactPackage.TASK__CURRENT_CS:
 				setCurrent_cs(CURRENT_CS_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__CRITICAL_SECTIONS:
-				getCritical_sections().clear();
+			case ArtifactPackage.TASK__CRITICAL_SECTION:
+				setCritical_section((CriticalSection)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -770,6 +888,10 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ArtifactPackage.TASK__STATE:
+				return state != STATE_EDEFAULT;
+			case ArtifactPackage.TASK__TIMELEFT:
+				return timeleft != TIMELEFT_EDEFAULT;
 			case ArtifactPackage.TASK__PRIORITY:
 				return priority != PRIORITY_EDEFAULT;
 			case ArtifactPackage.TASK__PERIOD:
@@ -794,8 +916,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 				return release_time != RELEASE_TIME_EDEFAULT;
 			case ArtifactPackage.TASK__CURRENT_CS:
 				return current_cs != CURRENT_CS_EDEFAULT;
-			case ArtifactPackage.TASK__CRITICAL_SECTIONS:
-				return critical_sections != null && !critical_sections.isEmpty();
+			case ArtifactPackage.TASK__CRITICAL_SECTION:
+				return critical_section != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -810,7 +932,11 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (priority: ");
+		result.append(" (state: ");
+		result.append(state);
+		result.append(", timeleft: ");
+		result.append(timeleft);
+		result.append(", priority: ");
 		result.append(priority);
 		result.append(", period: ");
 		result.append(period);
