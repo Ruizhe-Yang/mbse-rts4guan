@@ -1,11 +1,12 @@
 var INIT_PERIOD_CEILING = 2000;
 var INIT_RELEASE_TIME = 0;
+var MAX_RUNNING_TIME = 10000;
 var rand = new Native("java.util.Random");
 var system = new MCSystem;
 var core = new Core;
 init();
 var taskSet = getRandomTaskSet(10, 0.5, 5);
-run(10000);
+run();
 'run over.'.println();
 
 operation init() {
@@ -17,9 +18,8 @@ operation init() {
 	system.core = core;
 }
 
-operation run(N : Integer) {
-	for(i in Sequence{0..N}) {
-		tick();
+operation run() {
+	for(i in Sequence{0..MAX_RUNNING_TIME}) {
 		if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted()){
 			executeNewTask();
 		}
@@ -27,12 +27,13 @@ operation run(N : Integer) {
 			executeCurrentTaks();
 		}
 		else if (core.locked and IsUnstartedTaskExisted()){
-			core.currentTaskRelease();
+			core.releaseCurrentTask();
 			executeNewTask();
 		}
 		else if (core.locked and IsAllTasksExecuted()){
 			gameOver();
 		}
+		tick();
 		print_status();
 	}
 }
@@ -64,7 +65,7 @@ operation IsUnstartedTaskExisted(){
 	}
 }
 
-operation Core currentTaskRelease(){
+operation Core releaseCurrentTask(){
 	self.current_task.state = WorkingState#done;
 	core.locked = false;
 	core.queue.add(self.current_task);
