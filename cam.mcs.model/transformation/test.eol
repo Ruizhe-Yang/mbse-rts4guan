@@ -1,3 +1,5 @@
+var INIT_PERIOD_CEILING = 2000;
+var INIT_RELEASE_TIME = 0;
 var rand = new Native("java.util.Random");
 var system = new MCSystem;
 var core = new Core;
@@ -17,60 +19,83 @@ operation init() {
 
 operation run(N : Integer) {
 	for(i in Sequence{0..N}) {
-		tick();	
-		if (core.locked=false){
-			if (IsAllTasksExecuted()){
-				gameOver();
-				break;
-			}
-			else{
-				change();
-			}
+		tick();
+		if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted()){
+			executeNewTask();
 		}
-		else{
-			if (IsTaskRunning()){
-				execute();
-			}
-			else{
-				core.current_task.taskRelease();
-			}
+		else if (IsTaskRunning()){
+			executeCurrentTaks();
+		}
+		else if (core.locked and IsUnstartedTaskExisted()){
+			core.currentTaskRelease();
+			executeNewTask();
+		}
+		else if (core.locked and IsAllTasksExecuted()){
+			gameOver();
 		}
 		print_status();
 	}
 }
 
+operation Core IsOpen(){
+	if (self.locked = false){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
 operation gameOver(){
 	core.locked = true;
+	break;
 }
 
 operation IsAllTasksExecuted(){
 	 return (taskSet.tasks.count(e|e.state = WorkingState#unstart or e.state = WorkingState#hanging) = 0);
 }
 
-operation Task taskRelease(){
-	self.state = WorkingState#done;
+operation IsUnstartedTaskExisted(){
+	if(IsAllTasksExecuted()){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
+
+operation Core currentTaskRelease(){
+	self.current_task.state = WorkingState#done;
 	core.locked = false;
+	core.queue.add(self.current_task);
 	core.current_task = null;
-	core.queue.add(self);
 }
-
+operation IsNoTaskRunning(){
+	if (IsTaskRunning()){
+		return false;
+	}
+	else{
+		return true;
+	}
+}
 operation IsTaskRunning(){
-	return (core.current_task.timeleft > 0);
+	if (core.current_task.isDefined()){
+		return (core.current_task.timeleft > 0);
+	}
+	else{
+		return false;
+	}
 }
 
-operation execute(){
+operation executeCurrentTaks(){
 	core.current_task.timeleft--;
 }
 
-operation change() {
+operation executeNewTask() {
 	var task = getTaskOfMaxPriority();
-	task.startRun();
-}
-
-operation Task startRun(){
-	self.state = WorkingState#working;
+	task.state = WorkingState#working;
 	core.locked = true;
-	core.current_task = self;
+	core.current_task = task;
 }
 
 operation getTaskOfMaxPriority(){
@@ -110,7 +135,7 @@ operation TaskSet createOneTask(i : Integer){
 	var task = createTask(index.asString(), 1, 1, 1, 1, 1, 1, 1, 0);
 	sem.acquisition = task;
 	task.critical_section = cs;
-	task.set_release_time(0);
+	task.set_release_time(INIT_RELEASE_TIME);
 	task.state = WorkingState#unstart;
 	self.tasks.add(task);
 	return task;
@@ -136,7 +161,7 @@ operation getRandomTaskSet(n : Integer, U : Real, line : Integer){
 		else{
 			task.criticality = Criticality#hi;
 		}
-		task.period = getRandomInt(2000);
+		task.period = getRandomInt(INIT_PERIOD_CEILING);
 		task.computation_time = (task.period * task.utilisation).asInteger();
 		task.deadline = task.period;
 		task.wcet_low = task.computation_time;
