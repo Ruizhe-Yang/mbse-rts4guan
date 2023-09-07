@@ -1,104 +1,169 @@
-var INIT_PERIOD_CEILING = 10000;
+var INIT_PERIOD_CEILING = 5000;
 var INIT_RELEASE_TIME = 0;
-var MAX_RUNNING_TIME = 100000;
-var PERIOD_NUMBER = 5;
+//var MAX_RUNNING_TIME = 10000;
+var PERIOD_NUMBER = 3;
+var ERROR_SEQUENCE = new Sequence;
 var system = new MCSystem;
 var core = new Core;
 init();
 var taskSet = getRandomTaskSet(10, 0.5, 5);
-getCriticalSection(8);
+getCriticalSection(6);
 matchCriticalSection();
 getCriticalSectionsCeilingPriority();
 matchCriticalSectionCriticality();
+//taskSet.print();
+var MAX_RUNNING_TIME = getMaxDeadline()*PERIOD_NUMBER;
+MAX_RUNNING_TIME.println();
 run();
-for (t in taskSet.tasks){
-	t.wcet_low.println();
-}
 'run over.'.println();
+ERROR_SEQUENCE.println();
 
 operation init() {
 	system.criticality = Criticality#lo;
 	system.ceiling_priority = 1;
 	system.status = Status#LOW;	
-	core.time = 0;
+	core.time = 1;
 	core.locked = false;
 	system.core = core;
 }
 
 operation run() {
-	for(i in Sequence{0..MAX_RUNNING_TIME}) {
+	for(i in Sequence{1..MAX_RUNNING_TIME}) {
+		UpdateHanging();
 		handle_default();
-		tick();
+		tick(i);
 		print_status();
 	}
 }
 
-operation executeNewTaskLOW(){
-	executeNewTask();
-	if (core.current_task.critical_section<>null){
-		core.current_task.dynamic_priority = core.current_task.critical_section.semaphore.ceiling_priority;
+operation handle_default(){
+	if (core.IsOpen() and IsNoTaskRunning() and IsNoTaskShouldStart()){
+	}
+	else{
+		if (core.IsOpen() and IsTaskShouldStart()){
+			var task = getWillStartTask();
+			task.startNewTask();
+			executeCurrentTask();
+		}
+		else if (IsTaskRunning() and IsNoTaskShouldStart()){
+			executeCurrentTask();
+		}
+		else if (IsTaskRunning() and IsTaskShouldStart()){
+			var task = getWillStartTask();
+			preempt(task);
+			executeCurrentTask();
+		}
+		if (IsCurrentTaskOver()){
+			releaseCurrentTask();
+		}
 	}
 }
 
-operation handle_LOW(){
-	if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted()){
-		executeNewTaskLOW();
-	}
-	else if (IsTaskRunning()){
-		executeCurrentTaks();
-	}
-	else if (IsNoTaskRunning() and core.locked and IsUnstartedTaskExisted()){
-		core.releaseCurrentTask();
-		executeNewTaskLOW();
-	}
-	else if (core.locked and IsAllTasksExecuted()){
-		gameOver();
+operation getMaxDeadline(){
+	for (task in taskSet.tasks){
+		if(taskSet.tasks.count(e|e.deadline > task.deadline)=0){
+			return task.deadline;
+		}
 	}
 }
 
-operation task getPeriodSequence(){
-	var periodSequence = new Sequence;
-	for (i in Sequence{1..PERIOD_NUMBER}){
-		periodSequence.add(task.period*i);
+operation Task updateDynamicPriority(){
+	if (self.critical_section <> null){
+		self.dynamic_priority = self.critical_section.semaphore.ceiling_priority;
 	}
-	return periodSequence;
 }
-//////////////////////////////////
+
+operation UpdateHanging(){
+	for (task in taskSet.tasks){
+		if(core.time.mod(task.period) = 0){
+			if (task.state = WorkingState#unstart){
+				task.state = WorkingState#hanging;
+			}
+			else{
+				"ERROR!!!".println();
+				ERROR_SEQUENCE.add(core.time+":"+task.name);
+			}
+		}
+	}
+}
+
+operation preempt(task){
+	if (task.priority > core.current_task.dynamic_priority){
+		core.current_task.hanging();
+		task.startNewTask();
+	}
+}
+
+operation Task hanging(){
+	self.state = WorkingState#hanging;
+}
+
+operation Task startNewTask(){
+	core.locked = true;
+	core.current_task = self;
+	self.state = WorkingState#working;
+	self.updateDynamicPriority();
+}
+
+operation IsCurrentTaskOver(){
+	return (core.current_task.timeleft = 0);
+}
+
+operation IsTaskShouldStart(){
+	if (IsNoTaskShouldStart()=false){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+operation IsNoTaskShouldStart(){
+	if (getWillStartTask()=null){
+		return true;
+	}
+	else{
+		return false;
+	}
+}
+
+operation getWillStartTask(){
+	var willStartTasks = new Sequence;
+	for (task in taskSet.tasks){
+		if(task.state = WorkingState#hanging){
+			willStartTasks.add(task);
+		}
+	}
+	if (willStartTasks.size()=0){
+		return null;
+	}
+	else if (willStartTasks.size()=1){ 
+		return willStartTasks[0];
+	}
+	else{
+		var listTask = new Sequence;
+		for (task in willStartTasks){	
+			if (willStartTasks.count(e|e.dynamic_priority > task.dynamic_priority) = 0){
+				listTask.add(task);
+			}
+		}
+		if (listTask.size()=1){
+			return listTask[0];
+		}
+		else{
+			for (task in listTask){
+				if (task.dynamic_priority <> task.priority){
+					return task;
+				}
+			}
+		}
+	}
+}
+
 operation IsNoTaskShouldStart(){
 	var taskSequence = new Sequence;
 	for (task in taskSet.tasks){}
 }
-//////////////////////////////////
-operation handle_default(){
-	if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted() and IsNoTaskShouldStart()){
-	}
-	else if (IsTaskRunning()){
-		executeCurrentTaks();
-	}
-	else if (IsNoTaskRunning() and core.locked and IsUnstartedTaskExisted()){
-		core.releaseCurrentTask();
-		executeNewTask();
-	}
-	else if (core.locked and IsAllTasksExecuted()){
-		gameOver();
-	}
-}
-
-//operation handle_default(){
-//	if (core.IsOpen() and IsNoTaskRunning() and IsUnstartedTaskExisted()){
-//		executeNewTask();
-//	}
-//	else if (IsTaskRunning()){
-//		executeCurrentTaks();
-//	}
-//	else if (IsNoTaskRunning() and core.locked and IsUnstartedTaskExisted()){
-//		core.releaseCurrentTask();
-//		executeNewTask();
-//	}
-//	else if (core.locked and IsAllTasksExecuted()){
-//		gameOver();
-//	}
-//}
 
 operation matchCriticalSectionCriticality(){
 	for (cs in system.critical_sections){
@@ -178,12 +243,13 @@ operation IsUnstartedTaskExisted(){
 	}
 }
 
-operation Core releaseCurrentTask(){
-	self.current_task.state = WorkingState#done;
+operation releaseCurrentTask(){
+	core.current_task.state = WorkingState#unstart;
+	core.current_task.timeleft = core.current_task.wcet_low;
 	core.locked = false;
-	core.queue.add(self.current_task);
 	core.current_task = null;
 }
+
 operation IsNoTaskRunning(){
 	if (IsTaskRunning()){
 		return false;
@@ -201,13 +267,17 @@ operation IsTaskRunning(){
 	}
 }
 
-operation executeCurrentTaks(){
+operation executeCurrentTask(){
 	core.current_task.timeleft--;
+	if (core.current_task.wcet_low-core.current_task.timeleft=core.current_task.cstime){
+		core.current_task.dynamic_priority = core.current_task.priority;
+	}
 }
 
 operation executeNewTask() {
 	var task = getTaskOfMaxPriority();
 	task.state = WorkingState#working;
+	task.updateDynamicPriority();
 	core.locked = true;
 	core.current_task = task;
 }
@@ -221,8 +291,8 @@ operation getTaskOfMaxPriority(){
 	}
 }
 
-operation tick() {
-	core.time += 1;
+operation tick(i) {
+	core.time = i;
 }
 
 operation acquire_lock(task, semaphore) {
@@ -258,20 +328,25 @@ operation getRandomTaskSet(n : Integer, U : Real, n_hi : Integer){
 	taskSet.u = U.asDouble();
 	for (i in Sequence{1..n}) {
 		var task = taskSet.createOneTask(i);
-		if (i < n) {
-			task.utilisation = getRemainingUtilization(sum_u, n, i);
-			sum_u -= task.utilisation;
+		while(true){
+			if (i < n) {
+				task.utilisation = getRemainingUtilization(sum_u, n, i);
+				sum_u -= task.utilisation;
+			}
+			else{
+				task.utilisation = sum_u;
+			}
+			task.period = getRandomInt(INIT_PERIOD_CEILING);
+			task.computation_time = (task.period * task.utilisation).asInteger();
+			task.deadline = task.period;
+			task.wcet_low = task.computation_time;
+			task.cstime = (task.wcet_low*0.25*getRandomDecimal()).asInteger();
+			task.wcet_high = (task.computation_time * 1.5).asInteger();
+			task.timeleft = task.wcet_low;
+			if (task.wcet_low <> 0){
+				break;
+			}
 		}
-		else{
-			task.utilisation = sum_u;
-		}
-		task.period = getRandomInt(INIT_PERIOD_CEILING);
-		task.computation_time = (task.period * task.utilisation).asInteger();
-		task.deadline = task.period;
-		task.wcet_low = task.computation_time;
-		task.cstime = (task.wcet_low*0.25*getRandomDecimal()).asInteger();
-		task.wcet_high = (task.computation_time * 1.5).asInteger();
-		task.timeleft = task.wcet_low;
 	}
 	for (task in taskSet.tasks){
 		task.priority = taskSet.tasks.count(e|e.deadline > task.deadline) + 1;
@@ -351,12 +426,25 @@ operation createSemaphore(name, locked, initial, ceiling) {
 	return sem;
 }
 
+operation TaskSet print(){
+	for (task in self.tasks){
+		(task.name+":"+task.priority).println();
+	}
+}
+
 operation print_status() {
-	var time = core.time;
-	var taskname = null;
-	if(core.current_task.isDefined())
-		taskname = core.current_task.name;
-	var queue = core.queue.collect(n|n.name);
-//	("timestampe:   " + time + "\n" + "current task: " + task + "\n" + queue + "\n").println();
-	(time + '; ' + taskname + '; ' + queue).println();
+	"__________________".println();
+	("time:"+core.time).println();
+	if(core.current_task.isDefined()){
+		("current_task:"+core.current_task.name+";dynamic_priority:"+core.current_task.dynamic_priority).println();
+	}
+	else{
+		("current_task: null").println();
+	}
+	var queue = taskSet.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.name);
+	("Hanging queue:   "+queue).println();
+	var queue = taskSet.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.priority);
+	("priority:        "+queue).println();
+	var queue = taskSet.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.dynamic_priority);
+	("dynamic_priority:"+queue).println();  
 }
