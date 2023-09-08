@@ -6,7 +6,7 @@ var ERROR_SEQUENCE = new Sequence;
 var system = new MCSystem;
 var core = new Core;
 init();
-var taskSet = getRandomTaskSet(10, 0.5, 5);
+var taskSet = getRandomTaskSet(10, 0.8, 5);
 getCriticalSection(6);
 matchCriticalSection();
 getCriticalSectionsCeilingPriority();
@@ -14,8 +14,10 @@ matchCriticalSectionCriticality();
 //taskSet.print();
 var MAX_RUNNING_TIME = getMaxDeadline()*PERIOD_NUMBER;
 MAX_RUNNING_TIME.println();
+var count = 0;
 run();
 'run over.'.println();
+count.println();
 ERROR_SEQUENCE.println();
 
 operation init() {
@@ -32,7 +34,8 @@ operation run() {
 		UpdateHanging();
 		handle_default();
 		tick(i);
-		print_status();
+		counter();
+//		print_status();
 	}
 }
 
@@ -57,6 +60,10 @@ operation handle_default(){
 			releaseCurrentTask();
 		}
 	}
+}
+
+operation counter(){
+	if (core.current_task <> null){count++;}
 }
 
 operation getMaxDeadline(){
