@@ -110,7 +110,10 @@ operation UpdateHanging(){
 					task.getTimeLeft();
 					task.printError();
 				}
-				else{
+				else if(system.status = Status#MCP){
+					if (task.critical_section<>null and task.criticality = Criticality#lo and task.wcet_lo - task.timeleft < task.cstime){
+						task.critical_section.semaphore.locked = false;
+					}
 					task.getTimeLeft();
 					if (task.criticality = Criticality#hi){
 						task.printError();
@@ -203,7 +206,7 @@ operation getWillStartTask(){
 				}
 			}
 			else{
-				while(willStartTasksHigh.size()>1){
+				while(willStartTasksHigh.size()>=1){
 					var maxTaskPriorityHigh = willStartTasksHigh.select(s|willStartTasksHigh.count(e|e.dynamic_priority>s.dynamic_priority)=0);
 					if (maxTaskPriorityHigh.size() = 1){
 						var task = maxTaskPriorityHigh[0];
@@ -351,8 +354,7 @@ operation IsTaskRunning(){
 
 operation executeCurrentTask(){
 	core.current_task.timeleft--;
-	
-	if (core.current_task.getTaskWCET()-core.current_task.timeleft=core.current_task.cstime){
+	if (core.current_task.getTaskWCET() - core.current_task.timeleft = core.current_task.cstime){
 		core.current_task.dynamic_priority = core.current_task.priority;
 		core.current_task.unlock();
 	}
@@ -369,14 +371,6 @@ operation Task getTaskWCET(){
 
 operation IsCurrentTaskShouldHang(){
 	return (system.status = Status#MCP and core.current_task.wcet_low-core.current_task.timeleft=core.current_task.cstime and core.current_task.criticality = Criticality#lo);
-}
-
-operation executeNewTask() {
-	var task = getTaskOfMaxPriority();
-	task.state = WorkingState#working;
-	task.updateDynamicPriority();
-	core.locked = true;
-	core.current_task = task;
 }
 
 operation getTaskOfMaxPriority(){
@@ -539,9 +533,9 @@ operation createSemaphore(name, locked, initial, ceiling) {
 }
 
 operation print_status() {
-	if (core.time < MAX_DEADLINE){
-		return null;
-	}
+	//if (core.time < MAX_DEADLINE){
+	//	return null;
+	//}
 	"____________________________________".println();
 	("time:"+core.time).println();
 	if(core.current_task.isDefined()){
@@ -556,6 +550,8 @@ operation print_status() {
 	("priority:        "+queue).println();
 	var queue = system.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.dynamic_priority);
 	("dynamic_priority:"+queue).println();  
+	var queue = system.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.critical_section.semaphore.locked);
+	("semaphore_lock_status:"+queue).println();  
 }
 operation finalPrint(){
 	("Actual occupancy rate: "+100.0*count/(MAX_RUNNING_TIME-getMAX_DEADLINE())+"%").println();
