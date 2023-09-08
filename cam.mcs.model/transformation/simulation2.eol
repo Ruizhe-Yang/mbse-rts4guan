@@ -3,11 +3,11 @@ var INIT_RELEASE_TIME = 0;
 //var MAX_RUNNING_TIME = 10000;
 var PERIOD_NUMBER = 5;
 var ERROR_SEQUENCE = new Sequence;
-var MODULE = Status#HIGH;
+var MODULE = Status#MCP;
 var system = new MCSystem;
 var core = new Core;
 init();
-var taskSet = getRandomTasks(10, 0.90, 5);
+var taskSet = getRandomTasks(10, 0.5, 5);
 getCriticalSection(6);
 matchCriticalSection();
 getCriticalSectionsCeilingPriority();
@@ -41,12 +41,12 @@ operation handle(){
 	if (system.status = Status#LOW){
 		handle_low();
 	}
-	else if (system.status = Status#HIGH){
-		handle_high();
+	else if (system.status = Status#MCP){
+		handle_mcp();
 	}
 }
 
-operation handle_high(){
+operation handle_mcp(){
 	if (core.IsOpen() and IsNoTaskRunning() and IsNoTaskShouldStart()){
 	}
 	else{
@@ -117,8 +117,14 @@ operation UpdateHanging(){
 				task.state = WorkingState#hanging;
 			}
 			else{
-				"ERROR!!!".println();
-				ERROR_SEQUENCE.add(core.time+":"+task.name);
+				if (system.status = Status#LOW){
+					"ERROR!!!".println();
+					ERROR_SEQUENCE.add(core.time+":"+task.name);
+				}
+				else if(task.criticality = Criticality#hi){
+					"ERROR!!!".println();
+					ERROR_SEQUENCE.add(core.time+":"+task.name);
+				}
 			}
 		}
 	}
@@ -407,7 +413,7 @@ operation Task getTimeLeft(){
 	if (system.status = Status#LOW){
 		self.timeleft = self.wcet_low;
 	}
-	else if (system.status = Status#HIGH){
+	else if (system.status = Status#MCP){
 		if (self.criticality = Criticality#lo){
 			self.timeleft = self.wcet_low;
 		}
@@ -421,7 +427,7 @@ operation Task getCstime(){
 	if (system.status = Status#LOW){
 		self.cstime = (self.wcet_low*0.25*getRandomDecimal()).getInteger();
 	}
-	else if (system.status = Status#HIGH){
+	else if (system.status = Status#MCP){
 		if (self.criticality = Criticality#lo){
 			self.cstime = (self.wcet_low*0.25*getRandomDecimal()).getInteger();
 		}

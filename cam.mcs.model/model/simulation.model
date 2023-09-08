@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="ASCII"?>
-<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mcs_="http://cam.mcs.model/mcs">
-  <mcs_:MCSystem ceiling_priority="1" status="HIGH">
-    <tasks name="1" timeleft="16" priority="8" period="1574" deadline="1574" utilisation="0.006777612838972451" computation_time="11" wcet_low="11" cstime="2" wcet_high="16" criticality="hi" dynamic_priority="8" current_cs="-1" critical_section="/0/@critical_sections.0"/>
-    <tasks name="2" timeleft="132" priority="5" period="1936" deadline="1936" utilisation="0.04533295888137713" computation_time="88" wcet_low="88" cstime="30" wcet_high="132" criticality="hi" dynamic_priority="5" current_cs="-1" critical_section="/0/@critical_sections.1"/>
-    <tasks name="3" timeleft="7" priority="4" period="2488" deadline="2488" utilisation="0.0026520012149604433" computation_time="7" wcet_low="7" cstime="1" wcet_high="10" dynamic_priority="4" current_cs="-1" critical_section="/0/@critical_sections.2"/>
-    <tasks name="4" timeleft="885" priority="7" period="1768" deadline="1768" utilisation="0.33381308260135234" computation_time="590" wcet_low="590" cstime="215" wcet_high="885" criticality="hi" dynamic_priority="7" current_cs="-1" critical_section="/0/@critical_sections.3"/>
-    <tasks name="5" timeleft="335" priority="2" period="3483" deadline="3483" utilisation="0.09625945629904498" computation_time="335" wcet_low="335" cstime="81" wcet_high="502" dynamic_priority="2" current_cs="-1" critical_section="/0/@critical_sections.4"/>
-    <tasks name="6" timeleft="27" priority="9" period="1571" deadline="1571" utilisation="0.017104531371647184" computation_time="27" wcet_low="27" cstime="1" wcet_high="40" dynamic_priority="9" current_cs="-1" critical_section="/0/@critical_sections.5"/>
-    <tasks name="7" timeleft="108" priority="6" period="1812" deadline="1812" utilisation="0.03994204905070319" computation_time="72" wcet_low="72" cstime="15" wcet_high="108" criticality="hi" dynamic_priority="6" current_cs="-1" critical_section="/0/@critical_sections.2"/>
-    <tasks name="8" timeleft="9" priority="10" period="87" deadline="87" utilisation="0.09975647293517956" computation_time="9" wcet_low="9" wcet_high="13" dynamic_priority="10" current_cs="-1"/>
-    <tasks name="9" timeleft="1029" priority="1" period="4041" deadline="4041" utilisation="0.2545678318192164" computation_time="1029" wcet_low="1029" wcet_high="1543" dynamic_priority="1" current_cs="-1"/>
-    <tasks name="10" timeleft="13" priority="3" period="2734" deadline="2734" utilisation="0.003313778695109071" computation_time="9" wcet_low="9" cstime="1" wcet_high="13" criticality="hi" dynamic_priority="3" current_cs="-1" critical_section="/0/@critical_sections.3"/>
-    <critical_sections name="1" criticality="hi" tasks="/0/@tasks.0">
-      <semaphore name="1" ceiling_priority="8" acquisition="/0/@tasks.0"/>
-    </critical_sections>
-    <critical_sections name="2" criticality="hi" tasks="/0/@tasks.1">
-      <semaphore name="2" ceiling_priority="5" acquisition="/0/@tasks.1"/>
-    </critical_sections>
-    <critical_sections name="3" criticality="hi" tasks="/0/@tasks.2 /0/@tasks.6">
-      <semaphore name="3" ceiling_priority="6" acquisition="/0/@tasks.2 /0/@tasks.6"/>
-    </critical_sections>
-    <critical_sections name="4" criticality="hi" tasks="/0/@tasks.3 /0/@tasks.9">
-      <semaphore name="4" ceiling_priority="7" acquisition="/0/@tasks.3 /0/@tasks.9"/>
-    </critical_sections>
-    <critical_sections name="5" tasks="/0/@tasks.4">
-      <semaphore name="5" ceiling_priority="2" acquisition="/0/@tasks.4"/>
-    </critical_sections>
-    <critical_sections name="6" tasks="/0/@tasks.5">
-      <semaphore name="6" ceiling_priority="9" acquisition="/0/@tasks.5"/>
-    </critical_sections>
-    <core time="1"/>
-  </mcs_:MCSystem>
-  <mcs_:MCSystem/>
-  <mcs_:MCSystem/>
-</xmi:XMI>
+<mcs_:MCSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mcs_="http://cam.mcs.model/mcs" ceiling_priority="1" status="HIGH">
+  <tasks name="1" timeleft="662" priority="3" period="2785" deadline="2785" utilisation="0.23771430855239864" computation_time="662" wcet_low="662" cstime="25" wcet_high="993" dynamic_priority="3" current_cs="-1" critical_section="//@critical_sections.0"/>
+  <tasks name="2" timeleft="1822" priority="1" period="4292" deadline="4292" utilisation="0.2831256672919202" computation_time="1215" wcet_low="1215" cstime="452" wcet_high="1822" criticality="hi" dynamic_priority="1" current_cs="-1" critical_section="//@critical_sections.1"/>
+  <tasks name="3" timeleft="567" priority="2" period="4077" deadline="4077" utilisation="0.09281580612237983" computation_time="378" wcet_low="378" cstime="17" wcet_high="567" criticality="hi" dynamic_priority="2" current_cs="-1" critical_section="//@critical_sections.2"/>
+  <tasks name="4" timeleft="346" priority="4" period="1962" deadline="1962" utilisation="0.1179626046680697" computation_time="231" wcet_low="231" cstime="56" wcet_high="346" criticality="hi" dynamic_priority="4" current_cs="-1" critical_section="//@critical_sections.3"/>
+  <tasks name="5" timeleft="30" priority="5" period="672" deadline="672" utilisation="0.02928238932348082" computation_time="20" wcet_low="20" cstime="7" wcet_high="30" criticality="hi" dynamic_priority="5" current_cs="-1" critical_section="//@critical_sections.4"/>
+  <tasks name="6" timeleft="61" priority="6" period="181" deadline="181" utilisation="0.22909923357849404" computation_time="41" wcet_low="41" cstime="7" wcet_high="61" criticality="hi" dynamic_priority="6" current_cs="-1" critical_section="//@critical_sections.5"/>
+  <critical_sections name="1" tasks="//@tasks.0">
+    <semaphore name="1" ceiling_priority="3" acquisition="//@tasks.0"/>
+  </critical_sections>
+  <critical_sections name="2" criticality="hi" tasks="//@tasks.1">
+    <semaphore name="2" ceiling_priority="1" acquisition="//@tasks.1"/>
+  </critical_sections>
+  <critical_sections name="3" criticality="hi" tasks="//@tasks.2">
+    <semaphore name="3" ceiling_priority="2" acquisition="//@tasks.2"/>
+  </critical_sections>
+  <critical_sections name="4" criticality="hi" tasks="//@tasks.3">
+    <semaphore name="4" ceiling_priority="4" acquisition="//@tasks.3"/>
+  </critical_sections>
+  <critical_sections name="5" criticality="hi" tasks="//@tasks.4">
+    <semaphore name="5" ceiling_priority="5" acquisition="//@tasks.4"/>
+  </critical_sections>
+  <critical_sections name="6" criticality="hi" tasks="//@tasks.5">
+    <semaphore name="6" ceiling_priority="6" acquisition="//@tasks.5"/>
+  </critical_sections>
+  <core time="1"/>
+</mcs_:MCSystem>
