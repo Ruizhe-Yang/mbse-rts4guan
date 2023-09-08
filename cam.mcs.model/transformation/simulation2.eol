@@ -21,8 +21,8 @@ operation initSystem() {
 }
 
 operation generateTasks(){
-	getRandomTasks(10, 0.4, 5);
-	getCriticalSection(6);
+	getRandomTasks(6, 0.4, 2);
+	getCriticalSection(2);
 	matchCriticalSection();
 	getCriticalSectionsCeilingPriority();
 	matchCriticalSectionCriticality();
@@ -95,7 +95,7 @@ operation getMAX_DEADLINE(){
 }
 
 operation Task updateDynamicPriority(){
-	if (self.critical_section <> null){
+	if (self.critical_section <> null and core.current_task.getTaskWCET() - core.current_task.timeleft < core.current_task.cstime){
 		self.dynamic_priority = self.critical_section.semaphore.ceiling_priority;
 		self.lock();
 	}
@@ -360,10 +360,14 @@ operation IsTaskRunning(){
 }
 
 operation executeCurrentTask(){
-	core.current_task.timeleft--;
+	\\core.current_task.timeleft--;
+	\\core.current_task.getTaskWCET().println();
+	\\core.current_task.timeleft.println();
+	core.current_task.cstime.println();
 	if (core.current_task.getTaskWCET() - core.current_task.timeleft = core.current_task.cstime){
 		core.current_task.dynamic_priority = core.current_task.priority;
 		core.current_task.unlock();
+		\\"1".println();
 	}
 }
 
@@ -371,8 +375,13 @@ operation Task getTaskWCET(){
 	if (system.status = Status#LOW){
 		return self.wcet_low;
 	}
-	else if (system.status = Status#LOW){
-		return self.wcet_high;
+	else if (system.status = Status#MCP or system.status = Status#HIGH){
+		if(self.criticality = Criticality#hi){
+			return self.wcet_high;
+		}
+		if(self.criticality = Criticality#lo){
+			return self.wcet_low;
+		}
 	}
 }
 
