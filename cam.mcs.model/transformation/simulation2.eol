@@ -21,7 +21,7 @@ operation initSystem() {
 }
 
 operation generateTasks(){
-	getRandomTasks(10, 0.5, 5);
+	getRandomTasks(10, 0.4, 5);
 	getCriticalSection(6);
 	matchCriticalSection();
 	getCriticalSectionsCeilingPriority();
@@ -70,12 +70,14 @@ operation handle(){
 
 operation Task lock(){
 	if (self.critical_section <> null){
+//		self.Locking = true;
 		self.critical_section.semaphore.locked = true;
 	}
 }
 
 operation Task unlock(){
 	if (self.critical_section <> null){
+//		self.Locking = false;
 		self.critical_section.semaphore.locked = false;
 	}
 }
@@ -111,9 +113,13 @@ operation UpdateHanging(){
 					task.printError();
 				}
 				else if(system.status = Status#MCP){
-					if (task.critical_section<>null and task.criticality = Criticality#lo and task.wcet_lo - task.timeleft < task.cstime){
+					if (task.critical_section<>null and task.criticality = Criticality#lo and task.wcet_low - task.timeleft < task.cstime){
 						task.critical_section.semaphore.locked = false;
 					}
+//					else if (task.critical_section<>null and task.criticality = Criticality#hi and task.wcet_high - task.timeleft < task.cstime){
+//						task.critical_section.semaphore.locked = false;
+//						'+++++++'.println();
+//					}
 					task.getTimeLeft();
 					if (task.criticality = Criticality#hi){
 						task.printError();
@@ -145,6 +151,7 @@ operation Task startNewTask(){
 	core.locked = true;
 	core.current_task = self;
 	self.state = WorkingState#working;
+	self.IsMandatory = false;
 	self.updateDynamicPriority();
 }
 
@@ -210,7 +217,7 @@ operation getWillStartTask(){
 					var maxTaskPriorityHigh = willStartTasksHigh.select(s|willStartTasksHigh.count(e|e.dynamic_priority>s.dynamic_priority)=0);
 					if (maxTaskPriorityHigh.size() = 1){
 						var task = maxTaskPriorityHigh[0];
-						if (task.critical_section = null or task.critical_section.semaphore.locked = false or task.timeleft <> task.wcet_high){
+						if (task.critical_section = null or task.critical_section.semaphore.locked = false or task.wcet_high-task.timeleft < task.cstime){
 							task.IsMandatory = true;
 							return task;
 						}
@@ -218,7 +225,7 @@ operation getWillStartTask(){
 					}
 					else{
 						for (task in maxTaskPriorityHigh){
-							if (task.dynamic_priority <> priority){
+							if (task.dynamic_priority <> task.priority){
 								task.IsMandatory = true;
 								return task;
 							}
@@ -550,7 +557,7 @@ operation print_status() {
 	("priority:        "+queue).println();
 	var queue = system.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.dynamic_priority);
 	("dynamic_priority:"+queue).println();  
-	var queue = system.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.critical_section.semaphore.locked);
+	var queue = system.tasks.select(e|e.state=WorkingState#hanging and e.critical_section<>null).collect(e|e.critical_section.semaphore.locked);
 	("semaphore_lock_status:"+queue).println();  
 }
 operation finalPrint(){
