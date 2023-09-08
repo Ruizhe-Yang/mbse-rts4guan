@@ -188,7 +188,8 @@ operation getWillStartTask(){
 	}
 	else if (system.status = Status#MCP){
 		if (core.current_task <> null and core.current_task.criticality = Criticality#hi){
-			return null;
+			var willStartTasksHigh = willStartTasks.select(e|e.criticality=Criticality#hi and (e.critical_section=null or e.critical_section.semaphore.locked=false));
+			return willStartTasksHigh.select(s|willStartTasksHigh.count(e|e.dynamic_priority>s.dynamic_priority)=0).first();
 		}
 		else{
 			var willStartTasksHigh = willStartTasks.select(e|e.criticality=Criticality#hi);
@@ -330,7 +331,7 @@ operation hangCurrentTask(){
 
 operation releaseCurrentTask(){
 	core.current_task.state = WorkingState#unstart;
-	core.current_task.timeleft = core.current_task.getTimeLeft();
+	core.current_task.getTimeLeft();
 	core.locked = false;
 	core.current_task = null;
 }
@@ -350,14 +351,26 @@ operation IsTaskRunning(){
 
 operation executeCurrentTask(){
 	core.current_task.timeleft--;
-	if (core.current_task.wcet_low-core.current_task.timeleft=core.current_task.cstime){
+	
+	if (core.current_task.getTaskWCET()-core.current_task.timeleft=core.current_task.cstime){
 		core.current_task.dynamic_priority = core.current_task.priority;
 		core.current_task.unlock();
 	}
 }
+
+operation Task getTaskWCET(){
+	if (system.status = Status#LOW){
+		return self.wcet_low;
+	}
+	else if (system.status = Status#LOW){
+		return self.wcet_high;
+	}
+}
+
 operation IsCurrentTaskShouldHang(){
 	return (system.status = Status#MCP and core.current_task.wcet_low-core.current_task.timeleft=core.current_task.cstime and core.current_task.criticality = Criticality#lo);
 }
+
 operation executeNewTask() {
 	var task = getTaskOfMaxPriority();
 	task.state = WorkingState#working;
