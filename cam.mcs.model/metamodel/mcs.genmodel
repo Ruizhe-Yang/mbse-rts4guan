@@ -35,7 +35,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcs.ecore#//MCSystem/tasks"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcs.ecore#//MCSystem/critical_sections"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcs.ecore#//MCSystem/core"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcs.ecore#//MCSystem/taskSet"/>
     </genClasses>
     <genClasses ecoreClass="mcs.ecore#//Task">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/state"/>
@@ -61,18 +60,13 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//CriticalSection/execution"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//CriticalSection/elapsed"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcs.ecore#//CriticalSection/tasks"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcs.ecore#//CriticalSection/semaphore"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcs.ecore#//CriticalSection/semaphore"/>
     </genClasses>
     <genClasses ecoreClass="mcs.ecore#//Semaphore">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Semaphore/locked"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Semaphore/initial_priority"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Semaphore/ceiling_priority"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcs.ecore#//Semaphore/acquisition"/>
-    </genClasses>
-    <genClasses ecoreClass="mcs.ecore#//TaskSet">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//TaskSet/task_number"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//TaskSet/u"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcs.ecore#//TaskSet/tasks"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

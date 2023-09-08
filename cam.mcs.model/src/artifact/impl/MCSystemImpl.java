@@ -42,7 +42,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link artifact.impl.MCSystemImpl#getTasks <em>Tasks</em>}</li>
  *   <li>{@link artifact.impl.MCSystemImpl#getCritical_sections <em>Critical sections</em>}</li>
  *   <li>{@link artifact.impl.MCSystemImpl#getCore <em>Core</em>}</li>
- *   <li>{@link artifact.impl.MCSystemImpl#getTaskSet <em>Task Set</em>}</li>
  * </ul>
  *
  * @generated
@@ -147,16 +146,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	 * @ordered
 	 */
 	protected Core core;
-
-	/**
-	 * The cached value of the '{@link #getTaskSet() <em>Task Set</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTaskSet()
-	 * @generated
-	 * @ordered
-	 */
-	protected TaskSet taskSet;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -336,51 +325,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	 * @generated
 	 */
 	@Override
-	public TaskSet getTaskSet() {
-		return taskSet;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetTaskSet(TaskSet newTaskSet, NotificationChain msgs) {
-		TaskSet oldTaskSet = taskSet;
-		taskSet = newTaskSet;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArtifactPackage.MC_SYSTEM__TASK_SET, oldTaskSet, newTaskSet);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setTaskSet(TaskSet newTaskSet) {
-		if (newTaskSet != taskSet) {
-			NotificationChain msgs = null;
-			if (taskSet != null)
-				msgs = ((InternalEObject)taskSet).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArtifactPackage.MC_SYSTEM__TASK_SET, null, msgs);
-			if (newTaskSet != null)
-				msgs = ((InternalEObject)newTaskSet).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArtifactPackage.MC_SYSTEM__TASK_SET, null, msgs);
-			msgs = basicSetTaskSet(newTaskSet, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.MC_SYSTEM__TASK_SET, newTaskSet, newTaskSet));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ArtifactPackage.MC_SYSTEM__RESOURCES:
@@ -391,8 +335,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return ((InternalEList<?>)getCritical_sections()).basicRemove(otherEnd, msgs);
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				return basicSetCore(null, msgs);
-			case ArtifactPackage.MC_SYSTEM__TASK_SET:
-				return basicSetTaskSet(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -419,8 +361,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return getCritical_sections();
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				return getCore();
-			case ArtifactPackage.MC_SYSTEM__TASK_SET:
-				return getTaskSet();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -458,9 +398,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				setCore((Core)newValue);
 				return;
-			case ArtifactPackage.MC_SYSTEM__TASK_SET:
-				setTaskSet((TaskSet)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -494,9 +431,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				setCore((Core)null);
 				return;
-			case ArtifactPackage.MC_SYSTEM__TASK_SET:
-				setTaskSet((TaskSet)null);
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -523,8 +457,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return critical_sections != null && !critical_sections.isEmpty();
 			case ArtifactPackage.MC_SYSTEM__CORE:
 				return core != null;
-			case ArtifactPackage.MC_SYSTEM__TASK_SET:
-				return taskSet != null;
 		}
 		return super.eIsSet(featureID);
 	}

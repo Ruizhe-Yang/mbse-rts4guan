@@ -81,13 +81,6 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass taskSetEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EEnum statusEEnum = null;
 
 	/**
@@ -308,16 +301,6 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	@Override
 	public EReference getMCSystem_Core() {
 		return (EReference)mcSystemEClass.getEStructuralFeatures().get(6);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getMCSystem_TaskSet() {
-		return (EReference)mcSystemEClass.getEStructuralFeatures().get(7);
 	}
 
 	/**
@@ -616,46 +599,6 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public EClass getTaskSet() {
-		return taskSetEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getTaskSet_Task_number() {
-		return (EAttribute)taskSetEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getTaskSet_U() {
-		return (EAttribute)taskSetEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTaskSet_Tasks() {
-		return (EReference)taskSetEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EEnum getStatus() {
 		return statusEEnum;
 	}
@@ -725,7 +668,6 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		createEReference(mcSystemEClass, MC_SYSTEM__TASKS);
 		createEReference(mcSystemEClass, MC_SYSTEM__CRITICAL_SECTIONS);
 		createEReference(mcSystemEClass, MC_SYSTEM__CORE);
-		createEReference(mcSystemEClass, MC_SYSTEM__TASK_SET);
 
 		taskEClass = createEClass(TASK);
 		createEAttribute(taskEClass, TASK__STATE);
@@ -758,11 +700,6 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		createEAttribute(semaphoreEClass, SEMAPHORE__INITIAL_PRIORITY);
 		createEAttribute(semaphoreEClass, SEMAPHORE__CEILING_PRIORITY);
 		createEReference(semaphoreEClass, SEMAPHORE__ACQUISITION);
-
-		taskSetEClass = createEClass(TASK_SET);
-		createEAttribute(taskSetEClass, TASK_SET__TASK_NUMBER);
-		createEAttribute(taskSetEClass, TASK_SET__U);
-		createEReference(taskSetEClass, TASK_SET__TASKS);
 
 		// Create enums
 		statusEEnum = createEEnum(STATUS);
@@ -807,7 +744,6 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		taskEClass.getESuperTypes().add(this.getMCSElement());
 		criticalSectionEClass.getESuperTypes().add(this.getMCSElement());
 		semaphoreEClass.getESuperTypes().add(this.getMCSElement());
-		taskSetEClass.getESuperTypes().add(this.getMCSElement());
 
 		// Initialize classes and features; add operations and parameters
 		initEClass(mcsElementEClass, MCSElement.class, "MCSElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -826,7 +762,6 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		initEReference(getMCSystem_Tasks(), this.getTask(), null, "tasks", null, 0, -1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_Critical_sections(), this.getCriticalSection(), null, "critical_sections", null, 0, -1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_Core(), this.getCore(), null, "core", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMCSystem_TaskSet(), this.getTaskSet(), null, "taskSet", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getTask_State(), this.getWorkingState(), "state", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -852,18 +787,13 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		initEAttribute(getCriticalSection_Execution(), ecorePackage.getEInt(), "execution", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCriticalSection_Elapsed(), ecorePackage.getEInt(), "elapsed", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCriticalSection_Tasks(), this.getTask(), null, "tasks", null, 0, -1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCriticalSection_Semaphore(), this.getSemaphore(), null, "semaphore", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCriticalSection_Semaphore(), this.getSemaphore(), null, "semaphore", null, 0, 1, CriticalSection.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(semaphoreEClass, Semaphore.class, "Semaphore", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getSemaphore_Locked(), ecorePackage.getEBoolean(), "locked", null, 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemaphore_Initial_priority(), ecorePackage.getEInt(), "initial_priority", null, 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getSemaphore_Ceiling_priority(), ecorePackage.getEInt(), "ceiling_priority", null, 0, 1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getSemaphore_Acquisition(), this.getTask(), null, "acquisition", null, 0, -1, Semaphore.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(taskSetEClass, TaskSet.class, "TaskSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getTaskSet_Task_number(), ecorePackage.getEInt(), "task_number", null, 0, 1, TaskSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTaskSet_U(), ecorePackage.getEDouble(), "u", null, 0, 1, TaskSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTaskSet_Tasks(), this.getTask(), null, "tasks", null, 0, -1, TaskSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
 		initEEnum(statusEEnum, Status.class, "Status");

@@ -67,15 +67,6 @@ public interface ArtifactFactory extends EFactory {
 	Semaphore createSemaphore();
 
 	/**
-	 * Returns a new object of class '<em>Task Set</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Task Set</em>'.
-	 * @generated
-	 */
-	TaskSet createTaskSet();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

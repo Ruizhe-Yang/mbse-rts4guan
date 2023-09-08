@@ -131,7 +131,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	protected EList<Task> tasks;
 
 	/**
-	 * The cached value of the '{@link #getSemaphore() <em>Semaphore</em>}' reference.
+	 * The cached value of the '{@link #getSemaphore() <em>Semaphore</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getSemaphore()
@@ -271,14 +271,6 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 */
 	@Override
 	public Semaphore getSemaphore() {
-		if (semaphore != null && semaphore.eIsProxy()) {
-			InternalEObject oldSemaphore = (InternalEObject)semaphore;
-			semaphore = (Semaphore)eResolveProxy(oldSemaphore);
-			if (semaphore != oldSemaphore) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, oldSemaphore, semaphore));
-			}
-		}
 		return semaphore;
 	}
 
@@ -287,8 +279,14 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Semaphore basicGetSemaphore() {
-		return semaphore;
+	public NotificationChain basicSetSemaphore(Semaphore newSemaphore, NotificationChain msgs) {
+		Semaphore oldSemaphore = semaphore;
+		semaphore = newSemaphore;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, oldSemaphore, newSemaphore);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -298,10 +296,31 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 */
 	@Override
 	public void setSemaphore(Semaphore newSemaphore) {
-		Semaphore oldSemaphore = semaphore;
-		semaphore = newSemaphore;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, oldSemaphore, semaphore));
+		if (newSemaphore != semaphore) {
+			NotificationChain msgs = null;
+			if (semaphore != null)
+				msgs = ((InternalEObject)semaphore).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, null, msgs);
+			if (newSemaphore != null)
+				msgs = ((InternalEObject)newSemaphore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, null, msgs);
+			msgs = basicSetSemaphore(newSemaphore, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, newSemaphore, newSemaphore));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ArtifactPackage.CRITICAL_SECTION__SEMAPHORE:
+				return basicSetSemaphore(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -323,8 +342,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 			case ArtifactPackage.CRITICAL_SECTION__TASKS:
 				return getTasks();
 			case ArtifactPackage.CRITICAL_SECTION__SEMAPHORE:
-				if (resolve) return getSemaphore();
-				return basicGetSemaphore();
+				return getSemaphore();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -21,7 +21,6 @@ class MCSystem extends MCSElement {
 	val Task[*] tasks;
 	val CriticalSection[*] critical_sections;
 	val Core core;
-	val TaskSet taskSet;
 }
 
 enum Status {
@@ -67,7 +66,7 @@ class CriticalSection extends MCSElement {
 	attr int execution; //execution time
 	attr int elapsed; //time spent in critical section
 	ref Task[*] tasks;
-	ref Semaphore semaphore;
+	val Semaphore semaphore;
 } 
 
 class Semaphore extends MCSElement {
@@ -75,10 +74,4 @@ class Semaphore extends MCSElement {
 	attr int initial_priority;
 	attr int ceiling_priority;
 	ref Task[*] acquisition;
-}
-
-class TaskSet extends MCSElement{
-	attr int task_number;
-	attr double u;
-	val Task[*] tasks;
 }

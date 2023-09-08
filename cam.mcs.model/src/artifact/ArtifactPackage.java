@@ -476,22 +476,13 @@ public interface ArtifactPackage extends EPackage {
 	int MC_SYSTEM__CORE = MCS_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Task Set</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__TASK_SET = MCS_ELEMENT_FEATURE_COUNT + 7;
-
-	/**
 	 * The number of structural features of the '<em>MC System</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 8;
+	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The meta object id for the '{@link artifact.impl.TaskImpl <em>Task</em>}' class.
@@ -892,7 +883,7 @@ public interface ArtifactPackage extends EPackage {
 	int CRITICAL_SECTION__TASKS = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Semaphore</b></em>' reference.
+	 * The feature id for the '<em><b>Semaphore</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1055,142 +1046,6 @@ public interface ArtifactPackage extends EPackage {
 	int SEMAPHORE_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link artifact.impl.TaskSetImpl <em>Task Set</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see artifact.impl.TaskSetImpl
-	 * @see artifact.impl.ArtifactPackageImpl#getTaskSet()
-	 * @generated
-	 */
-	int TASK_SET = 6;
-
-	/**
-	 * The feature id for the '<em><b>Gid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__GID = MCS_ELEMENT__GID;
-
-	/**
-	 * The feature id for the '<em><b>Is Citation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__IS_CITATION = MCS_ELEMENT__IS_CITATION;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__IS_ABSTRACT = MCS_ELEMENT__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Cited Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__CITED_ELEMENT = MCS_ELEMENT__CITED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__NAME = MCS_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__DESCRIPTION = MCS_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Implementation Constraint</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__IMPLEMENTATION_CONSTRAINT = MCS_ELEMENT__IMPLEMENTATION_CONSTRAINT;
-
-	/**
-	 * The feature id for the '<em><b>Note</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__NOTE = MCS_ELEMENT__NOTE;
-
-	/**
-	 * The feature id for the '<em><b>Tagged Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__TAGGED_VALUE = MCS_ELEMENT__TAGGED_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>External Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Task number</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__TASK_NUMBER = MCS_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>U</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__U = MCS_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET__TASKS = MCS_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Task Set</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK_SET_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The meta object id for the '{@link artifact.Status <em>Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1198,7 +1053,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @see artifact.impl.ArtifactPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 7;
+	int STATUS = 6;
 
 	/**
 	 * The meta object id for the '{@link artifact.Criticality <em>Criticality</em>}' enum.
@@ -1208,7 +1063,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @see artifact.impl.ArtifactPackageImpl#getCriticality()
 	 * @generated
 	 */
-	int CRITICALITY = 8;
+	int CRITICALITY = 7;
 
 
 	/**
@@ -1219,7 +1074,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @see artifact.impl.ArtifactPackageImpl#getWorkingState()
 	 * @generated
 	 */
-	int WORKING_STATE = 9;
+	int WORKING_STATE = 8;
 
 
 	/**
@@ -1372,17 +1227,6 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getMCSystem_Core();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link artifact.MCSystem#getTaskSet <em>Task Set</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Task Set</em>'.
-	 * @see artifact.MCSystem#getTaskSet()
-	 * @see #getMCSystem()
-	 * @generated
-	 */
-	EReference getMCSystem_TaskSet();
 
 	/**
 	 * Returns the meta object for class '{@link artifact.Task <em>Task</em>}'.
@@ -1636,10 +1480,10 @@ public interface ArtifactPackage extends EPackage {
 	EReference getCriticalSection_Tasks();
 
 	/**
-	 * Returns the meta object for the reference '{@link artifact.CriticalSection#getSemaphore <em>Semaphore</em>}'.
+	 * Returns the meta object for the containment reference '{@link artifact.CriticalSection#getSemaphore <em>Semaphore</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Semaphore</em>'.
+	 * @return the meta object for the containment reference '<em>Semaphore</em>'.
 	 * @see artifact.CriticalSection#getSemaphore()
 	 * @see #getCriticalSection()
 	 * @generated
@@ -1699,49 +1543,6 @@ public interface ArtifactPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getSemaphore_Acquisition();
-
-	/**
-	 * Returns the meta object for class '{@link artifact.TaskSet <em>Task Set</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Task Set</em>'.
-	 * @see artifact.TaskSet
-	 * @generated
-	 */
-	EClass getTaskSet();
-
-	/**
-	 * Returns the meta object for the attribute '{@link artifact.TaskSet#getTask_number <em>Task number</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Task number</em>'.
-	 * @see artifact.TaskSet#getTask_number()
-	 * @see #getTaskSet()
-	 * @generated
-	 */
-	EAttribute getTaskSet_Task_number();
-
-	/**
-	 * Returns the meta object for the attribute '{@link artifact.TaskSet#getU <em>U</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>U</em>'.
-	 * @see artifact.TaskSet#getU()
-	 * @see #getTaskSet()
-	 * @generated
-	 */
-	EAttribute getTaskSet_U();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link artifact.TaskSet#getTasks <em>Tasks</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Tasks</em>'.
-	 * @see artifact.TaskSet#getTasks()
-	 * @see #getTaskSet()
-	 * @generated
-	 */
-	EReference getTaskSet_Tasks();
 
 	/**
 	 * Returns the meta object for enum '{@link artifact.Status <em>Status</em>}'.
@@ -1912,14 +1713,6 @@ public interface ArtifactPackage extends EPackage {
 		 * @generated
 		 */
 		EReference MC_SYSTEM__CORE = eINSTANCE.getMCSystem_Core();
-
-		/**
-		 * The meta object literal for the '<em><b>Task Set</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MC_SYSTEM__TASK_SET = eINSTANCE.getMCSystem_TaskSet();
 
 		/**
 		 * The meta object literal for the '{@link artifact.impl.TaskImpl <em>Task</em>}' class.
@@ -2110,7 +1903,7 @@ public interface ArtifactPackage extends EPackage {
 		EReference CRITICAL_SECTION__TASKS = eINSTANCE.getCriticalSection_Tasks();
 
 		/**
-		 * The meta object literal for the '<em><b>Semaphore</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Semaphore</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -2158,40 +1951,6 @@ public interface ArtifactPackage extends EPackage {
 		 * @generated
 		 */
 		EReference SEMAPHORE__ACQUISITION = eINSTANCE.getSemaphore_Acquisition();
-
-		/**
-		 * The meta object literal for the '{@link artifact.impl.TaskSetImpl <em>Task Set</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see artifact.impl.TaskSetImpl
-		 * @see artifact.impl.ArtifactPackageImpl#getTaskSet()
-		 * @generated
-		 */
-		EClass TASK_SET = eINSTANCE.getTaskSet();
-
-		/**
-		 * The meta object literal for the '<em><b>Task number</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TASK_SET__TASK_NUMBER = eINSTANCE.getTaskSet_Task_number();
-
-		/**
-		 * The meta object literal for the '<em><b>U</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TASK_SET__U = eINSTANCE.getTaskSet_U();
-
-		/**
-		 * The meta object literal for the '<em><b>Tasks</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference TASK_SET__TASKS = eINSTANCE.getTaskSet_Tasks();
 
 		/**
 		 * The meta object literal for the '{@link artifact.Status <em>Status</em>}' enum.

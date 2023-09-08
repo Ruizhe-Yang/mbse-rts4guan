@@ -62,7 +62,6 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 			case ArtifactPackage.TASK: return createTask();
 			case ArtifactPackage.CRITICAL_SECTION: return createCriticalSection();
 			case ArtifactPackage.SEMAPHORE: return createSemaphore();
-			case ArtifactPackage.TASK_SET: return createTaskSet();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -159,17 +158,6 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 	public Semaphore createSemaphore() {
 		SemaphoreImpl semaphore = new SemaphoreImpl();
 		return semaphore;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public TaskSet createTaskSet() {
-		TaskSetImpl taskSet = new TaskSetImpl();
-		return taskSet;
 	}
 
 	/**

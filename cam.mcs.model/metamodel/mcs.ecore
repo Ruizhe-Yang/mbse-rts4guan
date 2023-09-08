@@ -20,8 +20,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="critical_sections" upperBound="-1"
         eType="#//CriticalSection" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="core" eType="#//Core" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="taskSet" eType="#//TaskSet"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Status">
     <eLiterals name="LOW"/>
@@ -63,7 +61,8 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="elapsed" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
         eType="#//Task"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="semaphore" eType="#//Semaphore"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="semaphore" eType="#//Semaphore"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Semaphore" eSuperTypes="#//MCSElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="locked" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -71,11 +70,5 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="ceiling_priority" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="acquisition" upperBound="-1"
         eType="#//Task"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="TaskSet" eSuperTypes="#//MCSElement">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="task_number" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="u" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="tasks" upperBound="-1"
-        eType="#//Task" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

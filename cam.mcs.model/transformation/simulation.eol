@@ -6,14 +6,13 @@ var ERROR_SEQUENCE = new Sequence;
 var system = new MCSystem;
 var core = new Core;
 init();
-var taskSet = getRandomTaskSet(10, 0.8, 5);
+var taskSet = getRandomTaskSet(10, 0.3, 5);
 getCriticalSection(6);
 matchCriticalSection();
 getCriticalSectionsCeilingPriority();
 matchCriticalSectionCriticality();
-//taskSet.print();
 var MAX_RUNNING_TIME = getMaxDeadline()*PERIOD_NUMBER;
-MAX_RUNNING_TIME.println();
+(MAX_RUNNING_TIME-getMaxDeadline()).println();
 var count = 0;
 run();
 'run over.'.println();
@@ -63,12 +62,12 @@ operation handle_default(){
 }
 
 operation counter(){
-	if (core.current_task <> null){count++;}
+	if (core.time>getMaxDeadline() and core.current_task <> null){count++;}
 }
 
 operation getMaxDeadline(){
-	for (task in taskSet.tasks){
-		if(taskSet.tasks.count(e|e.deadline > task.deadline)=0){
+	for (task in system.tasks){
+		if(system.tasks.count(e|e.deadline > task.deadline)=0){
 			return task.deadline;
 		}
 	}
@@ -81,7 +80,7 @@ operation Task updateDynamicPriority(){
 }
 
 operation UpdateHanging(){
-	for (task in taskSet.tasks){
+	for (task in system.tasks){
 		if(core.time.mod(task.period) = 0){
 			if (task.state = WorkingState#unstart){
 				task.state = WorkingState#hanging;
@@ -136,7 +135,7 @@ operation IsNoTaskShouldStart(){
 
 operation getWillStartTask(){
 	var willStartTasks = new Sequence;
-	for (task in taskSet.tasks){
+	for (task in system.tasks){
 		if(task.state = WorkingState#hanging){
 			willStartTasks.add(task);
 		}
@@ -196,12 +195,12 @@ operation getCriticalSectionsCeilingPriority(){
 operation matchCriticalSection(){
 	for (i in Sequence{0..system.critical_sections.size()-1}){
 		var cs = system.critical_sections.at(i);
-		var task = taskSet.tasks.at(i);
+		var task = system.tasks.at(i);
 		cs.tasks.add(task);
 		task.critical_section = cs;
 		cs.semaphore.acquisition.add(task);
 	}
-	for (task in taskSet.tasks.select(e|e.name.asInteger()>system.critical_sections.size())){
+	for (task in system.tasks.select(e|e.name.asInteger()>system.critical_sections.size())){
 		var randomNumber = getRandomInt(system.critical_sections.size()+1);
 		if (randomNumber = 0){
 			task.critical_section = null;
@@ -238,7 +237,7 @@ operation gameOver(){
 }
 
 operation IsAllTasksExecuted(){
-	 return (taskSet.tasks.count(e|e.state = WorkingState#unstart or e.state = WorkingState#hanging) = 0);
+	 return (system.tasks.count(e|e.state = WorkingState#unstart or e.state = WorkingState#hanging) = 0);
 }
 
 operation IsUnstartedTaskExisted(){
@@ -290,7 +289,7 @@ operation executeNewTask() {
 }
 
 operation getTaskOfMaxPriority(){
-	var taskSequnece = taskSet.tasks.select(e|e.state = WorkingState#unstart or e.state = WorkingState#hanging);
+	var taskSequnece = system.tasks.select(e|e.state = WorkingState#unstart or e.state = WorkingState#hanging);
 	for (task in taskSequnece){
 		if (taskSequnece.count(e|e.dynamic_priority > task.dynamic_priority) = 0){
 			return task;
@@ -319,22 +318,19 @@ operation release_lock(task, semaphore) {
 	return false;
 }
 
-operation TaskSet createOneTask(i : Integer){
+operation createOneTask(i : Integer){
 	var index = i.asString();
 	var task = createTask(index.asString(), 1, 1, 1, 1, 1, 1, 1, 0);
 	task.set_release_time(INIT_RELEASE_TIME);
 	task.state = WorkingState#unstart;
-	self.tasks.add(task);
+	system.tasks.add(task);
 	return task;
 }
 
 operation getRandomTaskSet(n : Integer, U : Real, n_hi : Integer){
-	var taskSet = createTaskSet();
 	var sum_u = U;
-	taskSet.task_number = n;
-	taskSet.u = U.asDouble();
 	for (i in Sequence{1..n}) {
-		var task = taskSet.createOneTask(i);
+		var task = createOneTask(i);
 		while(true){
 			if (i < n) {
 				task.utilisation = getRemainingUtilization(sum_u, n, i);
@@ -344,7 +340,7 @@ operation getRandomTaskSet(n : Integer, U : Real, n_hi : Integer){
 				task.utilisation = sum_u;
 			}
 			task.period = getRandomInt(INIT_PERIOD_CEILING);
-			task.computation_time = (task.period * task.utilisation).asInteger();
+			task.computation_time = (task.period * task.utilisation).getInteger();
 			task.deadline = task.period;
 			task.wcet_low = task.computation_time;
 			task.cstime = (task.wcet_low*0.25*getRandomDecimal()).asInteger();
@@ -355,20 +351,30 @@ operation getRandomTaskSet(n : Integer, U : Real, n_hi : Integer){
 			}
 		}
 	}
-	for (task in taskSet.tasks){
-		task.priority = taskSet.tasks.count(e|e.deadline > task.deadline) + 1;
+	for (task in system.tasks){
+		task.priority = system.tasks.count(e|e.deadline > task.deadline) + 1;
 		task.dynamic_priority = task.priority;
 	}
 	for (i in Sequence{1..n_hi}){
 		while(true){
-			var task = taskSet.tasks.at(getRandomInt(taskSet.tasks.size()));
+			var task = system.tasks.at(getRandomInt(system.tasks.size()));
 			if (task.criticality = Criticality#lo){
 				task.criticality = Criticality#hi;
 				break;
 			}
 		}
 	}
-	return taskSet;
+}
+
+operation Real getInteger(){
+	var selfInt = self.asInteger();
+	var decimal = self - selfInt;
+	if (decimal > 0.5){
+		return selfInt+1;
+	}
+	else{
+		return selfInt;
+	}
 }
 
 operation getRandomInt(n){
@@ -384,13 +390,6 @@ operation getRemainingUtilization(sum_u, n, i){
 operation getRandomDecimal(){
 	var rand = new Native("java.util.Random");
 	return rand.nextInt(100000).asReal()/100000;
-}
-
-operation createTaskSet(){
-	var taskSet = new TaskSet;
-	taskSet.task_number = 0;
-	system.taskSet = taskSet;
-	return taskSet;
 }
 
 operation createCriticalSection(name, start, execution, sem) {
@@ -433,12 +432,6 @@ operation createSemaphore(name, locked, initial, ceiling) {
 	return sem;
 }
 
-operation TaskSet print(){
-	for (task in self.tasks){
-		(task.name+":"+task.priority).println();
-	}
-}
-
 operation print_status() {
 	"__________________".println();
 	("time:"+core.time).println();
@@ -448,10 +441,10 @@ operation print_status() {
 	else{
 		("current_task: null").println();
 	}
-	var queue = taskSet.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.name);
+	var queue = system.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.name);
 	("Hanging queue:   "+queue).println();
-	var queue = taskSet.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.priority);
+	var queue = system.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.priority);
 	("priority:        "+queue).println();
-	var queue = taskSet.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.dynamic_priority);
+	var queue = system.tasks.select(e|e.state=WorkingState#hanging).collect(e|e.dynamic_priority);
 	("dynamic_priority:"+queue).println();  
 }

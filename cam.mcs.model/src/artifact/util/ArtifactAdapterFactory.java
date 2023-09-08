@@ -97,10 +97,6 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 				return createSemaphoreAdapter();
 			}
 			@Override
-			public Adapter caseTaskSet(TaskSet object) {
-				return createTaskSetAdapter();
-			}
-			@Override
 			public Adapter caseElement(Element object) {
 				return createElementAdapter();
 			}
@@ -217,20 +213,6 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSemaphoreAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link artifact.TaskSet <em>Task Set</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see artifact.TaskSet
-	 * @generated
-	 */
-	public Adapter createTaskSetAdapter() {
 		return null;
 	}
 

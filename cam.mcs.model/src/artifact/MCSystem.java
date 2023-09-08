@@ -20,7 +20,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link artifact.MCSystem#getTasks <em>Tasks</em>}</li>
  *   <li>{@link artifact.MCSystem#getCritical_sections <em>Critical sections</em>}</li>
  *   <li>{@link artifact.MCSystem#getCore <em>Core</em>}</li>
- *   <li>{@link artifact.MCSystem#getTaskSet <em>Task Set</em>}</li>
  * </ul>
  *
  * @see artifact.ArtifactPackage#getMCSystem()
@@ -157,27 +156,5 @@ public interface MCSystem extends MCSElement {
 	 * @generated
 	 */
 	void setCore(Core value);
-
-	/**
-	 * Returns the value of the '<em><b>Task Set</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Task Set</em>' containment reference.
-	 * @see #setTaskSet(TaskSet)
-	 * @see artifact.ArtifactPackage#getMCSystem_TaskSet()
-	 * @model containment="true"
-	 * @generated
-	 */
-	TaskSet getTaskSet();
-
-	/**
-	 * Sets the value of the '{@link artifact.MCSystem#getTaskSet <em>Task Set</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Task Set</em>' containment reference.
-	 * @see #getTaskSet()
-	 * @generated
-	 */
-	void setTaskSet(TaskSet value);
 
 } // MCSystem

@@ -131,22 +131,22 @@ public interface CriticalSection extends MCSElement {
 	EList<Task> getTasks();
 
 	/**
-	 * Returns the value of the '<em><b>Semaphore</b></em>' reference.
+	 * Returns the value of the '<em><b>Semaphore</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Semaphore</em>' reference.
+	 * @return the value of the '<em>Semaphore</em>' containment reference.
 	 * @see #setSemaphore(Semaphore)
 	 * @see artifact.ArtifactPackage#getCriticalSection_Semaphore()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	Semaphore getSemaphore();
 
 	/**
-	 * Sets the value of the '{@link artifact.CriticalSection#getSemaphore <em>Semaphore</em>}' reference.
+	 * Sets the value of the '{@link artifact.CriticalSection#getSemaphore <em>Semaphore</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Semaphore</em>' reference.
+	 * @param value the new value of the '<em>Semaphore</em>' containment reference.
 	 * @see #getSemaphore()
 	 * @generated
 	 */
