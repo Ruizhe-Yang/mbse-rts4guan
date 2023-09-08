@@ -13,7 +13,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link mcs.MCSystem#getCriticality <em>Criticality</em>}</li>
  *   <li>{@link mcs.MCSystem#getCeiling_priority <em>Ceiling priority</em>}</li>
  *   <li>{@link mcs.MCSystem#getStatus <em>Status</em>}</li>
  *   <li>{@link mcs.MCSystem#getResources <em>Resources</em>}</li>
@@ -27,31 +26,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface MCSystem extends MCSElement {
-	/**
-	 * Returns the value of the '<em><b>Criticality</b></em>' attribute.
-	 * The literals are from the enumeration {@link mcs.Criticality}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Criticality</em>' attribute.
-	 * @see mcs.Criticality
-	 * @see #setCriticality(Criticality)
-	 * @see mcs.McsPackage#getMCSystem_Criticality()
-	 * @model
-	 * @generated
-	 */
-	Criticality getCriticality();
-
-	/**
-	 * Sets the value of the '{@link mcs.MCSystem#getCriticality <em>Criticality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Criticality</em>' attribute.
-	 * @see mcs.Criticality
-	 * @see #getCriticality()
-	 * @generated
-	 */
-	void setCriticality(Criticality value);
-
 	/**
 	 * Returns the value of the '<em><b>Ceiling priority</b></em>' attribute.
 	 * <!-- begin-user-doc -->

@@ -34,7 +34,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link mcs.impl.MCSystemImpl#getCriticality <em>Criticality</em>}</li>
  *   <li>{@link mcs.impl.MCSystemImpl#getCeiling_priority <em>Ceiling priority</em>}</li>
  *   <li>{@link mcs.impl.MCSystemImpl#getStatus <em>Status</em>}</li>
  *   <li>{@link mcs.impl.MCSystemImpl#getResources <em>Resources</em>}</li>
@@ -46,26 +45,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * @generated
  */
 public class MCSystemImpl extends MCSElementImpl implements MCSystem {
-	/**
-	 * The default value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCriticality()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Criticality CRITICALITY_EDEFAULT = Criticality.LO;
-
-	/**
-	 * The cached value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCriticality()
-	 * @generated
-	 * @ordered
-	 */
-	protected Criticality criticality = CRITICALITY_EDEFAULT;
-
 	/**
 	 * The default value of the '{@link #getCeiling_priority() <em>Ceiling priority</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -163,29 +142,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	protected EClass eStaticClass() {
 		return McsPackage.Literals.MC_SYSTEM;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Criticality getCriticality() {
-		return criticality;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCriticality(Criticality newCriticality) {
-		Criticality oldCriticality = criticality;
-		criticality = newCriticality == null ? CRITICALITY_EDEFAULT : newCriticality;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.MC_SYSTEM__CRITICALITY, oldCriticality, criticality));
 	}
 
 	/**
@@ -346,8 +302,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case McsPackage.MC_SYSTEM__CRITICALITY:
-				return getCriticality();
 			case McsPackage.MC_SYSTEM__CEILING_PRIORITY:
 				return getCeiling_priority();
 			case McsPackage.MC_SYSTEM__STATUS:
@@ -373,9 +327,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case McsPackage.MC_SYSTEM__CRITICALITY:
-				setCriticality((Criticality)newValue);
-				return;
 			case McsPackage.MC_SYSTEM__CEILING_PRIORITY:
 				setCeiling_priority((Integer)newValue);
 				return;
@@ -409,9 +360,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case McsPackage.MC_SYSTEM__CRITICALITY:
-				setCriticality(CRITICALITY_EDEFAULT);
-				return;
 			case McsPackage.MC_SYSTEM__CEILING_PRIORITY:
 				setCeiling_priority(CEILING_PRIORITY_EDEFAULT);
 				return;
@@ -442,8 +390,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case McsPackage.MC_SYSTEM__CRITICALITY:
-				return criticality != CRITICALITY_EDEFAULT;
 			case McsPackage.MC_SYSTEM__CEILING_PRIORITY:
 				return ceiling_priority != CEILING_PRIORITY_EDEFAULT;
 			case McsPackage.MC_SYSTEM__STATUS:
@@ -470,9 +416,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (criticality: ");
-		result.append(criticality);
-		result.append(", ceiling_priority: ");
+		result.append(" (ceiling_priority: ");
 		result.append(ceiling_priority);
 		result.append(", status: ");
 		result.append(status);

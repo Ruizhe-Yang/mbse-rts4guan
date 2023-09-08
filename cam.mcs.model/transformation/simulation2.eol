@@ -14,7 +14,7 @@ getCriticalSectionsCeilingPriority();
 matchCriticalSectionCriticality();
 var MAX_RUNNING_TIME = getMaxDeadline()*PERIOD_NUMBER;
 var count = 0;
-//run();
+run();
 'run over.'.println();
 ("Actual occupancy rate: "+100.0*count/(MAX_RUNNING_TIME-getMaxDeadline())+"%").println();
 ("Error time and task:   "+ERROR_SEQUENCE).println();
@@ -33,7 +33,7 @@ operation run() {
 		handle();
 		tick(i);
 		counter();
-//		print_status();
+		print_status();
 	}
 }
 
@@ -118,20 +118,28 @@ operation UpdateHanging(){
 			}
 			else{
 				if (system.status = Status#LOW){
-					"ERROR!!!".println();
-					ERROR_SEQUENCE.add(core.time+":"+task.name);
+					task.getTimeLeft();
+					task.printError();
 				}
-				else if(task.criticality = Criticality#hi){
-					"ERROR!!!".println();
-					ERROR_SEQUENCE.add(core.time+":"+task.name);
+				else{
+					task.getTimeLeft();
+					if (task.criticality = Criticality#hi){
+						task.printError();
+					}
 				}
 			}
 		}
 	}
 }
 
+operation Task printError(){
+	"ERROR!!!".println();
+	ERROR_SEQUENCE.add(core.time+":"+self.name);
+}
+
 operation preempt(task){
-	if (task.priority > core.current_task.dynamic_priority){
+	if (task.priority > core.current_task.dynamic_priority or task.IsMandatory){
+		task.IsMandatory = false;
 		core.current_task.hanging();
 		task.startNewTask();
 	}
@@ -171,33 +179,44 @@ operation IsNoTaskShouldStart(){
 }
 
 operation getWillStartTask(){
-	var willStartTasks = new Sequence;
-	for (task in system.tasks){
-		if(task.state = WorkingState#hanging){
-			willStartTasks.add(task);
-		}
-	}
+	var willStartTasks = system.tasks.select(e|e.state = WorkingState#hanging);
 	if (willStartTasks.size()=0){
 		return null;
 	}
-	else if (willStartTasks.size()=1){ 
-		return willStartTasks[0];
-	}
-	else{
-		var listTask = new Sequence;
-		for (task in willStartTasks){	
-			if (willStartTasks.count(e|e.dynamic_priority > task.dynamic_priority) = 0){
-				listTask.add(task);
-			}
-		}
-		if (listTask.size()=1){
-			return listTask[0];
+	if (system.status = Status#LOW){
+		if (willStartTasks.size()=1){ 
+			return willStartTasks[0];
 		}
 		else{
-			for (task in listTask){
-				if (task.dynamic_priority <> task.priority){
-					return task;
+			var listTask = willStartTasks.select(s|(willStartTasks.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
+			if (listTask.size()=1){
+				return listTask[0];
+			}
+			else{
+				return listTask.select(e|e.dynamic_priority <> e.priority).first();
+			}
+		}
+	}
+	else if (system.status = Status#MCP){
+		if (core.current_task <> null and core.current_task.criticality = Criticality#hi){
+			return null;
+		}
+		else{
+			var willStartTasksHigh = willStartTasks.select(e|e.criticality=Criticality#hi);
+			if (willStartTasksHigh.size()=0){
+				var listTask = willStartTasks.select(s|(willStartTasks.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
+				if (listTask.size()=1){
+					return listTask[0];
 				}
+				else{
+					return listTask.select(e|e.dynamic_priority <> e.priority).first();
+				}
+			}
+			else if (willStartTasksHigh.size()=1){
+				
+			}
+			else{
+				
 			}
 		}
 	}
@@ -398,9 +417,6 @@ operation getRandomTasks(n : Integer, U : Real, n_hi : Integer){
 			if (task.wcet_low <> 0 and task.wcet_high < task.deadline){
 				break;
 			}
-			else{
-				"gjp yyds!".println();
-			}
 		}
 	}
 	for (task in system.tasks){
@@ -485,6 +501,7 @@ operation createTask(name, pri, T, d, wl, wh, l, dp, of) {
 	task.dynamic_priority = dp; //dynamic priority
 	task.offset = of; //initial  offset
 	task.current_cs = -1; //current cs, -1 means not in critical sections, 0, 1, 2 means index of critical section
+	task.IsMandatory = false;
 	system.tasks.add(task); //add this task to the system
 	return task;
 }

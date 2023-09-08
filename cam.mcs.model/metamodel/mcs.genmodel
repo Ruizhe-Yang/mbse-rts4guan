@@ -28,7 +28,6 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcs.ecore#//Core/queue"/>
     </genClasses>
     <genClasses ecoreClass="mcs.ecore#//MCSystem">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//MCSystem/criticality"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//MCSystem/ceiling_priority"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//MCSystem/status"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcs.ecore#//MCSystem/resources"/>
@@ -37,6 +36,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcs.ecore#//MCSystem/core"/>
     </genClasses>
     <genClasses ecoreClass="mcs.ecore#//Task">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/IsMandatory"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/state"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/timeleft"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/priority"/>

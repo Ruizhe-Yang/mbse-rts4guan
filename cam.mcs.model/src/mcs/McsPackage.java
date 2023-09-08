@@ -413,22 +413,13 @@ public interface McsPackage extends EPackage {
 	int MC_SYSTEM__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
 
 	/**
-	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
 	 * The feature id for the '<em><b>Ceiling priority</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM__CEILING_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 1;
+	int MC_SYSTEM__CEILING_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Status</b></em>' attribute.
@@ -437,7 +428,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM__STATUS = MCS_ELEMENT_FEATURE_COUNT + 2;
+	int MC_SYSTEM__STATUS = MCS_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
@@ -446,7 +437,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM__RESOURCES = MCS_ELEMENT_FEATURE_COUNT + 3;
+	int MC_SYSTEM__RESOURCES = MCS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
@@ -455,7 +446,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM__TASKS = MCS_ELEMENT_FEATURE_COUNT + 4;
+	int MC_SYSTEM__TASKS = MCS_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Critical sections</b></em>' containment reference list.
@@ -464,7 +455,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM__CRITICAL_SECTIONS = MCS_ELEMENT_FEATURE_COUNT + 5;
+	int MC_SYSTEM__CRITICAL_SECTIONS = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Core</b></em>' containment reference.
@@ -473,7 +464,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM__CORE = MCS_ELEMENT_FEATURE_COUNT + 6;
+	int MC_SYSTEM__CORE = MCS_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The number of structural features of the '<em>MC System</em>' class.
@@ -482,7 +473,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 7;
+	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The meta object id for the '{@link mcs.impl.TaskImpl <em>Task</em>}' class.
@@ -585,13 +576,22 @@ public interface McsPackage extends EPackage {
 	int TASK__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
 
 	/**
+	 * The feature id for the '<em><b>Is Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__IS_MANDATORY = MCS_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>State</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__STATE = MCS_ELEMENT_FEATURE_COUNT + 0;
+	int TASK__STATE = MCS_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Timeleft</b></em>' attribute.
@@ -600,7 +600,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__TIMELEFT = MCS_ELEMENT_FEATURE_COUNT + 1;
+	int TASK__TIMELEFT = MCS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Priority</b></em>' attribute.
@@ -609,7 +609,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 2;
+	int TASK__PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Period</b></em>' attribute.
@@ -618,7 +618,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PERIOD = MCS_ELEMENT_FEATURE_COUNT + 3;
+	int TASK__PERIOD = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Deadline</b></em>' attribute.
@@ -627,7 +627,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__DEADLINE = MCS_ELEMENT_FEATURE_COUNT + 4;
+	int TASK__DEADLINE = MCS_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Utilisation</b></em>' attribute.
@@ -636,7 +636,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__UTILISATION = MCS_ELEMENT_FEATURE_COUNT + 5;
+	int TASK__UTILISATION = MCS_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Computation time</b></em>' attribute.
@@ -645,7 +645,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__COMPUTATION_TIME = MCS_ELEMENT_FEATURE_COUNT + 6;
+	int TASK__COMPUTATION_TIME = MCS_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Wcet low</b></em>' attribute.
@@ -654,7 +654,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__WCET_LOW = MCS_ELEMENT_FEATURE_COUNT + 7;
+	int TASK__WCET_LOW = MCS_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Cstime</b></em>' attribute.
@@ -663,7 +663,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CSTIME = MCS_ELEMENT_FEATURE_COUNT + 8;
+	int TASK__CSTIME = MCS_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
 	 * The feature id for the '<em><b>Wcet high</b></em>' attribute.
@@ -672,7 +672,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__WCET_HIGH = MCS_ELEMENT_FEATURE_COUNT + 9;
+	int TASK__WCET_HIGH = MCS_ELEMENT_FEATURE_COUNT + 10;
 
 	/**
 	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
@@ -681,7 +681,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 10;
+	int TASK__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Dynamic priority</b></em>' attribute.
@@ -690,7 +690,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__DYNAMIC_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 11;
+	int TASK__DYNAMIC_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The feature id for the '<em><b>Offset</b></em>' attribute.
@@ -699,7 +699,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OFFSET = MCS_ELEMENT_FEATURE_COUNT + 12;
+	int TASK__OFFSET = MCS_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The feature id for the '<em><b>Release time</b></em>' attribute.
@@ -708,7 +708,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__RELEASE_TIME = MCS_ELEMENT_FEATURE_COUNT + 13;
+	int TASK__RELEASE_TIME = MCS_ELEMENT_FEATURE_COUNT + 14;
 
 	/**
 	 * The feature id for the '<em><b>Current cs</b></em>' attribute.
@@ -717,7 +717,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CURRENT_CS = MCS_ELEMENT_FEATURE_COUNT + 14;
+	int TASK__CURRENT_CS = MCS_ELEMENT_FEATURE_COUNT + 15;
 
 	/**
 	 * The feature id for the '<em><b>Critical section</b></em>' reference.
@@ -726,7 +726,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICAL_SECTION = MCS_ELEMENT_FEATURE_COUNT + 15;
+	int TASK__CRITICAL_SECTION = MCS_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -735,7 +735,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 16;
+	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 17;
 
 	/**
 	 * The meta object id for the '{@link mcs.impl.CriticalSectionImpl <em>Critical Section</em>}' class.
@@ -1151,17 +1151,6 @@ public interface McsPackage extends EPackage {
 	EClass getMCSystem();
 
 	/**
-	 * Returns the meta object for the attribute '{@link mcs.MCSystem#getCriticality <em>Criticality</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Criticality</em>'.
-	 * @see mcs.MCSystem#getCriticality()
-	 * @see #getMCSystem()
-	 * @generated
-	 */
-	EAttribute getMCSystem_Criticality();
-
-	/**
 	 * Returns the meta object for the attribute '{@link mcs.MCSystem#getCeiling_priority <em>Ceiling priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1236,6 +1225,17 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getTask();
+
+	/**
+	 * Returns the meta object for the attribute '{@link mcs.Task#isIsMandatory <em>Is Mandatory</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Is Mandatory</em>'.
+	 * @see mcs.Task#isIsMandatory()
+	 * @see #getTask()
+	 * @generated
+	 */
+	EAttribute getTask_IsMandatory();
 
 	/**
 	 * Returns the meta object for the attribute '{@link mcs.Task#getState <em>State</em>}'.
@@ -1658,14 +1658,6 @@ public interface McsPackage extends EPackage {
 		EClass MC_SYSTEM = eINSTANCE.getMCSystem();
 
 		/**
-		 * The meta object literal for the '<em><b>Criticality</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MC_SYSTEM__CRITICALITY = eINSTANCE.getMCSystem_Criticality();
-
-		/**
 		 * The meta object literal for the '<em><b>Ceiling priority</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1722,6 +1714,14 @@ public interface McsPackage extends EPackage {
 		 * @generated
 		 */
 		EClass TASK = eINSTANCE.getTask();
+
+		/**
+		 * The meta object literal for the '<em><b>Is Mandatory</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TASK__IS_MANDATORY = eINSTANCE.getTask_IsMandatory();
 
 		/**
 		 * The meta object literal for the '<em><b>State</b></em>' attribute feature.

@@ -238,7 +238,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getMCSystem_Criticality() {
+	public EAttribute getMCSystem_Ceiling_priority() {
 		return (EAttribute)mcSystemEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -248,7 +248,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getMCSystem_Ceiling_priority() {
+	public EAttribute getMCSystem_Status() {
 		return (EAttribute)mcSystemEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -258,18 +258,8 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getMCSystem_Status() {
-		return (EAttribute)mcSystemEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EReference getMCSystem_Resources() {
-		return (EReference)mcSystemEClass.getEStructuralFeatures().get(3);
+		return (EReference)mcSystemEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -279,7 +269,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 */
 	@Override
 	public EReference getMCSystem_Tasks() {
-		return (EReference)mcSystemEClass.getEStructuralFeatures().get(4);
+		return (EReference)mcSystemEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -289,7 +279,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 */
 	@Override
 	public EReference getMCSystem_Critical_sections() {
-		return (EReference)mcSystemEClass.getEStructuralFeatures().get(5);
+		return (EReference)mcSystemEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -299,7 +289,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 */
 	@Override
 	public EReference getMCSystem_Core() {
-		return (EReference)mcSystemEClass.getEStructuralFeatures().get(6);
+		return (EReference)mcSystemEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -318,7 +308,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_State() {
+	public EAttribute getTask_IsMandatory() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -328,7 +318,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Timeleft() {
+	public EAttribute getTask_State() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -338,7 +328,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Priority() {
+	public EAttribute getTask_Timeleft() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -348,7 +338,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Period() {
+	public EAttribute getTask_Priority() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -358,7 +348,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Deadline() {
+	public EAttribute getTask_Period() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(4);
 	}
 
@@ -368,7 +358,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Utilisation() {
+	public EAttribute getTask_Deadline() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(5);
 	}
 
@@ -378,7 +368,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Computation_time() {
+	public EAttribute getTask_Utilisation() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(6);
 	}
 
@@ -388,7 +378,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Wcet_low() {
+	public EAttribute getTask_Computation_time() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(7);
 	}
 
@@ -398,7 +388,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Cstime() {
+	public EAttribute getTask_Wcet_low() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(8);
 	}
 
@@ -408,7 +398,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Wcet_high() {
+	public EAttribute getTask_Cstime() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(9);
 	}
 
@@ -418,7 +408,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Criticality() {
+	public EAttribute getTask_Wcet_high() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(10);
 	}
 
@@ -428,7 +418,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Dynamic_priority() {
+	public EAttribute getTask_Criticality() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(11);
 	}
 
@@ -438,7 +428,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Offset() {
+	public EAttribute getTask_Dynamic_priority() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(12);
 	}
 
@@ -448,7 +438,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Release_time() {
+	public EAttribute getTask_Offset() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(13);
 	}
 
@@ -458,7 +448,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
-	public EAttribute getTask_Current_cs() {
+	public EAttribute getTask_Release_time() {
 		return (EAttribute)taskEClass.getEStructuralFeatures().get(14);
 	}
 
@@ -468,8 +458,18 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	 * @generated
 	 */
 	@Override
+	public EAttribute getTask_Current_cs() {
+		return (EAttribute)taskEClass.getEStructuralFeatures().get(15);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EReference getTask_Critical_section() {
-		return (EReference)taskEClass.getEStructuralFeatures().get(15);
+		return (EReference)taskEClass.getEStructuralFeatures().get(16);
 	}
 
 	/**
@@ -660,7 +660,6 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 		createEReference(coreEClass, CORE__QUEUE);
 
 		mcSystemEClass = createEClass(MC_SYSTEM);
-		createEAttribute(mcSystemEClass, MC_SYSTEM__CRITICALITY);
 		createEAttribute(mcSystemEClass, MC_SYSTEM__CEILING_PRIORITY);
 		createEAttribute(mcSystemEClass, MC_SYSTEM__STATUS);
 		createEReference(mcSystemEClass, MC_SYSTEM__RESOURCES);
@@ -669,6 +668,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 		createEReference(mcSystemEClass, MC_SYSTEM__CORE);
 
 		taskEClass = createEClass(TASK);
+		createEAttribute(taskEClass, TASK__IS_MANDATORY);
 		createEAttribute(taskEClass, TASK__STATE);
 		createEAttribute(taskEClass, TASK__TIMELEFT);
 		createEAttribute(taskEClass, TASK__PRIORITY);
@@ -754,7 +754,6 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 		initEReference(getCore_Queue(), this.getTask(), null, "queue", null, 0, -1, Core.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mcSystemEClass, MCSystem.class, "MCSystem", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getMCSystem_Criticality(), this.getCriticality(), "criticality", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMCSystem_Ceiling_priority(), ecorePackage.getEInt(), "ceiling_priority", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMCSystem_Status(), this.getStatus(), "status", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getMCSystem_Resources(), this.getSemaphore(), null, "resources", null, 0, -1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -763,6 +762,7 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 		initEReference(getMCSystem_Core(), this.getCore(), null, "core", null, 0, 1, MCSystem.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(taskEClass, Task.class, "Task", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getTask_IsMandatory(), ecorePackage.getEBoolean(), "IsMandatory", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_State(), this.getWorkingState(), "state", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Timeleft(), ecorePackage.getEInt(), "timeleft", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getTask_Priority(), ecorePackage.getEInt(), "priority", null, 0, 1, Task.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

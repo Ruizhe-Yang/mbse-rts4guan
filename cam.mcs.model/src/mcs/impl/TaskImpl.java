@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link mcs.impl.TaskImpl#isIsMandatory <em>Is Mandatory</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getState <em>State</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getTimeleft <em>Timeleft</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getPriority <em>Priority</em>}</li>
@@ -44,6 +45,26 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * @generated
  */
 public class TaskImpl extends MCSElementImpl implements Task {
+	/**
+	 * The default value of the '{@link #isIsMandatory() <em>Is Mandatory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsMandatory()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_MANDATORY_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsMandatory() <em>Is Mandatory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isIsMandatory()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isMandatory = IS_MANDATORY_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -371,6 +392,29 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	protected EClass eStaticClass() {
 		return McsPackage.Literals.TASK;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean isIsMandatory() {
+		return isMandatory;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIsMandatory(boolean newIsMandatory) {
+		boolean oldIsMandatory = isMandatory;
+		isMandatory = newIsMandatory;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__IS_MANDATORY, oldIsMandatory, isMandatory));
 	}
 
 	/**
@@ -766,6 +810,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case McsPackage.TASK__IS_MANDATORY:
+				return isIsMandatory();
 			case McsPackage.TASK__STATE:
 				return getState();
 			case McsPackage.TASK__TIMELEFT:
@@ -811,6 +857,9 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case McsPackage.TASK__IS_MANDATORY:
+				setIsMandatory((Boolean)newValue);
+				return;
 			case McsPackage.TASK__STATE:
 				setState((WorkingState)newValue);
 				return;
@@ -871,6 +920,9 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case McsPackage.TASK__IS_MANDATORY:
+				setIsMandatory(IS_MANDATORY_EDEFAULT);
+				return;
 			case McsPackage.TASK__STATE:
 				setState(STATE_EDEFAULT);
 				return;
@@ -931,6 +983,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case McsPackage.TASK__IS_MANDATORY:
+				return isMandatory != IS_MANDATORY_EDEFAULT;
 			case McsPackage.TASK__STATE:
 				return state != STATE_EDEFAULT;
 			case McsPackage.TASK__TIMELEFT:
@@ -977,7 +1031,9 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (state: ");
+		result.append(" (IsMandatory: ");
+		result.append(isMandatory);
+		result.append(", state: ");
 		result.append(state);
 		result.append(", timeleft: ");
 		result.append(timeleft);

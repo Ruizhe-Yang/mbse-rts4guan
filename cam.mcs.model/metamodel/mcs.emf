@@ -41,6 +41,7 @@ enum WorkingState{
 }
 
 class Task extends MCSElement {
+	attr boolean IsMandatory;
 	attr WorkingState state;
 	attr int timeleft;
 	attr int priority;

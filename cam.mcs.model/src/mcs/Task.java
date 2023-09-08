@@ -12,6 +12,7 @@ package mcs;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link mcs.Task#isIsMandatory <em>Is Mandatory</em>}</li>
  *   <li>{@link mcs.Task#getState <em>State</em>}</li>
  *   <li>{@link mcs.Task#getTimeleft <em>Timeleft</em>}</li>
  *   <li>{@link mcs.Task#getPriority <em>Priority</em>}</li>
@@ -35,6 +36,28 @@ package mcs;
  * @generated
  */
 public interface Task extends MCSElement {
+	/**
+	 * Returns the value of the '<em><b>Is Mandatory</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Is Mandatory</em>' attribute.
+	 * @see #setIsMandatory(boolean)
+	 * @see mcs.McsPackage#getTask_IsMandatory()
+	 * @model
+	 * @generated
+	 */
+	boolean isIsMandatory();
+
+	/**
+	 * Sets the value of the '{@link mcs.Task#isIsMandatory <em>Is Mandatory</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Is Mandatory</em>' attribute.
+	 * @see #isIsMandatory()
+	 * @generated
+	 */
+	void setIsMandatory(boolean value);
+
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
 	 * The literals are from the enumeration {@link mcs.WorkingState}.

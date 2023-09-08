@@ -1,28 +1,32 @@
 <?xml version="1.0" encoding="ASCII"?>
-<mcs_:MCSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mcs_="http://cam.mcs.model/mcs" ceiling_priority="1" status="HIGH">
-  <tasks name="1" timeleft="662" priority="3" period="2785" deadline="2785" utilisation="0.23771430855239864" computation_time="662" wcet_low="662" cstime="25" wcet_high="993" dynamic_priority="3" current_cs="-1" critical_section="//@critical_sections.0"/>
-  <tasks name="2" timeleft="1822" priority="1" period="4292" deadline="4292" utilisation="0.2831256672919202" computation_time="1215" wcet_low="1215" cstime="452" wcet_high="1822" criticality="hi" dynamic_priority="1" current_cs="-1" critical_section="//@critical_sections.1"/>
-  <tasks name="3" timeleft="567" priority="2" period="4077" deadline="4077" utilisation="0.09281580612237983" computation_time="378" wcet_low="378" cstime="17" wcet_high="567" criticality="hi" dynamic_priority="2" current_cs="-1" critical_section="//@critical_sections.2"/>
-  <tasks name="4" timeleft="346" priority="4" period="1962" deadline="1962" utilisation="0.1179626046680697" computation_time="231" wcet_low="231" cstime="56" wcet_high="346" criticality="hi" dynamic_priority="4" current_cs="-1" critical_section="//@critical_sections.3"/>
-  <tasks name="5" timeleft="30" priority="5" period="672" deadline="672" utilisation="0.02928238932348082" computation_time="20" wcet_low="20" cstime="7" wcet_high="30" criticality="hi" dynamic_priority="5" current_cs="-1" critical_section="//@critical_sections.4"/>
-  <tasks name="6" timeleft="61" priority="6" period="181" deadline="181" utilisation="0.22909923357849404" computation_time="41" wcet_low="41" cstime="7" wcet_high="61" criticality="hi" dynamic_priority="6" current_cs="-1" critical_section="//@critical_sections.5"/>
-  <critical_sections name="1" tasks="//@tasks.0">
-    <semaphore name="1" ceiling_priority="3" acquisition="//@tasks.0"/>
+<mcs_:MCSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mcs_="http://cam.mcs.model/mcs" ceiling_priority="1">
+  <tasks name="1" timeleft="6" priority="6" period="2139" deadline="2139" utilisation="0.0028502452058886685" computation_time="6" wcet_low="6" wcet_high="9" dynamic_priority="6" current_cs="-1" critical_section="//@critical_sections.0"/>
+  <tasks name="2" state="hanging" timeleft="21" priority="7" period="2008" deadline="2008" utilisation="0.010608534899005598" computation_time="21" wcet_low="21" wcet_high="31" dynamic_priority="7" current_cs="-1" critical_section="//@critical_sections.1"/>
+  <tasks name="3" state="working" timeleft="81" priority="8" period="1046" deadline="1046" utilisation="0.16507333404042354" computation_time="173" wcet_low="173" cstime="3" wcet_high="259" dynamic_priority="8" current_cs="-1" critical_section="//@critical_sections.2"/>
+  <tasks name="4" timeleft="122" priority="5" period="3150" deadline="3150" utilisation="0.038698524562618915" computation_time="122" wcet_low="122" cstime="30" wcet_high="183" criticality="hi" dynamic_priority="5" current_cs="-1" critical_section="//@critical_sections.3"/>
+  <tasks name="5" timeleft="13" priority="1" period="4830" deadline="4830" utilisation="0.0027129868544562624" computation_time="13" wcet_low="13" cstime="1" wcet_high="19" dynamic_priority="1" current_cs="-1" critical_section="//@critical_sections.4"/>
+  <tasks name="6" timeleft="284" priority="4" period="3571" deadline="3571" utilisation="0.07966893215675615" computation_time="284" wcet_low="284" cstime="29" wcet_high="426" criticality="hi" dynamic_priority="10" current_cs="-1" critical_section="//@critical_sections.5"/>
+  <tasks name="7" timeleft="29" priority="2" period="3744" deadline="3744" utilisation="0.007792234683401784" computation_time="29" wcet_low="29" cstime="7" wcet_high="43" criticality="hi" dynamic_priority="2" current_cs="-1" critical_section="//@critical_sections.0"/>
+  <tasks name="8" timeleft="12" priority="10" period="292" deadline="292" utilisation="0.039624410416160535" computation_time="12" wcet_low="12" cstime="2" wcet_high="18" dynamic_priority="10" current_cs="-1" critical_section="//@critical_sections.5"/>
+  <tasks name="9" timeleft="279" priority="3" period="3649" deadline="3649" utilisation="0.07639361611233551" computation_time="279" wcet_low="279" cstime="7" wcet_high="418" criticality="hi" dynamic_priority="3" current_cs="-1" critical_section="//@critical_sections.4"/>
+  <tasks name="10" timeleft="52" priority="9" period="673" deadline="673" utilisation="0.07657718106895307" computation_time="52" wcet_low="52" wcet_high="78" criticality="hi" dynamic_priority="9" current_cs="-1"/>
+  <critical_sections name="1" criticality="hi" tasks="//@tasks.0 //@tasks.6">
+    <semaphore name="1" ceiling_priority="6" acquisition="//@tasks.0 //@tasks.6"/>
   </critical_sections>
-  <critical_sections name="2" criticality="hi" tasks="//@tasks.1">
-    <semaphore name="2" ceiling_priority="1" acquisition="//@tasks.1"/>
+  <critical_sections name="2" tasks="//@tasks.1">
+    <semaphore name="2" ceiling_priority="7" acquisition="//@tasks.1"/>
   </critical_sections>
-  <critical_sections name="3" criticality="hi" tasks="//@tasks.2">
-    <semaphore name="3" ceiling_priority="2" acquisition="//@tasks.2"/>
+  <critical_sections name="3" tasks="//@tasks.2">
+    <semaphore name="3" ceiling_priority="8" acquisition="//@tasks.2"/>
   </critical_sections>
   <critical_sections name="4" criticality="hi" tasks="//@tasks.3">
-    <semaphore name="4" ceiling_priority="4" acquisition="//@tasks.3"/>
+    <semaphore name="4" ceiling_priority="5" acquisition="//@tasks.3"/>
   </critical_sections>
-  <critical_sections name="5" criticality="hi" tasks="//@tasks.4">
-    <semaphore name="5" ceiling_priority="5" acquisition="//@tasks.4"/>
+  <critical_sections name="5" criticality="hi" tasks="//@tasks.4 //@tasks.8">
+    <semaphore name="5" ceiling_priority="3" acquisition="//@tasks.4 //@tasks.8"/>
   </critical_sections>
-  <critical_sections name="6" criticality="hi" tasks="//@tasks.5">
-    <semaphore name="6" ceiling_priority="6" acquisition="//@tasks.5"/>
+  <critical_sections name="6" criticality="hi" tasks="//@tasks.5 //@tasks.7">
+    <semaphore name="6" ceiling_priority="10" acquisition="//@tasks.5 //@tasks.7"/>
   </critical_sections>
-  <core time="1"/>
+  <core time="24150" locked="true" current_task="//@tasks.2"/>
 </mcs_:MCSystem>
