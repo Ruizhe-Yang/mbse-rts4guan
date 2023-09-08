@@ -14,7 +14,6 @@ class Core extends MCSElement {
 }
 
 class MCSystem extends MCSElement {
-	attr Criticality criticality;
 	attr int ceiling_priority;
 	attr Status status;
 	val Semaphore[*] resources;
