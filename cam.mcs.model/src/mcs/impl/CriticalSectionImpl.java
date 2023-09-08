@@ -1,25 +1,26 @@
 /**
  */
-package artifact.impl;
+package mcs.impl;
 
-import artifact.ArtifactPackage;
-import artifact.CriticalSection;
-import artifact.Criticality;
-import artifact.Semaphore;
-
-import artifact.Task;
 import java.util.Collection;
-import org.eclipse.emf.common.notify.Notification;
 
+import mcs.CriticalSection;
+import mcs.Criticality;
+import mcs.McsPackage;
+import mcs.Semaphore;
+import mcs.Task;
+
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,12 +30,12 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link artifact.impl.CriticalSectionImpl#getCriticality <em>Criticality</em>}</li>
- *   <li>{@link artifact.impl.CriticalSectionImpl#getStart <em>Start</em>}</li>
- *   <li>{@link artifact.impl.CriticalSectionImpl#getExecution <em>Execution</em>}</li>
- *   <li>{@link artifact.impl.CriticalSectionImpl#getElapsed <em>Elapsed</em>}</li>
- *   <li>{@link artifact.impl.CriticalSectionImpl#getTasks <em>Tasks</em>}</li>
- *   <li>{@link artifact.impl.CriticalSectionImpl#getSemaphore <em>Semaphore</em>}</li>
+ *   <li>{@link mcs.impl.CriticalSectionImpl#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.impl.CriticalSectionImpl#getStart <em>Start</em>}</li>
+ *   <li>{@link mcs.impl.CriticalSectionImpl#getExecution <em>Execution</em>}</li>
+ *   <li>{@link mcs.impl.CriticalSectionImpl#getElapsed <em>Elapsed</em>}</li>
+ *   <li>{@link mcs.impl.CriticalSectionImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link mcs.impl.CriticalSectionImpl#getSemaphore <em>Semaphore</em>}</li>
  * </ul>
  *
  * @generated
@@ -156,7 +157,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ArtifactPackage.Literals.CRITICAL_SECTION;
+		return McsPackage.Literals.CRITICAL_SECTION;
 	}
 
 	/**
@@ -179,7 +180,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 		Criticality oldCriticality = criticality;
 		criticality = newCriticality == null ? CRITICALITY_EDEFAULT : newCriticality;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__CRITICALITY, oldCriticality, criticality));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__CRITICALITY, oldCriticality, criticality));
 	}
 
 	/**
@@ -202,7 +203,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 		int oldStart = start;
 		start = newStart;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__START, oldStart, start));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__START, oldStart, start));
 	}
 
 	/**
@@ -225,7 +226,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 		int oldExecution = execution;
 		execution = newExecution;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__EXECUTION, oldExecution, execution));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__EXECUTION, oldExecution, execution));
 	}
 
 	/**
@@ -248,7 +249,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 		int oldElapsed = elapsed;
 		elapsed = newElapsed;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__ELAPSED, oldElapsed, elapsed));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__ELAPSED, oldElapsed, elapsed));
 	}
 
 	/**
@@ -259,7 +260,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public EList<Task> getTasks() {
 		if (tasks == null) {
-			tasks = new EObjectResolvingEList<Task>(Task.class, this, ArtifactPackage.CRITICAL_SECTION__TASKS);
+			tasks = new EObjectResolvingEList<Task>(Task.class, this, McsPackage.CRITICAL_SECTION__TASKS);
 		}
 		return tasks;
 	}
@@ -283,7 +284,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 		Semaphore oldSemaphore = semaphore;
 		semaphore = newSemaphore;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, oldSemaphore, newSemaphore);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__SEMAPHORE, oldSemaphore, newSemaphore);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -299,14 +300,14 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 		if (newSemaphore != semaphore) {
 			NotificationChain msgs = null;
 			if (semaphore != null)
-				msgs = ((InternalEObject)semaphore).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, null, msgs);
+				msgs = ((InternalEObject)semaphore).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - McsPackage.CRITICAL_SECTION__SEMAPHORE, null, msgs);
 			if (newSemaphore != null)
-				msgs = ((InternalEObject)newSemaphore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, null, msgs);
+				msgs = ((InternalEObject)newSemaphore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - McsPackage.CRITICAL_SECTION__SEMAPHORE, null, msgs);
 			msgs = basicSetSemaphore(newSemaphore, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CRITICAL_SECTION__SEMAPHORE, newSemaphore, newSemaphore));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__SEMAPHORE, newSemaphore, newSemaphore));
 	}
 
 	/**
@@ -317,7 +318,7 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ArtifactPackage.CRITICAL_SECTION__SEMAPHORE:
+			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
 				return basicSetSemaphore(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -331,17 +332,17 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ArtifactPackage.CRITICAL_SECTION__CRITICALITY:
+			case McsPackage.CRITICAL_SECTION__CRITICALITY:
 				return getCriticality();
-			case ArtifactPackage.CRITICAL_SECTION__START:
+			case McsPackage.CRITICAL_SECTION__START:
 				return getStart();
-			case ArtifactPackage.CRITICAL_SECTION__EXECUTION:
+			case McsPackage.CRITICAL_SECTION__EXECUTION:
 				return getExecution();
-			case ArtifactPackage.CRITICAL_SECTION__ELAPSED:
+			case McsPackage.CRITICAL_SECTION__ELAPSED:
 				return getElapsed();
-			case ArtifactPackage.CRITICAL_SECTION__TASKS:
+			case McsPackage.CRITICAL_SECTION__TASKS:
 				return getTasks();
-			case ArtifactPackage.CRITICAL_SECTION__SEMAPHORE:
+			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
 				return getSemaphore();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -356,23 +357,23 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ArtifactPackage.CRITICAL_SECTION__CRITICALITY:
+			case McsPackage.CRITICAL_SECTION__CRITICALITY:
 				setCriticality((Criticality)newValue);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__START:
+			case McsPackage.CRITICAL_SECTION__START:
 				setStart((Integer)newValue);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__EXECUTION:
+			case McsPackage.CRITICAL_SECTION__EXECUTION:
 				setExecution((Integer)newValue);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__ELAPSED:
+			case McsPackage.CRITICAL_SECTION__ELAPSED:
 				setElapsed((Integer)newValue);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__TASKS:
+			case McsPackage.CRITICAL_SECTION__TASKS:
 				getTasks().clear();
 				getTasks().addAll((Collection<? extends Task>)newValue);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__SEMAPHORE:
+			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
 				setSemaphore((Semaphore)newValue);
 				return;
 		}
@@ -387,22 +388,22 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.CRITICAL_SECTION__CRITICALITY:
+			case McsPackage.CRITICAL_SECTION__CRITICALITY:
 				setCriticality(CRITICALITY_EDEFAULT);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__START:
+			case McsPackage.CRITICAL_SECTION__START:
 				setStart(START_EDEFAULT);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__EXECUTION:
+			case McsPackage.CRITICAL_SECTION__EXECUTION:
 				setExecution(EXECUTION_EDEFAULT);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__ELAPSED:
+			case McsPackage.CRITICAL_SECTION__ELAPSED:
 				setElapsed(ELAPSED_EDEFAULT);
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__TASKS:
+			case McsPackage.CRITICAL_SECTION__TASKS:
 				getTasks().clear();
 				return;
-			case ArtifactPackage.CRITICAL_SECTION__SEMAPHORE:
+			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
 				setSemaphore((Semaphore)null);
 				return;
 		}
@@ -417,17 +418,17 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.CRITICAL_SECTION__CRITICALITY:
+			case McsPackage.CRITICAL_SECTION__CRITICALITY:
 				return criticality != CRITICALITY_EDEFAULT;
-			case ArtifactPackage.CRITICAL_SECTION__START:
+			case McsPackage.CRITICAL_SECTION__START:
 				return start != START_EDEFAULT;
-			case ArtifactPackage.CRITICAL_SECTION__EXECUTION:
+			case McsPackage.CRITICAL_SECTION__EXECUTION:
 				return execution != EXECUTION_EDEFAULT;
-			case ArtifactPackage.CRITICAL_SECTION__ELAPSED:
+			case McsPackage.CRITICAL_SECTION__ELAPSED:
 				return elapsed != ELAPSED_EDEFAULT;
-			case ArtifactPackage.CRITICAL_SECTION__TASKS:
+			case McsPackage.CRITICAL_SECTION__TASKS:
 				return tasks != null && !tasks.isEmpty();
-			case ArtifactPackage.CRITICAL_SECTION__SEMAPHORE:
+			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
 				return semaphore != null;
 		}
 		return super.eIsSet(featureID);

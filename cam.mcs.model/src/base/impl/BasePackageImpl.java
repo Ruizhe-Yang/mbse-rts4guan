@@ -2,10 +2,6 @@
  */
 package base.impl;
 
-import artifact.ArtifactPackage;
-
-import artifact.impl.ArtifactPackageImpl;
-
 import base.ArtifactElement;
 import base.BaseFactory;
 import base.BasePackage;
@@ -20,6 +16,8 @@ import base.Note;
 import base.TaggedValue;
 import base.UtilityElement;
 
+import mcs.McsPackage;
+import mcs.impl.McsPackageImpl;
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
@@ -158,16 +156,16 @@ public class BasePackageImpl extends EPackageImpl implements BasePackage {
 		isInited = true;
 
 		// Obtain or create and register interdependencies
-		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(ArtifactPackage.eNS_URI);
-		ArtifactPackageImpl theArtifactPackage = (ArtifactPackageImpl)(registeredPackage instanceof ArtifactPackageImpl ? registeredPackage : ArtifactPackage.eINSTANCE);
+		Object registeredPackage = EPackage.Registry.INSTANCE.getEPackage(McsPackage.eNS_URI);
+		McsPackageImpl theMcsPackage = (McsPackageImpl)(registeredPackage instanceof McsPackageImpl ? registeredPackage : McsPackage.eINSTANCE);
 
 		// Create package meta-data objects
 		theBasePackage.createPackageContents();
-		theArtifactPackage.createPackageContents();
+		theMcsPackage.createPackageContents();
 
 		// Initialize created meta-data
 		theBasePackage.initializePackageContents();
-		theArtifactPackage.initializePackageContents();
+		theMcsPackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
 		theBasePackage.freeze();

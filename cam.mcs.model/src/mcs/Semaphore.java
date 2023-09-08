@@ -1,9 +1,8 @@
 /**
  */
-package artifact;
+package mcs;
 
 import org.eclipse.emf.common.util.EList;
-
 
 /**
  * <!-- begin-user-doc -->
@@ -14,13 +13,13 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link artifact.Semaphore#isLocked <em>Locked</em>}</li>
- *   <li>{@link artifact.Semaphore#getInitial_priority <em>Initial priority</em>}</li>
- *   <li>{@link artifact.Semaphore#getCeiling_priority <em>Ceiling priority</em>}</li>
- *   <li>{@link artifact.Semaphore#getAcquisition <em>Acquisition</em>}</li>
+ *   <li>{@link mcs.Semaphore#isLocked <em>Locked</em>}</li>
+ *   <li>{@link mcs.Semaphore#getInitial_priority <em>Initial priority</em>}</li>
+ *   <li>{@link mcs.Semaphore#getCeiling_priority <em>Ceiling priority</em>}</li>
+ *   <li>{@link mcs.Semaphore#getAcquisition <em>Acquisition</em>}</li>
  * </ul>
  *
- * @see artifact.ArtifactPackage#getSemaphore()
+ * @see mcs.McsPackage#getSemaphore()
  * @model
  * @generated
  */
@@ -31,14 +30,14 @@ public interface Semaphore extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Locked</em>' attribute.
 	 * @see #setLocked(boolean)
-	 * @see artifact.ArtifactPackage#getSemaphore_Locked()
+	 * @see mcs.McsPackage#getSemaphore_Locked()
 	 * @model
 	 * @generated
 	 */
 	boolean isLocked();
 
 	/**
-	 * Sets the value of the '{@link artifact.Semaphore#isLocked <em>Locked</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Semaphore#isLocked <em>Locked</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Locked</em>' attribute.
@@ -53,14 +52,14 @@ public interface Semaphore extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Initial priority</em>' attribute.
 	 * @see #setInitial_priority(int)
-	 * @see artifact.ArtifactPackage#getSemaphore_Initial_priority()
+	 * @see mcs.McsPackage#getSemaphore_Initial_priority()
 	 * @model
 	 * @generated
 	 */
 	int getInitial_priority();
 
 	/**
-	 * Sets the value of the '{@link artifact.Semaphore#getInitial_priority <em>Initial priority</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Semaphore#getInitial_priority <em>Initial priority</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Initial priority</em>' attribute.
@@ -75,14 +74,14 @@ public interface Semaphore extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ceiling priority</em>' attribute.
 	 * @see #setCeiling_priority(int)
-	 * @see artifact.ArtifactPackage#getSemaphore_Ceiling_priority()
+	 * @see mcs.McsPackage#getSemaphore_Ceiling_priority()
 	 * @model
 	 * @generated
 	 */
 	int getCeiling_priority();
 
 	/**
-	 * Sets the value of the '{@link artifact.Semaphore#getCeiling_priority <em>Ceiling priority</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Semaphore#getCeiling_priority <em>Ceiling priority</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Ceiling priority</em>' attribute.
@@ -93,11 +92,11 @@ public interface Semaphore extends MCSElement {
 
 	/**
 	 * Returns the value of the '<em><b>Acquisition</b></em>' reference list.
-	 * The list contents are of type {@link artifact.Task}.
+	 * The list contents are of type {@link mcs.Task}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Acquisition</em>' reference list.
-	 * @see artifact.ArtifactPackage#getSemaphore_Acquisition()
+	 * @see mcs.McsPackage#getSemaphore_Acquisition()
 	 * @model
 	 * @generated
 	 */

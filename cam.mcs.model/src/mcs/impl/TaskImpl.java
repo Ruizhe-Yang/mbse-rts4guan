@@ -1,27 +1,19 @@
 /**
  */
-package artifact.impl;
+package mcs.impl;
 
-import artifact.ArtifactPackage;
-import artifact.CriticalSection;
-import artifact.Criticality;
-import artifact.Task;
-
-import artifact.WorkingState;
-import java.util.Collection;
+import mcs.CriticalSection;
+import mcs.Criticality;
+import mcs.McsPackage;
+import mcs.Task;
+import mcs.WorkingState;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -31,22 +23,22 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link artifact.impl.TaskImpl#getState <em>State</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getTimeleft <em>Timeleft</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getPriority <em>Priority</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getPeriod <em>Period</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getDeadline <em>Deadline</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getUtilisation <em>Utilisation</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getComputation_time <em>Computation time</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getWcet_low <em>Wcet low</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getCstime <em>Cstime</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getWcet_high <em>Wcet high</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getCriticality <em>Criticality</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getDynamic_priority <em>Dynamic priority</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getOffset <em>Offset</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getRelease_time <em>Release time</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getCurrent_cs <em>Current cs</em>}</li>
- *   <li>{@link artifact.impl.TaskImpl#getCritical_section <em>Critical section</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getState <em>State</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getTimeleft <em>Timeleft</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getPeriod <em>Period</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getDeadline <em>Deadline</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getUtilisation <em>Utilisation</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getComputation_time <em>Computation time</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getWcet_low <em>Wcet low</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getCstime <em>Cstime</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getWcet_high <em>Wcet high</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getDynamic_priority <em>Dynamic priority</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getOffset <em>Offset</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getRelease_time <em>Release time</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getCurrent_cs <em>Current cs</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getCritical_section <em>Critical section</em>}</li>
  * </ul>
  *
  * @generated
@@ -378,7 +370,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ArtifactPackage.Literals.TASK;
+		return McsPackage.Literals.TASK;
 	}
 
 	/**
@@ -401,7 +393,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		WorkingState oldState = state;
 		state = newState == null ? STATE_EDEFAULT : newState;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__STATE, oldState, state));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__STATE, oldState, state));
 	}
 
 	/**
@@ -424,7 +416,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldTimeleft = timeleft;
 		timeleft = newTimeleft;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__TIMELEFT, oldTimeleft, timeleft));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__TIMELEFT, oldTimeleft, timeleft));
 	}
 
 	/**
@@ -447,7 +439,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldPriority = priority;
 		priority = newPriority;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__PRIORITY, oldPriority, priority));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__PRIORITY, oldPriority, priority));
 	}
 
 	/**
@@ -470,7 +462,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldPeriod = period;
 		period = newPeriod;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__PERIOD, oldPeriod, period));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__PERIOD, oldPeriod, period));
 	}
 
 	/**
@@ -493,7 +485,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldDeadline = deadline;
 		deadline = newDeadline;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__DEADLINE, oldDeadline, deadline));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__DEADLINE, oldDeadline, deadline));
 	}
 
 	/**
@@ -516,7 +508,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		double oldUtilisation = utilisation;
 		utilisation = newUtilisation;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__UTILISATION, oldUtilisation, utilisation));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__UTILISATION, oldUtilisation, utilisation));
 	}
 
 	/**
@@ -539,7 +531,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldComputation_time = computation_time;
 		computation_time = newComputation_time;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__COMPUTATION_TIME, oldComputation_time, computation_time));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__COMPUTATION_TIME, oldComputation_time, computation_time));
 	}
 
 	/**
@@ -562,7 +554,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldWcet_low = wcet_low;
 		wcet_low = newWcet_low;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__WCET_LOW, oldWcet_low, wcet_low));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__WCET_LOW, oldWcet_low, wcet_low));
 	}
 
 	/**
@@ -585,7 +577,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldCstime = cstime;
 		cstime = newCstime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__CSTIME, oldCstime, cstime));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__CSTIME, oldCstime, cstime));
 	}
 
 	/**
@@ -608,7 +600,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldWcet_high = wcet_high;
 		wcet_high = newWcet_high;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__WCET_HIGH, oldWcet_high, wcet_high));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__WCET_HIGH, oldWcet_high, wcet_high));
 	}
 
 	/**
@@ -631,7 +623,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		Criticality oldCriticality = criticality;
 		criticality = newCriticality == null ? CRITICALITY_EDEFAULT : newCriticality;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__CRITICALITY, oldCriticality, criticality));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__CRITICALITY, oldCriticality, criticality));
 	}
 
 	/**
@@ -654,7 +646,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldDynamic_priority = dynamic_priority;
 		dynamic_priority = newDynamic_priority;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__DYNAMIC_PRIORITY, oldDynamic_priority, dynamic_priority));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__DYNAMIC_PRIORITY, oldDynamic_priority, dynamic_priority));
 	}
 
 	/**
@@ -677,7 +669,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldOffset = offset;
 		offset = newOffset;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__OFFSET, oldOffset, offset));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__OFFSET, oldOffset, offset));
 	}
 
 	/**
@@ -700,7 +692,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldRelease_time = release_time;
 		release_time = newRelease_time;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__RELEASE_TIME, oldRelease_time, release_time));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__RELEASE_TIME, oldRelease_time, release_time));
 	}
 
 	/**
@@ -723,7 +715,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		int oldCurrent_cs = current_cs;
 		current_cs = newCurrent_cs;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__CURRENT_CS, oldCurrent_cs, current_cs));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__CURRENT_CS, oldCurrent_cs, current_cs));
 	}
 
 	/**
@@ -738,7 +730,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 			critical_section = (CriticalSection)eResolveProxy(oldCritical_section);
 			if (critical_section != oldCritical_section) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArtifactPackage.TASK__CRITICAL_SECTION, oldCritical_section, critical_section));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, McsPackage.TASK__CRITICAL_SECTION, oldCritical_section, critical_section));
 			}
 		}
 		return critical_section;
@@ -763,7 +755,7 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		CriticalSection oldCritical_section = critical_section;
 		critical_section = newCritical_section;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.TASK__CRITICAL_SECTION, oldCritical_section, critical_section));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__CRITICAL_SECTION, oldCritical_section, critical_section));
 	}
 
 	/**
@@ -774,37 +766,37 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ArtifactPackage.TASK__STATE:
+			case McsPackage.TASK__STATE:
 				return getState();
-			case ArtifactPackage.TASK__TIMELEFT:
+			case McsPackage.TASK__TIMELEFT:
 				return getTimeleft();
-			case ArtifactPackage.TASK__PRIORITY:
+			case McsPackage.TASK__PRIORITY:
 				return getPriority();
-			case ArtifactPackage.TASK__PERIOD:
+			case McsPackage.TASK__PERIOD:
 				return getPeriod();
-			case ArtifactPackage.TASK__DEADLINE:
+			case McsPackage.TASK__DEADLINE:
 				return getDeadline();
-			case ArtifactPackage.TASK__UTILISATION:
+			case McsPackage.TASK__UTILISATION:
 				return getUtilisation();
-			case ArtifactPackage.TASK__COMPUTATION_TIME:
+			case McsPackage.TASK__COMPUTATION_TIME:
 				return getComputation_time();
-			case ArtifactPackage.TASK__WCET_LOW:
+			case McsPackage.TASK__WCET_LOW:
 				return getWcet_low();
-			case ArtifactPackage.TASK__CSTIME:
+			case McsPackage.TASK__CSTIME:
 				return getCstime();
-			case ArtifactPackage.TASK__WCET_HIGH:
+			case McsPackage.TASK__WCET_HIGH:
 				return getWcet_high();
-			case ArtifactPackage.TASK__CRITICALITY:
+			case McsPackage.TASK__CRITICALITY:
 				return getCriticality();
-			case ArtifactPackage.TASK__DYNAMIC_PRIORITY:
+			case McsPackage.TASK__DYNAMIC_PRIORITY:
 				return getDynamic_priority();
-			case ArtifactPackage.TASK__OFFSET:
+			case McsPackage.TASK__OFFSET:
 				return getOffset();
-			case ArtifactPackage.TASK__RELEASE_TIME:
+			case McsPackage.TASK__RELEASE_TIME:
 				return getRelease_time();
-			case ArtifactPackage.TASK__CURRENT_CS:
+			case McsPackage.TASK__CURRENT_CS:
 				return getCurrent_cs();
-			case ArtifactPackage.TASK__CRITICAL_SECTION:
+			case McsPackage.TASK__CRITICAL_SECTION:
 				if (resolve) return getCritical_section();
 				return basicGetCritical_section();
 		}
@@ -816,56 +808,55 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ArtifactPackage.TASK__STATE:
+			case McsPackage.TASK__STATE:
 				setState((WorkingState)newValue);
 				return;
-			case ArtifactPackage.TASK__TIMELEFT:
+			case McsPackage.TASK__TIMELEFT:
 				setTimeleft((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__PRIORITY:
+			case McsPackage.TASK__PRIORITY:
 				setPriority((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__PERIOD:
+			case McsPackage.TASK__PERIOD:
 				setPeriod((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__DEADLINE:
+			case McsPackage.TASK__DEADLINE:
 				setDeadline((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__UTILISATION:
+			case McsPackage.TASK__UTILISATION:
 				setUtilisation((Double)newValue);
 				return;
-			case ArtifactPackage.TASK__COMPUTATION_TIME:
+			case McsPackage.TASK__COMPUTATION_TIME:
 				setComputation_time((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__WCET_LOW:
+			case McsPackage.TASK__WCET_LOW:
 				setWcet_low((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__CSTIME:
+			case McsPackage.TASK__CSTIME:
 				setCstime((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__WCET_HIGH:
+			case McsPackage.TASK__WCET_HIGH:
 				setWcet_high((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__CRITICALITY:
+			case McsPackage.TASK__CRITICALITY:
 				setCriticality((Criticality)newValue);
 				return;
-			case ArtifactPackage.TASK__DYNAMIC_PRIORITY:
+			case McsPackage.TASK__DYNAMIC_PRIORITY:
 				setDynamic_priority((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__OFFSET:
+			case McsPackage.TASK__OFFSET:
 				setOffset((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__RELEASE_TIME:
+			case McsPackage.TASK__RELEASE_TIME:
 				setRelease_time((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__CURRENT_CS:
+			case McsPackage.TASK__CURRENT_CS:
 				setCurrent_cs((Integer)newValue);
 				return;
-			case ArtifactPackage.TASK__CRITICAL_SECTION:
+			case McsPackage.TASK__CRITICAL_SECTION:
 				setCritical_section((CriticalSection)newValue);
 				return;
 		}
@@ -880,52 +871,52 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.TASK__STATE:
+			case McsPackage.TASK__STATE:
 				setState(STATE_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__TIMELEFT:
+			case McsPackage.TASK__TIMELEFT:
 				setTimeleft(TIMELEFT_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__PRIORITY:
+			case McsPackage.TASK__PRIORITY:
 				setPriority(PRIORITY_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__PERIOD:
+			case McsPackage.TASK__PERIOD:
 				setPeriod(PERIOD_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__DEADLINE:
+			case McsPackage.TASK__DEADLINE:
 				setDeadline(DEADLINE_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__UTILISATION:
+			case McsPackage.TASK__UTILISATION:
 				setUtilisation(UTILISATION_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__COMPUTATION_TIME:
+			case McsPackage.TASK__COMPUTATION_TIME:
 				setComputation_time(COMPUTATION_TIME_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__WCET_LOW:
+			case McsPackage.TASK__WCET_LOW:
 				setWcet_low(WCET_LOW_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__CSTIME:
+			case McsPackage.TASK__CSTIME:
 				setCstime(CSTIME_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__WCET_HIGH:
+			case McsPackage.TASK__WCET_HIGH:
 				setWcet_high(WCET_HIGH_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__CRITICALITY:
+			case McsPackage.TASK__CRITICALITY:
 				setCriticality(CRITICALITY_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__DYNAMIC_PRIORITY:
+			case McsPackage.TASK__DYNAMIC_PRIORITY:
 				setDynamic_priority(DYNAMIC_PRIORITY_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__OFFSET:
+			case McsPackage.TASK__OFFSET:
 				setOffset(OFFSET_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__RELEASE_TIME:
+			case McsPackage.TASK__RELEASE_TIME:
 				setRelease_time(RELEASE_TIME_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__CURRENT_CS:
+			case McsPackage.TASK__CURRENT_CS:
 				setCurrent_cs(CURRENT_CS_EDEFAULT);
 				return;
-			case ArtifactPackage.TASK__CRITICAL_SECTION:
+			case McsPackage.TASK__CRITICAL_SECTION:
 				setCritical_section((CriticalSection)null);
 				return;
 		}
@@ -940,37 +931,37 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.TASK__STATE:
+			case McsPackage.TASK__STATE:
 				return state != STATE_EDEFAULT;
-			case ArtifactPackage.TASK__TIMELEFT:
+			case McsPackage.TASK__TIMELEFT:
 				return timeleft != TIMELEFT_EDEFAULT;
-			case ArtifactPackage.TASK__PRIORITY:
+			case McsPackage.TASK__PRIORITY:
 				return priority != PRIORITY_EDEFAULT;
-			case ArtifactPackage.TASK__PERIOD:
+			case McsPackage.TASK__PERIOD:
 				return period != PERIOD_EDEFAULT;
-			case ArtifactPackage.TASK__DEADLINE:
+			case McsPackage.TASK__DEADLINE:
 				return deadline != DEADLINE_EDEFAULT;
-			case ArtifactPackage.TASK__UTILISATION:
+			case McsPackage.TASK__UTILISATION:
 				return utilisation != UTILISATION_EDEFAULT;
-			case ArtifactPackage.TASK__COMPUTATION_TIME:
+			case McsPackage.TASK__COMPUTATION_TIME:
 				return computation_time != COMPUTATION_TIME_EDEFAULT;
-			case ArtifactPackage.TASK__WCET_LOW:
+			case McsPackage.TASK__WCET_LOW:
 				return wcet_low != WCET_LOW_EDEFAULT;
-			case ArtifactPackage.TASK__CSTIME:
+			case McsPackage.TASK__CSTIME:
 				return cstime != CSTIME_EDEFAULT;
-			case ArtifactPackage.TASK__WCET_HIGH:
+			case McsPackage.TASK__WCET_HIGH:
 				return wcet_high != WCET_HIGH_EDEFAULT;
-			case ArtifactPackage.TASK__CRITICALITY:
+			case McsPackage.TASK__CRITICALITY:
 				return criticality != CRITICALITY_EDEFAULT;
-			case ArtifactPackage.TASK__DYNAMIC_PRIORITY:
+			case McsPackage.TASK__DYNAMIC_PRIORITY:
 				return dynamic_priority != DYNAMIC_PRIORITY_EDEFAULT;
-			case ArtifactPackage.TASK__OFFSET:
+			case McsPackage.TASK__OFFSET:
 				return offset != OFFSET_EDEFAULT;
-			case ArtifactPackage.TASK__RELEASE_TIME:
+			case McsPackage.TASK__RELEASE_TIME:
 				return release_time != RELEASE_TIME_EDEFAULT;
-			case ArtifactPackage.TASK__CURRENT_CS:
+			case McsPackage.TASK__CURRENT_CS:
 				return current_cs != CURRENT_CS_EDEFAULT;
-			case ArtifactPackage.TASK__CRITICAL_SECTION:
+			case McsPackage.TASK__CRITICAL_SECTION:
 				return critical_section != null;
 		}
 		return super.eIsSet(featureID);

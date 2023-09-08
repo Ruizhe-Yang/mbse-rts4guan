@@ -1,13 +1,13 @@
 /**
  */
-package artifact.util;
-
-import artifact.*;
+package mcs.util;
 
 import base.ArtifactElement;
 import base.Element;
 import base.ModelElement;
 import base.NamedElement;
+
+import mcs.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -24,17 +24,17 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see artifact.ArtifactPackage
+ * @see mcs.McsPackage
  * @generated
  */
-public class ArtifactSwitch<T> extends Switch<T> {
+public class McsSwitch<T> extends Switch<T> {
 	/**
 	 * The cached model package
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static ArtifactPackage modelPackage;
+	protected static McsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the switch.
@@ -42,9 +42,9 @@ public class ArtifactSwitch<T> extends Switch<T> {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArtifactSwitch() {
+	public McsSwitch() {
 		if (modelPackage == null) {
-			modelPackage = ArtifactPackage.eINSTANCE;
+			modelPackage = McsPackage.eINSTANCE;
 		}
 	}
 
@@ -71,7 +71,7 @@ public class ArtifactSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ArtifactPackage.MCS_ELEMENT: {
+			case McsPackage.MCS_ELEMENT: {
 				MCSElement mcsElement = (MCSElement)theEObject;
 				T result = caseMCSElement(mcsElement);
 				if (result == null) result = caseArtifactElement(mcsElement);
@@ -81,7 +81,7 @@ public class ArtifactSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ArtifactPackage.CORE: {
+			case McsPackage.CORE: {
 				Core core = (Core)theEObject;
 				T result = caseCore(core);
 				if (result == null) result = caseMCSElement(core);
@@ -92,7 +92,7 @@ public class ArtifactSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ArtifactPackage.MC_SYSTEM: {
+			case McsPackage.MC_SYSTEM: {
 				MCSystem mcSystem = (MCSystem)theEObject;
 				T result = caseMCSystem(mcSystem);
 				if (result == null) result = caseMCSElement(mcSystem);
@@ -103,7 +103,7 @@ public class ArtifactSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ArtifactPackage.TASK: {
+			case McsPackage.TASK: {
 				Task task = (Task)theEObject;
 				T result = caseTask(task);
 				if (result == null) result = caseMCSElement(task);
@@ -114,7 +114,7 @@ public class ArtifactSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ArtifactPackage.CRITICAL_SECTION: {
+			case McsPackage.CRITICAL_SECTION: {
 				CriticalSection criticalSection = (CriticalSection)theEObject;
 				T result = caseCriticalSection(criticalSection);
 				if (result == null) result = caseMCSElement(criticalSection);
@@ -125,7 +125,7 @@ public class ArtifactSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case ArtifactPackage.SEMAPHORE: {
+			case McsPackage.SEMAPHORE: {
 				Semaphore semaphore = (Semaphore)theEObject;
 				T result = caseSemaphore(semaphore);
 				if (result == null) result = caseMCSElement(semaphore);
@@ -306,4 +306,4 @@ public class ArtifactSwitch<T> extends Switch<T> {
 		return null;
 	}
 
-} //ArtifactSwitch
+} //McsSwitch

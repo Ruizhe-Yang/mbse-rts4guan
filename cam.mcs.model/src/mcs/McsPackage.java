@@ -1,6 +1,6 @@
 /**
  */
-package artifact;
+package mcs;
 
 import base.BasePackage;
 
@@ -21,18 +21,18 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see artifact.ArtifactFactory
+ * @see mcs.McsFactory
  * @model kind="package"
  * @generated
  */
-public interface ArtifactPackage extends EPackage {
+public interface McsPackage extends EPackage {
 	/**
 	 * The package name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNAME = "artifact";
+	String eNAME = "mcs";
 
 	/**
 	 * The package namespace URI.
@@ -48,7 +48,7 @@ public interface ArtifactPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	String eNS_PREFIX = "artifact_";
+	String eNS_PREFIX = "mcs_";
 
 	/**
 	 * The singleton instance of the package.
@@ -56,14 +56,14 @@ public interface ArtifactPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ArtifactPackage eINSTANCE = artifact.impl.ArtifactPackageImpl.init();
+	McsPackage eINSTANCE = mcs.impl.McsPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link artifact.impl.MCSElementImpl <em>MCS Element</em>}' class.
+	 * The meta object id for the '{@link mcs.impl.MCSElementImpl <em>MCS Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.impl.MCSElementImpl
-	 * @see artifact.impl.ArtifactPackageImpl#getMCSElement()
+	 * @see mcs.impl.MCSElementImpl
+	 * @see mcs.impl.McsPackageImpl#getMCSElement()
 	 * @generated
 	 */
 	int MCS_ELEMENT = 0;
@@ -168,11 +168,11 @@ public interface ArtifactPackage extends EPackage {
 	int MCS_ELEMENT_FEATURE_COUNT = BasePackage.ARTIFACT_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link artifact.impl.CoreImpl <em>Core</em>}' class.
+	 * The meta object id for the '{@link mcs.impl.CoreImpl <em>Core</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.impl.CoreImpl
-	 * @see artifact.impl.ArtifactPackageImpl#getCore()
+	 * @see mcs.impl.CoreImpl
+	 * @see mcs.impl.McsPackageImpl#getCore()
 	 * @generated
 	 */
 	int CORE = 1;
@@ -313,11 +313,11 @@ public interface ArtifactPackage extends EPackage {
 	int CORE_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link artifact.impl.MCSystemImpl <em>MC System</em>}' class.
+	 * The meta object id for the '{@link mcs.impl.MCSystemImpl <em>MC System</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.impl.MCSystemImpl
-	 * @see artifact.impl.ArtifactPackageImpl#getMCSystem()
+	 * @see mcs.impl.MCSystemImpl
+	 * @see mcs.impl.McsPackageImpl#getMCSystem()
 	 * @generated
 	 */
 	int MC_SYSTEM = 2;
@@ -485,11 +485,11 @@ public interface ArtifactPackage extends EPackage {
 	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The meta object id for the '{@link artifact.impl.TaskImpl <em>Task</em>}' class.
+	 * The meta object id for the '{@link mcs.impl.TaskImpl <em>Task</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.impl.TaskImpl
-	 * @see artifact.impl.ArtifactPackageImpl#getTask()
+	 * @see mcs.impl.TaskImpl
+	 * @see mcs.impl.McsPackageImpl#getTask()
 	 * @generated
 	 */
 	int TASK = 3;
@@ -738,11 +738,11 @@ public interface ArtifactPackage extends EPackage {
 	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 16;
 
 	/**
-	 * The meta object id for the '{@link artifact.impl.CriticalSectionImpl <em>Critical Section</em>}' class.
+	 * The meta object id for the '{@link mcs.impl.CriticalSectionImpl <em>Critical Section</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.impl.CriticalSectionImpl
-	 * @see artifact.impl.ArtifactPackageImpl#getCriticalSection()
+	 * @see mcs.impl.CriticalSectionImpl
+	 * @see mcs.impl.McsPackageImpl#getCriticalSection()
 	 * @generated
 	 */
 	int CRITICAL_SECTION = 4;
@@ -901,11 +901,11 @@ public interface ArtifactPackage extends EPackage {
 	int CRITICAL_SECTION_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
-	 * The meta object id for the '{@link artifact.impl.SemaphoreImpl <em>Semaphore</em>}' class.
+	 * The meta object id for the '{@link mcs.impl.SemaphoreImpl <em>Semaphore</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.impl.SemaphoreImpl
-	 * @see artifact.impl.ArtifactPackageImpl#getSemaphore()
+	 * @see mcs.impl.SemaphoreImpl
+	 * @see mcs.impl.McsPackageImpl#getSemaphore()
 	 * @generated
 	 */
 	int SEMAPHORE = 5;
@@ -1046,530 +1046,529 @@ public interface ArtifactPackage extends EPackage {
 	int SEMAPHORE_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The meta object id for the '{@link artifact.Status <em>Status</em>}' enum.
+	 * The meta object id for the '{@link mcs.Status <em>Status</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.Status
-	 * @see artifact.impl.ArtifactPackageImpl#getStatus()
+	 * @see mcs.Status
+	 * @see mcs.impl.McsPackageImpl#getStatus()
 	 * @generated
 	 */
 	int STATUS = 6;
 
 	/**
-	 * The meta object id for the '{@link artifact.Criticality <em>Criticality</em>}' enum.
+	 * The meta object id for the '{@link mcs.Criticality <em>Criticality</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.Criticality
-	 * @see artifact.impl.ArtifactPackageImpl#getCriticality()
+	 * @see mcs.Criticality
+	 * @see mcs.impl.McsPackageImpl#getCriticality()
 	 * @generated
 	 */
 	int CRITICALITY = 7;
 
-
 	/**
-	 * The meta object id for the '{@link artifact.WorkingState <em>Working State</em>}' enum.
+	 * The meta object id for the '{@link mcs.WorkingState <em>Working State</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see artifact.WorkingState
-	 * @see artifact.impl.ArtifactPackageImpl#getWorkingState()
+	 * @see mcs.WorkingState
+	 * @see mcs.impl.McsPackageImpl#getWorkingState()
 	 * @generated
 	 */
 	int WORKING_STATE = 8;
 
 
 	/**
-	 * Returns the meta object for class '{@link artifact.MCSElement <em>MCS Element</em>}'.
+	 * Returns the meta object for class '{@link mcs.MCSElement <em>MCS Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>MCS Element</em>'.
-	 * @see artifact.MCSElement
+	 * @see mcs.MCSElement
 	 * @generated
 	 */
 	EClass getMCSElement();
 
 	/**
-	 * Returns the meta object for class '{@link artifact.Core <em>Core</em>}'.
+	 * Returns the meta object for class '{@link mcs.Core <em>Core</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Core</em>'.
-	 * @see artifact.Core
+	 * @see mcs.Core
 	 * @generated
 	 */
 	EClass getCore();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Core#getTime <em>Time</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Core#getTime <em>Time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Time</em>'.
-	 * @see artifact.Core#getTime()
+	 * @see mcs.Core#getTime()
 	 * @see #getCore()
 	 * @generated
 	 */
 	EAttribute getCore_Time();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Core#isLocked <em>Locked</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Core#isLocked <em>Locked</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Locked</em>'.
-	 * @see artifact.Core#isLocked()
+	 * @see mcs.Core#isLocked()
 	 * @see #getCore()
 	 * @generated
 	 */
 	EAttribute getCore_Locked();
 
 	/**
-	 * Returns the meta object for the reference '{@link artifact.Core#getCurrent_task <em>Current task</em>}'.
+	 * Returns the meta object for the reference '{@link mcs.Core#getCurrent_task <em>Current task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Current task</em>'.
-	 * @see artifact.Core#getCurrent_task()
+	 * @see mcs.Core#getCurrent_task()
 	 * @see #getCore()
 	 * @generated
 	 */
 	EReference getCore_Current_task();
 
 	/**
-	 * Returns the meta object for the reference list '{@link artifact.Core#getQueue <em>Queue</em>}'.
+	 * Returns the meta object for the reference list '{@link mcs.Core#getQueue <em>Queue</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Queue</em>'.
-	 * @see artifact.Core#getQueue()
+	 * @see mcs.Core#getQueue()
 	 * @see #getCore()
 	 * @generated
 	 */
 	EReference getCore_Queue();
 
 	/**
-	 * Returns the meta object for class '{@link artifact.MCSystem <em>MC System</em>}'.
+	 * Returns the meta object for class '{@link mcs.MCSystem <em>MC System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>MC System</em>'.
-	 * @see artifact.MCSystem
+	 * @see mcs.MCSystem
 	 * @generated
 	 */
 	EClass getMCSystem();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.MCSystem#getCriticality <em>Criticality</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.MCSystem#getCriticality <em>Criticality</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Criticality</em>'.
-	 * @see artifact.MCSystem#getCriticality()
+	 * @see mcs.MCSystem#getCriticality()
 	 * @see #getMCSystem()
 	 * @generated
 	 */
 	EAttribute getMCSystem_Criticality();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.MCSystem#getCeiling_priority <em>Ceiling priority</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.MCSystem#getCeiling_priority <em>Ceiling priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Ceiling priority</em>'.
-	 * @see artifact.MCSystem#getCeiling_priority()
+	 * @see mcs.MCSystem#getCeiling_priority()
 	 * @see #getMCSystem()
 	 * @generated
 	 */
 	EAttribute getMCSystem_Ceiling_priority();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.MCSystem#getStatus <em>Status</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.MCSystem#getStatus <em>Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Status</em>'.
-	 * @see artifact.MCSystem#getStatus()
+	 * @see mcs.MCSystem#getStatus()
 	 * @see #getMCSystem()
 	 * @generated
 	 */
 	EAttribute getMCSystem_Status();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link artifact.MCSystem#getResources <em>Resources</em>}'.
+	 * Returns the meta object for the containment reference list '{@link mcs.MCSystem#getResources <em>Resources</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Resources</em>'.
-	 * @see artifact.MCSystem#getResources()
+	 * @see mcs.MCSystem#getResources()
 	 * @see #getMCSystem()
 	 * @generated
 	 */
 	EReference getMCSystem_Resources();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link artifact.MCSystem#getTasks <em>Tasks</em>}'.
+	 * Returns the meta object for the containment reference list '{@link mcs.MCSystem#getTasks <em>Tasks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Tasks</em>'.
-	 * @see artifact.MCSystem#getTasks()
+	 * @see mcs.MCSystem#getTasks()
 	 * @see #getMCSystem()
 	 * @generated
 	 */
 	EReference getMCSystem_Tasks();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link artifact.MCSystem#getCritical_sections <em>Critical sections</em>}'.
+	 * Returns the meta object for the containment reference list '{@link mcs.MCSystem#getCritical_sections <em>Critical sections</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Critical sections</em>'.
-	 * @see artifact.MCSystem#getCritical_sections()
+	 * @see mcs.MCSystem#getCritical_sections()
 	 * @see #getMCSystem()
 	 * @generated
 	 */
 	EReference getMCSystem_Critical_sections();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link artifact.MCSystem#getCore <em>Core</em>}'.
+	 * Returns the meta object for the containment reference '{@link mcs.MCSystem#getCore <em>Core</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Core</em>'.
-	 * @see artifact.MCSystem#getCore()
+	 * @see mcs.MCSystem#getCore()
 	 * @see #getMCSystem()
 	 * @generated
 	 */
 	EReference getMCSystem_Core();
 
 	/**
-	 * Returns the meta object for class '{@link artifact.Task <em>Task</em>}'.
+	 * Returns the meta object for class '{@link mcs.Task <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Task</em>'.
-	 * @see artifact.Task
+	 * @see mcs.Task
 	 * @generated
 	 */
 	EClass getTask();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getState <em>State</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getState <em>State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>State</em>'.
-	 * @see artifact.Task#getState()
+	 * @see mcs.Task#getState()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_State();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getTimeleft <em>Timeleft</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getTimeleft <em>Timeleft</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Timeleft</em>'.
-	 * @see artifact.Task#getTimeleft()
+	 * @see mcs.Task#getTimeleft()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Timeleft();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getPriority <em>Priority</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getPriority <em>Priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Priority</em>'.
-	 * @see artifact.Task#getPriority()
+	 * @see mcs.Task#getPriority()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Priority();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getPeriod <em>Period</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getPeriod <em>Period</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Period</em>'.
-	 * @see artifact.Task#getPeriod()
+	 * @see mcs.Task#getPeriod()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Period();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getDeadline <em>Deadline</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getDeadline <em>Deadline</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Deadline</em>'.
-	 * @see artifact.Task#getDeadline()
+	 * @see mcs.Task#getDeadline()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Deadline();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getUtilisation <em>Utilisation</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getUtilisation <em>Utilisation</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Utilisation</em>'.
-	 * @see artifact.Task#getUtilisation()
+	 * @see mcs.Task#getUtilisation()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Utilisation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getComputation_time <em>Computation time</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getComputation_time <em>Computation time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Computation time</em>'.
-	 * @see artifact.Task#getComputation_time()
+	 * @see mcs.Task#getComputation_time()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Computation_time();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getWcet_low <em>Wcet low</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getWcet_low <em>Wcet low</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Wcet low</em>'.
-	 * @see artifact.Task#getWcet_low()
+	 * @see mcs.Task#getWcet_low()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Wcet_low();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getCstime <em>Cstime</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getCstime <em>Cstime</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Cstime</em>'.
-	 * @see artifact.Task#getCstime()
+	 * @see mcs.Task#getCstime()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Cstime();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getWcet_high <em>Wcet high</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getWcet_high <em>Wcet high</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Wcet high</em>'.
-	 * @see artifact.Task#getWcet_high()
+	 * @see mcs.Task#getWcet_high()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Wcet_high();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getCriticality <em>Criticality</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getCriticality <em>Criticality</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Criticality</em>'.
-	 * @see artifact.Task#getCriticality()
+	 * @see mcs.Task#getCriticality()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Criticality();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getDynamic_priority <em>Dynamic priority</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getDynamic_priority <em>Dynamic priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Dynamic priority</em>'.
-	 * @see artifact.Task#getDynamic_priority()
+	 * @see mcs.Task#getDynamic_priority()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Dynamic_priority();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getOffset <em>Offset</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getOffset <em>Offset</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Offset</em>'.
-	 * @see artifact.Task#getOffset()
+	 * @see mcs.Task#getOffset()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Offset();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getRelease_time <em>Release time</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getRelease_time <em>Release time</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Release time</em>'.
-	 * @see artifact.Task#getRelease_time()
+	 * @see mcs.Task#getRelease_time()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Release_time();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Task#getCurrent_cs <em>Current cs</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Task#getCurrent_cs <em>Current cs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Current cs</em>'.
-	 * @see artifact.Task#getCurrent_cs()
+	 * @see mcs.Task#getCurrent_cs()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EAttribute getTask_Current_cs();
 
 	/**
-	 * Returns the meta object for the reference '{@link artifact.Task#getCritical_section <em>Critical section</em>}'.
+	 * Returns the meta object for the reference '{@link mcs.Task#getCritical_section <em>Critical section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Critical section</em>'.
-	 * @see artifact.Task#getCritical_section()
+	 * @see mcs.Task#getCritical_section()
 	 * @see #getTask()
 	 * @generated
 	 */
 	EReference getTask_Critical_section();
 
 	/**
-	 * Returns the meta object for class '{@link artifact.CriticalSection <em>Critical Section</em>}'.
+	 * Returns the meta object for class '{@link mcs.CriticalSection <em>Critical Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Critical Section</em>'.
-	 * @see artifact.CriticalSection
+	 * @see mcs.CriticalSection
 	 * @generated
 	 */
 	EClass getCriticalSection();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.CriticalSection#getCriticality <em>Criticality</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#getCriticality <em>Criticality</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Criticality</em>'.
-	 * @see artifact.CriticalSection#getCriticality()
+	 * @see mcs.CriticalSection#getCriticality()
 	 * @see #getCriticalSection()
 	 * @generated
 	 */
 	EAttribute getCriticalSection_Criticality();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.CriticalSection#getStart <em>Start</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#getStart <em>Start</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Start</em>'.
-	 * @see artifact.CriticalSection#getStart()
+	 * @see mcs.CriticalSection#getStart()
 	 * @see #getCriticalSection()
 	 * @generated
 	 */
 	EAttribute getCriticalSection_Start();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.CriticalSection#getExecution <em>Execution</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#getExecution <em>Execution</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Execution</em>'.
-	 * @see artifact.CriticalSection#getExecution()
+	 * @see mcs.CriticalSection#getExecution()
 	 * @see #getCriticalSection()
 	 * @generated
 	 */
 	EAttribute getCriticalSection_Execution();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.CriticalSection#getElapsed <em>Elapsed</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#getElapsed <em>Elapsed</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Elapsed</em>'.
-	 * @see artifact.CriticalSection#getElapsed()
+	 * @see mcs.CriticalSection#getElapsed()
 	 * @see #getCriticalSection()
 	 * @generated
 	 */
 	EAttribute getCriticalSection_Elapsed();
 
 	/**
-	 * Returns the meta object for the reference list '{@link artifact.CriticalSection#getTasks <em>Tasks</em>}'.
+	 * Returns the meta object for the reference list '{@link mcs.CriticalSection#getTasks <em>Tasks</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Tasks</em>'.
-	 * @see artifact.CriticalSection#getTasks()
+	 * @see mcs.CriticalSection#getTasks()
 	 * @see #getCriticalSection()
 	 * @generated
 	 */
 	EReference getCriticalSection_Tasks();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link artifact.CriticalSection#getSemaphore <em>Semaphore</em>}'.
+	 * Returns the meta object for the containment reference '{@link mcs.CriticalSection#getSemaphore <em>Semaphore</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Semaphore</em>'.
-	 * @see artifact.CriticalSection#getSemaphore()
+	 * @see mcs.CriticalSection#getSemaphore()
 	 * @see #getCriticalSection()
 	 * @generated
 	 */
 	EReference getCriticalSection_Semaphore();
 
 	/**
-	 * Returns the meta object for class '{@link artifact.Semaphore <em>Semaphore</em>}'.
+	 * Returns the meta object for class '{@link mcs.Semaphore <em>Semaphore</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Semaphore</em>'.
-	 * @see artifact.Semaphore
+	 * @see mcs.Semaphore
 	 * @generated
 	 */
 	EClass getSemaphore();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Semaphore#isLocked <em>Locked</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Semaphore#isLocked <em>Locked</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Locked</em>'.
-	 * @see artifact.Semaphore#isLocked()
+	 * @see mcs.Semaphore#isLocked()
 	 * @see #getSemaphore()
 	 * @generated
 	 */
 	EAttribute getSemaphore_Locked();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Semaphore#getInitial_priority <em>Initial priority</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Semaphore#getInitial_priority <em>Initial priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Initial priority</em>'.
-	 * @see artifact.Semaphore#getInitial_priority()
+	 * @see mcs.Semaphore#getInitial_priority()
 	 * @see #getSemaphore()
 	 * @generated
 	 */
 	EAttribute getSemaphore_Initial_priority();
 
 	/**
-	 * Returns the meta object for the attribute '{@link artifact.Semaphore#getCeiling_priority <em>Ceiling priority</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.Semaphore#getCeiling_priority <em>Ceiling priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Ceiling priority</em>'.
-	 * @see artifact.Semaphore#getCeiling_priority()
+	 * @see mcs.Semaphore#getCeiling_priority()
 	 * @see #getSemaphore()
 	 * @generated
 	 */
 	EAttribute getSemaphore_Ceiling_priority();
 
 	/**
-	 * Returns the meta object for the reference list '{@link artifact.Semaphore#getAcquisition <em>Acquisition</em>}'.
+	 * Returns the meta object for the reference list '{@link mcs.Semaphore#getAcquisition <em>Acquisition</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Acquisition</em>'.
-	 * @see artifact.Semaphore#getAcquisition()
+	 * @see mcs.Semaphore#getAcquisition()
 	 * @see #getSemaphore()
 	 * @generated
 	 */
 	EReference getSemaphore_Acquisition();
 
 	/**
-	 * Returns the meta object for enum '{@link artifact.Status <em>Status</em>}'.
+	 * Returns the meta object for enum '{@link mcs.Status <em>Status</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Status</em>'.
-	 * @see artifact.Status
+	 * @see mcs.Status
 	 * @generated
 	 */
 	EEnum getStatus();
 
 	/**
-	 * Returns the meta object for enum '{@link artifact.Criticality <em>Criticality</em>}'.
+	 * Returns the meta object for enum '{@link mcs.Criticality <em>Criticality</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Criticality</em>'.
-	 * @see artifact.Criticality
+	 * @see mcs.Criticality
 	 * @generated
 	 */
 	EEnum getCriticality();
 
 	/**
-	 * Returns the meta object for enum '{@link artifact.WorkingState <em>Working State</em>}'.
+	 * Returns the meta object for enum '{@link mcs.WorkingState <em>Working State</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for enum '<em>Working State</em>'.
-	 * @see artifact.WorkingState
+	 * @see mcs.WorkingState
 	 * @generated
 	 */
 	EEnum getWorkingState();
@@ -1581,7 +1580,7 @@ public interface ArtifactPackage extends EPackage {
 	 * @return the factory that creates the instances of the model.
 	 * @generated
 	 */
-	ArtifactFactory getArtifactFactory();
+	McsFactory getMcsFactory();
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1597,21 +1596,21 @@ public interface ArtifactPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link artifact.impl.MCSElementImpl <em>MCS Element</em>}' class.
+		 * The meta object literal for the '{@link mcs.impl.MCSElementImpl <em>MCS Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.impl.MCSElementImpl
-		 * @see artifact.impl.ArtifactPackageImpl#getMCSElement()
+		 * @see mcs.impl.MCSElementImpl
+		 * @see mcs.impl.McsPackageImpl#getMCSElement()
 		 * @generated
 		 */
 		EClass MCS_ELEMENT = eINSTANCE.getMCSElement();
 
 		/**
-		 * The meta object literal for the '{@link artifact.impl.CoreImpl <em>Core</em>}' class.
+		 * The meta object literal for the '{@link mcs.impl.CoreImpl <em>Core</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.impl.CoreImpl
-		 * @see artifact.impl.ArtifactPackageImpl#getCore()
+		 * @see mcs.impl.CoreImpl
+		 * @see mcs.impl.McsPackageImpl#getCore()
 		 * @generated
 		 */
 		EClass CORE = eINSTANCE.getCore();
@@ -1649,11 +1648,11 @@ public interface ArtifactPackage extends EPackage {
 		EReference CORE__QUEUE = eINSTANCE.getCore_Queue();
 
 		/**
-		 * The meta object literal for the '{@link artifact.impl.MCSystemImpl <em>MC System</em>}' class.
+		 * The meta object literal for the '{@link mcs.impl.MCSystemImpl <em>MC System</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.impl.MCSystemImpl
-		 * @see artifact.impl.ArtifactPackageImpl#getMCSystem()
+		 * @see mcs.impl.MCSystemImpl
+		 * @see mcs.impl.McsPackageImpl#getMCSystem()
 		 * @generated
 		 */
 		EClass MC_SYSTEM = eINSTANCE.getMCSystem();
@@ -1715,11 +1714,11 @@ public interface ArtifactPackage extends EPackage {
 		EReference MC_SYSTEM__CORE = eINSTANCE.getMCSystem_Core();
 
 		/**
-		 * The meta object literal for the '{@link artifact.impl.TaskImpl <em>Task</em>}' class.
+		 * The meta object literal for the '{@link mcs.impl.TaskImpl <em>Task</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.impl.TaskImpl
-		 * @see artifact.impl.ArtifactPackageImpl#getTask()
+		 * @see mcs.impl.TaskImpl
+		 * @see mcs.impl.McsPackageImpl#getTask()
 		 * @generated
 		 */
 		EClass TASK = eINSTANCE.getTask();
@@ -1853,11 +1852,11 @@ public interface ArtifactPackage extends EPackage {
 		EReference TASK__CRITICAL_SECTION = eINSTANCE.getTask_Critical_section();
 
 		/**
-		 * The meta object literal for the '{@link artifact.impl.CriticalSectionImpl <em>Critical Section</em>}' class.
+		 * The meta object literal for the '{@link mcs.impl.CriticalSectionImpl <em>Critical Section</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.impl.CriticalSectionImpl
-		 * @see artifact.impl.ArtifactPackageImpl#getCriticalSection()
+		 * @see mcs.impl.CriticalSectionImpl
+		 * @see mcs.impl.McsPackageImpl#getCriticalSection()
 		 * @generated
 		 */
 		EClass CRITICAL_SECTION = eINSTANCE.getCriticalSection();
@@ -1911,11 +1910,11 @@ public interface ArtifactPackage extends EPackage {
 		EReference CRITICAL_SECTION__SEMAPHORE = eINSTANCE.getCriticalSection_Semaphore();
 
 		/**
-		 * The meta object literal for the '{@link artifact.impl.SemaphoreImpl <em>Semaphore</em>}' class.
+		 * The meta object literal for the '{@link mcs.impl.SemaphoreImpl <em>Semaphore</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.impl.SemaphoreImpl
-		 * @see artifact.impl.ArtifactPackageImpl#getSemaphore()
+		 * @see mcs.impl.SemaphoreImpl
+		 * @see mcs.impl.McsPackageImpl#getSemaphore()
 		 * @generated
 		 */
 		EClass SEMAPHORE = eINSTANCE.getSemaphore();
@@ -1953,35 +1952,35 @@ public interface ArtifactPackage extends EPackage {
 		EReference SEMAPHORE__ACQUISITION = eINSTANCE.getSemaphore_Acquisition();
 
 		/**
-		 * The meta object literal for the '{@link artifact.Status <em>Status</em>}' enum.
+		 * The meta object literal for the '{@link mcs.Status <em>Status</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.Status
-		 * @see artifact.impl.ArtifactPackageImpl#getStatus()
+		 * @see mcs.Status
+		 * @see mcs.impl.McsPackageImpl#getStatus()
 		 * @generated
 		 */
 		EEnum STATUS = eINSTANCE.getStatus();
 
 		/**
-		 * The meta object literal for the '{@link artifact.Criticality <em>Criticality</em>}' enum.
+		 * The meta object literal for the '{@link mcs.Criticality <em>Criticality</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.Criticality
-		 * @see artifact.impl.ArtifactPackageImpl#getCriticality()
+		 * @see mcs.Criticality
+		 * @see mcs.impl.McsPackageImpl#getCriticality()
 		 * @generated
 		 */
 		EEnum CRITICALITY = eINSTANCE.getCriticality();
 
 		/**
-		 * The meta object literal for the '{@link artifact.WorkingState <em>Working State</em>}' enum.
+		 * The meta object literal for the '{@link mcs.WorkingState <em>Working State</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see artifact.WorkingState
-		 * @see artifact.impl.ArtifactPackageImpl#getWorkingState()
+		 * @see mcs.WorkingState
+		 * @see mcs.impl.McsPackageImpl#getWorkingState()
 		 * @generated
 		 */
 		EEnum WORKING_STATE = eINSTANCE.getWorkingState();
 
 	}
 
-} //ArtifactPackage
+} //McsPackage

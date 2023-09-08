@@ -1,6 +1,6 @@
 /**
  */
-package artifact;
+package mcs;
 
 import base.ArtifactElement;
 
@@ -10,7 +10,7 @@ import base.ArtifactElement;
  * <!-- end-user-doc -->
  *
  *
- * @see artifact.ArtifactPackage#getMCSElement()
+ * @see mcs.McsPackage#getMCSElement()
  * @model abstract="true"
  * @generated
  */

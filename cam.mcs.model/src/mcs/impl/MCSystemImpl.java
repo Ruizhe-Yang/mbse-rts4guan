@@ -1,18 +1,17 @@
 /**
  */
-package artifact.impl;
+package mcs.impl;
 
-import artifact.ArtifactPackage;
-import artifact.Core;
-import artifact.CriticalSection;
-import artifact.Criticality;
-import artifact.MCSystem;
-import artifact.Semaphore;
-import artifact.Status;
-import artifact.Task;
-
-import artifact.TaskSet;
 import java.util.Collection;
+
+import mcs.Core;
+import mcs.CriticalSection;
+import mcs.Criticality;
+import mcs.MCSystem;
+import mcs.McsPackage;
+import mcs.Semaphore;
+import mcs.Status;
+import mcs.Task;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -35,13 +34,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link artifact.impl.MCSystemImpl#getCriticality <em>Criticality</em>}</li>
- *   <li>{@link artifact.impl.MCSystemImpl#getCeiling_priority <em>Ceiling priority</em>}</li>
- *   <li>{@link artifact.impl.MCSystemImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link artifact.impl.MCSystemImpl#getResources <em>Resources</em>}</li>
- *   <li>{@link artifact.impl.MCSystemImpl#getTasks <em>Tasks</em>}</li>
- *   <li>{@link artifact.impl.MCSystemImpl#getCritical_sections <em>Critical sections</em>}</li>
- *   <li>{@link artifact.impl.MCSystemImpl#getCore <em>Core</em>}</li>
+ *   <li>{@link mcs.impl.MCSystemImpl#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.impl.MCSystemImpl#getCeiling_priority <em>Ceiling priority</em>}</li>
+ *   <li>{@link mcs.impl.MCSystemImpl#getStatus <em>Status</em>}</li>
+ *   <li>{@link mcs.impl.MCSystemImpl#getResources <em>Resources</em>}</li>
+ *   <li>{@link mcs.impl.MCSystemImpl#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link mcs.impl.MCSystemImpl#getCritical_sections <em>Critical sections</em>}</li>
+ *   <li>{@link mcs.impl.MCSystemImpl#getCore <em>Core</em>}</li>
  * </ul>
  *
  * @generated
@@ -163,7 +162,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ArtifactPackage.Literals.MC_SYSTEM;
+		return McsPackage.Literals.MC_SYSTEM;
 	}
 
 	/**
@@ -186,7 +185,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 		Criticality oldCriticality = criticality;
 		criticality = newCriticality == null ? CRITICALITY_EDEFAULT : newCriticality;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.MC_SYSTEM__CRITICALITY, oldCriticality, criticality));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.MC_SYSTEM__CRITICALITY, oldCriticality, criticality));
 	}
 
 	/**
@@ -209,7 +208,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 		int oldCeiling_priority = ceiling_priority;
 		ceiling_priority = newCeiling_priority;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.MC_SYSTEM__CEILING_PRIORITY, oldCeiling_priority, ceiling_priority));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.MC_SYSTEM__CEILING_PRIORITY, oldCeiling_priority, ceiling_priority));
 	}
 
 	/**
@@ -232,7 +231,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 		Status oldStatus = status;
 		status = newStatus == null ? STATUS_EDEFAULT : newStatus;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.MC_SYSTEM__STATUS, oldStatus, status));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.MC_SYSTEM__STATUS, oldStatus, status));
 	}
 
 	/**
@@ -243,7 +242,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public EList<Semaphore> getResources() {
 		if (resources == null) {
-			resources = new EObjectContainmentEList<Semaphore>(Semaphore.class, this, ArtifactPackage.MC_SYSTEM__RESOURCES);
+			resources = new EObjectContainmentEList<Semaphore>(Semaphore.class, this, McsPackage.MC_SYSTEM__RESOURCES);
 		}
 		return resources;
 	}
@@ -256,7 +255,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public EList<Task> getTasks() {
 		if (tasks == null) {
-			tasks = new EObjectContainmentEList<Task>(Task.class, this, ArtifactPackage.MC_SYSTEM__TASKS);
+			tasks = new EObjectContainmentEList<Task>(Task.class, this, McsPackage.MC_SYSTEM__TASKS);
 		}
 		return tasks;
 	}
@@ -269,7 +268,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public EList<CriticalSection> getCritical_sections() {
 		if (critical_sections == null) {
-			critical_sections = new EObjectContainmentEList<CriticalSection>(CriticalSection.class, this, ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS);
+			critical_sections = new EObjectContainmentEList<CriticalSection>(CriticalSection.class, this, McsPackage.MC_SYSTEM__CRITICAL_SECTIONS);
 		}
 		return critical_sections;
 	}
@@ -293,7 +292,7 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 		Core oldCore = core;
 		core = newCore;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ArtifactPackage.MC_SYSTEM__CORE, oldCore, newCore);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, McsPackage.MC_SYSTEM__CORE, oldCore, newCore);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -309,14 +308,14 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 		if (newCore != core) {
 			NotificationChain msgs = null;
 			if (core != null)
-				msgs = ((InternalEObject)core).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ArtifactPackage.MC_SYSTEM__CORE, null, msgs);
+				msgs = ((InternalEObject)core).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - McsPackage.MC_SYSTEM__CORE, null, msgs);
 			if (newCore != null)
-				msgs = ((InternalEObject)newCore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ArtifactPackage.MC_SYSTEM__CORE, null, msgs);
+				msgs = ((InternalEObject)newCore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - McsPackage.MC_SYSTEM__CORE, null, msgs);
 			msgs = basicSetCore(newCore, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.MC_SYSTEM__CORE, newCore, newCore));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.MC_SYSTEM__CORE, newCore, newCore));
 	}
 
 	/**
@@ -327,13 +326,13 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ArtifactPackage.MC_SYSTEM__RESOURCES:
+			case McsPackage.MC_SYSTEM__RESOURCES:
 				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
-			case ArtifactPackage.MC_SYSTEM__TASKS:
+			case McsPackage.MC_SYSTEM__TASKS:
 				return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
-			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+			case McsPackage.MC_SYSTEM__CRITICAL_SECTIONS:
 				return ((InternalEList<?>)getCritical_sections()).basicRemove(otherEnd, msgs);
-			case ArtifactPackage.MC_SYSTEM__CORE:
+			case McsPackage.MC_SYSTEM__CORE:
 				return basicSetCore(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -347,19 +346,19 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ArtifactPackage.MC_SYSTEM__CRITICALITY:
+			case McsPackage.MC_SYSTEM__CRITICALITY:
 				return getCriticality();
-			case ArtifactPackage.MC_SYSTEM__CEILING_PRIORITY:
+			case McsPackage.MC_SYSTEM__CEILING_PRIORITY:
 				return getCeiling_priority();
-			case ArtifactPackage.MC_SYSTEM__STATUS:
+			case McsPackage.MC_SYSTEM__STATUS:
 				return getStatus();
-			case ArtifactPackage.MC_SYSTEM__RESOURCES:
+			case McsPackage.MC_SYSTEM__RESOURCES:
 				return getResources();
-			case ArtifactPackage.MC_SYSTEM__TASKS:
+			case McsPackage.MC_SYSTEM__TASKS:
 				return getTasks();
-			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+			case McsPackage.MC_SYSTEM__CRITICAL_SECTIONS:
 				return getCritical_sections();
-			case ArtifactPackage.MC_SYSTEM__CORE:
+			case McsPackage.MC_SYSTEM__CORE:
 				return getCore();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -374,28 +373,28 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ArtifactPackage.MC_SYSTEM__CRITICALITY:
+			case McsPackage.MC_SYSTEM__CRITICALITY:
 				setCriticality((Criticality)newValue);
 				return;
-			case ArtifactPackage.MC_SYSTEM__CEILING_PRIORITY:
+			case McsPackage.MC_SYSTEM__CEILING_PRIORITY:
 				setCeiling_priority((Integer)newValue);
 				return;
-			case ArtifactPackage.MC_SYSTEM__STATUS:
+			case McsPackage.MC_SYSTEM__STATUS:
 				setStatus((Status)newValue);
 				return;
-			case ArtifactPackage.MC_SYSTEM__RESOURCES:
+			case McsPackage.MC_SYSTEM__RESOURCES:
 				getResources().clear();
 				getResources().addAll((Collection<? extends Semaphore>)newValue);
 				return;
-			case ArtifactPackage.MC_SYSTEM__TASKS:
+			case McsPackage.MC_SYSTEM__TASKS:
 				getTasks().clear();
 				getTasks().addAll((Collection<? extends Task>)newValue);
 				return;
-			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+			case McsPackage.MC_SYSTEM__CRITICAL_SECTIONS:
 				getCritical_sections().clear();
 				getCritical_sections().addAll((Collection<? extends CriticalSection>)newValue);
 				return;
-			case ArtifactPackage.MC_SYSTEM__CORE:
+			case McsPackage.MC_SYSTEM__CORE:
 				setCore((Core)newValue);
 				return;
 		}
@@ -410,25 +409,25 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.MC_SYSTEM__CRITICALITY:
+			case McsPackage.MC_SYSTEM__CRITICALITY:
 				setCriticality(CRITICALITY_EDEFAULT);
 				return;
-			case ArtifactPackage.MC_SYSTEM__CEILING_PRIORITY:
+			case McsPackage.MC_SYSTEM__CEILING_PRIORITY:
 				setCeiling_priority(CEILING_PRIORITY_EDEFAULT);
 				return;
-			case ArtifactPackage.MC_SYSTEM__STATUS:
+			case McsPackage.MC_SYSTEM__STATUS:
 				setStatus(STATUS_EDEFAULT);
 				return;
-			case ArtifactPackage.MC_SYSTEM__RESOURCES:
+			case McsPackage.MC_SYSTEM__RESOURCES:
 				getResources().clear();
 				return;
-			case ArtifactPackage.MC_SYSTEM__TASKS:
+			case McsPackage.MC_SYSTEM__TASKS:
 				getTasks().clear();
 				return;
-			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+			case McsPackage.MC_SYSTEM__CRITICAL_SECTIONS:
 				getCritical_sections().clear();
 				return;
-			case ArtifactPackage.MC_SYSTEM__CORE:
+			case McsPackage.MC_SYSTEM__CORE:
 				setCore((Core)null);
 				return;
 		}
@@ -443,19 +442,19 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.MC_SYSTEM__CRITICALITY:
+			case McsPackage.MC_SYSTEM__CRITICALITY:
 				return criticality != CRITICALITY_EDEFAULT;
-			case ArtifactPackage.MC_SYSTEM__CEILING_PRIORITY:
+			case McsPackage.MC_SYSTEM__CEILING_PRIORITY:
 				return ceiling_priority != CEILING_PRIORITY_EDEFAULT;
-			case ArtifactPackage.MC_SYSTEM__STATUS:
+			case McsPackage.MC_SYSTEM__STATUS:
 				return status != STATUS_EDEFAULT;
-			case ArtifactPackage.MC_SYSTEM__RESOURCES:
+			case McsPackage.MC_SYSTEM__RESOURCES:
 				return resources != null && !resources.isEmpty();
-			case ArtifactPackage.MC_SYSTEM__TASKS:
+			case McsPackage.MC_SYSTEM__TASKS:
 				return tasks != null && !tasks.isEmpty();
-			case ArtifactPackage.MC_SYSTEM__CRITICAL_SECTIONS:
+			case McsPackage.MC_SYSTEM__CRITICAL_SECTIONS:
 				return critical_sections != null && !critical_sections.isEmpty();
-			case ArtifactPackage.MC_SYSTEM__CORE:
+			case McsPackage.MC_SYSTEM__CORE:
 				return core != null;
 		}
 		return super.eIsSet(featureID);

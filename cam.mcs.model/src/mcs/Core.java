@@ -1,6 +1,6 @@
 /**
  */
-package artifact;
+package mcs;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,13 +13,13 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link artifact.Core#getTime <em>Time</em>}</li>
- *   <li>{@link artifact.Core#isLocked <em>Locked</em>}</li>
- *   <li>{@link artifact.Core#getCurrent_task <em>Current task</em>}</li>
- *   <li>{@link artifact.Core#getQueue <em>Queue</em>}</li>
+ *   <li>{@link mcs.Core#getTime <em>Time</em>}</li>
+ *   <li>{@link mcs.Core#isLocked <em>Locked</em>}</li>
+ *   <li>{@link mcs.Core#getCurrent_task <em>Current task</em>}</li>
+ *   <li>{@link mcs.Core#getQueue <em>Queue</em>}</li>
  * </ul>
  *
- * @see artifact.ArtifactPackage#getCore()
+ * @see mcs.McsPackage#getCore()
  * @model
  * @generated
  */
@@ -30,14 +30,14 @@ public interface Core extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Time</em>' attribute.
 	 * @see #setTime(int)
-	 * @see artifact.ArtifactPackage#getCore_Time()
+	 * @see mcs.McsPackage#getCore_Time()
 	 * @model
 	 * @generated
 	 */
 	int getTime();
 
 	/**
-	 * Sets the value of the '{@link artifact.Core#getTime <em>Time</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Core#getTime <em>Time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Time</em>' attribute.
@@ -52,14 +52,14 @@ public interface Core extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Locked</em>' attribute.
 	 * @see #setLocked(boolean)
-	 * @see artifact.ArtifactPackage#getCore_Locked()
+	 * @see mcs.McsPackage#getCore_Locked()
 	 * @model
 	 * @generated
 	 */
 	boolean isLocked();
 
 	/**
-	 * Sets the value of the '{@link artifact.Core#isLocked <em>Locked</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Core#isLocked <em>Locked</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Locked</em>' attribute.
@@ -74,14 +74,14 @@ public interface Core extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current task</em>' reference.
 	 * @see #setCurrent_task(Task)
-	 * @see artifact.ArtifactPackage#getCore_Current_task()
+	 * @see mcs.McsPackage#getCore_Current_task()
 	 * @model
 	 * @generated
 	 */
 	Task getCurrent_task();
 
 	/**
-	 * Sets the value of the '{@link artifact.Core#getCurrent_task <em>Current task</em>}' reference.
+	 * Sets the value of the '{@link mcs.Core#getCurrent_task <em>Current task</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Current task</em>' reference.
@@ -92,11 +92,11 @@ public interface Core extends MCSElement {
 
 	/**
 	 * Returns the value of the '<em><b>Queue</b></em>' reference list.
-	 * The list contents are of type {@link artifact.Task}.
+	 * The list contents are of type {@link mcs.Task}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Queue</em>' reference list.
-	 * @see artifact.ArtifactPackage#getCore_Queue()
+	 * @see mcs.McsPackage#getCore_Queue()
 	 * @model
 	 * @generated
 	 */

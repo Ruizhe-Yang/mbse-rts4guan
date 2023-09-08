@@ -1,12 +1,12 @@
 /**
  */
-package artifact.impl;
-
-import artifact.ArtifactPackage;
-import artifact.Core;
-import artifact.Task;
+package mcs.impl;
 
 import java.util.Collection;
+
+import mcs.Core;
+import mcs.McsPackage;
+import mcs.Task;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -27,10 +27,10 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link artifact.impl.CoreImpl#getTime <em>Time</em>}</li>
- *   <li>{@link artifact.impl.CoreImpl#isLocked <em>Locked</em>}</li>
- *   <li>{@link artifact.impl.CoreImpl#getCurrent_task <em>Current task</em>}</li>
- *   <li>{@link artifact.impl.CoreImpl#getQueue <em>Queue</em>}</li>
+ *   <li>{@link mcs.impl.CoreImpl#getTime <em>Time</em>}</li>
+ *   <li>{@link mcs.impl.CoreImpl#isLocked <em>Locked</em>}</li>
+ *   <li>{@link mcs.impl.CoreImpl#getCurrent_task <em>Current task</em>}</li>
+ *   <li>{@link mcs.impl.CoreImpl#getQueue <em>Queue</em>}</li>
  * </ul>
  *
  * @generated
@@ -112,7 +112,7 @@ public class CoreImpl extends MCSElementImpl implements Core {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ArtifactPackage.Literals.CORE;
+		return McsPackage.Literals.CORE;
 	}
 
 	/**
@@ -135,7 +135,7 @@ public class CoreImpl extends MCSElementImpl implements Core {
 		int oldTime = time;
 		time = newTime;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CORE__TIME, oldTime, time));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CORE__TIME, oldTime, time));
 	}
 
 	/**
@@ -158,7 +158,7 @@ public class CoreImpl extends MCSElementImpl implements Core {
 		boolean oldLocked = locked;
 		locked = newLocked;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CORE__LOCKED, oldLocked, locked));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CORE__LOCKED, oldLocked, locked));
 	}
 
 	/**
@@ -173,7 +173,7 @@ public class CoreImpl extends MCSElementImpl implements Core {
 			current_task = (Task)eResolveProxy(oldCurrent_task);
 			if (current_task != oldCurrent_task) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, ArtifactPackage.CORE__CURRENT_TASK, oldCurrent_task, current_task));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, McsPackage.CORE__CURRENT_TASK, oldCurrent_task, current_task));
 			}
 		}
 		return current_task;
@@ -198,7 +198,7 @@ public class CoreImpl extends MCSElementImpl implements Core {
 		Task oldCurrent_task = current_task;
 		current_task = newCurrent_task;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.CORE__CURRENT_TASK, oldCurrent_task, current_task));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CORE__CURRENT_TASK, oldCurrent_task, current_task));
 	}
 
 	/**
@@ -209,7 +209,7 @@ public class CoreImpl extends MCSElementImpl implements Core {
 	@Override
 	public EList<Task> getQueue() {
 		if (queue == null) {
-			queue = new EObjectResolvingEList<Task>(Task.class, this, ArtifactPackage.CORE__QUEUE);
+			queue = new EObjectResolvingEList<Task>(Task.class, this, McsPackage.CORE__QUEUE);
 		}
 		return queue;
 	}
@@ -222,14 +222,14 @@ public class CoreImpl extends MCSElementImpl implements Core {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ArtifactPackage.CORE__TIME:
+			case McsPackage.CORE__TIME:
 				return getTime();
-			case ArtifactPackage.CORE__LOCKED:
+			case McsPackage.CORE__LOCKED:
 				return isLocked();
-			case ArtifactPackage.CORE__CURRENT_TASK:
+			case McsPackage.CORE__CURRENT_TASK:
 				if (resolve) return getCurrent_task();
 				return basicGetCurrent_task();
-			case ArtifactPackage.CORE__QUEUE:
+			case McsPackage.CORE__QUEUE:
 				return getQueue();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -244,16 +244,16 @@ public class CoreImpl extends MCSElementImpl implements Core {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ArtifactPackage.CORE__TIME:
+			case McsPackage.CORE__TIME:
 				setTime((Integer)newValue);
 				return;
-			case ArtifactPackage.CORE__LOCKED:
+			case McsPackage.CORE__LOCKED:
 				setLocked((Boolean)newValue);
 				return;
-			case ArtifactPackage.CORE__CURRENT_TASK:
+			case McsPackage.CORE__CURRENT_TASK:
 				setCurrent_task((Task)newValue);
 				return;
-			case ArtifactPackage.CORE__QUEUE:
+			case McsPackage.CORE__QUEUE:
 				getQueue().clear();
 				getQueue().addAll((Collection<? extends Task>)newValue);
 				return;
@@ -269,16 +269,16 @@ public class CoreImpl extends MCSElementImpl implements Core {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.CORE__TIME:
+			case McsPackage.CORE__TIME:
 				setTime(TIME_EDEFAULT);
 				return;
-			case ArtifactPackage.CORE__LOCKED:
+			case McsPackage.CORE__LOCKED:
 				setLocked(LOCKED_EDEFAULT);
 				return;
-			case ArtifactPackage.CORE__CURRENT_TASK:
+			case McsPackage.CORE__CURRENT_TASK:
 				setCurrent_task((Task)null);
 				return;
-			case ArtifactPackage.CORE__QUEUE:
+			case McsPackage.CORE__QUEUE:
 				getQueue().clear();
 				return;
 		}
@@ -293,13 +293,13 @@ public class CoreImpl extends MCSElementImpl implements Core {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.CORE__TIME:
+			case McsPackage.CORE__TIME:
 				return time != TIME_EDEFAULT;
-			case ArtifactPackage.CORE__LOCKED:
+			case McsPackage.CORE__LOCKED:
 				return locked != LOCKED_EDEFAULT;
-			case ArtifactPackage.CORE__CURRENT_TASK:
+			case McsPackage.CORE__CURRENT_TASK:
 				return current_task != null;
-			case ArtifactPackage.CORE__QUEUE:
+			case McsPackage.CORE__QUEUE:
 				return queue != null && !queue.isEmpty();
 		}
 		return super.eIsSet(featureID);

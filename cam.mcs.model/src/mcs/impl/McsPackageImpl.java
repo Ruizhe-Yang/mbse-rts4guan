@@ -1,23 +1,22 @@
 /**
  */
-package artifact.impl;
+package mcs.impl;
 
-import artifact.ArtifactFactory;
-import artifact.ArtifactPackage;
-import artifact.Core;
-import artifact.CriticalSection;
-import artifact.Criticality;
-import artifact.MCSElement;
-import artifact.MCSystem;
-import artifact.Semaphore;
-import artifact.Status;
-import artifact.Task;
-import artifact.TaskSet;
-
-import artifact.WorkingState;
 import base.BasePackage;
 
 import base.impl.BasePackageImpl;
+
+import mcs.Core;
+import mcs.CriticalSection;
+import mcs.Criticality;
+import mcs.MCSElement;
+import mcs.MCSystem;
+import mcs.McsFactory;
+import mcs.McsPackage;
+import mcs.Semaphore;
+import mcs.Status;
+import mcs.Task;
+import mcs.WorkingState;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -33,7 +32,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage {
+public class McsPackageImpl extends EPackageImpl implements McsPackage {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -108,12 +107,12 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see artifact.ArtifactPackage#eNS_URI
+	 * @see mcs.McsPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */
-	private ArtifactPackageImpl() {
-		super(eNS_URI, ArtifactFactory.eINSTANCE);
+	private McsPackageImpl() {
+		super(eNS_URI, McsFactory.eINSTANCE);
 	}
 	/**
 	 * <!-- begin-user-doc -->
@@ -125,7 +124,7 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	/**
 	 * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
 	 *
-	 * <p>This method is used to initialize {@link ArtifactPackage#eINSTANCE} when that field is accessed.
+	 * <p>This method is used to initialize {@link McsPackage#eINSTANCE} when that field is accessed.
 	 * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -134,12 +133,12 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @see #initializePackageContents()
 	 * @generated
 	 */
-	public static ArtifactPackage init() {
-		if (isInited) return (ArtifactPackage)EPackage.Registry.INSTANCE.getEPackage(ArtifactPackage.eNS_URI);
+	public static McsPackage init() {
+		if (isInited) return (McsPackage)EPackage.Registry.INSTANCE.getEPackage(McsPackage.eNS_URI);
 
 		// Obtain or create and register package
-		Object registeredArtifactPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-		ArtifactPackageImpl theArtifactPackage = registeredArtifactPackage instanceof ArtifactPackageImpl ? (ArtifactPackageImpl)registeredArtifactPackage : new ArtifactPackageImpl();
+		Object registeredMcsPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+		McsPackageImpl theMcsPackage = registeredMcsPackage instanceof McsPackageImpl ? (McsPackageImpl)registeredMcsPackage : new McsPackageImpl();
 
 		isInited = true;
 
@@ -148,19 +147,19 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		BasePackageImpl theBasePackage = (BasePackageImpl)(registeredPackage instanceof BasePackageImpl ? registeredPackage : BasePackage.eINSTANCE);
 
 		// Create package meta-data objects
-		theArtifactPackage.createPackageContents();
+		theMcsPackage.createPackageContents();
 		theBasePackage.createPackageContents();
 
 		// Initialize created meta-data
-		theArtifactPackage.initializePackageContents();
+		theMcsPackage.initializePackageContents();
 		theBasePackage.initializePackageContents();
 
 		// Mark meta-data to indicate it can't be changed
-		theArtifactPackage.freeze();
+		theMcsPackage.freeze();
 
 		// Update the registry and return the package
-		EPackage.Registry.INSTANCE.put(ArtifactPackage.eNS_URI, theArtifactPackage);
-		return theArtifactPackage;
+		EPackage.Registry.INSTANCE.put(McsPackage.eNS_URI, theMcsPackage);
+		return theMcsPackage;
 	}
 
 	/**
@@ -629,8 +628,8 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 	 * @generated
 	 */
 	@Override
-	public ArtifactFactory getArtifactFactory() {
-		return (ArtifactFactory)getEFactoryInstance();
+	public McsFactory getMcsFactory() {
+		return (McsFactory)getEFactoryInstance();
 	}
 
 	/**
@@ -815,4 +814,4 @@ public class ArtifactPackageImpl extends EPackageImpl implements ArtifactPackage
 		createResource(eNS_URI);
 	}
 
-} //ArtifactPackageImpl
+} //McsPackageImpl

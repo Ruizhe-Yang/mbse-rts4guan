@@ -1,6 +1,6 @@
 /**
  */
-package artifact;
+package mcs;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,17 +9,17 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see artifact.ArtifactPackage
+ * @see mcs.McsPackage
  * @generated
  */
-public interface ArtifactFactory extends EFactory {
+public interface McsFactory extends EFactory {
 	/**
 	 * The singleton instance of the factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	ArtifactFactory eINSTANCE = artifact.impl.ArtifactFactoryImpl.init();
+	McsFactory eINSTANCE = mcs.impl.McsFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>Core</em>'.
@@ -73,6 +73,6 @@ public interface ArtifactFactory extends EFactory {
 	 * @return the package supported by this factory.
 	 * @generated
 	 */
-	ArtifactPackage getArtifactPackage();
+	McsPackage getMcsPackage();
 
-} //ArtifactFactory
+} //McsFactory

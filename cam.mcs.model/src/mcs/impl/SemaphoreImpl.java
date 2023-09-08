@@ -1,19 +1,21 @@
 /**
  */
-package artifact.impl;
-
-import artifact.ArtifactPackage;
-import artifact.Semaphore;
-import artifact.Task;
+package mcs.impl;
 
 import java.util.Collection;
+
+import mcs.McsPackage;
+import mcs.Semaphore;
+import mcs.Task;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.common.util.EList;
+
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 /**
@@ -24,10 +26,10 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link artifact.impl.SemaphoreImpl#isLocked <em>Locked</em>}</li>
- *   <li>{@link artifact.impl.SemaphoreImpl#getInitial_priority <em>Initial priority</em>}</li>
- *   <li>{@link artifact.impl.SemaphoreImpl#getCeiling_priority <em>Ceiling priority</em>}</li>
- *   <li>{@link artifact.impl.SemaphoreImpl#getAcquisition <em>Acquisition</em>}</li>
+ *   <li>{@link mcs.impl.SemaphoreImpl#isLocked <em>Locked</em>}</li>
+ *   <li>{@link mcs.impl.SemaphoreImpl#getInitial_priority <em>Initial priority</em>}</li>
+ *   <li>{@link mcs.impl.SemaphoreImpl#getCeiling_priority <em>Ceiling priority</em>}</li>
+ *   <li>{@link mcs.impl.SemaphoreImpl#getAcquisition <em>Acquisition</em>}</li>
  * </ul>
  *
  * @generated
@@ -119,7 +121,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ArtifactPackage.Literals.SEMAPHORE;
+		return McsPackage.Literals.SEMAPHORE;
 	}
 
 	/**
@@ -142,7 +144,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 		boolean oldLocked = locked;
 		locked = newLocked;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.SEMAPHORE__LOCKED, oldLocked, locked));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.SEMAPHORE__LOCKED, oldLocked, locked));
 	}
 
 	/**
@@ -165,7 +167,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 		int oldInitial_priority = initial_priority;
 		initial_priority = newInitial_priority;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.SEMAPHORE__INITIAL_PRIORITY, oldInitial_priority, initial_priority));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.SEMAPHORE__INITIAL_PRIORITY, oldInitial_priority, initial_priority));
 	}
 
 	/**
@@ -188,7 +190,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 		int oldCeiling_priority = ceiling_priority;
 		ceiling_priority = newCeiling_priority;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, ArtifactPackage.SEMAPHORE__CEILING_PRIORITY, oldCeiling_priority, ceiling_priority));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.SEMAPHORE__CEILING_PRIORITY, oldCeiling_priority, ceiling_priority));
 	}
 
 	/**
@@ -199,7 +201,7 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	@Override
 	public EList<Task> getAcquisition() {
 		if (acquisition == null) {
-			acquisition = new EObjectResolvingEList<Task>(Task.class, this, ArtifactPackage.SEMAPHORE__ACQUISITION);
+			acquisition = new EObjectResolvingEList<Task>(Task.class, this, McsPackage.SEMAPHORE__ACQUISITION);
 		}
 		return acquisition;
 	}
@@ -212,13 +214,13 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ArtifactPackage.SEMAPHORE__LOCKED:
+			case McsPackage.SEMAPHORE__LOCKED:
 				return isLocked();
-			case ArtifactPackage.SEMAPHORE__INITIAL_PRIORITY:
+			case McsPackage.SEMAPHORE__INITIAL_PRIORITY:
 				return getInitial_priority();
-			case ArtifactPackage.SEMAPHORE__CEILING_PRIORITY:
+			case McsPackage.SEMAPHORE__CEILING_PRIORITY:
 				return getCeiling_priority();
-			case ArtifactPackage.SEMAPHORE__ACQUISITION:
+			case McsPackage.SEMAPHORE__ACQUISITION:
 				return getAcquisition();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -233,16 +235,16 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ArtifactPackage.SEMAPHORE__LOCKED:
+			case McsPackage.SEMAPHORE__LOCKED:
 				setLocked((Boolean)newValue);
 				return;
-			case ArtifactPackage.SEMAPHORE__INITIAL_PRIORITY:
+			case McsPackage.SEMAPHORE__INITIAL_PRIORITY:
 				setInitial_priority((Integer)newValue);
 				return;
-			case ArtifactPackage.SEMAPHORE__CEILING_PRIORITY:
+			case McsPackage.SEMAPHORE__CEILING_PRIORITY:
 				setCeiling_priority((Integer)newValue);
 				return;
-			case ArtifactPackage.SEMAPHORE__ACQUISITION:
+			case McsPackage.SEMAPHORE__ACQUISITION:
 				getAcquisition().clear();
 				getAcquisition().addAll((Collection<? extends Task>)newValue);
 				return;
@@ -258,16 +260,16 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.SEMAPHORE__LOCKED:
+			case McsPackage.SEMAPHORE__LOCKED:
 				setLocked(LOCKED_EDEFAULT);
 				return;
-			case ArtifactPackage.SEMAPHORE__INITIAL_PRIORITY:
+			case McsPackage.SEMAPHORE__INITIAL_PRIORITY:
 				setInitial_priority(INITIAL_PRIORITY_EDEFAULT);
 				return;
-			case ArtifactPackage.SEMAPHORE__CEILING_PRIORITY:
+			case McsPackage.SEMAPHORE__CEILING_PRIORITY:
 				setCeiling_priority(CEILING_PRIORITY_EDEFAULT);
 				return;
-			case ArtifactPackage.SEMAPHORE__ACQUISITION:
+			case McsPackage.SEMAPHORE__ACQUISITION:
 				getAcquisition().clear();
 				return;
 		}
@@ -282,13 +284,13 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ArtifactPackage.SEMAPHORE__LOCKED:
+			case McsPackage.SEMAPHORE__LOCKED:
 				return locked != LOCKED_EDEFAULT;
-			case ArtifactPackage.SEMAPHORE__INITIAL_PRIORITY:
+			case McsPackage.SEMAPHORE__INITIAL_PRIORITY:
 				return initial_priority != INITIAL_PRIORITY_EDEFAULT;
-			case ArtifactPackage.SEMAPHORE__CEILING_PRIORITY:
+			case McsPackage.SEMAPHORE__CEILING_PRIORITY:
 				return ceiling_priority != CEILING_PRIORITY_EDEFAULT;
-			case ArtifactPackage.SEMAPHORE__ACQUISITION:
+			case McsPackage.SEMAPHORE__ACQUISITION:
 				return acquisition != null && !acquisition.isEmpty();
 		}
 		return super.eIsSet(featureID);

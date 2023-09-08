@@ -1,11 +1,11 @@
 /**
  */
-package artifact.impl;
-
-import artifact.ArtifactPackage;
-import artifact.MCSElement;
+package mcs.impl;
 
 import base.impl.ArtifactElementImpl;
+
+import mcs.MCSElement;
+import mcs.McsPackage;
 
 import org.eclipse.emf.ecore.EClass;
 
@@ -33,7 +33,7 @@ public abstract class MCSElementImpl extends ArtifactElementImpl implements MCSE
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return ArtifactPackage.Literals.MCS_ELEMENT;
+		return McsPackage.Literals.MCS_ELEMENT;
 	}
 
 } //MCSElementImpl

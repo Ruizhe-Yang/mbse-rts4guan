@@ -1,5 +1,5 @@
-@namespace(uri="http://cam.mcs.model/mcs", prefix="artifact_")
-package artifact;
+@namespace(uri="http://cam.mcs.model/mcs", prefix="mcs_")
+package mcs;
 
 import "http://cam.mcs.model/base";
 

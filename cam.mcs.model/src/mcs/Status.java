@@ -1,6 +1,6 @@
 /**
  */
-package artifact;
+package mcs;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,85 +10,109 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Criticality</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Status</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see artifact.ArtifactPackage#getCriticality()
+ * @see mcs.McsPackage#getStatus()
  * @model
  * @generated
  */
-public enum Criticality implements Enumerator {
+public enum Status implements Enumerator {
 	/**
-	 * The '<em><b>Lo</b></em>' literal object.
+	 * The '<em><b>LOW</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #LO_VALUE
+	 * @see #LOW_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	LO(1, "lo", "lo"), /**
-	 * The '<em><b>Hi</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #HI_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	HI(2, "hi", "hi");
+	LOW(0, "LOW", "LOW"),
 
 	/**
-	 * The '<em><b>Lo</b></em>' literal value.
+	 * The '<em><b>MCP</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #LO
-	 * @model name="lo"
+	 * @see #MCP_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LO_VALUE = 1;
+	MCP(1, "MCP", "MCP"),
 
 	/**
-	 * The '<em><b>Hi</b></em>' literal value.
+	 * The '<em><b>HIGH</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #HI
-	 * @model name="hi"
+	 * @see #HIGH_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HI_VALUE = 2;
+	HIGH(2, "HIGH", "HIGH");
 
 	/**
-	 * An array of all the '<em><b>Criticality</b></em>' enumerators.
+	 * The '<em><b>LOW</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #LOW
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int LOW_VALUE = 0;
+
+	/**
+	 * The '<em><b>MCP</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #MCP
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int MCP_VALUE = 1;
+
+	/**
+	 * The '<em><b>HIGH</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HIGH
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HIGH_VALUE = 2;
+
+	/**
+	 * An array of all the '<em><b>Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Criticality[] VALUES_ARRAY =
-		new Criticality[] {
-			LO,
-			HI,
+	private static final Status[] VALUES_ARRAY =
+		new Status[] {
+			LOW,
+			MCP,
+			HIGH,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Criticality</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Status</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<Criticality> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<Status> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Criticality</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Status</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Criticality get(String literal) {
+	public static Status get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Criticality result = VALUES_ARRAY[i];
+			Status result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -97,16 +121,16 @@ public enum Criticality implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Criticality</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Status</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Criticality getByName(String name) {
+	public static Status getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Criticality result = VALUES_ARRAY[i];
+			Status result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -115,17 +139,18 @@ public enum Criticality implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Criticality</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Status</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Criticality get(int value) {
+	public static Status get(int value) {
 		switch (value) {
-			case LO_VALUE: return LO;
-			case HI_VALUE: return HI;
+			case LOW_VALUE: return LOW;
+			case MCP_VALUE: return MCP;
+			case HIGH_VALUE: return HIGH;
 		}
 		return null;
 	}
@@ -157,7 +182,7 @@ public enum Criticality implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Criticality(int value, String name, String literal) {
+	private Status(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -204,4 +229,4 @@ public enum Criticality implements Enumerator {
 		return literal;
 	}
 	
-} //Criticality
+} //Status

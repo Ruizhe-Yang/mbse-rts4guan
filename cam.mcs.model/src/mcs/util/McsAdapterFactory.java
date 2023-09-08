@@ -1,13 +1,13 @@
 /**
  */
-package artifact.util;
-
-import artifact.*;
+package mcs.util;
 
 import base.ArtifactElement;
 import base.Element;
 import base.ModelElement;
 import base.NamedElement;
+
+import mcs.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -21,17 +21,17 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see artifact.ArtifactPackage
+ * @see mcs.McsPackage
  * @generated
  */
-public class ArtifactAdapterFactory extends AdapterFactoryImpl {
+public class McsAdapterFactory extends AdapterFactoryImpl {
 	/**
 	 * The cached model package.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected static ArtifactPackage modelPackage;
+	protected static McsPackage modelPackage;
 
 	/**
 	 * Creates an instance of the adapter factory.
@@ -39,9 +39,9 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArtifactAdapterFactory() {
+	public McsAdapterFactory() {
 		if (modelPackage == null) {
-			modelPackage = ArtifactPackage.eINSTANCE;
+			modelPackage = McsPackage.eINSTANCE;
 		}
 	}
 
@@ -70,8 +70,8 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ArtifactSwitch<Adapter> modelSwitch =
-		new ArtifactSwitch<Adapter>() {
+	protected McsSwitch<Adapter> modelSwitch =
+		new McsSwitch<Adapter>() {
 			@Override
 			public Adapter caseMCSElement(MCSElement object) {
 				return createMCSElementAdapter();
@@ -133,13 +133,13 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link artifact.MCSElement <em>MCS Element</em>}'.
+	 * Creates a new adapter for an object of class '{@link mcs.MCSElement <em>MCS Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see artifact.MCSElement
+	 * @see mcs.MCSElement
 	 * @generated
 	 */
 	public Adapter createMCSElementAdapter() {
@@ -147,13 +147,13 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link artifact.Core <em>Core</em>}'.
+	 * Creates a new adapter for an object of class '{@link mcs.Core <em>Core</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see artifact.Core
+	 * @see mcs.Core
 	 * @generated
 	 */
 	public Adapter createCoreAdapter() {
@@ -161,13 +161,13 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link artifact.MCSystem <em>MC System</em>}'.
+	 * Creates a new adapter for an object of class '{@link mcs.MCSystem <em>MC System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see artifact.MCSystem
+	 * @see mcs.MCSystem
 	 * @generated
 	 */
 	public Adapter createMCSystemAdapter() {
@@ -175,13 +175,13 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link artifact.Task <em>Task</em>}'.
+	 * Creates a new adapter for an object of class '{@link mcs.Task <em>Task</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see artifact.Task
+	 * @see mcs.Task
 	 * @generated
 	 */
 	public Adapter createTaskAdapter() {
@@ -189,13 +189,13 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link artifact.CriticalSection <em>Critical Section</em>}'.
+	 * Creates a new adapter for an object of class '{@link mcs.CriticalSection <em>Critical Section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see artifact.CriticalSection
+	 * @see mcs.CriticalSection
 	 * @generated
 	 */
 	public Adapter createCriticalSectionAdapter() {
@@ -203,13 +203,13 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link artifact.Semaphore <em>Semaphore</em>}'.
+	 * Creates a new adapter for an object of class '{@link mcs.Semaphore <em>Semaphore</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see artifact.Semaphore
+	 * @see mcs.Semaphore
 	 * @generated
 	 */
 	public Adapter createSemaphoreAdapter() {
@@ -284,4 +284,4 @@ public class ArtifactAdapterFactory extends AdapterFactoryImpl {
 		return null;
 	}
 
-} //ArtifactAdapterFactory
+} //McsAdapterFactory

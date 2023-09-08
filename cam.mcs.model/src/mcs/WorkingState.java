@@ -1,6 +1,6 @@
 /**
  */
-package artifact;
+package mcs;
 
 import java.util.Arrays;
 import java.util.Collections;
@@ -10,109 +10,131 @@ import org.eclipse.emf.common.util.Enumerator;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the literals of the enumeration '<em><b>Status</b></em>',
+ * A representation of the literals of the enumeration '<em><b>Working State</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
- * @see artifact.ArtifactPackage#getStatus()
+ * @see mcs.McsPackage#getWorkingState()
  * @model
  * @generated
  */
-public enum Status implements Enumerator {
+public enum WorkingState implements Enumerator {
 	/**
-	 * The '<em><b>LOW</b></em>' literal object.
+	 * The '<em><b>Unstart</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #LOW_VALUE
+	 * @see #UNSTART_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	LOW(0, "LOW", "LOW"),
+	UNSTART(0, "unstart", "unstart"),
 
 	/**
-	 * The '<em><b>MCP</b></em>' literal object.
+	 * The '<em><b>Working</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MCP_VALUE
+	 * @see #WORKING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	MCP(1, "MCP", "MCP"),
+	WORKING(1, "working", "working"),
 
 	/**
-	 * The '<em><b>HIGH</b></em>' literal object.
+	 * The '<em><b>Hanging</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #HIGH_VALUE
+	 * @see #HANGING_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	HIGH(2, "HIGH", "HIGH");
+	HANGING(2, "hanging", "hanging"),
 
 	/**
-	 * The '<em><b>LOW</b></em>' literal value.
+	 * The '<em><b>Done</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #LOW
-	 * @model
+	 * @see #DONE_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LOW_VALUE = 0;
+	DONE(3, "done", "done");
 
 	/**
-	 * The '<em><b>MCP</b></em>' literal value.
+	 * The '<em><b>Unstart</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #MCP
-	 * @model
+	 * @see #UNSTART
+	 * @model name="unstart"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int MCP_VALUE = 1;
+	public static final int UNSTART_VALUE = 0;
 
 	/**
-	 * The '<em><b>HIGH</b></em>' literal value.
+	 * The '<em><b>Working</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #HIGH
-	 * @model
+	 * @see #WORKING
+	 * @model name="working"
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HIGH_VALUE = 2;
+	public static final int WORKING_VALUE = 1;
 
 	/**
-	 * An array of all the '<em><b>Status</b></em>' enumerators.
+	 * The '<em><b>Hanging</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #HANGING
+	 * @model name="hanging"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int HANGING_VALUE = 2;
+
+	/**
+	 * The '<em><b>Done</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DONE
+	 * @model name="done"
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DONE_VALUE = 3;
+
+	/**
+	 * An array of all the '<em><b>Working State</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final Status[] VALUES_ARRAY =
-		new Status[] {
-			LOW,
-			MCP,
-			HIGH,
+	private static final WorkingState[] VALUES_ARRAY =
+		new WorkingState[] {
+			UNSTART,
+			WORKING,
+			HANGING,
+			DONE,
 		};
 
 	/**
-	 * A public read-only list of all the '<em><b>Status</b></em>' enumerators.
+	 * A public read-only list of all the '<em><b>Working State</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<Status> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<WorkingState> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
-	 * Returns the '<em><b>Status</b></em>' literal with the specified literal value.
+	 * Returns the '<em><b>Working State</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param literal the literal.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Status get(String literal) {
+	public static WorkingState get(String literal) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Status result = VALUES_ARRAY[i];
+			WorkingState result = VALUES_ARRAY[i];
 			if (result.toString().equals(literal)) {
 				return result;
 			}
@@ -121,16 +143,16 @@ public enum Status implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Status</b></em>' literal with the specified name.
+	 * Returns the '<em><b>Working State</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param name the name.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Status getByName(String name) {
+	public static WorkingState getByName(String name) {
 		for (int i = 0; i < VALUES_ARRAY.length; ++i) {
-			Status result = VALUES_ARRAY[i];
+			WorkingState result = VALUES_ARRAY[i];
 			if (result.getName().equals(name)) {
 				return result;
 			}
@@ -139,18 +161,19 @@ public enum Status implements Enumerator {
 	}
 
 	/**
-	 * Returns the '<em><b>Status</b></em>' literal with the specified integer value.
+	 * Returns the '<em><b>Working State</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the integer value.
 	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
-	public static Status get(int value) {
+	public static WorkingState get(int value) {
 		switch (value) {
-			case LOW_VALUE: return LOW;
-			case MCP_VALUE: return MCP;
-			case HIGH_VALUE: return HIGH;
+			case UNSTART_VALUE: return UNSTART;
+			case WORKING_VALUE: return WORKING;
+			case HANGING_VALUE: return HANGING;
+			case DONE_VALUE: return DONE;
 		}
 		return null;
 	}
@@ -182,7 +205,7 @@ public enum Status implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private Status(int value, String name, String literal) {
+	private WorkingState(int value, String name, String literal) {
 		this.value = value;
 		this.name = name;
 		this.literal = literal;
@@ -229,4 +252,4 @@ public enum Status implements Enumerator {
 		return literal;
 	}
 	
-} //Status
+} //WorkingState

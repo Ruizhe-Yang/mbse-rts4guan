@@ -1,8 +1,7 @@
 /**
  */
-package artifact;
+package mcs;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,49 +12,49 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link artifact.Task#getState <em>State</em>}</li>
- *   <li>{@link artifact.Task#getTimeleft <em>Timeleft</em>}</li>
- *   <li>{@link artifact.Task#getPriority <em>Priority</em>}</li>
- *   <li>{@link artifact.Task#getPeriod <em>Period</em>}</li>
- *   <li>{@link artifact.Task#getDeadline <em>Deadline</em>}</li>
- *   <li>{@link artifact.Task#getUtilisation <em>Utilisation</em>}</li>
- *   <li>{@link artifact.Task#getComputation_time <em>Computation time</em>}</li>
- *   <li>{@link artifact.Task#getWcet_low <em>Wcet low</em>}</li>
- *   <li>{@link artifact.Task#getCstime <em>Cstime</em>}</li>
- *   <li>{@link artifact.Task#getWcet_high <em>Wcet high</em>}</li>
- *   <li>{@link artifact.Task#getCriticality <em>Criticality</em>}</li>
- *   <li>{@link artifact.Task#getDynamic_priority <em>Dynamic priority</em>}</li>
- *   <li>{@link artifact.Task#getOffset <em>Offset</em>}</li>
- *   <li>{@link artifact.Task#getRelease_time <em>Release time</em>}</li>
- *   <li>{@link artifact.Task#getCurrent_cs <em>Current cs</em>}</li>
- *   <li>{@link artifact.Task#getCritical_section <em>Critical section</em>}</li>
+ *   <li>{@link mcs.Task#getState <em>State</em>}</li>
+ *   <li>{@link mcs.Task#getTimeleft <em>Timeleft</em>}</li>
+ *   <li>{@link mcs.Task#getPriority <em>Priority</em>}</li>
+ *   <li>{@link mcs.Task#getPeriod <em>Period</em>}</li>
+ *   <li>{@link mcs.Task#getDeadline <em>Deadline</em>}</li>
+ *   <li>{@link mcs.Task#getUtilisation <em>Utilisation</em>}</li>
+ *   <li>{@link mcs.Task#getComputation_time <em>Computation time</em>}</li>
+ *   <li>{@link mcs.Task#getWcet_low <em>Wcet low</em>}</li>
+ *   <li>{@link mcs.Task#getCstime <em>Cstime</em>}</li>
+ *   <li>{@link mcs.Task#getWcet_high <em>Wcet high</em>}</li>
+ *   <li>{@link mcs.Task#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.Task#getDynamic_priority <em>Dynamic priority</em>}</li>
+ *   <li>{@link mcs.Task#getOffset <em>Offset</em>}</li>
+ *   <li>{@link mcs.Task#getRelease_time <em>Release time</em>}</li>
+ *   <li>{@link mcs.Task#getCurrent_cs <em>Current cs</em>}</li>
+ *   <li>{@link mcs.Task#getCritical_section <em>Critical section</em>}</li>
  * </ul>
  *
- * @see artifact.ArtifactPackage#getTask()
+ * @see mcs.McsPackage#getTask()
  * @model
  * @generated
  */
 public interface Task extends MCSElement {
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
-	 * The literals are from the enumeration {@link artifact.WorkingState}.
+	 * The literals are from the enumeration {@link mcs.WorkingState}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>State</em>' attribute.
-	 * @see artifact.WorkingState
+	 * @see mcs.WorkingState
 	 * @see #setState(WorkingState)
-	 * @see artifact.ArtifactPackage#getTask_State()
+	 * @see mcs.McsPackage#getTask_State()
 	 * @model
 	 * @generated
 	 */
 	WorkingState getState();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getState <em>State</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getState <em>State</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>State</em>' attribute.
-	 * @see artifact.WorkingState
+	 * @see mcs.WorkingState
 	 * @see #getState()
 	 * @generated
 	 */
@@ -67,14 +66,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Timeleft</em>' attribute.
 	 * @see #setTimeleft(int)
-	 * @see artifact.ArtifactPackage#getTask_Timeleft()
+	 * @see mcs.McsPackage#getTask_Timeleft()
 	 * @model
 	 * @generated
 	 */
 	int getTimeleft();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getTimeleft <em>Timeleft</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getTimeleft <em>Timeleft</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Timeleft</em>' attribute.
@@ -89,14 +88,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Priority</em>' attribute.
 	 * @see #setPriority(int)
-	 * @see artifact.ArtifactPackage#getTask_Priority()
+	 * @see mcs.McsPackage#getTask_Priority()
 	 * @model
 	 * @generated
 	 */
 	int getPriority();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getPriority <em>Priority</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getPriority <em>Priority</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Priority</em>' attribute.
@@ -111,14 +110,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Period</em>' attribute.
 	 * @see #setPeriod(int)
-	 * @see artifact.ArtifactPackage#getTask_Period()
+	 * @see mcs.McsPackage#getTask_Period()
 	 * @model
 	 * @generated
 	 */
 	int getPeriod();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getPeriod <em>Period</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getPeriod <em>Period</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Period</em>' attribute.
@@ -133,14 +132,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Deadline</em>' attribute.
 	 * @see #setDeadline(int)
-	 * @see artifact.ArtifactPackage#getTask_Deadline()
+	 * @see mcs.McsPackage#getTask_Deadline()
 	 * @model
 	 * @generated
 	 */
 	int getDeadline();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getDeadline <em>Deadline</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getDeadline <em>Deadline</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Deadline</em>' attribute.
@@ -155,14 +154,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Utilisation</em>' attribute.
 	 * @see #setUtilisation(double)
-	 * @see artifact.ArtifactPackage#getTask_Utilisation()
+	 * @see mcs.McsPackage#getTask_Utilisation()
 	 * @model
 	 * @generated
 	 */
 	double getUtilisation();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getUtilisation <em>Utilisation</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getUtilisation <em>Utilisation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Utilisation</em>' attribute.
@@ -177,14 +176,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Computation time</em>' attribute.
 	 * @see #setComputation_time(int)
-	 * @see artifact.ArtifactPackage#getTask_Computation_time()
+	 * @see mcs.McsPackage#getTask_Computation_time()
 	 * @model
 	 * @generated
 	 */
 	int getComputation_time();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getComputation_time <em>Computation time</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getComputation_time <em>Computation time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Computation time</em>' attribute.
@@ -199,14 +198,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Wcet low</em>' attribute.
 	 * @see #setWcet_low(int)
-	 * @see artifact.ArtifactPackage#getTask_Wcet_low()
+	 * @see mcs.McsPackage#getTask_Wcet_low()
 	 * @model
 	 * @generated
 	 */
 	int getWcet_low();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getWcet_low <em>Wcet low</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getWcet_low <em>Wcet low</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Wcet low</em>' attribute.
@@ -221,14 +220,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Cstime</em>' attribute.
 	 * @see #setCstime(int)
-	 * @see artifact.ArtifactPackage#getTask_Cstime()
+	 * @see mcs.McsPackage#getTask_Cstime()
 	 * @model
 	 * @generated
 	 */
 	int getCstime();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getCstime <em>Cstime</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getCstime <em>Cstime</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Cstime</em>' attribute.
@@ -243,14 +242,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Wcet high</em>' attribute.
 	 * @see #setWcet_high(int)
-	 * @see artifact.ArtifactPackage#getTask_Wcet_high()
+	 * @see mcs.McsPackage#getTask_Wcet_high()
 	 * @model
 	 * @generated
 	 */
 	int getWcet_high();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getWcet_high <em>Wcet high</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getWcet_high <em>Wcet high</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Wcet high</em>' attribute.
@@ -261,24 +260,24 @@ public interface Task extends MCSElement {
 
 	/**
 	 * Returns the value of the '<em><b>Criticality</b></em>' attribute.
-	 * The literals are from the enumeration {@link artifact.Criticality}.
+	 * The literals are from the enumeration {@link mcs.Criticality}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Criticality</em>' attribute.
-	 * @see artifact.Criticality
+	 * @see mcs.Criticality
 	 * @see #setCriticality(Criticality)
-	 * @see artifact.ArtifactPackage#getTask_Criticality()
+	 * @see mcs.McsPackage#getTask_Criticality()
 	 * @model
 	 * @generated
 	 */
 	Criticality getCriticality();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getCriticality <em>Criticality</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getCriticality <em>Criticality</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Criticality</em>' attribute.
-	 * @see artifact.Criticality
+	 * @see mcs.Criticality
 	 * @see #getCriticality()
 	 * @generated
 	 */
@@ -290,14 +289,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Dynamic priority</em>' attribute.
 	 * @see #setDynamic_priority(int)
-	 * @see artifact.ArtifactPackage#getTask_Dynamic_priority()
+	 * @see mcs.McsPackage#getTask_Dynamic_priority()
 	 * @model
 	 * @generated
 	 */
 	int getDynamic_priority();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getDynamic_priority <em>Dynamic priority</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getDynamic_priority <em>Dynamic priority</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Dynamic priority</em>' attribute.
@@ -312,14 +311,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Offset</em>' attribute.
 	 * @see #setOffset(int)
-	 * @see artifact.ArtifactPackage#getTask_Offset()
+	 * @see mcs.McsPackage#getTask_Offset()
 	 * @model
 	 * @generated
 	 */
 	int getOffset();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getOffset <em>Offset</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getOffset <em>Offset</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Offset</em>' attribute.
@@ -334,14 +333,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Release time</em>' attribute.
 	 * @see #setRelease_time(int)
-	 * @see artifact.ArtifactPackage#getTask_Release_time()
+	 * @see mcs.McsPackage#getTask_Release_time()
 	 * @model
 	 * @generated
 	 */
 	int getRelease_time();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getRelease_time <em>Release time</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getRelease_time <em>Release time</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Release time</em>' attribute.
@@ -356,14 +355,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Current cs</em>' attribute.
 	 * @see #setCurrent_cs(int)
-	 * @see artifact.ArtifactPackage#getTask_Current_cs()
+	 * @see mcs.McsPackage#getTask_Current_cs()
 	 * @model
 	 * @generated
 	 */
 	int getCurrent_cs();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getCurrent_cs <em>Current cs</em>}' attribute.
+	 * Sets the value of the '{@link mcs.Task#getCurrent_cs <em>Current cs</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Current cs</em>' attribute.
@@ -378,14 +377,14 @@ public interface Task extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Critical section</em>' reference.
 	 * @see #setCritical_section(CriticalSection)
-	 * @see artifact.ArtifactPackage#getTask_Critical_section()
+	 * @see mcs.McsPackage#getTask_Critical_section()
 	 * @model
 	 * @generated
 	 */
 	CriticalSection getCritical_section();
 
 	/**
-	 * Sets the value of the '{@link artifact.Task#getCritical_section <em>Critical section</em>}' reference.
+	 * Sets the value of the '{@link mcs.Task#getCritical_section <em>Critical section</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Critical section</em>' reference.

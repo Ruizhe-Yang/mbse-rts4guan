@@ -1,8 +1,8 @@
 /**
  */
-package artifact.impl;
+package mcs.impl;
 
-import artifact.*;
+import mcs.*;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
@@ -19,24 +19,24 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory {
+public class McsFactoryImpl extends EFactoryImpl implements McsFactory {
 	/**
 	 * Creates the default factory implementation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static ArtifactFactory init() {
+	public static McsFactory init() {
 		try {
-			ArtifactFactory theArtifactFactory = (ArtifactFactory)EPackage.Registry.INSTANCE.getEFactory(ArtifactPackage.eNS_URI);
-			if (theArtifactFactory != null) {
-				return theArtifactFactory;
+			McsFactory theMcsFactory = (McsFactory)EPackage.Registry.INSTANCE.getEFactory(McsPackage.eNS_URI);
+			if (theMcsFactory != null) {
+				return theMcsFactory;
 			}
 		}
 		catch (Exception exception) {
 			EcorePlugin.INSTANCE.log(exception);
 		}
-		return new ArtifactFactoryImpl();
+		return new McsFactoryImpl();
 	}
 
 	/**
@@ -45,7 +45,7 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ArtifactFactoryImpl() {
+	public McsFactoryImpl() {
 		super();
 	}
 
@@ -57,11 +57,11 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ArtifactPackage.CORE: return createCore();
-			case ArtifactPackage.MC_SYSTEM: return createMCSystem();
-			case ArtifactPackage.TASK: return createTask();
-			case ArtifactPackage.CRITICAL_SECTION: return createCriticalSection();
-			case ArtifactPackage.SEMAPHORE: return createSemaphore();
+			case McsPackage.CORE: return createCore();
+			case McsPackage.MC_SYSTEM: return createMCSystem();
+			case McsPackage.TASK: return createTask();
+			case McsPackage.CRITICAL_SECTION: return createCriticalSection();
+			case McsPackage.SEMAPHORE: return createSemaphore();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,11 +75,11 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ArtifactPackage.STATUS:
+			case McsPackage.STATUS:
 				return createStatusFromString(eDataType, initialValue);
-			case ArtifactPackage.CRITICALITY:
+			case McsPackage.CRITICALITY:
 				return createCriticalityFromString(eDataType, initialValue);
-			case ArtifactPackage.WORKING_STATE:
+			case McsPackage.WORKING_STATE:
 				return createWorkingStateFromString(eDataType, initialValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
@@ -94,11 +94,11 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case ArtifactPackage.STATUS:
+			case McsPackage.STATUS:
 				return convertStatusToString(eDataType, instanceValue);
-			case ArtifactPackage.CRITICALITY:
+			case McsPackage.CRITICALITY:
 				return convertCriticalityToString(eDataType, instanceValue);
-			case ArtifactPackage.WORKING_STATE:
+			case McsPackage.WORKING_STATE:
 				return convertWorkingStateToString(eDataType, instanceValue);
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
@@ -226,8 +226,8 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 	 * @generated
 	 */
 	@Override
-	public ArtifactPackage getArtifactPackage() {
-		return (ArtifactPackage)getEPackage();
+	public McsPackage getMcsPackage() {
+		return (McsPackage)getEPackage();
 	}
 
 	/**
@@ -237,8 +237,8 @@ public class ArtifactFactoryImpl extends EFactoryImpl implements ArtifactFactory
 	 * @generated
 	 */
 	@Deprecated
-	public static ArtifactPackage getPackage() {
-		return ArtifactPackage.eINSTANCE;
+	public static McsPackage getPackage() {
+		return McsPackage.eINSTANCE;
 	}
 
-} //ArtifactFactoryImpl
+} //McsFactoryImpl

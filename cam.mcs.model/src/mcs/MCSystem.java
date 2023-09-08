@@ -1,6 +1,6 @@
 /**
  */
-package artifact;
+package mcs;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,40 +13,40 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link artifact.MCSystem#getCriticality <em>Criticality</em>}</li>
- *   <li>{@link artifact.MCSystem#getCeiling_priority <em>Ceiling priority</em>}</li>
- *   <li>{@link artifact.MCSystem#getStatus <em>Status</em>}</li>
- *   <li>{@link artifact.MCSystem#getResources <em>Resources</em>}</li>
- *   <li>{@link artifact.MCSystem#getTasks <em>Tasks</em>}</li>
- *   <li>{@link artifact.MCSystem#getCritical_sections <em>Critical sections</em>}</li>
- *   <li>{@link artifact.MCSystem#getCore <em>Core</em>}</li>
+ *   <li>{@link mcs.MCSystem#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.MCSystem#getCeiling_priority <em>Ceiling priority</em>}</li>
+ *   <li>{@link mcs.MCSystem#getStatus <em>Status</em>}</li>
+ *   <li>{@link mcs.MCSystem#getResources <em>Resources</em>}</li>
+ *   <li>{@link mcs.MCSystem#getTasks <em>Tasks</em>}</li>
+ *   <li>{@link mcs.MCSystem#getCritical_sections <em>Critical sections</em>}</li>
+ *   <li>{@link mcs.MCSystem#getCore <em>Core</em>}</li>
  * </ul>
  *
- * @see artifact.ArtifactPackage#getMCSystem()
+ * @see mcs.McsPackage#getMCSystem()
  * @model
  * @generated
  */
 public interface MCSystem extends MCSElement {
 	/**
 	 * Returns the value of the '<em><b>Criticality</b></em>' attribute.
-	 * The literals are from the enumeration {@link artifact.Criticality}.
+	 * The literals are from the enumeration {@link mcs.Criticality}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Criticality</em>' attribute.
-	 * @see artifact.Criticality
+	 * @see mcs.Criticality
 	 * @see #setCriticality(Criticality)
-	 * @see artifact.ArtifactPackage#getMCSystem_Criticality()
+	 * @see mcs.McsPackage#getMCSystem_Criticality()
 	 * @model
 	 * @generated
 	 */
 	Criticality getCriticality();
 
 	/**
-	 * Sets the value of the '{@link artifact.MCSystem#getCriticality <em>Criticality</em>}' attribute.
+	 * Sets the value of the '{@link mcs.MCSystem#getCriticality <em>Criticality</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Criticality</em>' attribute.
-	 * @see artifact.Criticality
+	 * @see mcs.Criticality
 	 * @see #getCriticality()
 	 * @generated
 	 */
@@ -58,14 +58,14 @@ public interface MCSystem extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ceiling priority</em>' attribute.
 	 * @see #setCeiling_priority(int)
-	 * @see artifact.ArtifactPackage#getMCSystem_Ceiling_priority()
+	 * @see mcs.McsPackage#getMCSystem_Ceiling_priority()
 	 * @model
 	 * @generated
 	 */
 	int getCeiling_priority();
 
 	/**
-	 * Sets the value of the '{@link artifact.MCSystem#getCeiling_priority <em>Ceiling priority</em>}' attribute.
+	 * Sets the value of the '{@link mcs.MCSystem#getCeiling_priority <em>Ceiling priority</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Ceiling priority</em>' attribute.
@@ -76,24 +76,24 @@ public interface MCSystem extends MCSElement {
 
 	/**
 	 * Returns the value of the '<em><b>Status</b></em>' attribute.
-	 * The literals are from the enumeration {@link artifact.Status}.
+	 * The literals are from the enumeration {@link mcs.Status}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Status</em>' attribute.
-	 * @see artifact.Status
+	 * @see mcs.Status
 	 * @see #setStatus(Status)
-	 * @see artifact.ArtifactPackage#getMCSystem_Status()
+	 * @see mcs.McsPackage#getMCSystem_Status()
 	 * @model
 	 * @generated
 	 */
 	Status getStatus();
 
 	/**
-	 * Sets the value of the '{@link artifact.MCSystem#getStatus <em>Status</em>}' attribute.
+	 * Sets the value of the '{@link mcs.MCSystem#getStatus <em>Status</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Status</em>' attribute.
-	 * @see artifact.Status
+	 * @see mcs.Status
 	 * @see #getStatus()
 	 * @generated
 	 */
@@ -101,11 +101,11 @@ public interface MCSystem extends MCSElement {
 
 	/**
 	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
-	 * The list contents are of type {@link artifact.Semaphore}.
+	 * The list contents are of type {@link mcs.Semaphore}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resources</em>' containment reference list.
-	 * @see artifact.ArtifactPackage#getMCSystem_Resources()
+	 * @see mcs.McsPackage#getMCSystem_Resources()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -113,11 +113,11 @@ public interface MCSystem extends MCSElement {
 
 	/**
 	 * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.
-	 * The list contents are of type {@link artifact.Task}.
+	 * The list contents are of type {@link mcs.Task}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Tasks</em>' containment reference list.
-	 * @see artifact.ArtifactPackage#getMCSystem_Tasks()
+	 * @see mcs.McsPackage#getMCSystem_Tasks()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -125,11 +125,11 @@ public interface MCSystem extends MCSElement {
 
 	/**
 	 * Returns the value of the '<em><b>Critical sections</b></em>' containment reference list.
-	 * The list contents are of type {@link artifact.CriticalSection}.
+	 * The list contents are of type {@link mcs.CriticalSection}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Critical sections</em>' containment reference list.
-	 * @see artifact.ArtifactPackage#getMCSystem_Critical_sections()
+	 * @see mcs.McsPackage#getMCSystem_Critical_sections()
 	 * @model containment="true"
 	 * @generated
 	 */
@@ -141,14 +141,14 @@ public interface MCSystem extends MCSElement {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Core</em>' containment reference.
 	 * @see #setCore(Core)
-	 * @see artifact.ArtifactPackage#getMCSystem_Core()
+	 * @see mcs.McsPackage#getMCSystem_Core()
 	 * @model containment="true"
 	 * @generated
 	 */
 	Core getCore();
 
 	/**
-	 * Sets the value of the '{@link artifact.MCSystem#getCore <em>Core</em>}' containment reference.
+	 * Sets the value of the '{@link mcs.MCSystem#getCore <em>Core</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Core</em>' containment reference.
