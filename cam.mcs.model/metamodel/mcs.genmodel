@@ -37,7 +37,6 @@
     </genClasses>
     <genClasses ecoreClass="mcs.ecore#//Task">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/IsMandatory"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/Locking"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/state"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/timeleft"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mcs.ecore#//Task/priority"/>

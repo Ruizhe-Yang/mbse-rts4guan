@@ -24,7 +24,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link mcs.impl.TaskImpl#isIsMandatory <em>Is Mandatory</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#isLocking <em>Locking</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getState <em>State</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getTimeleft <em>Timeleft</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getPriority <em>Priority</em>}</li>
@@ -65,26 +64,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @ordered
 	 */
 	protected boolean isMandatory = IS_MANDATORY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #isLocking() <em>Locking</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isLocking()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final boolean LOCKING_EDEFAULT = false;
-
-	/**
-	 * The cached value of the '{@link #isLocking() <em>Locking</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #isLocking()
-	 * @generated
-	 * @ordered
-	 */
-	protected boolean locking = LOCKING_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
@@ -436,29 +415,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		isMandatory = newIsMandatory;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__IS_MANDATORY, oldIsMandatory, isMandatory));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public boolean isLocking() {
-		return locking;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setLocking(boolean newLocking) {
-		boolean oldLocking = locking;
-		locking = newLocking;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__LOCKING, oldLocking, locking));
 	}
 
 	/**
@@ -856,8 +812,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		switch (featureID) {
 			case McsPackage.TASK__IS_MANDATORY:
 				return isIsMandatory();
-			case McsPackage.TASK__LOCKING:
-				return isLocking();
 			case McsPackage.TASK__STATE:
 				return getState();
 			case McsPackage.TASK__TIMELEFT:
@@ -905,9 +859,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		switch (featureID) {
 			case McsPackage.TASK__IS_MANDATORY:
 				setIsMandatory((Boolean)newValue);
-				return;
-			case McsPackage.TASK__LOCKING:
-				setLocking((Boolean)newValue);
 				return;
 			case McsPackage.TASK__STATE:
 				setState((WorkingState)newValue);
@@ -972,9 +923,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 			case McsPackage.TASK__IS_MANDATORY:
 				setIsMandatory(IS_MANDATORY_EDEFAULT);
 				return;
-			case McsPackage.TASK__LOCKING:
-				setLocking(LOCKING_EDEFAULT);
-				return;
 			case McsPackage.TASK__STATE:
 				setState(STATE_EDEFAULT);
 				return;
@@ -1037,8 +985,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		switch (featureID) {
 			case McsPackage.TASK__IS_MANDATORY:
 				return isMandatory != IS_MANDATORY_EDEFAULT;
-			case McsPackage.TASK__LOCKING:
-				return locking != LOCKING_EDEFAULT;
 			case McsPackage.TASK__STATE:
 				return state != STATE_EDEFAULT;
 			case McsPackage.TASK__TIMELEFT:
@@ -1087,8 +1033,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (IsMandatory: ");
 		result.append(isMandatory);
-		result.append(", Locking: ");
-		result.append(locking);
 		result.append(", state: ");
 		result.append(state);
 		result.append(", timeleft: ");

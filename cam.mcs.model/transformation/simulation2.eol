@@ -21,7 +21,7 @@ operation initSystem() {
 }
 
 operation generateTasks(){
-	getRandomTasks(6, 0.4, 2);
+	getRandomTasks(6, 0.6, 2);
 	getCriticalSection(2);
 	matchCriticalSection();
 	getCriticalSectionsCeilingPriority();
@@ -70,14 +70,12 @@ operation handle(){
 
 operation Task lock(){
 	if (self.critical_section <> null){
-//		self.Locking = true;
 		self.critical_section.semaphore.locked = true;
 	}
 }
 
 operation Task unlock(){
 	if (self.critical_section <> null){
-//		self.Locking = false;
 		self.critical_section.semaphore.locked = false;
 	}
 }
@@ -116,10 +114,6 @@ operation UpdateHanging(){
 					if (task.critical_section<>null and task.criticality = Criticality#lo and task.wcet_low - task.timeleft < task.cstime){
 						task.critical_section.semaphore.locked = false;
 					}
-//					else if (task.critical_section<>null and task.criticality = Criticality#hi and task.wcet_high - task.timeleft < task.cstime){
-//						task.critical_section.semaphore.locked = false;
-//						'+++++++'.println();
-//					}
 					task.getTimeLeft();
 					if (task.criticality = Criticality#hi){
 						task.printError();
@@ -203,16 +197,16 @@ operation getWillStartTask(){
 		}
 		else{
 			var willStartTasksHigh = willStartTasks.select(e|e.criticality=Criticality#hi);
-			if (willStartTasksHigh.size()=0){
-				var listTask = willStartTasks.select(s|(willStartTasks.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
-				if (listTask.size()=1){
-					return listTask[0];
-				}
-				else{
-					return listTask.select(e|e.dynamic_priority <> e.priority).first();
-				}
-			}
-			else{
+//			if (willStartTasksHigh.size()=0){
+//				var listTask = willStartTasks.select(s|(willStartTasks.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
+//				if (listTask.size()=1){
+//					return listTask[0];
+//				}
+//				else{
+//					return listTask.select(e|e.dynamic_priority <> e.priority).first();
+//				}
+//			}
+			if (willStartTasksHigh.size()>0){
 				while(willStartTasksHigh.size()>=1){
 					var maxTaskPriorityHigh = willStartTasksHigh.select(s|willStartTasksHigh.count(e|e.dynamic_priority>s.dynamic_priority)=0);
 					if (maxTaskPriorityHigh.size() = 1){
@@ -232,19 +226,34 @@ operation getWillStartTask(){
 						}
 					}
 				}
-				var willStartTasksLow = willStartTasks.select(e|e.criticality=Criticality#lo);
-				if (willStartTasksLow.size()=1){ 
-					return willStartTasksLow[0];
+			}
+			var willStartTasksLow = willStartTasks.select(e|e.criticality=Criticality#lo);
+			if (willStartTasksLow.size()=1){
+				var task = willStartTasksLow[0];
+				if (task.wcet_low-task.timeleft<task.cstime){
+					return task;
 				}
 				else{
+					return null;
+				}
+			}
+			else{
+				while(willStartTasksLow.size()>0){
 					var listTask = willStartTasksLow.select(s|(willStartTasksLow.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
 					if (listTask.size()=1){
-						return listTask[0];
+						var task = listTask[0];
+						if (task.wcet_low-task.timeleft<task.cstime){
+							return task;
+						}
+						else{
+							willStartTasksLow.remove(task);
+						}
 					}
 					else{
 						return listTask.select(e|e.dynamic_priority <> e.priority).first();
 					}
 				}
+				return null;
 			}
 		}
 	}
@@ -360,14 +369,14 @@ operation IsTaskRunning(){
 }
 
 operation executeCurrentTask(){
-	\\core.current_task.timeleft--;
-	\\core.current_task.getTaskWCET().println();
-	\\core.current_task.timeleft.println();
-	core.current_task.cstime.println();
+	core.current_task.timeleft--;
+//	core.current_task.getTaskWCET().println();
+//	core.current_task.timeleft.println();
+//	core.current_task.cstime.println();
 	if (core.current_task.getTaskWCET() - core.current_task.timeleft = core.current_task.cstime){
 		core.current_task.dynamic_priority = core.current_task.priority;
 		core.current_task.unlock();
-		\\"1".println();
+//		"1".println();
 	}
 }
 
@@ -386,7 +395,7 @@ operation Task getTaskWCET(){
 }
 
 operation IsCurrentTaskShouldHang(){
-	return (system.status = Status#MCP and core.current_task.wcet_low-core.current_task.timeleft=core.current_task.cstime and core.current_task.criticality = Criticality#lo);
+	return (system.status = Status#MCP and core.current_task.wcet_low-core.current_task.timeleft>=core.current_task.cstime and core.current_task.criticality = Criticality#lo);
 }
 
 operation getTaskOfMaxPriority(){

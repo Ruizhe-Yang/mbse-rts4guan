@@ -13,7 +13,6 @@ package mcs;
  * </p>
  * <ul>
  *   <li>{@link mcs.Task#isIsMandatory <em>Is Mandatory</em>}</li>
- *   <li>{@link mcs.Task#isLocking <em>Locking</em>}</li>
  *   <li>{@link mcs.Task#getState <em>State</em>}</li>
  *   <li>{@link mcs.Task#getTimeleft <em>Timeleft</em>}</li>
  *   <li>{@link mcs.Task#getPriority <em>Priority</em>}</li>
@@ -58,28 +57,6 @@ public interface Task extends MCSElement {
 	 * @generated
 	 */
 	void setIsMandatory(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Locking</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Locking</em>' attribute.
-	 * @see #setLocking(boolean)
-	 * @see mcs.McsPackage#getTask_Locking()
-	 * @model
-	 * @generated
-	 */
-	boolean isLocking();
-
-	/**
-	 * Sets the value of the '{@link mcs.Task#isLocking <em>Locking</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Locking</em>' attribute.
-	 * @see #isLocking()
-	 * @generated
-	 */
-	void setLocking(boolean value);
 
 	/**
 	 * Returns the value of the '<em><b>State</b></em>' attribute.
