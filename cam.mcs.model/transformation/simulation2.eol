@@ -197,15 +197,6 @@ operation getWillStartTask(){
 		}
 		else{
 			var willStartTasksHigh = willStartTasks.select(e|e.criticality=Criticality#hi);
-//			if (willStartTasksHigh.size()=0){
-//				var listTask = willStartTasks.select(s|(willStartTasks.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
-//				if (listTask.size()=1){
-//					return listTask[0];
-//				}
-//				else{
-//					return listTask.select(e|e.dynamic_priority <> e.priority).first();
-//				}
-//			}
 			if (willStartTasksHigh.size()>0){
 				while(willStartTasksHigh.size()>=1){
 					var maxTaskPriorityHigh = willStartTasksHigh.select(s|willStartTasksHigh.count(e|e.dynamic_priority>s.dynamic_priority)=0);
@@ -370,13 +361,9 @@ operation IsTaskRunning(){
 
 operation executeCurrentTask(){
 	core.current_task.timeleft--;
-//	core.current_task.getTaskWCET().println();
-//	core.current_task.timeleft.println();
-//	core.current_task.cstime.println();
 	if (core.current_task.getTaskWCET() - core.current_task.timeleft = core.current_task.cstime){
 		core.current_task.dynamic_priority = core.current_task.priority;
 		core.current_task.unlock();
-//		"1".println();
 	}
 }
 
@@ -578,6 +565,7 @@ operation print_status() {
 	var queue = system.tasks.select(e|e.state=WorkingState#hanging and e.critical_section<>null).collect(e|e.critical_section.semaphore.locked);
 	("semaphore_lock_status:"+queue).println();  
 }
+
 operation finalPrint(){
 	("Actual occupancy rate: "+100.0*count/(MAX_RUNNING_TIME-getMAX_DEADLINE())+"%").println();
 	("Error time and task:   "+ERROR_SEQUENCE).println();
