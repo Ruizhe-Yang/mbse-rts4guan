@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="ASCII"?>
 <mcs_:MCSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mcs_="http://cam.mcs.model/mcs" ceiling_priority="5000" status="HIGH">
-  <tasks name="1" utilisation="0.10085570544498468" period="4273" deadline="4273" wcet_low="431" wcet_high="646" cstime="102" priority="2" dynamic_priority="2" timeleft="646" criticality="hi" critical_section="//@critical_sections.0"/>
-  <tasks name="2" utilisation="0.047407131693881194" period="2721" deadline="2721" wcet_low="129" wcet_high="193" cstime="11" priority="4" dynamic_priority="4" timeleft="129" critical_section="//@critical_sections.1"/>
-  <tasks name="3" utilisation="0.11464619448267836" period="3694" deadline="3694" wcet_low="424" wcet_high="636" cstime="25" priority="3" dynamic_priority="3" timeleft="636" criticality="hi" critical_section="//@critical_sections.0"/>
-  <tasks name="4" utilisation="0.025601040292093685" period="4700" deadline="4700" wcet_low="120" wcet_high="180" priority="1" dynamic_priority="1" timeleft="180" criticality="hi"/>
-  <tasks name="5" utilisation="0.1660893852240627" period="1461" deadline="1461" wcet_low="243" wcet_high="364" priority="6" dynamic_priority="6" timeleft="119" state="working"/>
-  <tasks name="6" utilisation="0.04540054286229936" period="2386" deadline="2386" wcet_low="108" wcet_high="162" cstime="25" priority="5" dynamic_priority="5" timeleft="162" criticality="hi" critical_section="//@critical_sections.1"/>
-  <critical_sections name="1" ceiling_priority="3" criticality="hi" tasks="//@tasks.0 //@tasks.2"/>
-  <critical_sections name="2" ceiling_priority="5" criticality="hi" tasks="//@tasks.1 //@tasks.5"/>
-  <core time="23500" current_task="//@tasks.4"/>
+  <tasks name="1" utilisation="0.018740093039737782" period="729" deadline="729" wcet_low="14" wcet_high="21" cstime="1" priority="6" dynamic_priority="6" timeleft="21" criticality="hi" critical_section="//@critical_sections.0"/>
+  <tasks name="2" utilisation="0.10160217209524561" period="3482" deadline="3482" wcet_low="354" wcet_high="531" cstime="4" priority="1" dynamic_priority="1" timeleft="531" criticality="hi" critical_section="//@critical_sections.1"/>
+  <tasks name="3" utilisation="0.09247190462630961" period="1366" deadline="1366" wcet_low="126" wcet_high="189" cstime="7" priority="5" dynamic_priority="5" timeleft="126" critical_section="//@critical_sections.1"/>
+  <tasks name="4" utilisation="0.04592654435582017" period="2355" deadline="2355" wcet_low="108" wcet_high="162" cstime="12" priority="4" dynamic_priority="4" timeleft="162" criticality="hi" critical_section="//@critical_sections.0"/>
+  <tasks name="5" utilisation="0.052975430158709175" period="2425" deadline="2425" wcet_low="128" wcet_high="192" priority="3" dynamic_priority="3" timeleft="192" criticality="hi"/>
+  <tasks name="6" utilisation="0.18810689512894516" period="2518" deadline="2518" wcet_low="474" wcet_high="711" priority="2" dynamic_priority="2" timeleft="474"/>
+  <critical_sections name="1" ceiling_priority="6" criticality="hi" tasks="//@tasks.0 //@tasks.3"/>
+  <critical_sections name="2" ceiling_priority="5" criticality="hi" tasks="//@tasks.1 //@tasks.2"/>
+  <core time="17410"/>
 </mcs_:MCSystem>
