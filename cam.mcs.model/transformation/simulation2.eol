@@ -159,7 +159,7 @@ operation Task printError(){
 }
 
 operation preempt(task){
-	if (task.IsMandatory=true or task.priority > core.current_task.dynamic_priority){
+	if ((task.IsMandatory = true) or (task.priority > core.current_task.dynamic_priority)){
 		task.IsMandatory = false;
 		core.current_task.hanging();
 		task.startNewTask();
@@ -231,7 +231,7 @@ operation getWillStartTask(){
 				var maxTaskPriorityLow = willStartTasksLow.getMaxPriorityTask();
 				if (maxTaskPriorityLow.size()=1){
 					var task = maxTaskPriorityLow[0];
-					if (task.wcet_low-task.timeleft<task.cstime and task.notAvoid()){
+					if (((system.status=Status#MCP) or (system.status=Status#HIGH and task.notAvoid())) and task.wcet_low-task.timeleft<task.cstime){
 						return task;
 					}
 					willStartTasksLow.remove(task);
@@ -254,12 +254,56 @@ operation Any getMaxPriorityTask(){
 }
 
 operation Task notAvoid(){
-	return (not (system.status=Status#HIGH and self.IsHighTaskExisted() and self.shouldAvoid()));
+	return (not (self.IsHighTaskExisted() and self.shouldAvoid()));
 }
+
 ///////////////
 operation Task shouldAvoid(){
+	var start = core.time;
+	var visionDistance = self.cstime;
+	var HighTaskSequence = self.critical_section.tasks.select(e|e.criticality=Criticality#hi);
+	while(true){
+		var HighTaskCanSeen = getHighTaskInVisitionDistance(start, visionDistance);
+		if (HighTaskCanSeen.size()>0){
+			if (HighTaskCanSeen.includeSameCSIn(HighTaskSequence)){
+				return true;
+			}
+			else{
+				start += visionDistance;
+				visionDistance = updateVisionDistance(HighTaskCanSeen);
+			}
+		}
+		else{
+			return false;
+		}
+	}
+}
+
+operation updateVisionDistance(HighTaskCanSeen){
+	var distance = 0;
+	for (task in HighTaskCanSeen){
+		distance += task.wcet_high;
+	}
+}
+
+operation getHighTaskInVisitionDistance(start, visionDistance){
+	var highTasksSequence = new Sequence;
+	for (task in system.tasks.select(e|e.criticality=Criticality#hi and e.state = WorkingState#unstart)){
+		if ((start/task.deadline).asInteger()<>((start + visionDistance)/task.deadline).asInteger()){
+			highTasksSequence.add(task);
+		}
+	}
+}
+
+operation Sequence includeSameCSIn(HighTaskSequence){
+	for (task in self){
+		if (HighTaskSequence.includes(task)){
+			return true;
+		}
+	}
 	return false;
 }
+
 ///////////////
 operation Task IsHighTaskExisted(){
 	return (self.critical_section <> null and self.critical_section.criticality = Criticality#hi);
