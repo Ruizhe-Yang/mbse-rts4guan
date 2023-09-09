@@ -14,11 +14,12 @@ var core = new Core;
 var count = 0;
 initSystem();
 generateTasks();
-("Status changes in "+(MAX_DEADLINE*3+10)).println();
+var DisturbanceTime = MAX_DEADLINE*3+getRandomInt(1000);
 run();
 "____________________________________".println();
 'run over.'.println();
 finalPrint();
+DisturbanceTime.println();
 systemStatusHighTime.println();
 
 
@@ -84,7 +85,7 @@ operation generateTasks(){
 }
 
 operation disturbance(){
-	return (core.time = MAX_DEADLINE*3+10);
+	return (core.time = DisturbanceTime);
 }
 
 operation changeSystemStatus(source:String, target:String){
@@ -92,8 +93,13 @@ operation changeSystemStatus(source:String, target:String){
 		system.status = Status#MCP;
 		for (task in system.tasks){
 			if (task.criticality=Criticality#hi){
-				task.timeleft += task.wcet_high - task.wcet_low;
 				task.cstime = (task.cstime * 1.5).getInteger();
+				if (task.wcet_low-task.timeleft >= task.cstime and task.cstime<>0){
+					task.timeleft =	(task.timeleft * 1.5).getInteger();
+				}
+				else {
+					task.timeleft += task.wcet_high - task.wcet_low;
+				}
 			}
 		}
 	}
