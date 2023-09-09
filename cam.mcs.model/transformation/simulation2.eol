@@ -2,15 +2,62 @@ var MAX_RUNNING_TIME = new Integer;
 var ERROR_SEQUENCE = new Sequence;
 var MAX_DEADLINE = new Integer;
 var PERIOD_NUMBER = 5;
+var TaskNumber = 6;
+var CPURate = 0.5;
+var HighTaskNumber = 2;
 var MODULE = Status#MCP;
+var DisturbanceOpen = false;
 var system = new MCSystem;
 var core = new Core;
 var count = 0;
 initSystem();
 generateTasks();
+("Status changes in "+(MAX_DEADLINE*3+10)).println();
 run();
+"____________________________________".println();
+'run over.'.println();
 finalPrint();
 
+
+operation run(){
+	for(i in Sequence{1..MAX_RUNNING_TIME}) {
+		UpdateHanging();
+		handle();
+		tick(i);
+		counter();
+		print_status();
+	}
+}
+
+operation handle(){
+	if (disturbance(DisturbanceOpen)){
+		changeSystemStatus("LOW", "MCP");
+	}
+	var taskShouldStart = HasTaskShouldStart();
+	if (core.IsOpen() and IsNoTaskRunning() and (not taskShouldStart)){
+	}
+	else{
+		if (core.IsOpen() and taskShouldStart){
+			var task = getWillStartTask();
+			task.startNewTask();
+			executeCurrentTask();
+		}
+		else if (IsTaskRunning() and (not taskShouldStart)){
+			executeCurrentTask();
+		}
+		else if (IsTaskRunning() and taskShouldStart){
+			var task = getWillStartTask();
+			preempt(task);
+			executeCurrentTask();
+		}
+		if (IsCurrentTaskOver()){
+			releaseCurrentTask();
+		}
+		else if (IsCurrentTaskShouldHang()){
+			hangCurrentTask();
+		}
+	}
+}
 
 operation initSystem() {
 	system.ceiling_priority = 5000;
@@ -21,7 +68,7 @@ operation initSystem() {
 }
 
 operation generateTasks(){
-	getRandomTasks(6, 0.6, 2);
+	getRandomTasks(TaskNumber, CPURate, HighTaskNumber);
 	getCriticalSection(2);
 	matchCriticalSection();
 	getCriticalSectionsCeilingPriority();
@@ -30,40 +77,22 @@ operation generateTasks(){
 	MAX_RUNNING_TIME = MAX_DEADLINE * PERIOD_NUMBER;
 }
 
-operation run(){
-	for(i in Sequence{1..MAX_RUNNING_TIME}) {
-		UpdateHanging();
-		handle();
-		tick(i);
-		counter();
-		print_status();
-	}
-	"____________________________________".println();
-	'run over.'.println();
+operation disturbance(open){
+	return ((core.time = MAX_DEADLINE*3+10) and open);
 }
 
-operation handle(){
-	if (core.IsOpen() and IsNoTaskRunning() and IsNoTaskShouldStart()){
+operation changeSystemStatus(source:String, target:String){
+	if (source='LOW' and target='MCP'){
+		system.status = Status#MCP;
+		updateTasksTimeleftAndSctime();
 	}
-	else{
-		if (core.IsOpen() and IsTaskShouldStart()){
-			var task = getWillStartTask();
-			task.startNewTask();
-			executeCurrentTask();
-		}
-		else if (IsTaskRunning() and IsNoTaskShouldStart()){
-			executeCurrentTask();
-		}
-		else if (IsTaskRunning() and IsTaskShouldStart()){
-			var task = getWillStartTask();
-			preempt(task);
-			executeCurrentTask();
-		}
-		if (IsCurrentTaskOver()){
-			releaseCurrentTask();
-		}
-		else if (IsCurrentTaskShouldHang()){
-			hangCurrentTask();
+}
+
+operation updateTasksTimeleftAndSctime(){
+	for (task in system.tasks){
+		if (task.criticality=Criticality#hi){
+			task.timeleft += task.wcet_high - task.wcet_low;
+			task.cstime = (task.cstime * 1.5).getInteger();
 		}
 	}
 }
@@ -110,7 +139,7 @@ operation UpdateHanging(){
 					task.getTimeLeft();
 					task.printError();
 				}
-				else if(system.status = Status#MCP){
+				else if(system.status = Status#MCP or system.status = Status#HIGH){
 					if (task.critical_section<>null and task.criticality = Criticality#lo and task.wcet_low - task.timeleft < task.cstime){
 						task.critical_section.semaphore.locked = false;
 					}
@@ -130,7 +159,7 @@ operation Task printError(){
 }
 
 operation preempt(task){
-	if (task.priority > core.current_task.dynamic_priority or task.IsMandatory){
+	if (task.IsMandatory=true or task.priority > core.current_task.dynamic_priority){
 		task.IsMandatory = false;
 		core.current_task.hanging();
 		task.startNewTask();
@@ -150,25 +179,11 @@ operation Task startNewTask(){
 }
 
 operation IsCurrentTaskOver(){
-	return (core.current_task.timeleft = 0);
+	return (core.current_task<>null and core.current_task.timeleft = 0);
 }
 
-operation IsTaskShouldStart(){
-	if (IsNoTaskShouldStart()=false){
-		return true;
-	}
-	else{
-		return false;
-	}
-}
-
-operation IsNoTaskShouldStart(){
-	if (getWillStartTask()=null){
-		return true;
-	}
-	else{
-		return false;
-	}
+operation HasTaskShouldStart(){
+	return (getWillStartTask()<>null);
 }
 
 operation getWillStartTask(){
@@ -181,78 +196,73 @@ operation getWillStartTask(){
 			return willStartTasks[0];
 		}
 		else{
-			var listTask = willStartTasks.select(s|(willStartTasks.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
-			if (listTask.size()=1){
-				return listTask[0];
+			var willStartTask = willStartTasks.getMaxPriorityTask();
+			if (willStartTask.size()=1){
+				return willStartTask[0];
 			}
-			else{
-				return listTask.select(e|e.dynamic_priority <> e.priority).first();
-			}
+			return willStartTask.getTaskByDPvsPi();
 		}
 	}
-	else if (system.status = Status#MCP){
+	else{
 		if (core.current_task <> null and core.current_task.criticality = Criticality#hi){
 			var willStartTasksHigh = willStartTasks.select(e|e.criticality=Criticality#hi and (e.critical_section=null or e.critical_section.semaphore.locked=false));
-			return willStartTasksHigh.select(s|willStartTasksHigh.count(e|e.dynamic_priority>s.dynamic_priority)=0).first();
+			return willStartTasksHigh.getMaxPriorityTask();
 		}
 		else{
 			var willStartTasksHigh = willStartTasks.select(e|e.criticality=Criticality#hi);
-			if (willStartTasksHigh.size()>0){
-				while(willStartTasksHigh.size()>=1){
-					var maxTaskPriorityHigh = willStartTasksHigh.select(s|willStartTasksHigh.count(e|e.dynamic_priority>s.dynamic_priority)=0);
-					if (maxTaskPriorityHigh.size() = 1){
-						var task = maxTaskPriorityHigh[0];
-						if (task.critical_section = null or task.critical_section.semaphore.locked = false or task.wcet_high-task.timeleft < task.cstime){
-							task.IsMandatory = true;
-							return task;
-						}
-						willStartTasksHigh.remove(task);
+			while(willStartTasksHigh.size()>0){
+				var maxTaskPriorityHigh = willStartTasksHigh.getMaxPriorityTask();
+				if (maxTaskPriorityHigh.size() = 1){
+					var task = maxTaskPriorityHigh[0];
+					if (task.critical_section = null or task.critical_section.semaphore.locked = false or task.wcet_high-task.timeleft < task.cstime){
+						task.IsMandatory = true;
+						return task;
 					}
-					else{
-						for (task in maxTaskPriorityHigh){
-							if (task.dynamic_priority <> task.priority){
-								task.IsMandatory = true;
-								return task;
-							}
-						}
-					}
+					willStartTasksHigh.remove(task);
+				}
+				else{
+					var task = maxTaskPriorityHigh.getTaskByDPvsPi();
+					task.IsMandatory = true;
+					return task;
 				}
 			}
 			var willStartTasksLow = willStartTasks.select(e|e.criticality=Criticality#lo);
-			if (willStartTasksLow.size()=1){
-				var task = willStartTasksLow[0];
-				if (task.wcet_low-task.timeleft<task.cstime){
-					return task;
+			while(willStartTasksLow.size()>0){
+				var maxTaskPriorityLow = willStartTasksLow.getMaxPriorityTask();
+				if (maxTaskPriorityLow.size()=1){
+					var task = maxTaskPriorityLow[0];
+					if (task.wcet_low-task.timeleft<task.cstime and task.notAvoid()){
+						return task;
+					}
+					willStartTasksLow.remove(task);
 				}
 				else{
-					return null;
+					return maxTaskPriorityLow.getTaskByDPvsPi();
 				}
 			}
-			else{
-				while(willStartTasksLow.size()>0){
-					var listTask = willStartTasksLow.select(s|(willStartTasksLow.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
-					if (listTask.size()=1){
-						var task = listTask[0];
-						if (task.wcet_low-task.timeleft<task.cstime){
-							return task;
-						}
-						else{
-							willStartTasksLow.remove(task);
-						}
-					}
-					else{
-						return listTask.select(e|e.dynamic_priority <> e.priority).first();
-					}
-				}
-				return null;
-			}
+			return null;
 		}
 	}
 }
 
-operation IsNoTaskShouldStart(){
-	var taskSequence = new Sequence;
-	for (task in taskSet.tasks){}
+operation Any getTaskByDPvsPi(){
+	return self.select(e|e.dynamic_priority <> e.priority).first();
+}
+
+operation Any getMaxPriorityTask(){
+	return self.select(s|(self.count(e|e.dynamic_priority > s.dynamic_priority) = 0));
+}
+
+operation Task notAvoid(){
+	return (not (system.status=Status#HIGH and self.IsHighTaskExisted() and self.shouldAvoid()));
+}
+///////////////
+operation Task shouldAvoid(){
+	return false;
+}
+///////////////
+operation Task IsHighTaskExisted(){
+	return (self.critical_section <> null and self.critical_section.criticality = Criticality#hi);
 }
 
 operation matchCriticalSectionCriticality(){
@@ -307,12 +317,7 @@ operation getCriticalSection(N : Integer){
 }
 
 operation Core IsOpen(){
-	if (self.locked = false){
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (not self.locked);
 }
 
 operation gameOver(){
@@ -325,12 +330,7 @@ operation IsAllTasksExecuted(){
 }
 
 operation IsUnstartedTaskExisted(){
-	if(IsAllTasksExecuted()){
-		return false;
-	}
-	else{
-		return true;
-	}
+	return (not IsAllTasksExecuted());
 }
 
 operation hangCurrentTask(){
@@ -347,12 +347,7 @@ operation releaseCurrentTask(){
 }
 
 operation IsNoTaskRunning(){
-	if (IsTaskRunning()){
-		return false;
-	}
-	else{
-		return true;
-	}
+	return (not IsTaskRunning());
 }
 
 operation IsTaskRunning(){
@@ -382,7 +377,7 @@ operation Task getTaskWCET(){
 }
 
 operation IsCurrentTaskShouldHang(){
-	return (system.status = Status#MCP and core.current_task.wcet_low-core.current_task.timeleft>=core.current_task.cstime and core.current_task.criticality = Criticality#lo);
+	return (core.current_task<>null and system.status = Status#MCP and core.current_task.wcet_low-core.current_task.timeleft>=core.current_task.cstime and core.current_task.criticality = Criticality#lo);
 }
 
 operation getTaskOfMaxPriority(){
@@ -453,7 +448,7 @@ operation Task getTimeLeft(){
 	if (system.status = Status#LOW){
 		self.timeleft = self.wcet_low;
 	}
-	else if (system.status = Status#MCP){
+	else if (system.status = Status#MCP or system.status = Status#HIGH){
 		if (self.criticality = Criticality#lo){
 			self.timeleft = self.wcet_low;
 		}
@@ -467,7 +462,7 @@ operation Task getCstime(){
 	if (system.status = Status#LOW){
 		self.cstime = (self.wcet_low*0.25*getRandomDecimal()).getInteger();
 	}
-	else if (system.status = Status#MCP){
+	else if (system.status = Status#MCP or system.status = Status#HIGH){
 		if (self.criticality = Criticality#lo){
 			self.cstime = (self.wcet_low*0.25*getRandomDecimal()).getInteger();
 		}
@@ -503,38 +498,38 @@ operation getRandomDecimal(){
 	return rand.nextInt(100000).asReal()/100000;
 }
 
-operation createCriticalSection(name, start, execution, sem) {
+operation createCriticalSection(name, start, execution, sem){
 	var cs = new CriticalSection;
 	cs.name = name;
-	cs.start = start; //relative start time
-	cs.execution = execution; //execution time in critical section
-	cs.elapsed = 0; //time elapsed in the critical section
-	cs.semaphore = sem; // semaphore acquired by this critical section
+	cs.start = start;
+	cs.execution = execution;
+	cs.elapsed = 0;
+	cs.semaphore = sem;
 	system.critical_sections.add(cs);
 	return cs;
 }
 
-operation createTask(name, pri, T, d, wl, wh, l, dp, of) {
+operation createTask(name, pri, T, d, wl, wh, l, dp, of){
 	var task = new Task;
 	task.name = name;
-	task.priority = pri; //priority
-	task.period = T; //period
-	task.deadline = d; //deadline
-	task.wcet_low = wl; //wcet in low mode
-	task.wcet_high = wh; //wcet in high mode
-	task.dynamic_priority = dp; //dynamic priority
-	task.offset = of; //initial  offset
-	task.current_cs = -1; //current cs, -1 means not in critical sections, 0, 1, 2 means index of critical section
+	task.priority = pri;
+	task.period = T;
+	task.deadline = d;
+	task.wcet_low = wl;
+	task.wcet_high = wh;
+	task.dynamic_priority = dp;
+	task.offset = of;
+	task.current_cs = -1;
 	task.IsMandatory = false;
-	system.tasks.add(task); //add this task to the system
+	system.tasks.add(task);
 	return task;
 }
 
-operation Task set_release_time(time) {
+operation Task set_release_time(time){
 	self.release_time = time;
 } 
 
-operation createSemaphore(name, locked, initial, ceiling) {
+operation createSemaphore(name, locked, initial, ceiling){
 	var sem = new Semaphore;
 	sem.name = name;
 	sem.locked = locked; 
@@ -544,10 +539,10 @@ operation createSemaphore(name, locked, initial, ceiling) {
 	return sem;
 }
 
-operation print_status() {
-	//if (core.time < MAX_DEADLINE){
-	//	return null;
-	//}
+operation print_status(){
+	if (core.time < MAX_DEADLINE){
+		return null;
+	}
 	"____________________________________".println();
 	("time:"+core.time).println();
 	if(core.current_task.isDefined()){

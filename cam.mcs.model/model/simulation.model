@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="ASCII"?>
 <mcs_:MCSystem xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:mcs_="http://cam.mcs.model/mcs" ceiling_priority="5000" status="MCP">
-  <tasks name="1" timeleft="157" priority="2" period="2848" deadline="2848" utilisation="0.03671868481594654" computation_time="105" wcet_low="105" cstime="26" wcet_high="157" criticality="hi" dynamic_priority="2" current_cs="-1" critical_section="//@critical_sections.0"/>
-  <tasks name="2" state="hanging" timeleft="266" priority="3" period="2517" deadline="2517" utilisation="0.12642111480209628" computation_time="318" wcet_low="318" cstime="52" wcet_high="477" dynamic_priority="3" current_cs="-1" critical_section="//@critical_sections.1"/>
-  <tasks name="3" timeleft="25" priority="4" period="1987" deadline="1987" utilisation="0.008457186030307267" computation_time="17" wcet_low="17" cstime="5" wcet_high="25" criticality="hi" dynamic_priority="4" current_cs="-1" critical_section="//@critical_sections.1"/>
-  <tasks name="4" state="hanging" timeleft="55" priority="6" period="241" deadline="241" utilisation="0.2879547756425569" computation_time="69" wcet_low="69" cstime="14" wcet_high="103" dynamic_priority="6" current_cs="-1" critical_section="//@critical_sections.1"/>
-  <tasks name="5" state="hanging" timeleft="196" priority="5" period="1605" deadline="1605" utilisation="0.12218015704094876" computation_time="196" wcet_low="196" wcet_high="294" dynamic_priority="5" current_cs="-1"/>
-  <tasks name="6" state="hanging" timeleft="76" priority="1" period="4140" deadline="4140" utilisation="0.018268105510002186" computation_time="76" wcet_low="76" wcet_high="114" dynamic_priority="1" current_cs="-1"/>
-  <critical_sections name="1" criticality="hi" tasks="//@tasks.0">
-    <semaphore name="1" ceiling_priority="2" acquisition="//@tasks.0"/>
+  <tasks name="1" state="hanging" timeleft="464" priority="1" period="4332" deadline="4332" utilisation="0.12025889164745146" computation_time="521" wcet_low="521" cstime="57" wcet_high="781" dynamic_priority="1" current_cs="-1" critical_section="//@critical_sections.0"/>
+  <tasks name="2" state="hanging" timeleft="332" priority="4" period="1791" deadline="1791" utilisation="0.18548327007281143" computation_time="332" wcet_low="332" cstime="18" wcet_high="498" dynamic_priority="4" current_cs="-1" critical_section="//@critical_sections.1"/>
+  <tasks name="3" timeleft="52" priority="2" period="2729" deadline="2729" utilisation="0.012760950896048723" computation_time="35" wcet_low="35" cstime="3" wcet_high="52" criticality="hi" dynamic_priority="2" current_cs="-1" critical_section="//@critical_sections.0"/>
+  <tasks name="4" state="hanging" timeleft="96" priority="5" period="1614" deadline="1614" utilisation="0.06973841965762126" computation_time="113" wcet_low="113" cstime="17" wcet_high="169" dynamic_priority="5" current_cs="-1" critical_section="//@critical_sections.1"/>
+  <tasks name="5" state="working" timeleft="91" priority="3" period="2376" deadline="2376" utilisation="0.10323241422324547" computation_time="245" wcet_low="245" cstime="20" wcet_high="367" criticality="hi" dynamic_priority="3" current_cs="-1" critical_section="//@critical_sections.1"/>
+  <tasks name="6" state="hanging" timeleft="2" priority="6" period="242" deadline="242" utilisation="0.008526053502821651" computation_time="2" wcet_low="2" wcet_high="3" dynamic_priority="6" current_cs="-1" critical_section="//@critical_sections.1"/>
+  <critical_sections name="1" criticality="hi" tasks="//@tasks.0 //@tasks.2">
+    <semaphore name="1" ceiling_priority="2" acquisition="//@tasks.0 //@tasks.2"/>
   </critical_sections>
-  <critical_sections name="2" criticality="hi" tasks="//@tasks.1 //@tasks.2 //@tasks.3">
-    <semaphore name="2" ceiling_priority="6" acquisition="//@tasks.1 //@tasks.2 //@tasks.3"/>
+  <critical_sections name="2" criticality="hi" tasks="//@tasks.1 //@tasks.3 //@tasks.4 //@tasks.5">
+    <semaphore name="2" ceiling_priority="6" acquisition="//@tasks.1 //@tasks.3 //@tasks.4 //@tasks.5"/>
   </critical_sections>
-  <core time="20700"/>
+  <core time="21660" locked="true" current_task="//@tasks.4"/>
 </mcs_:MCSystem>
