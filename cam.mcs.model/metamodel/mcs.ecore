@@ -33,7 +33,6 @@
     <eLiterals name="unstart"/>
     <eLiterals name="working" value="1"/>
     <eLiterals name="hanging" value="2"/>
-    <eLiterals name="done" value="3"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Task" eSuperTypes="#//MCSElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="IsMandatory" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>

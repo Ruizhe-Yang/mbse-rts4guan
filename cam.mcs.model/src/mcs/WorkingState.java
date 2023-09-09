@@ -46,17 +46,7 @@ public enum WorkingState implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HANGING(2, "hanging", "hanging"),
-
-	/**
-	 * The '<em><b>Done</b></em>' literal object.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DONE_VALUE
-	 * @generated
-	 * @ordered
-	 */
-	DONE(3, "done", "done");
+	HANGING(2, "hanging", "hanging");
 
 	/**
 	 * The '<em><b>Unstart</b></em>' literal value.
@@ -92,17 +82,6 @@ public enum WorkingState implements Enumerator {
 	public static final int HANGING_VALUE = 2;
 
 	/**
-	 * The '<em><b>Done</b></em>' literal value.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #DONE
-	 * @model name="done"
-	 * @generated
-	 * @ordered
-	 */
-	public static final int DONE_VALUE = 3;
-
-	/**
 	 * An array of all the '<em><b>Working State</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -113,7 +92,6 @@ public enum WorkingState implements Enumerator {
 			UNSTART,
 			WORKING,
 			HANGING,
-			DONE,
 		};
 
 	/**
@@ -173,7 +151,6 @@ public enum WorkingState implements Enumerator {
 			case UNSTART_VALUE: return UNSTART;
 			case WORKING_VALUE: return WORKING;
 			case HANGING_VALUE: return HANGING;
-			case DONE_VALUE: return DONE;
 		}
 		return null;
 	}

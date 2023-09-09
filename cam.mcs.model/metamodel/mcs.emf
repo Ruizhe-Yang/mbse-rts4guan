@@ -37,7 +37,6 @@ enum WorkingState{
 	unstart;
 	working;
 	hanging;
-	done;
 }
 
 class Task extends MCSElement {

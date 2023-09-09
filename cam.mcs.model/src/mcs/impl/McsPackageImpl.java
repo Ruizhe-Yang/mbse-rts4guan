@@ -808,7 +808,6 @@ public class McsPackageImpl extends EPackageImpl implements McsPackage {
 		addEEnumLiteral(workingStateEEnum, WorkingState.UNSTART);
 		addEEnumLiteral(workingStateEEnum, WorkingState.WORKING);
 		addEEnumLiteral(workingStateEEnum, WorkingState.HANGING);
-		addEEnumLiteral(workingStateEEnum, WorkingState.DONE);
 
 		// Create resource
 		createResource(eNS_URI);

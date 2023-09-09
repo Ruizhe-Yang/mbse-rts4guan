@@ -18,7 +18,6 @@
       <genEnumLiterals ecoreEnumLiteral="mcs.ecore#//WorkingState/unstart"/>
       <genEnumLiterals ecoreEnumLiteral="mcs.ecore#//WorkingState/working"/>
       <genEnumLiterals ecoreEnumLiteral="mcs.ecore#//WorkingState/hanging"/>
-      <genEnumLiterals ecoreEnumLiteral="mcs.ecore#//WorkingState/done"/>
     </genEnums>
     <genClasses image="false" ecoreClass="mcs.ecore#//MCSElement"/>
     <genClasses ecoreClass="mcs.ecore#//Core">
