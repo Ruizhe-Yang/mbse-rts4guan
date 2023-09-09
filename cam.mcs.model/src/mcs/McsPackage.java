@@ -175,7 +175,161 @@ public interface McsPackage extends EPackage {
 	 * @see mcs.impl.McsPackageImpl#getCore()
 	 * @generated
 	 */
-	int CORE = 1;
+	int CORE = 2;
+
+	/**
+	 * The meta object id for the '{@link mcs.impl.MCSystemImpl <em>MC System</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see mcs.impl.MCSystemImpl
+	 * @see mcs.impl.McsPackageImpl#getMCSystem()
+	 * @generated
+	 */
+	int MC_SYSTEM = 1;
+
+	/**
+	 * The feature id for the '<em><b>Gid</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__GID = MCS_ELEMENT__GID;
+
+	/**
+	 * The feature id for the '<em><b>Is Citation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__IS_CITATION = MCS_ELEMENT__IS_CITATION;
+
+	/**
+	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__IS_ABSTRACT = MCS_ELEMENT__IS_ABSTRACT;
+
+	/**
+	 * The feature id for the '<em><b>Cited Element</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__CITED_ELEMENT = MCS_ELEMENT__CITED_ELEMENT;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__NAME = MCS_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Description</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__DESCRIPTION = MCS_ELEMENT__DESCRIPTION;
+
+	/**
+	 * The feature id for the '<em><b>Implementation Constraint</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__IMPLEMENTATION_CONSTRAINT = MCS_ELEMENT__IMPLEMENTATION_CONSTRAINT;
+
+	/**
+	 * The feature id for the '<em><b>Note</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__NOTE = MCS_ELEMENT__NOTE;
+
+	/**
+	 * The feature id for the '<em><b>Tagged Value</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__TAGGED_VALUE = MCS_ELEMENT__TAGGED_VALUE;
+
+	/**
+	 * The feature id for the '<em><b>External Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
+
+	/**
+	 * The feature id for the '<em><b>Ceiling priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__CEILING_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__STATUS = MCS_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__TASKS = MCS_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Critical sections</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__CRITICAL_SECTIONS = MCS_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Core</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM__CORE = MCS_ELEMENT_FEATURE_COUNT + 4;
+
+	/**
+	 * The number of structural features of the '<em>MC System</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Gid</b></em>' attribute.
@@ -295,185 +449,13 @@ public interface McsPackage extends EPackage {
 	int CORE__CURRENT_TASK = MCS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Queue</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CORE__QUEUE = MCS_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
 	 * The number of structural features of the '<em>Core</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CORE_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The meta object id for the '{@link mcs.impl.MCSystemImpl <em>MC System</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see mcs.impl.MCSystemImpl
-	 * @see mcs.impl.McsPackageImpl#getMCSystem()
-	 * @generated
-	 */
-	int MC_SYSTEM = 2;
-
-	/**
-	 * The feature id for the '<em><b>Gid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__GID = MCS_ELEMENT__GID;
-
-	/**
-	 * The feature id for the '<em><b>Is Citation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__IS_CITATION = MCS_ELEMENT__IS_CITATION;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__IS_ABSTRACT = MCS_ELEMENT__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Cited Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__CITED_ELEMENT = MCS_ELEMENT__CITED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__NAME = MCS_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__DESCRIPTION = MCS_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Implementation Constraint</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__IMPLEMENTATION_CONSTRAINT = MCS_ELEMENT__IMPLEMENTATION_CONSTRAINT;
-
-	/**
-	 * The feature id for the '<em><b>Note</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__NOTE = MCS_ELEMENT__NOTE;
-
-	/**
-	 * The feature id for the '<em><b>Tagged Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__TAGGED_VALUE = MCS_ELEMENT__TAGGED_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>External Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
-
-	/**
-	 * The feature id for the '<em><b>Ceiling priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__CEILING_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__STATUS = MCS_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Resources</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__RESOURCES = MCS_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__TASKS = MCS_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Critical sections</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__CRITICAL_SECTIONS = MCS_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Core</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM__CORE = MCS_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The number of structural features of the '<em>MC System</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MC_SYSTEM_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 6;
+	int CORE_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The meta object id for the '{@link mcs.impl.TaskImpl <em>Task</em>}' class.
@@ -576,40 +558,13 @@ public interface McsPackage extends EPackage {
 	int TASK__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
 
 	/**
-	 * The feature id for the '<em><b>Is Mandatory</b></em>' attribute.
+	 * The feature id for the '<em><b>Utilisation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__IS_MANDATORY = MCS_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>State</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__STATE = MCS_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Timeleft</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__TIMELEFT = MCS_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 3;
+	int TASK__UTILISATION = MCS_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Period</b></em>' attribute.
@@ -618,7 +573,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__PERIOD = MCS_ELEMENT_FEATURE_COUNT + 4;
+	int TASK__PERIOD = MCS_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Deadline</b></em>' attribute.
@@ -627,25 +582,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__DEADLINE = MCS_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Utilisation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__UTILISATION = MCS_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Computation time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__COMPUTATION_TIME = MCS_ELEMENT_FEATURE_COUNT + 7;
+	int TASK__DEADLINE = MCS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Wcet low</b></em>' attribute.
@@ -654,16 +591,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__WCET_LOW = MCS_ELEMENT_FEATURE_COUNT + 8;
-
-	/**
-	 * The feature id for the '<em><b>Cstime</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int TASK__CSTIME = MCS_ELEMENT_FEATURE_COUNT + 9;
+	int TASK__WCET_LOW = MCS_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Wcet high</b></em>' attribute.
@@ -672,16 +600,25 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__WCET_HIGH = MCS_ELEMENT_FEATURE_COUNT + 10;
+	int TASK__WCET_HIGH = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
+	 * The feature id for the '<em><b>Cstime</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 11;
+	int TASK__CSTIME = MCS_ELEMENT_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>Priority</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Dynamic priority</b></em>' attribute.
@@ -690,34 +627,43 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__DYNAMIC_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 12;
+	int TASK__DYNAMIC_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 7;
 
 	/**
-	 * The feature id for the '<em><b>Offset</b></em>' attribute.
+	 * The feature id for the '<em><b>Timeleft</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__OFFSET = MCS_ELEMENT_FEATURE_COUNT + 13;
+	int TASK__TIMELEFT = MCS_ELEMENT_FEATURE_COUNT + 8;
 
 	/**
-	 * The feature id for the '<em><b>Release time</b></em>' attribute.
+	 * The feature id for the '<em><b>Is Mandatory</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__RELEASE_TIME = MCS_ELEMENT_FEATURE_COUNT + 14;
+	int TASK__IS_MANDATORY = MCS_ELEMENT_FEATURE_COUNT + 9;
 
 	/**
-	 * The feature id for the '<em><b>Current cs</b></em>' attribute.
+	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CURRENT_CS = MCS_ELEMENT_FEATURE_COUNT + 15;
+	int TASK__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 10;
+
+	/**
+	 * The feature id for the '<em><b>State</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TASK__STATE = MCS_ELEMENT_FEATURE_COUNT + 11;
 
 	/**
 	 * The feature id for the '<em><b>Critical section</b></em>' reference.
@@ -726,7 +672,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK__CRITICAL_SECTION = MCS_ELEMENT_FEATURE_COUNT + 16;
+	int TASK__CRITICAL_SECTION = MCS_ELEMENT_FEATURE_COUNT + 12;
 
 	/**
 	 * The number of structural features of the '<em>Task</em>' class.
@@ -735,7 +681,7 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 17;
+	int TASK_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 13;
 
 	/**
 	 * The meta object id for the '{@link mcs.impl.CriticalSectionImpl <em>Critical Section</em>}' class.
@@ -838,167 +784,13 @@ public interface McsPackage extends EPackage {
 	int CRITICAL_SECTION__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
 
 	/**
-	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
+	 * The feature id for the '<em><b>Ceiling priority</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CRITICAL_SECTION__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CRITICAL_SECTION__START = MCS_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Execution</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CRITICAL_SECTION__EXECUTION = MCS_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Elapsed</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CRITICAL_SECTION__ELAPSED = MCS_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CRITICAL_SECTION__TASKS = MCS_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The feature id for the '<em><b>Semaphore</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CRITICAL_SECTION__SEMAPHORE = MCS_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The number of structural features of the '<em>Critical Section</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CRITICAL_SECTION_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The meta object id for the '{@link mcs.impl.SemaphoreImpl <em>Semaphore</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see mcs.impl.SemaphoreImpl
-	 * @see mcs.impl.McsPackageImpl#getSemaphore()
-	 * @generated
-	 */
-	int SEMAPHORE = 5;
-
-	/**
-	 * The feature id for the '<em><b>Gid</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__GID = MCS_ELEMENT__GID;
-
-	/**
-	 * The feature id for the '<em><b>Is Citation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__IS_CITATION = MCS_ELEMENT__IS_CITATION;
-
-	/**
-	 * The feature id for the '<em><b>Is Abstract</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__IS_ABSTRACT = MCS_ELEMENT__IS_ABSTRACT;
-
-	/**
-	 * The feature id for the '<em><b>Cited Element</b></em>' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__CITED_ELEMENT = MCS_ELEMENT__CITED_ELEMENT;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__NAME = MCS_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Description</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__DESCRIPTION = MCS_ELEMENT__DESCRIPTION;
-
-	/**
-	 * The feature id for the '<em><b>Implementation Constraint</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__IMPLEMENTATION_CONSTRAINT = MCS_ELEMENT__IMPLEMENTATION_CONSTRAINT;
-
-	/**
-	 * The feature id for the '<em><b>Note</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__NOTE = MCS_ELEMENT__NOTE;
-
-	/**
-	 * The feature id for the '<em><b>Tagged Value</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__TAGGED_VALUE = MCS_ELEMENT__TAGGED_VALUE;
-
-	/**
-	 * The feature id for the '<em><b>External Reference</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE__EXTERNAL_REFERENCE = MCS_ELEMENT__EXTERNAL_REFERENCE;
+	int CRITICAL_SECTION__CEILING_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Locked</b></em>' attribute.
@@ -1007,43 +799,34 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE__LOCKED = MCS_ELEMENT_FEATURE_COUNT + 0;
+	int CRITICAL_SECTION__LOCKED = MCS_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Initial priority</b></em>' attribute.
+	 * The feature id for the '<em><b>Criticality</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE__INITIAL_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 1;
+	int CRITICAL_SECTION__CRITICALITY = MCS_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The feature id for the '<em><b>Ceiling priority</b></em>' attribute.
+	 * The feature id for the '<em><b>Tasks</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE__CEILING_PRIORITY = MCS_ELEMENT_FEATURE_COUNT + 2;
+	int CRITICAL_SECTION__TASKS = MCS_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Acquisition</b></em>' reference list.
+	 * The number of structural features of the '<em>Critical Section</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SEMAPHORE__ACQUISITION = MCS_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Semaphore</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SEMAPHORE_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 4;
+	int CRITICAL_SECTION_FEATURE_COUNT = MCS_ELEMENT_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link mcs.Status <em>Status</em>}' enum.
@@ -1053,7 +836,7 @@ public interface McsPackage extends EPackage {
 	 * @see mcs.impl.McsPackageImpl#getStatus()
 	 * @generated
 	 */
-	int STATUS = 6;
+	int STATUS = 5;
 
 	/**
 	 * The meta object id for the '{@link mcs.Criticality <em>Criticality</em>}' enum.
@@ -1063,7 +846,7 @@ public interface McsPackage extends EPackage {
 	 * @see mcs.impl.McsPackageImpl#getCriticality()
 	 * @generated
 	 */
-	int CRITICALITY = 7;
+	int CRITICALITY = 6;
 
 	/**
 	 * The meta object id for the '{@link mcs.WorkingState <em>Working State</em>}' enum.
@@ -1073,7 +856,7 @@ public interface McsPackage extends EPackage {
 	 * @see mcs.impl.McsPackageImpl#getWorkingState()
 	 * @generated
 	 */
-	int WORKING_STATE = 8;
+	int WORKING_STATE = 7;
 
 
 	/**
@@ -1130,17 +913,6 @@ public interface McsPackage extends EPackage {
 	EReference getCore_Current_task();
 
 	/**
-	 * Returns the meta object for the reference list '{@link mcs.Core#getQueue <em>Queue</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Queue</em>'.
-	 * @see mcs.Core#getQueue()
-	 * @see #getCore()
-	 * @generated
-	 */
-	EReference getCore_Queue();
-
-	/**
 	 * Returns the meta object for class '{@link mcs.MCSystem <em>MC System</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1171,17 +943,6 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getMCSystem_Status();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link mcs.MCSystem#getResources <em>Resources</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Resources</em>'.
-	 * @see mcs.MCSystem#getResources()
-	 * @see #getMCSystem()
-	 * @generated
-	 */
-	EReference getMCSystem_Resources();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link mcs.MCSystem#getTasks <em>Tasks</em>}'.
@@ -1304,17 +1065,6 @@ public interface McsPackage extends EPackage {
 	EAttribute getTask_Utilisation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link mcs.Task#getComputation_time <em>Computation time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Computation time</em>'.
-	 * @see mcs.Task#getComputation_time()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EAttribute getTask_Computation_time();
-
-	/**
 	 * Returns the meta object for the attribute '{@link mcs.Task#getWcet_low <em>Wcet low</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1370,39 +1120,6 @@ public interface McsPackage extends EPackage {
 	EAttribute getTask_Dynamic_priority();
 
 	/**
-	 * Returns the meta object for the attribute '{@link mcs.Task#getOffset <em>Offset</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Offset</em>'.
-	 * @see mcs.Task#getOffset()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EAttribute getTask_Offset();
-
-	/**
-	 * Returns the meta object for the attribute '{@link mcs.Task#getRelease_time <em>Release time</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Release time</em>'.
-	 * @see mcs.Task#getRelease_time()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EAttribute getTask_Release_time();
-
-	/**
-	 * Returns the meta object for the attribute '{@link mcs.Task#getCurrent_cs <em>Current cs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Current cs</em>'.
-	 * @see mcs.Task#getCurrent_cs()
-	 * @see #getTask()
-	 * @generated
-	 */
-	EAttribute getTask_Current_cs();
-
-	/**
 	 * Returns the meta object for the reference '{@link mcs.Task#getCritical_section <em>Critical section</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1435,37 +1152,26 @@ public interface McsPackage extends EPackage {
 	EAttribute getCriticalSection_Criticality();
 
 	/**
-	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#getStart <em>Start</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#getCeiling_priority <em>Ceiling priority</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Start</em>'.
-	 * @see mcs.CriticalSection#getStart()
+	 * @return the meta object for the attribute '<em>Ceiling priority</em>'.
+	 * @see mcs.CriticalSection#getCeiling_priority()
 	 * @see #getCriticalSection()
 	 * @generated
 	 */
-	EAttribute getCriticalSection_Start();
+	EAttribute getCriticalSection_Ceiling_priority();
 
 	/**
-	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#getExecution <em>Execution</em>}'.
+	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#isLocked <em>Locked</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Execution</em>'.
-	 * @see mcs.CriticalSection#getExecution()
+	 * @return the meta object for the attribute '<em>Locked</em>'.
+	 * @see mcs.CriticalSection#isLocked()
 	 * @see #getCriticalSection()
 	 * @generated
 	 */
-	EAttribute getCriticalSection_Execution();
-
-	/**
-	 * Returns the meta object for the attribute '{@link mcs.CriticalSection#getElapsed <em>Elapsed</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Elapsed</em>'.
-	 * @see mcs.CriticalSection#getElapsed()
-	 * @see #getCriticalSection()
-	 * @generated
-	 */
-	EAttribute getCriticalSection_Elapsed();
+	EAttribute getCriticalSection_Locked();
 
 	/**
 	 * Returns the meta object for the reference list '{@link mcs.CriticalSection#getTasks <em>Tasks</em>}'.
@@ -1477,71 +1183,6 @@ public interface McsPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCriticalSection_Tasks();
-
-	/**
-	 * Returns the meta object for the containment reference '{@link mcs.CriticalSection#getSemaphore <em>Semaphore</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Semaphore</em>'.
-	 * @see mcs.CriticalSection#getSemaphore()
-	 * @see #getCriticalSection()
-	 * @generated
-	 */
-	EReference getCriticalSection_Semaphore();
-
-	/**
-	 * Returns the meta object for class '{@link mcs.Semaphore <em>Semaphore</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Semaphore</em>'.
-	 * @see mcs.Semaphore
-	 * @generated
-	 */
-	EClass getSemaphore();
-
-	/**
-	 * Returns the meta object for the attribute '{@link mcs.Semaphore#isLocked <em>Locked</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Locked</em>'.
-	 * @see mcs.Semaphore#isLocked()
-	 * @see #getSemaphore()
-	 * @generated
-	 */
-	EAttribute getSemaphore_Locked();
-
-	/**
-	 * Returns the meta object for the attribute '{@link mcs.Semaphore#getInitial_priority <em>Initial priority</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Initial priority</em>'.
-	 * @see mcs.Semaphore#getInitial_priority()
-	 * @see #getSemaphore()
-	 * @generated
-	 */
-	EAttribute getSemaphore_Initial_priority();
-
-	/**
-	 * Returns the meta object for the attribute '{@link mcs.Semaphore#getCeiling_priority <em>Ceiling priority</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Ceiling priority</em>'.
-	 * @see mcs.Semaphore#getCeiling_priority()
-	 * @see #getSemaphore()
-	 * @generated
-	 */
-	EAttribute getSemaphore_Ceiling_priority();
-
-	/**
-	 * Returns the meta object for the reference list '{@link mcs.Semaphore#getAcquisition <em>Acquisition</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Acquisition</em>'.
-	 * @see mcs.Semaphore#getAcquisition()
-	 * @see #getSemaphore()
-	 * @generated
-	 */
-	EReference getSemaphore_Acquisition();
 
 	/**
 	 * Returns the meta object for enum '{@link mcs.Status <em>Status</em>}'.
@@ -1640,14 +1281,6 @@ public interface McsPackage extends EPackage {
 		EReference CORE__CURRENT_TASK = eINSTANCE.getCore_Current_task();
 
 		/**
-		 * The meta object literal for the '<em><b>Queue</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CORE__QUEUE = eINSTANCE.getCore_Queue();
-
-		/**
 		 * The meta object literal for the '{@link mcs.impl.MCSystemImpl <em>MC System</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1672,14 +1305,6 @@ public interface McsPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MC_SYSTEM__STATUS = eINSTANCE.getMCSystem_Status();
-
-		/**
-		 * The meta object literal for the '<em><b>Resources</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MC_SYSTEM__RESOURCES = eINSTANCE.getMCSystem_Resources();
 
 		/**
 		 * The meta object literal for the '<em><b>Tasks</b></em>' containment reference list feature.
@@ -1772,14 +1397,6 @@ public interface McsPackage extends EPackage {
 		EAttribute TASK__UTILISATION = eINSTANCE.getTask_Utilisation();
 
 		/**
-		 * The meta object literal for the '<em><b>Computation time</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TASK__COMPUTATION_TIME = eINSTANCE.getTask_Computation_time();
-
-		/**
 		 * The meta object literal for the '<em><b>Wcet low</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1820,30 +1437,6 @@ public interface McsPackage extends EPackage {
 		EAttribute TASK__DYNAMIC_PRIORITY = eINSTANCE.getTask_Dynamic_priority();
 
 		/**
-		 * The meta object literal for the '<em><b>Offset</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TASK__OFFSET = eINSTANCE.getTask_Offset();
-
-		/**
-		 * The meta object literal for the '<em><b>Release time</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TASK__RELEASE_TIME = eINSTANCE.getTask_Release_time();
-
-		/**
-		 * The meta object literal for the '<em><b>Current cs</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute TASK__CURRENT_CS = eINSTANCE.getTask_Current_cs();
-
-		/**
 		 * The meta object literal for the '<em><b>Critical section</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -1870,28 +1463,20 @@ public interface McsPackage extends EPackage {
 		EAttribute CRITICAL_SECTION__CRITICALITY = eINSTANCE.getCriticalSection_Criticality();
 
 		/**
-		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Ceiling priority</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CRITICAL_SECTION__START = eINSTANCE.getCriticalSection_Start();
+		EAttribute CRITICAL_SECTION__CEILING_PRIORITY = eINSTANCE.getCriticalSection_Ceiling_priority();
 
 		/**
-		 * The meta object literal for the '<em><b>Execution</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Locked</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CRITICAL_SECTION__EXECUTION = eINSTANCE.getCriticalSection_Execution();
-
-		/**
-		 * The meta object literal for the '<em><b>Elapsed</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute CRITICAL_SECTION__ELAPSED = eINSTANCE.getCriticalSection_Elapsed();
+		EAttribute CRITICAL_SECTION__LOCKED = eINSTANCE.getCriticalSection_Locked();
 
 		/**
 		 * The meta object literal for the '<em><b>Tasks</b></em>' reference list feature.
@@ -1900,56 +1485,6 @@ public interface McsPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CRITICAL_SECTION__TASKS = eINSTANCE.getCriticalSection_Tasks();
-
-		/**
-		 * The meta object literal for the '<em><b>Semaphore</b></em>' containment reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CRITICAL_SECTION__SEMAPHORE = eINSTANCE.getCriticalSection_Semaphore();
-
-		/**
-		 * The meta object literal for the '{@link mcs.impl.SemaphoreImpl <em>Semaphore</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see mcs.impl.SemaphoreImpl
-		 * @see mcs.impl.McsPackageImpl#getSemaphore()
-		 * @generated
-		 */
-		EClass SEMAPHORE = eINSTANCE.getSemaphore();
-
-		/**
-		 * The meta object literal for the '<em><b>Locked</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEMAPHORE__LOCKED = eINSTANCE.getSemaphore_Locked();
-
-		/**
-		 * The meta object literal for the '<em><b>Initial priority</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEMAPHORE__INITIAL_PRIORITY = eINSTANCE.getSemaphore_Initial_priority();
-
-		/**
-		 * The meta object literal for the '<em><b>Ceiling priority</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute SEMAPHORE__CEILING_PRIORITY = eINSTANCE.getSemaphore_Ceiling_priority();
-
-		/**
-		 * The meta object literal for the '<em><b>Acquisition</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SEMAPHORE__ACQUISITION = eINSTANCE.getSemaphore_Acquisition();
 
 		/**
 		 * The meta object literal for the '{@link mcs.Status <em>Status</em>}' enum.

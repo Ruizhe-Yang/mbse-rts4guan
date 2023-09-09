@@ -23,22 +23,18 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link mcs.impl.TaskImpl#isIsMandatory <em>Is Mandatory</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getState <em>State</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getTimeleft <em>Timeleft</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getPriority <em>Priority</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getUtilisation <em>Utilisation</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getPeriod <em>Period</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getDeadline <em>Deadline</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getUtilisation <em>Utilisation</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getComputation_time <em>Computation time</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getWcet_low <em>Wcet low</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getCstime <em>Cstime</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getWcet_high <em>Wcet high</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getCstime <em>Cstime</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getPriority <em>Priority</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getDynamic_priority <em>Dynamic priority</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getOffset <em>Offset</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getRelease_time <em>Release time</em>}</li>
- *   <li>{@link mcs.impl.TaskImpl#getCurrent_cs <em>Current cs</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getTimeleft <em>Timeleft</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#isIsMandatory <em>Is Mandatory</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.impl.TaskImpl#getState <em>State</em>}</li>
  *   <li>{@link mcs.impl.TaskImpl#getCritical_section <em>Critical section</em>}</li>
  * </ul>
  *
@@ -46,84 +42,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class TaskImpl extends MCSElementImpl implements Task {
 	/**
-	 * The default value of the '{@link #isIsMandatory() <em>Is Mandatory</em>}' attribute.
+	 * The default value of the '{@link #getUtilisation() <em>Utilisation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsMandatory()
+	 * @see #getUtilisation()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean IS_MANDATORY_EDEFAULT = false;
+	protected static final double UTILISATION_EDEFAULT = 0.0;
 
 	/**
-	 * The cached value of the '{@link #isIsMandatory() <em>Is Mandatory</em>}' attribute.
+	 * The cached value of the '{@link #getUtilisation() <em>Utilisation</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isIsMandatory()
+	 * @see #getUtilisation()
 	 * @generated
 	 * @ordered
 	 */
-	protected boolean isMandatory = IS_MANDATORY_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getState()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final WorkingState STATE_EDEFAULT = WorkingState.UNSTART;
-
-	/**
-	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getState()
-	 * @generated
-	 * @ordered
-	 */
-	protected WorkingState state = STATE_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getTimeleft() <em>Timeleft</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTimeleft()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int TIMELEFT_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getTimeleft() <em>Timeleft</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getTimeleft()
-	 * @generated
-	 * @ordered
-	 */
-	protected int timeleft = TIMELEFT_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int PRIORITY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getPriority()
-	 * @generated
-	 * @ordered
-	 */
-	protected int priority = PRIORITY_EDEFAULT;
+	protected double utilisation = UTILISATION_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getPeriod() <em>Period</em>}' attribute.
@@ -166,46 +102,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	protected int deadline = DEADLINE_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getUtilisation() <em>Utilisation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUtilisation()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final double UTILISATION_EDEFAULT = 0.0;
-
-	/**
-	 * The cached value of the '{@link #getUtilisation() <em>Utilisation</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getUtilisation()
-	 * @generated
-	 * @ordered
-	 */
-	protected double utilisation = UTILISATION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getComputation_time() <em>Computation time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComputation_time()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int COMPUTATION_TIME_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getComputation_time() <em>Computation time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getComputation_time()
-	 * @generated
-	 * @ordered
-	 */
-	protected int computation_time = COMPUTATION_TIME_EDEFAULT;
-
-	/**
 	 * The default value of the '{@link #getWcet_low() <em>Wcet low</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -224,26 +120,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @ordered
 	 */
 	protected int wcet_low = WCET_LOW_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getCstime() <em>Cstime</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCstime()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int CSTIME_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getCstime() <em>Cstime</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getCstime()
-	 * @generated
-	 * @ordered
-	 */
-	protected int cstime = CSTIME_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getWcet_high() <em>Wcet high</em>}' attribute.
@@ -266,24 +142,44 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	protected int wcet_high = WCET_HIGH_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
+	 * The default value of the '{@link #getCstime() <em>Cstime</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCriticality()
+	 * @see #getCstime()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Criticality CRITICALITY_EDEFAULT = Criticality.LO;
+	protected static final int CSTIME_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
+	 * The cached value of the '{@link #getCstime() <em>Cstime</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCriticality()
+	 * @see #getCstime()
 	 * @generated
 	 * @ordered
 	 */
-	protected Criticality criticality = CRITICALITY_EDEFAULT;
+	protected int cstime = CSTIME_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int PRIORITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getPriority() <em>Priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getPriority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int priority = PRIORITY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getDynamic_priority() <em>Dynamic priority</em>}' attribute.
@@ -306,64 +202,84 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	protected int dynamic_priority = DYNAMIC_PRIORITY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getOffset() <em>Offset</em>}' attribute.
+	 * The default value of the '{@link #getTimeleft() <em>Timeleft</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOffset()
+	 * @see #getTimeleft()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int OFFSET_EDEFAULT = 0;
+	protected static final int TIMELEFT_EDEFAULT = 0;
 
 	/**
-	 * The cached value of the '{@link #getOffset() <em>Offset</em>}' attribute.
+	 * The cached value of the '{@link #getTimeleft() <em>Timeleft</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getOffset()
+	 * @see #getTimeleft()
 	 * @generated
 	 * @ordered
 	 */
-	protected int offset = OFFSET_EDEFAULT;
+	protected int timeleft = TIMELEFT_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getRelease_time() <em>Release time</em>}' attribute.
+	 * The default value of the '{@link #isIsMandatory() <em>Is Mandatory</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRelease_time()
+	 * @see #isIsMandatory()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int RELEASE_TIME_EDEFAULT = 0;
+	protected static final boolean IS_MANDATORY_EDEFAULT = false;
 
 	/**
-	 * The cached value of the '{@link #getRelease_time() <em>Release time</em>}' attribute.
+	 * The cached value of the '{@link #isIsMandatory() <em>Is Mandatory</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getRelease_time()
+	 * @see #isIsMandatory()
 	 * @generated
 	 * @ordered
 	 */
-	protected int release_time = RELEASE_TIME_EDEFAULT;
+	protected boolean isMandatory = IS_MANDATORY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getCurrent_cs() <em>Current cs</em>}' attribute.
+	 * The default value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCurrent_cs()
+	 * @see #getCriticality()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int CURRENT_CS_EDEFAULT = 0;
+	protected static final Criticality CRITICALITY_EDEFAULT = Criticality.LO;
 
 	/**
-	 * The cached value of the '{@link #getCurrent_cs() <em>Current cs</em>}' attribute.
+	 * The cached value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #getCurrent_cs()
+	 * @see #getCriticality()
 	 * @generated
 	 * @ordered
 	 */
-	protected int current_cs = CURRENT_CS_EDEFAULT;
+	protected Criticality criticality = CRITICALITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getState() <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getState()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final WorkingState STATE_EDEFAULT = WorkingState.UNSTART;
+
+	/**
+	 * The cached value of the '{@link #getState() <em>State</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getState()
+	 * @generated
+	 * @ordered
+	 */
+	protected WorkingState state = STATE_EDEFAULT;
 
 	/**
 	 * The cached value of the '{@link #getCritical_section() <em>Critical section</em>}' reference.
@@ -561,29 +477,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 */
 	@Override
-	public int getComputation_time() {
-		return computation_time;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setComputation_time(int newComputation_time) {
-		int oldComputation_time = computation_time;
-		computation_time = newComputation_time;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__COMPUTATION_TIME, oldComputation_time, computation_time));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public int getWcet_low() {
 		return wcet_low;
 	}
@@ -699,75 +592,6 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	 * @generated
 	 */
 	@Override
-	public int getOffset() {
-		return offset;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setOffset(int newOffset) {
-		int oldOffset = offset;
-		offset = newOffset;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__OFFSET, oldOffset, offset));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getRelease_time() {
-		return release_time;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setRelease_time(int newRelease_time) {
-		int oldRelease_time = release_time;
-		release_time = newRelease_time;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__RELEASE_TIME, oldRelease_time, release_time));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getCurrent_cs() {
-		return current_cs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setCurrent_cs(int newCurrent_cs) {
-		int oldCurrent_cs = current_cs;
-		current_cs = newCurrent_cs;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.TASK__CURRENT_CS, oldCurrent_cs, current_cs));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public CriticalSection getCritical_section() {
 		if (critical_section != null && critical_section.eIsProxy()) {
 			InternalEObject oldCritical_section = (InternalEObject)critical_section;
@@ -810,38 +634,30 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case McsPackage.TASK__IS_MANDATORY:
-				return isIsMandatory();
-			case McsPackage.TASK__STATE:
-				return getState();
-			case McsPackage.TASK__TIMELEFT:
-				return getTimeleft();
-			case McsPackage.TASK__PRIORITY:
-				return getPriority();
+			case McsPackage.TASK__UTILISATION:
+				return getUtilisation();
 			case McsPackage.TASK__PERIOD:
 				return getPeriod();
 			case McsPackage.TASK__DEADLINE:
 				return getDeadline();
-			case McsPackage.TASK__UTILISATION:
-				return getUtilisation();
-			case McsPackage.TASK__COMPUTATION_TIME:
-				return getComputation_time();
 			case McsPackage.TASK__WCET_LOW:
 				return getWcet_low();
-			case McsPackage.TASK__CSTIME:
-				return getCstime();
 			case McsPackage.TASK__WCET_HIGH:
 				return getWcet_high();
-			case McsPackage.TASK__CRITICALITY:
-				return getCriticality();
+			case McsPackage.TASK__CSTIME:
+				return getCstime();
+			case McsPackage.TASK__PRIORITY:
+				return getPriority();
 			case McsPackage.TASK__DYNAMIC_PRIORITY:
 				return getDynamic_priority();
-			case McsPackage.TASK__OFFSET:
-				return getOffset();
-			case McsPackage.TASK__RELEASE_TIME:
-				return getRelease_time();
-			case McsPackage.TASK__CURRENT_CS:
-				return getCurrent_cs();
+			case McsPackage.TASK__TIMELEFT:
+				return getTimeleft();
+			case McsPackage.TASK__IS_MANDATORY:
+				return isIsMandatory();
+			case McsPackage.TASK__CRITICALITY:
+				return getCriticality();
+			case McsPackage.TASK__STATE:
+				return getState();
 			case McsPackage.TASK__CRITICAL_SECTION:
 				if (resolve) return getCritical_section();
 				return basicGetCritical_section();
@@ -857,17 +673,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case McsPackage.TASK__IS_MANDATORY:
-				setIsMandatory((Boolean)newValue);
-				return;
-			case McsPackage.TASK__STATE:
-				setState((WorkingState)newValue);
-				return;
-			case McsPackage.TASK__TIMELEFT:
-				setTimeleft((Integer)newValue);
-				return;
-			case McsPackage.TASK__PRIORITY:
-				setPriority((Integer)newValue);
+			case McsPackage.TASK__UTILISATION:
+				setUtilisation((Double)newValue);
 				return;
 			case McsPackage.TASK__PERIOD:
 				setPeriod((Integer)newValue);
@@ -875,35 +682,32 @@ public class TaskImpl extends MCSElementImpl implements Task {
 			case McsPackage.TASK__DEADLINE:
 				setDeadline((Integer)newValue);
 				return;
-			case McsPackage.TASK__UTILISATION:
-				setUtilisation((Double)newValue);
-				return;
-			case McsPackage.TASK__COMPUTATION_TIME:
-				setComputation_time((Integer)newValue);
-				return;
 			case McsPackage.TASK__WCET_LOW:
 				setWcet_low((Integer)newValue);
-				return;
-			case McsPackage.TASK__CSTIME:
-				setCstime((Integer)newValue);
 				return;
 			case McsPackage.TASK__WCET_HIGH:
 				setWcet_high((Integer)newValue);
 				return;
-			case McsPackage.TASK__CRITICALITY:
-				setCriticality((Criticality)newValue);
+			case McsPackage.TASK__CSTIME:
+				setCstime((Integer)newValue);
+				return;
+			case McsPackage.TASK__PRIORITY:
+				setPriority((Integer)newValue);
 				return;
 			case McsPackage.TASK__DYNAMIC_PRIORITY:
 				setDynamic_priority((Integer)newValue);
 				return;
-			case McsPackage.TASK__OFFSET:
-				setOffset((Integer)newValue);
+			case McsPackage.TASK__TIMELEFT:
+				setTimeleft((Integer)newValue);
 				return;
-			case McsPackage.TASK__RELEASE_TIME:
-				setRelease_time((Integer)newValue);
+			case McsPackage.TASK__IS_MANDATORY:
+				setIsMandatory((Boolean)newValue);
 				return;
-			case McsPackage.TASK__CURRENT_CS:
-				setCurrent_cs((Integer)newValue);
+			case McsPackage.TASK__CRITICALITY:
+				setCriticality((Criticality)newValue);
+				return;
+			case McsPackage.TASK__STATE:
+				setState((WorkingState)newValue);
 				return;
 			case McsPackage.TASK__CRITICAL_SECTION:
 				setCritical_section((CriticalSection)newValue);
@@ -920,17 +724,8 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case McsPackage.TASK__IS_MANDATORY:
-				setIsMandatory(IS_MANDATORY_EDEFAULT);
-				return;
-			case McsPackage.TASK__STATE:
-				setState(STATE_EDEFAULT);
-				return;
-			case McsPackage.TASK__TIMELEFT:
-				setTimeleft(TIMELEFT_EDEFAULT);
-				return;
-			case McsPackage.TASK__PRIORITY:
-				setPriority(PRIORITY_EDEFAULT);
+			case McsPackage.TASK__UTILISATION:
+				setUtilisation(UTILISATION_EDEFAULT);
 				return;
 			case McsPackage.TASK__PERIOD:
 				setPeriod(PERIOD_EDEFAULT);
@@ -938,35 +733,32 @@ public class TaskImpl extends MCSElementImpl implements Task {
 			case McsPackage.TASK__DEADLINE:
 				setDeadline(DEADLINE_EDEFAULT);
 				return;
-			case McsPackage.TASK__UTILISATION:
-				setUtilisation(UTILISATION_EDEFAULT);
-				return;
-			case McsPackage.TASK__COMPUTATION_TIME:
-				setComputation_time(COMPUTATION_TIME_EDEFAULT);
-				return;
 			case McsPackage.TASK__WCET_LOW:
 				setWcet_low(WCET_LOW_EDEFAULT);
-				return;
-			case McsPackage.TASK__CSTIME:
-				setCstime(CSTIME_EDEFAULT);
 				return;
 			case McsPackage.TASK__WCET_HIGH:
 				setWcet_high(WCET_HIGH_EDEFAULT);
 				return;
-			case McsPackage.TASK__CRITICALITY:
-				setCriticality(CRITICALITY_EDEFAULT);
+			case McsPackage.TASK__CSTIME:
+				setCstime(CSTIME_EDEFAULT);
+				return;
+			case McsPackage.TASK__PRIORITY:
+				setPriority(PRIORITY_EDEFAULT);
 				return;
 			case McsPackage.TASK__DYNAMIC_PRIORITY:
 				setDynamic_priority(DYNAMIC_PRIORITY_EDEFAULT);
 				return;
-			case McsPackage.TASK__OFFSET:
-				setOffset(OFFSET_EDEFAULT);
+			case McsPackage.TASK__TIMELEFT:
+				setTimeleft(TIMELEFT_EDEFAULT);
 				return;
-			case McsPackage.TASK__RELEASE_TIME:
-				setRelease_time(RELEASE_TIME_EDEFAULT);
+			case McsPackage.TASK__IS_MANDATORY:
+				setIsMandatory(IS_MANDATORY_EDEFAULT);
 				return;
-			case McsPackage.TASK__CURRENT_CS:
-				setCurrent_cs(CURRENT_CS_EDEFAULT);
+			case McsPackage.TASK__CRITICALITY:
+				setCriticality(CRITICALITY_EDEFAULT);
+				return;
+			case McsPackage.TASK__STATE:
+				setState(STATE_EDEFAULT);
 				return;
 			case McsPackage.TASK__CRITICAL_SECTION:
 				setCritical_section((CriticalSection)null);
@@ -983,38 +775,30 @@ public class TaskImpl extends MCSElementImpl implements Task {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case McsPackage.TASK__IS_MANDATORY:
-				return isMandatory != IS_MANDATORY_EDEFAULT;
-			case McsPackage.TASK__STATE:
-				return state != STATE_EDEFAULT;
-			case McsPackage.TASK__TIMELEFT:
-				return timeleft != TIMELEFT_EDEFAULT;
-			case McsPackage.TASK__PRIORITY:
-				return priority != PRIORITY_EDEFAULT;
+			case McsPackage.TASK__UTILISATION:
+				return utilisation != UTILISATION_EDEFAULT;
 			case McsPackage.TASK__PERIOD:
 				return period != PERIOD_EDEFAULT;
 			case McsPackage.TASK__DEADLINE:
 				return deadline != DEADLINE_EDEFAULT;
-			case McsPackage.TASK__UTILISATION:
-				return utilisation != UTILISATION_EDEFAULT;
-			case McsPackage.TASK__COMPUTATION_TIME:
-				return computation_time != COMPUTATION_TIME_EDEFAULT;
 			case McsPackage.TASK__WCET_LOW:
 				return wcet_low != WCET_LOW_EDEFAULT;
-			case McsPackage.TASK__CSTIME:
-				return cstime != CSTIME_EDEFAULT;
 			case McsPackage.TASK__WCET_HIGH:
 				return wcet_high != WCET_HIGH_EDEFAULT;
-			case McsPackage.TASK__CRITICALITY:
-				return criticality != CRITICALITY_EDEFAULT;
+			case McsPackage.TASK__CSTIME:
+				return cstime != CSTIME_EDEFAULT;
+			case McsPackage.TASK__PRIORITY:
+				return priority != PRIORITY_EDEFAULT;
 			case McsPackage.TASK__DYNAMIC_PRIORITY:
 				return dynamic_priority != DYNAMIC_PRIORITY_EDEFAULT;
-			case McsPackage.TASK__OFFSET:
-				return offset != OFFSET_EDEFAULT;
-			case McsPackage.TASK__RELEASE_TIME:
-				return release_time != RELEASE_TIME_EDEFAULT;
-			case McsPackage.TASK__CURRENT_CS:
-				return current_cs != CURRENT_CS_EDEFAULT;
+			case McsPackage.TASK__TIMELEFT:
+				return timeleft != TIMELEFT_EDEFAULT;
+			case McsPackage.TASK__IS_MANDATORY:
+				return isMandatory != IS_MANDATORY_EDEFAULT;
+			case McsPackage.TASK__CRITICALITY:
+				return criticality != CRITICALITY_EDEFAULT;
+			case McsPackage.TASK__STATE:
+				return state != STATE_EDEFAULT;
 			case McsPackage.TASK__CRITICAL_SECTION:
 				return critical_section != null;
 		}
@@ -1031,38 +815,30 @@ public class TaskImpl extends MCSElementImpl implements Task {
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (IsMandatory: ");
-		result.append(isMandatory);
-		result.append(", state: ");
-		result.append(state);
-		result.append(", timeleft: ");
-		result.append(timeleft);
-		result.append(", priority: ");
-		result.append(priority);
+		result.append(" (utilisation: ");
+		result.append(utilisation);
 		result.append(", period: ");
 		result.append(period);
 		result.append(", deadline: ");
 		result.append(deadline);
-		result.append(", utilisation: ");
-		result.append(utilisation);
-		result.append(", computation_time: ");
-		result.append(computation_time);
 		result.append(", wcet_low: ");
 		result.append(wcet_low);
-		result.append(", cstime: ");
-		result.append(cstime);
 		result.append(", wcet_high: ");
 		result.append(wcet_high);
-		result.append(", criticality: ");
-		result.append(criticality);
+		result.append(", cstime: ");
+		result.append(cstime);
+		result.append(", priority: ");
+		result.append(priority);
 		result.append(", dynamic_priority: ");
 		result.append(dynamic_priority);
-		result.append(", offset: ");
-		result.append(offset);
-		result.append(", release_time: ");
-		result.append(release_time);
-		result.append(", current_cs: ");
-		result.append(current_cs);
+		result.append(", timeleft: ");
+		result.append(timeleft);
+		result.append(", IsMandatory: ");
+		result.append(isMandatory);
+		result.append(", criticality: ");
+		result.append(criticality);
+		result.append(", state: ");
+		result.append(state);
 		result.append(')');
 		return result.toString();
 	}

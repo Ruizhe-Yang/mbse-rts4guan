@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link mcs.MCSystem#getCeiling_priority <em>Ceiling priority</em>}</li>
  *   <li>{@link mcs.MCSystem#getStatus <em>Status</em>}</li>
- *   <li>{@link mcs.MCSystem#getResources <em>Resources</em>}</li>
  *   <li>{@link mcs.MCSystem#getTasks <em>Tasks</em>}</li>
  *   <li>{@link mcs.MCSystem#getCritical_sections <em>Critical sections</em>}</li>
  *   <li>{@link mcs.MCSystem#getCore <em>Core</em>}</li>
@@ -72,18 +71,6 @@ public interface MCSystem extends MCSElement {
 	 * @generated
 	 */
 	void setStatus(Status value);
-
-	/**
-	 * Returns the value of the '<em><b>Resources</b></em>' containment reference list.
-	 * The list contents are of type {@link mcs.Semaphore}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Resources</em>' containment reference list.
-	 * @see mcs.McsPackage#getMCSystem_Resources()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<Semaphore> getResources();
 
 	/**
 	 * Returns the value of the '<em><b>Tasks</b></em>' containment reference list.

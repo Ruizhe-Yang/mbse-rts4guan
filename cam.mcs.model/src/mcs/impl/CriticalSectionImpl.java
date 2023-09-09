@@ -30,17 +30,55 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link mcs.impl.CriticalSectionImpl#getCeiling_priority <em>Ceiling priority</em>}</li>
+ *   <li>{@link mcs.impl.CriticalSectionImpl#isLocked <em>Locked</em>}</li>
  *   <li>{@link mcs.impl.CriticalSectionImpl#getCriticality <em>Criticality</em>}</li>
- *   <li>{@link mcs.impl.CriticalSectionImpl#getStart <em>Start</em>}</li>
- *   <li>{@link mcs.impl.CriticalSectionImpl#getExecution <em>Execution</em>}</li>
- *   <li>{@link mcs.impl.CriticalSectionImpl#getElapsed <em>Elapsed</em>}</li>
  *   <li>{@link mcs.impl.CriticalSectionImpl#getTasks <em>Tasks</em>}</li>
- *   <li>{@link mcs.impl.CriticalSectionImpl#getSemaphore <em>Semaphore</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CriticalSectionImpl extends MCSElementImpl implements CriticalSection {
+	/**
+	 * The default value of the '{@link #getCeiling_priority() <em>Ceiling priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCeiling_priority()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final int CEILING_PRIORITY_EDEFAULT = 0;
+
+	/**
+	 * The cached value of the '{@link #getCeiling_priority() <em>Ceiling priority</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getCeiling_priority()
+	 * @generated
+	 * @ordered
+	 */
+	protected int ceiling_priority = CEILING_PRIORITY_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #isLocked() <em>Locked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLocked()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean LOCKED_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isLocked() <em>Locked</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #isLocked()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean locked = LOCKED_EDEFAULT;
+
 	/**
 	 * The default value of the '{@link #getCriticality() <em>Criticality</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -62,66 +100,6 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	protected Criticality criticality = CRITICALITY_EDEFAULT;
 
 	/**
-	 * The default value of the '{@link #getStart() <em>Start</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStart()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int START_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getStart() <em>Start</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getStart()
-	 * @generated
-	 * @ordered
-	 */
-	protected int start = START_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getExecution() <em>Execution</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExecution()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int EXECUTION_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getExecution() <em>Execution</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getExecution()
-	 * @generated
-	 * @ordered
-	 */
-	protected int execution = EXECUTION_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getElapsed() <em>Elapsed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getElapsed()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int ELAPSED_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getElapsed() <em>Elapsed</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getElapsed()
-	 * @generated
-	 * @ordered
-	 */
-	protected int elapsed = ELAPSED_EDEFAULT;
-
-	/**
 	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -130,16 +108,6 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 * @ordered
 	 */
 	protected EList<Task> tasks;
-
-	/**
-	 * The cached value of the '{@link #getSemaphore() <em>Semaphore</em>}' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getSemaphore()
-	 * @generated
-	 * @ordered
-	 */
-	protected Semaphore semaphore;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -189,8 +157,8 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 * @generated
 	 */
 	@Override
-	public int getStart() {
-		return start;
+	public int getCeiling_priority() {
+		return ceiling_priority;
 	}
 
 	/**
@@ -199,11 +167,11 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 * @generated
 	 */
 	@Override
-	public void setStart(int newStart) {
-		int oldStart = start;
-		start = newStart;
+	public void setCeiling_priority(int newCeiling_priority) {
+		int oldCeiling_priority = ceiling_priority;
+		ceiling_priority = newCeiling_priority;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__START, oldStart, start));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__CEILING_PRIORITY, oldCeiling_priority, ceiling_priority));
 	}
 
 	/**
@@ -212,8 +180,8 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 * @generated
 	 */
 	@Override
-	public int getExecution() {
-		return execution;
+	public boolean isLocked() {
+		return locked;
 	}
 
 	/**
@@ -222,34 +190,11 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 * @generated
 	 */
 	@Override
-	public void setExecution(int newExecution) {
-		int oldExecution = execution;
-		execution = newExecution;
+	public void setLocked(boolean newLocked) {
+		boolean oldLocked = locked;
+		locked = newLocked;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__EXECUTION, oldExecution, execution));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public int getElapsed() {
-		return elapsed;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setElapsed(int newElapsed) {
-		int oldElapsed = elapsed;
-		elapsed = newElapsed;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__ELAPSED, oldElapsed, elapsed));
+			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__LOCKED, oldLocked, locked));
 	}
 
 	/**
@@ -271,79 +216,16 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	 * @generated
 	 */
 	@Override
-	public Semaphore getSemaphore() {
-		return semaphore;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public NotificationChain basicSetSemaphore(Semaphore newSemaphore, NotificationChain msgs) {
-		Semaphore oldSemaphore = semaphore;
-		semaphore = newSemaphore;
-		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__SEMAPHORE, oldSemaphore, newSemaphore);
-			if (msgs == null) msgs = notification; else msgs.add(notification);
-		}
-		return msgs;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setSemaphore(Semaphore newSemaphore) {
-		if (newSemaphore != semaphore) {
-			NotificationChain msgs = null;
-			if (semaphore != null)
-				msgs = ((InternalEObject)semaphore).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - McsPackage.CRITICAL_SECTION__SEMAPHORE, null, msgs);
-			if (newSemaphore != null)
-				msgs = ((InternalEObject)newSemaphore).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - McsPackage.CRITICAL_SECTION__SEMAPHORE, null, msgs);
-			msgs = basicSetSemaphore(newSemaphore, msgs);
-			if (msgs != null) msgs.dispatch();
-		}
-		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.CRITICAL_SECTION__SEMAPHORE, newSemaphore, newSemaphore));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
-				return basicSetSemaphore(null, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case McsPackage.CRITICAL_SECTION__CEILING_PRIORITY:
+				return getCeiling_priority();
+			case McsPackage.CRITICAL_SECTION__LOCKED:
+				return isLocked();
 			case McsPackage.CRITICAL_SECTION__CRITICALITY:
 				return getCriticality();
-			case McsPackage.CRITICAL_SECTION__START:
-				return getStart();
-			case McsPackage.CRITICAL_SECTION__EXECUTION:
-				return getExecution();
-			case McsPackage.CRITICAL_SECTION__ELAPSED:
-				return getElapsed();
 			case McsPackage.CRITICAL_SECTION__TASKS:
 				return getTasks();
-			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
-				return getSemaphore();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -357,24 +239,18 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case McsPackage.CRITICAL_SECTION__CEILING_PRIORITY:
+				setCeiling_priority((Integer)newValue);
+				return;
+			case McsPackage.CRITICAL_SECTION__LOCKED:
+				setLocked((Boolean)newValue);
+				return;
 			case McsPackage.CRITICAL_SECTION__CRITICALITY:
 				setCriticality((Criticality)newValue);
-				return;
-			case McsPackage.CRITICAL_SECTION__START:
-				setStart((Integer)newValue);
-				return;
-			case McsPackage.CRITICAL_SECTION__EXECUTION:
-				setExecution((Integer)newValue);
-				return;
-			case McsPackage.CRITICAL_SECTION__ELAPSED:
-				setElapsed((Integer)newValue);
 				return;
 			case McsPackage.CRITICAL_SECTION__TASKS:
 				getTasks().clear();
 				getTasks().addAll((Collection<? extends Task>)newValue);
-				return;
-			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
-				setSemaphore((Semaphore)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -388,23 +264,17 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case McsPackage.CRITICAL_SECTION__CEILING_PRIORITY:
+				setCeiling_priority(CEILING_PRIORITY_EDEFAULT);
+				return;
+			case McsPackage.CRITICAL_SECTION__LOCKED:
+				setLocked(LOCKED_EDEFAULT);
+				return;
 			case McsPackage.CRITICAL_SECTION__CRITICALITY:
 				setCriticality(CRITICALITY_EDEFAULT);
 				return;
-			case McsPackage.CRITICAL_SECTION__START:
-				setStart(START_EDEFAULT);
-				return;
-			case McsPackage.CRITICAL_SECTION__EXECUTION:
-				setExecution(EXECUTION_EDEFAULT);
-				return;
-			case McsPackage.CRITICAL_SECTION__ELAPSED:
-				setElapsed(ELAPSED_EDEFAULT);
-				return;
 			case McsPackage.CRITICAL_SECTION__TASKS:
 				getTasks().clear();
-				return;
-			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
-				setSemaphore((Semaphore)null);
 				return;
 		}
 		super.eUnset(featureID);
@@ -418,18 +288,14 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case McsPackage.CRITICAL_SECTION__CEILING_PRIORITY:
+				return ceiling_priority != CEILING_PRIORITY_EDEFAULT;
+			case McsPackage.CRITICAL_SECTION__LOCKED:
+				return locked != LOCKED_EDEFAULT;
 			case McsPackage.CRITICAL_SECTION__CRITICALITY:
 				return criticality != CRITICALITY_EDEFAULT;
-			case McsPackage.CRITICAL_SECTION__START:
-				return start != START_EDEFAULT;
-			case McsPackage.CRITICAL_SECTION__EXECUTION:
-				return execution != EXECUTION_EDEFAULT;
-			case McsPackage.CRITICAL_SECTION__ELAPSED:
-				return elapsed != ELAPSED_EDEFAULT;
 			case McsPackage.CRITICAL_SECTION__TASKS:
 				return tasks != null && !tasks.isEmpty();
-			case McsPackage.CRITICAL_SECTION__SEMAPHORE:
-				return semaphore != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -444,14 +310,12 @@ public class CriticalSectionImpl extends MCSElementImpl implements CriticalSecti
 		if (eIsProxy()) return super.toString();
 
 		StringBuilder result = new StringBuilder(super.toString());
-		result.append(" (criticality: ");
+		result.append(" (ceiling_priority: ");
+		result.append(ceiling_priority);
+		result.append(", locked: ");
+		result.append(locked);
+		result.append(", criticality: ");
 		result.append(criticality);
-		result.append(", start: ");
-		result.append(start);
-		result.append(", execution: ");
-		result.append(execution);
-		result.append(", elapsed: ");
-		result.append(elapsed);
 		result.append(')');
 		return result.toString();
 	}

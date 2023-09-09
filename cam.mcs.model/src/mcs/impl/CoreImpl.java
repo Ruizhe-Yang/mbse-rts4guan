@@ -30,7 +30,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *   <li>{@link mcs.impl.CoreImpl#getTime <em>Time</em>}</li>
  *   <li>{@link mcs.impl.CoreImpl#isLocked <em>Locked</em>}</li>
  *   <li>{@link mcs.impl.CoreImpl#getCurrent_task <em>Current task</em>}</li>
- *   <li>{@link mcs.impl.CoreImpl#getQueue <em>Queue</em>}</li>
  * </ul>
  *
  * @generated
@@ -85,16 +84,6 @@ public class CoreImpl extends MCSElementImpl implements Core {
 	 * @ordered
 	 */
 	protected Task current_task;
-
-	/**
-	 * The cached value of the '{@link #getQueue() <em>Queue</em>}' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getQueue()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Task> queue;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -207,19 +196,6 @@ public class CoreImpl extends MCSElementImpl implements Core {
 	 * @generated
 	 */
 	@Override
-	public EList<Task> getQueue() {
-		if (queue == null) {
-			queue = new EObjectResolvingEList<Task>(Task.class, this, McsPackage.CORE__QUEUE);
-		}
-		return queue;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case McsPackage.CORE__TIME:
@@ -229,8 +205,6 @@ public class CoreImpl extends MCSElementImpl implements Core {
 			case McsPackage.CORE__CURRENT_TASK:
 				if (resolve) return getCurrent_task();
 				return basicGetCurrent_task();
-			case McsPackage.CORE__QUEUE:
-				return getQueue();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -253,10 +227,6 @@ public class CoreImpl extends MCSElementImpl implements Core {
 			case McsPackage.CORE__CURRENT_TASK:
 				setCurrent_task((Task)newValue);
 				return;
-			case McsPackage.CORE__QUEUE:
-				getQueue().clear();
-				getQueue().addAll((Collection<? extends Task>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -278,9 +248,6 @@ public class CoreImpl extends MCSElementImpl implements Core {
 			case McsPackage.CORE__CURRENT_TASK:
 				setCurrent_task((Task)null);
 				return;
-			case McsPackage.CORE__QUEUE:
-				getQueue().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -299,8 +266,6 @@ public class CoreImpl extends MCSElementImpl implements Core {
 				return locked != LOCKED_EDEFAULT;
 			case McsPackage.CORE__CURRENT_TASK:
 				return current_task != null;
-			case McsPackage.CORE__QUEUE:
-				return queue != null && !queue.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

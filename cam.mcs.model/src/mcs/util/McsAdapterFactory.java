@@ -77,12 +77,12 @@ public class McsAdapterFactory extends AdapterFactoryImpl {
 				return createMCSElementAdapter();
 			}
 			@Override
-			public Adapter caseCore(Core object) {
-				return createCoreAdapter();
-			}
-			@Override
 			public Adapter caseMCSystem(MCSystem object) {
 				return createMCSystemAdapter();
+			}
+			@Override
+			public Adapter caseCore(Core object) {
+				return createCoreAdapter();
 			}
 			@Override
 			public Adapter caseTask(Task object) {
@@ -91,10 +91,6 @@ public class McsAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseCriticalSection(CriticalSection object) {
 				return createCriticalSectionAdapter();
-			}
-			@Override
-			public Adapter caseSemaphore(Semaphore object) {
-				return createSemaphoreAdapter();
 			}
 			@Override
 			public Adapter caseElement(Element object) {
@@ -199,20 +195,6 @@ public class McsAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCriticalSectionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link mcs.Semaphore <em>Semaphore</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see mcs.Semaphore
-	 * @generated
-	 */
-	public Adapter createSemaphoreAdapter() {
 		return null;
 	}
 

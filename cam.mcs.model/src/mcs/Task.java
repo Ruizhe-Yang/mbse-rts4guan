@@ -12,22 +12,18 @@ package mcs;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link mcs.Task#isIsMandatory <em>Is Mandatory</em>}</li>
- *   <li>{@link mcs.Task#getState <em>State</em>}</li>
- *   <li>{@link mcs.Task#getTimeleft <em>Timeleft</em>}</li>
- *   <li>{@link mcs.Task#getPriority <em>Priority</em>}</li>
+ *   <li>{@link mcs.Task#getUtilisation <em>Utilisation</em>}</li>
  *   <li>{@link mcs.Task#getPeriod <em>Period</em>}</li>
  *   <li>{@link mcs.Task#getDeadline <em>Deadline</em>}</li>
- *   <li>{@link mcs.Task#getUtilisation <em>Utilisation</em>}</li>
- *   <li>{@link mcs.Task#getComputation_time <em>Computation time</em>}</li>
  *   <li>{@link mcs.Task#getWcet_low <em>Wcet low</em>}</li>
- *   <li>{@link mcs.Task#getCstime <em>Cstime</em>}</li>
  *   <li>{@link mcs.Task#getWcet_high <em>Wcet high</em>}</li>
- *   <li>{@link mcs.Task#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.Task#getCstime <em>Cstime</em>}</li>
+ *   <li>{@link mcs.Task#getPriority <em>Priority</em>}</li>
  *   <li>{@link mcs.Task#getDynamic_priority <em>Dynamic priority</em>}</li>
- *   <li>{@link mcs.Task#getOffset <em>Offset</em>}</li>
- *   <li>{@link mcs.Task#getRelease_time <em>Release time</em>}</li>
- *   <li>{@link mcs.Task#getCurrent_cs <em>Current cs</em>}</li>
+ *   <li>{@link mcs.Task#getTimeleft <em>Timeleft</em>}</li>
+ *   <li>{@link mcs.Task#isIsMandatory <em>Is Mandatory</em>}</li>
+ *   <li>{@link mcs.Task#getCriticality <em>Criticality</em>}</li>
+ *   <li>{@link mcs.Task#getState <em>State</em>}</li>
  *   <li>{@link mcs.Task#getCritical_section <em>Critical section</em>}</li>
  * </ul>
  *
@@ -194,28 +190,6 @@ public interface Task extends MCSElement {
 	void setUtilisation(double value);
 
 	/**
-	 * Returns the value of the '<em><b>Computation time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Computation time</em>' attribute.
-	 * @see #setComputation_time(int)
-	 * @see mcs.McsPackage#getTask_Computation_time()
-	 * @model
-	 * @generated
-	 */
-	int getComputation_time();
-
-	/**
-	 * Sets the value of the '{@link mcs.Task#getComputation_time <em>Computation time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Computation time</em>' attribute.
-	 * @see #getComputation_time()
-	 * @generated
-	 */
-	void setComputation_time(int value);
-
-	/**
 	 * Returns the value of the '<em><b>Wcet low</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -327,72 +301,6 @@ public interface Task extends MCSElement {
 	 * @generated
 	 */
 	void setDynamic_priority(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Offset</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Offset</em>' attribute.
-	 * @see #setOffset(int)
-	 * @see mcs.McsPackage#getTask_Offset()
-	 * @model
-	 * @generated
-	 */
-	int getOffset();
-
-	/**
-	 * Sets the value of the '{@link mcs.Task#getOffset <em>Offset</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Offset</em>' attribute.
-	 * @see #getOffset()
-	 * @generated
-	 */
-	void setOffset(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Release time</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Release time</em>' attribute.
-	 * @see #setRelease_time(int)
-	 * @see mcs.McsPackage#getTask_Release_time()
-	 * @model
-	 * @generated
-	 */
-	int getRelease_time();
-
-	/**
-	 * Sets the value of the '{@link mcs.Task#getRelease_time <em>Release time</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Release time</em>' attribute.
-	 * @see #getRelease_time()
-	 * @generated
-	 */
-	void setRelease_time(int value);
-
-	/**
-	 * Returns the value of the '<em><b>Current cs</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Current cs</em>' attribute.
-	 * @see #setCurrent_cs(int)
-	 * @see mcs.McsPackage#getTask_Current_cs()
-	 * @model
-	 * @generated
-	 */
-	int getCurrent_cs();
-
-	/**
-	 * Sets the value of the '{@link mcs.Task#getCurrent_cs <em>Current cs</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Current cs</em>' attribute.
-	 * @see #getCurrent_cs()
-	 * @generated
-	 */
-	void setCurrent_cs(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Critical section</b></em>' reference.

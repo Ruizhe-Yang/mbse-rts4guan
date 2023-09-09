@@ -36,7 +36,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link mcs.impl.MCSystemImpl#getCeiling_priority <em>Ceiling priority</em>}</li>
  *   <li>{@link mcs.impl.MCSystemImpl#getStatus <em>Status</em>}</li>
- *   <li>{@link mcs.impl.MCSystemImpl#getResources <em>Resources</em>}</li>
  *   <li>{@link mcs.impl.MCSystemImpl#getTasks <em>Tasks</em>}</li>
  *   <li>{@link mcs.impl.MCSystemImpl#getCritical_sections <em>Critical sections</em>}</li>
  *   <li>{@link mcs.impl.MCSystemImpl#getCore <em>Core</em>}</li>
@@ -84,16 +83,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	 * @ordered
 	 */
 	protected Status status = STATUS_EDEFAULT;
-
-	/**
-	 * The cached value of the '{@link #getResources() <em>Resources</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getResources()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Semaphore> resources;
 
 	/**
 	 * The cached value of the '{@link #getTasks() <em>Tasks</em>}' containment reference list.
@@ -196,19 +185,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	 * @generated
 	 */
 	@Override
-	public EList<Semaphore> getResources() {
-		if (resources == null) {
-			resources = new EObjectContainmentEList<Semaphore>(Semaphore.class, this, McsPackage.MC_SYSTEM__RESOURCES);
-		}
-		return resources;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EList<Task> getTasks() {
 		if (tasks == null) {
 			tasks = new EObjectContainmentEList<Task>(Task.class, this, McsPackage.MC_SYSTEM__TASKS);
@@ -282,8 +258,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case McsPackage.MC_SYSTEM__RESOURCES:
-				return ((InternalEList<?>)getResources()).basicRemove(otherEnd, msgs);
 			case McsPackage.MC_SYSTEM__TASKS:
 				return ((InternalEList<?>)getTasks()).basicRemove(otherEnd, msgs);
 			case McsPackage.MC_SYSTEM__CRITICAL_SECTIONS:
@@ -306,8 +280,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return getCeiling_priority();
 			case McsPackage.MC_SYSTEM__STATUS:
 				return getStatus();
-			case McsPackage.MC_SYSTEM__RESOURCES:
-				return getResources();
 			case McsPackage.MC_SYSTEM__TASKS:
 				return getTasks();
 			case McsPackage.MC_SYSTEM__CRITICAL_SECTIONS:
@@ -332,10 +304,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return;
 			case McsPackage.MC_SYSTEM__STATUS:
 				setStatus((Status)newValue);
-				return;
-			case McsPackage.MC_SYSTEM__RESOURCES:
-				getResources().clear();
-				getResources().addAll((Collection<? extends Semaphore>)newValue);
 				return;
 			case McsPackage.MC_SYSTEM__TASKS:
 				getTasks().clear();
@@ -366,9 +334,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 			case McsPackage.MC_SYSTEM__STATUS:
 				setStatus(STATUS_EDEFAULT);
 				return;
-			case McsPackage.MC_SYSTEM__RESOURCES:
-				getResources().clear();
-				return;
 			case McsPackage.MC_SYSTEM__TASKS:
 				getTasks().clear();
 				return;
@@ -394,8 +359,6 @@ public class MCSystemImpl extends MCSElementImpl implements MCSystem {
 				return ceiling_priority != CEILING_PRIORITY_EDEFAULT;
 			case McsPackage.MC_SYSTEM__STATUS:
 				return status != STATUS_EDEFAULT;
-			case McsPackage.MC_SYSTEM__RESOURCES:
-				return resources != null && !resources.isEmpty();
 			case McsPackage.MC_SYSTEM__TASKS:
 				return tasks != null && !tasks.isEmpty();
 			case McsPackage.MC_SYSTEM__CRITICAL_SECTIONS:

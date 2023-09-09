@@ -6,20 +6,41 @@ import "http://cam.mcs.model/base";
 abstract class MCSElement extends base.ArtifactElement {
 }
 
+class MCSystem extends MCSElement {
+	attr int ceiling_priority;
+	attr Status status;
+	val Task[*] tasks;
+	val CriticalSection[*] critical_sections;
+	val Core core;
+}
+
 class Core extends MCSElement {
 	attr int time;
 	attr boolean locked;
 	ref Task current_task;
-	ref Task[*] queue;
 }
 
-class MCSystem extends MCSElement {
+class Task extends MCSElement {
+	attr double utilisation;
+	attr int period;
+	attr int deadline;
+	attr int wcet_low;
+	attr int wcet_high;
+	attr int cstime;
+	attr int priority;
+	attr int dynamic_priority;
+	attr int timeleft;
+	attr boolean IsMandatory;
+	attr Criticality criticality;
+	attr WorkingState state;
+	ref CriticalSection critical_section;
+}
+
+class CriticalSection extends MCSElement {
 	attr int ceiling_priority;
-	attr Status status;
-	val Semaphore[*] resources;
-	val Task[*] tasks;
-	val CriticalSection[*] critical_sections;
-	val Core core;
+	attr boolean locked;
+	attr Criticality criticality;
+	ref Task[*] tasks;
 }
 
 enum Status {
@@ -29,48 +50,12 @@ enum Status {
 }
 
 enum Criticality {
-	lo = 1;
-	hi = 2;
+	lo;
+	hi;
 }
 
 enum WorkingState{
 	unstart;
 	working;
 	hanging;
-}
-
-class Task extends MCSElement {
-	attr boolean IsMandatory;
-	attr WorkingState state;
-	attr int timeleft;
-	attr int priority;
-	attr int period;
-	attr int deadline;
-	attr double utilisation;
-	attr int computation_time;
-	attr int wcet_low;
-	attr int cstime;
-	attr int wcet_high;
-	attr Criticality criticality;
-	attr int dynamic_priority;
-	attr int offset;
-	attr int release_time;
-	attr int current_cs; //current critical section, -1 = meiyou, 0,1,2,3.. = nasha
-	ref CriticalSection critical_section;
-}
-
-class CriticalSection extends MCSElement {
-	attr Criticality criticality;
-	attr int start; //relative start time
-	attr int execution; //execution time
-	attr int elapsed; //time spent in critical section
-	ref Task[*] tasks;
-	val Semaphore semaphore;
-} 
-
-class Semaphore extends MCSElement {
-	attr boolean locked;
-	attr int initial_priority;
-	attr int ceiling_priority;
-	ref Task[*] acquisition;
 }

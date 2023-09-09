@@ -14,7 +14,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link mcs.Semaphore#isLocked <em>Locked</em>}</li>
- *   <li>{@link mcs.Semaphore#getInitial_priority <em>Initial priority</em>}</li>
  *   <li>{@link mcs.Semaphore#getCeiling_priority <em>Ceiling priority</em>}</li>
  *   <li>{@link mcs.Semaphore#getAcquisition <em>Acquisition</em>}</li>
  * </ul>
@@ -45,28 +44,6 @@ public interface Semaphore extends MCSElement {
 	 * @generated
 	 */
 	void setLocked(boolean value);
-
-	/**
-	 * Returns the value of the '<em><b>Initial priority</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Initial priority</em>' attribute.
-	 * @see #setInitial_priority(int)
-	 * @see mcs.McsPackage#getSemaphore_Initial_priority()
-	 * @model
-	 * @generated
-	 */
-	int getInitial_priority();
-
-	/**
-	 * Sets the value of the '{@link mcs.Semaphore#getInitial_priority <em>Initial priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Initial priority</em>' attribute.
-	 * @see #getInitial_priority()
-	 * @generated
-	 */
-	void setInitial_priority(int value);
 
 	/**
 	 * Returns the value of the '<em><b>Ceiling priority</b></em>' attribute.

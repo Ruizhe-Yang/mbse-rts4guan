@@ -57,11 +57,10 @@ public class McsFactoryImpl extends EFactoryImpl implements McsFactory {
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case McsPackage.CORE: return createCore();
 			case McsPackage.MC_SYSTEM: return createMCSystem();
+			case McsPackage.CORE: return createCore();
 			case McsPackage.TASK: return createTask();
 			case McsPackage.CRITICAL_SECTION: return createCriticalSection();
-			case McsPackage.SEMAPHORE: return createSemaphore();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -147,17 +146,6 @@ public class McsFactoryImpl extends EFactoryImpl implements McsFactory {
 	public CriticalSection createCriticalSection() {
 		CriticalSectionImpl criticalSection = new CriticalSectionImpl();
 		return criticalSection;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Semaphore createSemaphore() {
-		SemaphoreImpl semaphore = new SemaphoreImpl();
-		return semaphore;
 	}
 
 	/**

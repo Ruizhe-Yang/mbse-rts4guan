@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  * </p>
  * <ul>
  *   <li>{@link mcs.impl.SemaphoreImpl#isLocked <em>Locked</em>}</li>
- *   <li>{@link mcs.impl.SemaphoreImpl#getInitial_priority <em>Initial priority</em>}</li>
  *   <li>{@link mcs.impl.SemaphoreImpl#getCeiling_priority <em>Ceiling priority</em>}</li>
  *   <li>{@link mcs.impl.SemaphoreImpl#getAcquisition <em>Acquisition</em>}</li>
  * </ul>
@@ -54,26 +53,6 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	 * @ordered
 	 */
 	protected boolean locked = LOCKED_EDEFAULT;
-
-	/**
-	 * The default value of the '{@link #getInitial_priority() <em>Initial priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInitial_priority()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final int INITIAL_PRIORITY_EDEFAULT = 0;
-
-	/**
-	 * The cached value of the '{@link #getInitial_priority() <em>Initial priority</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getInitial_priority()
-	 * @generated
-	 * @ordered
-	 */
-	protected int initial_priority = INITIAL_PRIORITY_EDEFAULT;
 
 	/**
 	 * The default value of the '{@link #getCeiling_priority() <em>Ceiling priority</em>}' attribute.
@@ -153,29 +132,6 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 	 * @generated
 	 */
 	@Override
-	public int getInitial_priority() {
-		return initial_priority;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setInitial_priority(int newInitial_priority) {
-		int oldInitial_priority = initial_priority;
-		initial_priority = newInitial_priority;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, McsPackage.SEMAPHORE__INITIAL_PRIORITY, oldInitial_priority, initial_priority));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public int getCeiling_priority() {
 		return ceiling_priority;
 	}
@@ -216,8 +172,6 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 		switch (featureID) {
 			case McsPackage.SEMAPHORE__LOCKED:
 				return isLocked();
-			case McsPackage.SEMAPHORE__INITIAL_PRIORITY:
-				return getInitial_priority();
 			case McsPackage.SEMAPHORE__CEILING_PRIORITY:
 				return getCeiling_priority();
 			case McsPackage.SEMAPHORE__ACQUISITION:
@@ -237,9 +191,6 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 		switch (featureID) {
 			case McsPackage.SEMAPHORE__LOCKED:
 				setLocked((Boolean)newValue);
-				return;
-			case McsPackage.SEMAPHORE__INITIAL_PRIORITY:
-				setInitial_priority((Integer)newValue);
 				return;
 			case McsPackage.SEMAPHORE__CEILING_PRIORITY:
 				setCeiling_priority((Integer)newValue);
@@ -263,9 +214,6 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 			case McsPackage.SEMAPHORE__LOCKED:
 				setLocked(LOCKED_EDEFAULT);
 				return;
-			case McsPackage.SEMAPHORE__INITIAL_PRIORITY:
-				setInitial_priority(INITIAL_PRIORITY_EDEFAULT);
-				return;
 			case McsPackage.SEMAPHORE__CEILING_PRIORITY:
 				setCeiling_priority(CEILING_PRIORITY_EDEFAULT);
 				return;
@@ -286,8 +234,6 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 		switch (featureID) {
 			case McsPackage.SEMAPHORE__LOCKED:
 				return locked != LOCKED_EDEFAULT;
-			case McsPackage.SEMAPHORE__INITIAL_PRIORITY:
-				return initial_priority != INITIAL_PRIORITY_EDEFAULT;
 			case McsPackage.SEMAPHORE__CEILING_PRIORITY:
 				return ceiling_priority != CEILING_PRIORITY_EDEFAULT;
 			case McsPackage.SEMAPHORE__ACQUISITION:
@@ -308,8 +254,6 @@ public class SemaphoreImpl extends MCSElementImpl implements Semaphore {
 		StringBuilder result = new StringBuilder(super.toString());
 		result.append(" (locked: ");
 		result.append(locked);
-		result.append(", initial_priority: ");
-		result.append(initial_priority);
 		result.append(", ceiling_priority: ");
 		result.append(ceiling_priority);
 		result.append(')');

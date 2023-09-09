@@ -58,15 +58,6 @@ public interface McsFactory extends EFactory {
 	CriticalSection createCriticalSection();
 
 	/**
-	 * Returns a new object of class '<em>Semaphore</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Semaphore</em>'.
-	 * @generated
-	 */
-	Semaphore createSemaphore();
-
-	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -26,7 +26,7 @@ public enum Criticality implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	LO(1, "lo", "lo"),
+	LO(0, "lo", "lo"),
 
 	/**
 	 * The '<em><b>Hi</b></em>' literal object.
@@ -36,7 +36,7 @@ public enum Criticality implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HI(2, "hi", "hi");
+	HI(1, "hi", "hi");
 
 	/**
 	 * The '<em><b>Lo</b></em>' literal value.
@@ -47,7 +47,7 @@ public enum Criticality implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int LO_VALUE = 1;
+	public static final int LO_VALUE = 0;
 
 	/**
 	 * The '<em><b>Hi</b></em>' literal value.
@@ -58,7 +58,7 @@ public enum Criticality implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	public static final int HI_VALUE = 2;
+	public static final int HI_VALUE = 1;
 
 	/**
 	 * An array of all the '<em><b>Criticality</b></em>' enumerators.

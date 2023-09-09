@@ -81,17 +81,6 @@ public class McsSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case McsPackage.CORE: {
-				Core core = (Core)theEObject;
-				T result = caseCore(core);
-				if (result == null) result = caseMCSElement(core);
-				if (result == null) result = caseArtifactElement(core);
-				if (result == null) result = caseModelElement(core);
-				if (result == null) result = caseNamedElement(core);
-				if (result == null) result = caseElement(core);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case McsPackage.MC_SYSTEM: {
 				MCSystem mcSystem = (MCSystem)theEObject;
 				T result = caseMCSystem(mcSystem);
@@ -100,6 +89,17 @@ public class McsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(mcSystem);
 				if (result == null) result = caseNamedElement(mcSystem);
 				if (result == null) result = caseElement(mcSystem);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case McsPackage.CORE: {
+				Core core = (Core)theEObject;
+				T result = caseCore(core);
+				if (result == null) result = caseMCSElement(core);
+				if (result == null) result = caseArtifactElement(core);
+				if (result == null) result = caseModelElement(core);
+				if (result == null) result = caseNamedElement(core);
+				if (result == null) result = caseElement(core);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -122,17 +122,6 @@ public class McsSwitch<T> extends Switch<T> {
 				if (result == null) result = caseModelElement(criticalSection);
 				if (result == null) result = caseNamedElement(criticalSection);
 				if (result == null) result = caseElement(criticalSection);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case McsPackage.SEMAPHORE: {
-				Semaphore semaphore = (Semaphore)theEObject;
-				T result = caseSemaphore(semaphore);
-				if (result == null) result = caseMCSElement(semaphore);
-				if (result == null) result = caseArtifactElement(semaphore);
-				if (result == null) result = caseModelElement(semaphore);
-				if (result == null) result = caseNamedElement(semaphore);
-				if (result == null) result = caseElement(semaphore);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -212,21 +201,6 @@ public class McsSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCriticalSection(CriticalSection object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Semaphore</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Semaphore</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSemaphore(Semaphore object) {
 		return null;
 	}
 

@@ -16,7 +16,6 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link mcs.Core#getTime <em>Time</em>}</li>
  *   <li>{@link mcs.Core#isLocked <em>Locked</em>}</li>
  *   <li>{@link mcs.Core#getCurrent_task <em>Current task</em>}</li>
- *   <li>{@link mcs.Core#getQueue <em>Queue</em>}</li>
  * </ul>
  *
  * @see mcs.McsPackage#getCore()
@@ -89,17 +88,5 @@ public interface Core extends MCSElement {
 	 * @generated
 	 */
 	void setCurrent_task(Task value);
-
-	/**
-	 * Returns the value of the '<em><b>Queue</b></em>' reference list.
-	 * The list contents are of type {@link mcs.Task}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Queue</em>' reference list.
-	 * @see mcs.McsPackage#getCore_Queue()
-	 * @model
-	 * @generated
-	 */
-	EList<Task> getQueue();
 
 } // Core
