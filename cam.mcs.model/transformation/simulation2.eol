@@ -1,10 +1,10 @@
 var MAX_RUNNING_TIME = new Integer;
 var ERROR_SEQUENCE = new Sequence;
 var MAX_DEADLINE = new Integer;
-var PERIOD_NUMBER = 3;
+var PERIOD_NUMBER = 5;
 var TaskNumber = 6;
-var CPURate = 0.5;
-var HighTaskNumber = 2;
+var CPURate = 0.95;
+var HighTaskNumber = 4;
 var CriticalSectionNumber = 2;
 var MODULE = Status#HIGH;
 var DisturbanceOpen = false;
@@ -227,7 +227,7 @@ operation getWillStartTask(){
 				var maxTaskPriorityHigh = willStartTasksHigh.getMaxPriorityTask();
 				if (maxTaskPriorityHigh.size() = 1){
 					var task = maxTaskPriorityHigh[0];
-					if (task.critical_section = null or task.critical_section.semaphore.locked = false or task.wcet_high-task.timeleft <= task.cstime){
+					if (task.critical_section = null or task.critical_section.semaphore.locked = false or task.wcet_high-task.timeleft < task.cstime){
 						task.IsMandatory = true;
 						return task;
 					}
@@ -244,7 +244,7 @@ operation getWillStartTask(){
 				var maxTaskPriorityLow = willStartTasksLow.getMaxPriorityTask();
 				if (maxTaskPriorityLow.size()=1){
 					var task = maxTaskPriorityLow[0];
-					if (((system.status=Status#MCP) or (system.status=Status#HIGH and task.notAvoid())) and task.wcet_low-task.timeleft<=task.cstime){
+					if ((system.status=Status#MCP and task.wcet_low-task.timeleft<task.cstime) or (system.status=Status#HIGH and task.notAvoid() and(core.current_task =null or core.current_task.wcet_low-core.current_task.timeleft>=core.current_task.cstime))) {
 						return task;
 					}
 					willStartTasksLow.remove(task);
