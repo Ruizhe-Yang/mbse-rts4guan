@@ -6,16 +6,22 @@ import "http://cam.mcs.model/base";
 abstract class MCSElement extends base.ArtifactElement {
 }
 
-class MCSystem extends MCSElement {
-	attr int ceiling_priority;
+class MCS_system extends MCSElement {
 	attr Status status;
+	attr boolean print_process;
+	attr boolean print_result;
 	val Task[*] tasks;
 	val CriticalSection[*] critical_sections;
 	val Core core;
+	val Parameter parameter;
+	val Disturbance disturbance;
+	val Result result;
 }
 
 class Core extends MCSElement {
 	attr int time;
+	attr int occupy_time;
+	attr boolean error;
 	attr boolean locked;
 	ref Task current_task;
 }
@@ -41,6 +47,35 @@ class CriticalSection extends MCSElement {
 	attr boolean locked;
 	attr Criticality criticality;
 	ref Task[*] tasks;
+}
+
+class Parameter extends MCSElement {
+	attr int max_deadline_limit;
+	attr int period_number;
+	attr int task_number;
+	attr float CPU_rate;
+	attr int high_task_number;
+	attr int critical_section_number;
+	attr int max_deadline;
+	attr int max_running_time;
+	attr Status init_status;
+}
+
+class SwitchRecord extends MCSElement {
+	attr int switching_time;
+	attr Status source_status;
+	attr Status target_status;
+}
+
+class Disturbance extends MCSElement {
+	attr boolean open;
+	attr int time;
+}
+
+class Result extends MCSElement {
+	attr boolean no_error;
+	attr float actual_occupancy_rate;
+	val SwitchRecord[*] switchRecords;
 }
 
 enum Status {
