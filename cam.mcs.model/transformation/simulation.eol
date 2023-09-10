@@ -1,7 +1,7 @@
-var system : MCS_system;
-"Start...".println();
-multiple_runs(2);
-"Over.".println();
+//var system : MCS_system;
+//"Start...".println();
+//multiple_runs(10);
+//"Over.".println();
 
 operation multiple_runs(N : Integer){
 	for (i in 1.to(N)){
@@ -25,7 +25,7 @@ operation initSystem() {
 
 operation run(){
 	for(i in 1.to(system.parameter.max_running_time)) {
-		UpdateHanging();
+		updateHanging();
 		handle();
 		tick(i);
 		counter();
@@ -88,6 +88,7 @@ operation MCS_system initParameter(){
 	parameter.critical_section_number = 2;
 	parameter.init_status = Status#LOW;
 	parameter.max_deadline_limit = 5000;
+	parameter.max_cstime_precent = 0.25;
 	self.parameter = parameter;
 	self.status = parameter.init_status;
 }
@@ -197,7 +198,7 @@ operation Task updateDynamicPriority(){
 	}
 }
 
-operation UpdateHanging(){
+operation updateHanging(){
 	for (task in system.tasks){
 		if(system.core.time.mod(task.period) = 0){
 			if (task.state = WorkingState#unstart){
@@ -571,7 +572,7 @@ operation Task getCstime(){
 }
 
 operation Real countCstime(){
-	var randomCstime = (self*0.25*getRandomDecimal()).getInteger();
+	var randomCstime = (self*system.parameter.max_cstime_precent*getRandomDecimal()).getInteger();
 	if (randomCstime <> 0){
 		return randomCstime;
 	}

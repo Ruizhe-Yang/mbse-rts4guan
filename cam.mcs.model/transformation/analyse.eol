@@ -1,0 +1,14 @@
+var asset = X!Sheet.all();
+var results = M!MCS_system.all().collect(e|e.result);
+for (i in 1.to(results.size())){
+	var sheet = new X!Sheet;
+	sheet.id = i;
+	if (results.at(i-1).no_error){
+		sheet.result = 1;
+	}
+	else{
+		sheet.result = 0;
+	}
+	sheet.rate = results.at(i-1).actual_occupancy_rate;
+}
+"Record Over".println();

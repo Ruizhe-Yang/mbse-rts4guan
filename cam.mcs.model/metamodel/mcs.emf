@@ -54,6 +54,7 @@ class Parameter extends MCSElement {
 	attr int period_number;
 	attr int task_number;
 	attr float CPU_rate;
+	attr float max_cstime_precent;
 	attr int high_task_number;
 	attr int critical_section_number;
 	attr int max_deadline;
