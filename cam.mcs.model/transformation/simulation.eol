@@ -81,11 +81,11 @@ operation MCS_system initResult(){
 
 operation MCS_system initParameter(){
 	var parameter = new Parameter;
-	parameter.period_number = 5;
-	parameter.task_number = 6;
+	parameter.period_number = 4;
+	parameter.task_number = 10;
 	parameter.CPU_rate = 0.5;
-	parameter.high_task_number = 4;
-	parameter.critical_section_number = 2;
+	parameter.high_task_number = 5;
+	parameter.critical_section_number = 5;
 	parameter.init_status = Status#LOW;
 	parameter.max_deadline_limit = 5000;
 	parameter.max_cstime_precent = 0.25;
@@ -96,7 +96,7 @@ operation MCS_system initParameter(){
 operation MCS_system getDisturbance(){
 	var disturbance = new Disturbance;
 	disturbance.open = true;
-	disturbance.time = system.parameter.max_deadline*3+getRandomInt(1000);
+	disturbance.time = system.parameter.max_deadline*(2.0+getRandomDecimal()).getInteger();
 	self.disturbance = disturbance;
 }
 

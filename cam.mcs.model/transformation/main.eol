@@ -1,20 +1,20 @@
 import "simulation.eol";
 var system : MCS_system;
 "Start...".println();
-main(500);
+main(5);
 "Over.".println();
 
 operation main(N : Integer){
 	for (i in 1.to(N)){
 		"______________________________________________".println();
 		("Simulation "+i+":").println();
-		initSystem();
+		initSystem(i);
 		run();
 	}
 	"______________________________________________".println();
 }
 
-operation initSystem() {
+operation initSystem(i) {
 	system = new MCS_system;
 	system.initParameter();
 	system.initCore();
