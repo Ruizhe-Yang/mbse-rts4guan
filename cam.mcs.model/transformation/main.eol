@@ -1,20 +1,65 @@
 import "simulation.eol";
 var system : MCS_system;
 "Start...".println();
-main(5);
+main(3);
 "Over.".println();
+
 
 operation main(N : Integer){
 	for (i in 1.to(N)){
 		"______________________________________________".println();
 		("Simulation "+i+":").println();
-		initSystem(i);
-		run();
+		system = new MCS_system;
+		system.initParameter();
+		system.parameter.CPU_rate=0.95;
+		system.print_process = false;
+		system.print_result = true;
+		system.generateTasksAndCriticalSections();
+		for (j in 1.to(4)){
+			j.println();
+			if (j=1){
+				system.status = Status#LOW;
+				updateCstimeAndTimeleft();
+				setSystemPeriodNumber(2);
+				system.initCore();
+				run();
+				var result = system.initResult("LOW");
+				result.recordResult();
+			}
+			else if (j=2){
+				system.status = Status#MCP;
+				updateCstimeAndTimeleft();
+				setSystemPeriodNumber(2);
+				system.initCore();
+				run();
+				var result = system.initResult("MCP");
+				result.recordResult();
+			}
+			else if (j=3){
+				system.status = Status#HIGH;
+				updateCstimeAndTimeleft();
+				setSystemPeriodNumber(2);
+				system.initCore();
+				run();
+				var result = system.initResult("HIGH");
+				result.recordResult();
+			}
+			else if (j=4){
+				system.parameter.init_status = Status#LOW;
+				setSystemPeriodNumber(4);
+				updateCstimeAndTimeleft();
+				system.disturbance.open = true;
+				system.initCore();
+				run();
+				var result = system.initResult("System");
+				result.recordResult();
+			}
+		}
 	}
 	"______________________________________________".println();
 }
 
-operation initSystem(i) {
+operation initSystem() {
 	system = new MCS_system;
 	system.initParameter();
 	system.initCore();
@@ -22,4 +67,10 @@ operation initSystem(i) {
 	system.print_process = false;
 	system.print_result = true;
 	system.generateTasksAndCriticalSections();
+}
+
+operation setSystemPeriodNumber(N:Integer){
+	system.parameter.period_number = N;
+	system.parameter.max_running_time = system.parameter.max_deadline * system.parameter.period_number;
+				
 }

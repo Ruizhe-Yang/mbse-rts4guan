@@ -15,14 +15,14 @@ class MCS_system extends MCSElement {
 	val Core core;
 	val Parameter parameter;
 	val Disturbance disturbance;
-	val Result result;
+	val Result[*] results;
+	val SwitchRecord[*] switchRecords;
 }
 
 class Core extends MCSElement {
 	attr int time;
 	attr int occupy_time;
 	attr boolean error;
-	attr boolean locked;
 	ref Task current_task;
 }
 
@@ -59,6 +59,7 @@ class Parameter extends MCSElement {
 	attr int critical_section_number;
 	attr int max_deadline;
 	attr int max_running_time;
+	attr float high_vs_low;
 	attr Status init_status;
 }
 
@@ -76,7 +77,6 @@ class Disturbance extends MCSElement {
 class Result extends MCSElement {
 	attr boolean no_error;
 	attr float actual_occupancy_rate;
-	val SwitchRecord[*] switchRecords;
 }
 
 enum Status {
