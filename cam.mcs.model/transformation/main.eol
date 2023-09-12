@@ -1,106 +1,64 @@
 import "simulation.eol";
 var system : MCS_system;
 "Start...".println();
-multiple_runs(40);
-
-//system = new MCS_system;
-//system.initParameter();
-//system.parameter.init_status = Status#LOW;
-//system.initTasks();
-//system.initCore();
-//restartSystem();
-//run();
-//recordResult("LOW");
-
-
-//system.parameter.init_status = Status#MCP;
-//restartSystem();
-//run();
-//recordResult("MCP");
-//
-//
-//
-//system.parameter.init_status = Status#HIGH;
-//restartSystem();
-//run();
-//recordResult("HIGH");
+main(2);
 "Over.".println();
 
+operation main(N : Integer){
+	for (i in 1.to(N)){
+		"______________________________________________".println();
+		("Simulation "+i+":").println();
+		system = new MCS_system;
+		system.initParameter();
+		system.initTasks();
+		system.initCore();
+		for (j in 1.to(4)){
+			j.println();
+			if (j=1){
+				system.parameter.init_status = Status#LOW;
+				system.restart();
+				run();
+				recordResult("LOW");
+			}
+			else if (j=2){
+				system.parameter.init_status = Status#MCP;
+				system.restart();
+				run();
+				recordResult("MCP");
+			}
+			else if (j=3){
+				system.parameter.init_status = Status#HIGH;
+				system.restart();
+				run();
+				recordResult("HIGH");
+			}
+			else if (j=4){
+				system.parameter.init_status = Status#LOW;
+				system.parameter.period_number = 5;
+				system.parameter.disturbance_open = true;
+				system.restart();
+				run();
+				recordResult("System");
+			}
+		}
+	}
+	"______________________________________________".println();
+}
 
-//restartSystem();
-
-//operation main(N : Integer){
-//	for (i in 1.to(N)){
-//		"______________________________________________".println();
-//		("Simulation "+i+":").println();
-//		system = new MCS_system;
-//		system.initParameter();
-//		system.parameter.CPU_rate=0.65;
-//		system.print_process = true;
-//		system.print_result = true;
-//		system.generateTasksAndCriticalSections();
-//		for (j in 1.to(4)){
-//			j.println();
-//			if (j=1){
-//				system.status = Status#LOW;
-//				updateCstimeAndTimeleft();
-//				setSystemPeriodNumber(2);
-//				system.initCore();
-//				run();
-//				var result = system.initResult("LOW");
-//				result.recordResult();
-//			}
-//			else if (j=2){
-//				system.status = Status#MCP;
-//				updateCstimeAndTimeleft();
-//				setSystemPeriodNumber(2);
-//				system.initCore();
-//				run();
-//				var result = system.initResult("MCP");
-//				result.recordResult();
-//			}
-//			else if (j=3){
-//				system.status = Status#HIGH;
-//				updateCstimeAndTimeleft();
-//				setSystemPeriodNumber(2);
-//				system.initCore();
-//				run();
-//				var result = system.initResult("HIGH");
-//				result.recordResult();
-//			}
-//			else if (j=4){
-//				system.parameter.init_status = Status#LOW;
-//				setSystemPeriodNumber(4);
-//				updateCstimeAndTimeleft();
-//				system.disturbance.open = true;
-//				system.initCore();
-//				run();
-//				var result = system.initResult("System");
-//				result.recordResult();
-//			}
-//		}
-//	}
-//	"______________________________________________".println();
-//}
-
-//operation initSystem() {
-//	system = new MCS_system;
-//	system.initParameter();
-//	parameter.max_cstime_precent = 0.2;
-//	parameter.period_number = 4;
-//	parameter.task_number = 10;
-//	parameter.CPU_rate = 0.5;
-//	parameter.high_task_number = 3;
-//	parameter.critical_section_number = 6;
-//	parameter.max_deadline_limit = 10000;
-//	system.initCore();
-//	system.initResult();
-//	system.print_process = true;
-//	system.print_result = true;
-//	system.generateTasksAndCriticalSections();
-//}
-
-operation setSystemPeriodNumber(N:Integer){
-	system.parameter.period_number = N;
-	system.parameter.max_running_time = system.parameter.max_deadline * system.parameter.period_number;
+operation MCS_system initParameter(){
+	var parameter = new Parameter;
+	parameter.period_number = 3;
+	parameter.task_number = 10;
+	parameter.CPU_rate = 0.5;
+	parameter.high_task_number = 5;
+	parameter.critical_section_number = 1;
+	parameter.init_status = Status#LOW;
+	parameter.max_deadline_limit = 2000;
+	parameter.min_deadline_limit = 200;
+	parameter.max_cstime_precent = 0.25;
+	parameter.high_vs_low = 1.5;
+	parameter.disturbance_open = false;
+	parameter.print_process = false;
+	parameter.print_result = true;
+	self.parameter = parameter;
 }

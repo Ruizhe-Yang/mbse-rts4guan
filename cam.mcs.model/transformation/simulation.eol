@@ -10,20 +10,19 @@ operation multiple_runs(N : Integer){
 		system.initParameter();
 		system.initTasks();
 		system.initCore();
-		restartSystem();
+//		system.restart();
 		run();
 		recordResult("");
-		
 	}
 }
 
 
 operation MCS_system initParameter(){
 	var parameter = new Parameter;
-	parameter.period_number = 2;
-	parameter.task_number = 20;
-	parameter.CPU_rate = 0.65;
-	parameter.high_task_number = 10;
+	parameter.period_number = 3;
+	parameter.task_number = 10;
+	parameter.CPU_rate = 0.5;
+	parameter.high_task_number = 5;
 	parameter.critical_section_number = 1;
 	parameter.init_status = Status#HIGH;
 	parameter.max_deadline_limit = 5000;
@@ -32,7 +31,7 @@ operation MCS_system initParameter(){
 	parameter.high_vs_low = 1.5;
 	parameter.disturbance_open = false;
 	parameter.print_process = false;
-	parameter.print_result = true;
+	parameter.print_result = false;
 	self.parameter = parameter;
 }
 
@@ -83,12 +82,10 @@ operation recordResult(name : String){
 }
 
 operation MCS_system getDisturbance(){
-	if (system.parameter.disturbance_open){
-		var disturbance = new Disturbance;
-		disturbance.open = true;
-		disturbance.time = system.parameter.max_deadline*(2.0+getRandomDecimal()).getInteger();
-		self.disturbance = disturbance;
-	}
+	var disturbance = new Disturbance;
+	disturbance.open = system.parameter.disturbance_open;
+	disturbance.time = system.parameter.max_deadline*(2.0+getRandomDecimal()).getInteger();
+	self.disturbance = disturbance;
 }
 
 operation MCS_system initCore(){
@@ -102,10 +99,10 @@ operation MCS_system initCore(){
 }
 
 operation modeSwitch(){
-	if (system.disturbance<>null and system.disturbance.open and disturbance()){
+	if (system.disturbance.open and disturbance()){
 		changeSystemStatus("LOW", "MCP");
 	}
-	if (system.disturbance<>null and system.disturbance.open and system.status=Status#MCP){
+	if (system.disturbance.open and system.status=Status#MCP){
 		changeSystemStatus("MCP", "HIGH");
 	}
 }
@@ -114,24 +111,33 @@ operation MCS_system initTasks(){
 	getRandomTasks();
 	getCriticalSection();
 	matchCriticalSection();
-	getCriticalSectionsCeilingPriority();
 	matchCriticalSectionCriticality();
+	getCriticalSectionsCeilingPriority();
 	self.status = system.parameter.init_status;
 	self.parameter.max_deadline = getMAX_DEADLINE();
 	self.parameter.max_running_time = self.parameter.max_deadline * self.parameter.period_number;
 	self.getDisturbance();
 }
 
-operation restartSystem(){
-	system.core.time = 1;
-	system.core.occupy_time = 1;
-	system.core.error = false;
-	system.core.error_time = 0;
-	system.core.current_task = null;
-	system.status = system.parameter.init_status;
-	for (task in system.tasks){
+operation MCS_system restart(){
+	self.core.time = 1;
+	self.core.occupy_time = 1;
+	self.core.error = false;
+	self.core.error_time = 0;
+	self.core.current_task = null;
+	self.status = system.parameter.init_status;
+	self.disturbance.open = system.parameter.disturbance_open;
+	self.parameter.max_running_time = self.parameter.max_deadline * self.parameter.period_number;
+	for (task in self.tasks){
 		task.state = WorkingState#unstart;
+		task.getCstime();
 		task.getTimeLeft();
+		task.IsMandatory = false;
+		task.dynamic_priority = task.priority;
+	}
+	for (critical_section in self.critical_sections){
+		critical_section.locked = false;
+		getCriticalSectionsCeilingPriority();
 	}
 }
 
@@ -575,13 +581,6 @@ operation getRandomTasks(){
 	}
 }
 
-operation updateCstimeAndTimeleft(){
-	for (task in system.tasks){
-		task.getCstime();
-		task.getTimeLeft();
-	}
-}
-
 operation Task getTimeLeft(){
 	if (system.status = Status#LOW or self.criticality = Criticality#lo){
 		self.timeleft = self.wcet_low;
@@ -679,8 +678,7 @@ operation Result PrintResult(name : String){
 	if (not system.parameter.print_result){
 		return null;
 	}
-	"____________________________________".println();
-	
+	("Result name: "+self.name).println();
 	if (self.no_error){
 		'Successfully.'.println();
 	}
@@ -688,4 +686,5 @@ operation Result PrintResult(name : String){
 		('ERROR. Error time: '+self.error_time).println();
 	}
 	("Actual occupancy rate:   "+self.actual_occupancy_rate+"%").println();
+	"____________________________________".println();
 }
