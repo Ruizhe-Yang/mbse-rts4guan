@@ -23,6 +23,7 @@ class Core extends MCSElement {
 	attr int time;
 	attr int occupy_time;
 	attr boolean error;
+	attr int error_time;
 	ref Task current_task;
 }
 
@@ -76,6 +77,7 @@ class Disturbance extends MCSElement {
 
 class Result extends MCSElement {
 	attr boolean no_error;
+	attr int error_time;
 	attr float actual_occupancy_rate;
 }
 

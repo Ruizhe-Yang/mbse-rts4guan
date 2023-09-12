@@ -61,6 +61,7 @@ operation handle(){
 
 operation Result recordResult(){
 	self.no_error = (not system.core.error);
+	self.error_time = system.core.error_time;
 	self.actual_occupancy_rate = 1.0*system.core.occupy_time/(system.parameter.max_running_time-system.parameter.max_deadline);
 }
 
@@ -210,6 +211,7 @@ operation updateHanging(){
 				if (system.status = Status#LOW){
 					task.getTimeLeft();
 					system.core.error = true;
+					system.core.error_time = system.core.time;
 				}
 				else if(system.status = Status#MCP or system.status = Status#HIGH){
 					if (task.critical_section<>null and task.criticality = Criticality#lo and task.wcet_low - task.timeleft < task.cstime){
@@ -218,6 +220,7 @@ operation updateHanging(){
 					task.getTimeLeft();
 					if (task.criticality = Criticality#hi){
 						system.core.error = true;
+						system.core.error_time = system.core.time;
 					}
 				}
 			}
@@ -652,9 +655,9 @@ operation Task printError(){
 }
 
 operation processPrint(){
-	if ((not system.print_process) or system.core.time < system.parameter.max_deadline){
-		return null;
-	}
+//	if ((not system.print_process) or system.core.time < system.parameter.max_deadline){
+//		return null;
+//	}
 	"____________________________________".println();
 	("system status:"+system.status.name).println();
 	("time:"+system.core.time).println();
