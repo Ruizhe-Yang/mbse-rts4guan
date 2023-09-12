@@ -5,22 +5,35 @@
 
 operation multiple_runs(N : Integer){
 	for (i in 1.to(N)){
-		"______________________________________________".println();
 		("Simulation "+i+":").println();
-		initSystem();
+		system = new MCS_system;
+		system.initParameter();
+		system.initTasks();
+		system.initCore();
+		restartSystem();
 		run();
+		recordResult("");
+		
 	}
-	"______________________________________________".println();
 }
 
-operation initSystem() {
-	system = new MCS_system;
-	system.initParameter();
-	system.generateTasksAndCriticalSections();
-	system.initCore();
-	system.initResult("");
-	system.print_process = false;
-	system.print_result = true;
+
+operation MCS_system initParameter(){
+	var parameter = new Parameter;
+	parameter.period_number = 2;
+	parameter.task_number = 20;
+	parameter.CPU_rate = 0.65;
+	parameter.high_task_number = 10;
+	parameter.critical_section_number = 1;
+	parameter.init_status = Status#HIGH;
+	parameter.max_deadline_limit = 5000;
+	parameter.min_deadline_limit = 500;
+	parameter.max_cstime_precent = 0.25;
+	parameter.high_vs_low = 1.5;
+	parameter.disturbance_open = false;
+	parameter.print_process = false;
+	parameter.print_result = true;
+	self.parameter = parameter;
 }
 
 operation run(){
@@ -59,47 +72,23 @@ operation handle(){
 	}
 }
 
-operation Result recordResult(){
-	self.no_error = (not system.core.error);
-	self.error_time = system.core.error_time;
-	self.actual_occupancy_rate = 1.0*system.core.occupy_time/(system.parameter.max_running_time-system.parameter.max_deadline);
-}
-
-operation recordSwitch(time, source, target){
-	var switchRecord = new SwitchRecord;
-	switchRecord.switching_time = time;
-	switchRecord.source_status = source;
-	switchRecord.target_status = target;
-	system.switchRecords.add(switchRecord);
-}
-
-operation MCS_system initResult(name:String){
+operation recordResult(name : String){
 	var result = new Result;
 	result.name = name;
+	result.no_error = (not system.core.error);
+	result.error_time = system.core.error_time;
+	result.actual_occupancy_rate = 1.0*system.core.occupy_time/(system.parameter.max_running_time-system.parameter.max_deadline);
 	system.results.add(result);
-	return result;
-}
-
-operation MCS_system initParameter(){
-	var parameter = new Parameter;
-	parameter.period_number = 4;
-	parameter.task_number = 10;
-	parameter.CPU_rate = 0.5;
-	parameter.high_task_number = 5;
-	parameter.critical_section_number = 5;
-	parameter.init_status = Status#LOW;
-	parameter.max_deadline_limit = 5000;
-	parameter.max_cstime_precent = 0.25;
-	parameter.high_vs_low = 1.3;
-	self.parameter = parameter;
-	self.status = parameter.init_status;
+	result.PrintResult(name);
 }
 
 operation MCS_system getDisturbance(){
-	var disturbance = new Disturbance;
-	disturbance.open = false;
-	disturbance.time = system.parameter.max_deadline*(2.0+getRandomDecimal()).getInteger();
-	self.disturbance = disturbance;
+	if (system.parameter.disturbance_open){
+		var disturbance = new Disturbance;
+		disturbance.open = true;
+		disturbance.time = system.parameter.max_deadline*(2.0+getRandomDecimal()).getInteger();
+		self.disturbance = disturbance;
+	}
 }
 
 operation MCS_system initCore(){
@@ -107,36 +96,51 @@ operation MCS_system initCore(){
 	core.time = 1;
 	core.occupy_time = 1;
 	core.error = false;
+	core.error_time = 0;
+	core.current_task = null;
 	self.core = core;
 }
 
 operation modeSwitch(){
-	if (disturbance()){
+	if (system.disturbance<>null and system.disturbance.open and disturbance()){
 		changeSystemStatus("LOW", "MCP");
 	}
-	if (system.disturbance.open and system.status=Status#MCP){
+	if (system.disturbance<>null and system.disturbance.open and system.status=Status#MCP){
 		changeSystemStatus("MCP", "HIGH");
 	}
 }
 
-operation MCS_system generateTasksAndCriticalSections(){
+operation MCS_system initTasks(){
 	getRandomTasks();
 	getCriticalSection();
 	matchCriticalSection();
 	getCriticalSectionsCeilingPriority();
 	matchCriticalSectionCriticality();
+	self.status = system.parameter.init_status;
 	self.parameter.max_deadline = getMAX_DEADLINE();
 	self.parameter.max_running_time = self.parameter.max_deadline * self.parameter.period_number;
 	self.getDisturbance();
 }
 
+operation restartSystem(){
+	system.core.time = 1;
+	system.core.occupy_time = 1;
+	system.core.error = false;
+	system.core.error_time = 0;
+	system.core.current_task = null;
+	system.status = system.parameter.init_status;
+	for (task in system.tasks){
+		task.state = WorkingState#unstart;
+		task.getTimeLeft();
+	}
+}
+
 operation disturbance(){
-	return (system.disturbance.open and (system.core.time = system.disturbance.time));
+	return (system.core.time = system.disturbance.time);
 }
 
 operation changeSystemStatus(source:String, target:String){
 	if (source='LOW' and target='MCP'){
-//		recordSwitch(system.core.time, Status#LOW, Status#MCP);
 		system.status = Status#MCP;
 		for (task in system.tasks){
 			if (task.criticality=Criticality#hi){
@@ -158,7 +162,6 @@ operation changeSystemStatus(source:String, target:String){
 					return null;
 				}
 			}
-//			recordSwitch(system.core.time, Status#MCP, Status#HIGH);
 			system.status = Status#HIGH;
 		}
 	}
@@ -552,7 +555,7 @@ operation getRandomTasks(){
 			else{
 				task.utilisation = sum_u;
 			}
-			task.period = getRandomIntWithFloor(system.parameter.max_deadline_limit, (system.parameter.max_deadline_limit*0.2).getInteger());
+			task.period = getRandomIntWithFloor(system.parameter.max_deadline_limit, system.parameter.min_deadline_limit);
 			task.deadline = task.period;
 			task.wcet_low = (task.period * task.utilisation).getInteger();
 			task.wcet_high = (task.wcet_low * system.parameter.high_vs_low).getInteger();
@@ -649,15 +652,10 @@ operation createCriticalSection(name){
 	return criticalSection;
 }
 
-operation Task printError(){
-	"ERROR!!!".println();
-	ERROR_SEQUENCE.add(system.core.time+":"+self.name);
-}
-
 operation processPrint(){
-//	if ((not system.print_process) or system.core.time < system.parameter.max_deadline){
-//		return null;
-//	}
+	if ((not system.parameter.print_process) or system.core.time < system.parameter.max_deadline){
+		return null;
+	}
 	"____________________________________".println();
 	("system status:"+system.status.name).println();
 	("time:"+system.core.time).println();
@@ -677,18 +675,17 @@ operation processPrint(){
 	("semaphore_lock_status:"+queue).println();  
 }
 
-operation finalPrint(){
-	if (not system.print_result){
+operation Result PrintResult(name : String){
+	if (not system.parameter.print_result){
 		return null;
 	}
-	if (system.core.error){
-		'ERROR.'.println();
+	"____________________________________".println();
+	
+	if (self.no_error){
+		'Successfully.'.println();
 	}
 	else{
-		'Run over, successfully.'.println();
+		('ERROR. Error time: '+self.error_time).println();
 	}
-	("Actual occupancy rate:   "+system.result.actual_occupancy_rate+"%").println();
-	for (sr in system.result.switchRecords){
-		(sr.source_status.name+" -> "+sr.target_status.name+" core.time: "+sr.switching_time).println();
-	}
+	("Actual occupancy rate:   "+self.actual_occupancy_rate+"%").println();
 }

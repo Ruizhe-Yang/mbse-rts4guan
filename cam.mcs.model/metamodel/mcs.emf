@@ -8,15 +8,12 @@ abstract class MCSElement extends base.ArtifactElement {
 
 class MCS_system extends MCSElement {
 	attr Status status;
-	attr boolean print_process;
-	attr boolean print_result;
 	val Task[*] tasks;
 	val CriticalSection[*] critical_sections;
 	val Core core;
 	val Parameter parameter;
 	val Disturbance disturbance;
 	val Result[*] results;
-	val SwitchRecord[*] switchRecords;
 }
 
 class Core extends MCSElement {
@@ -52,6 +49,7 @@ class CriticalSection extends MCSElement {
 
 class Parameter extends MCSElement {
 	attr int max_deadline_limit;
+	attr int min_deadline_limit;
 	attr int period_number;
 	attr int task_number;
 	attr float CPU_rate;
@@ -61,13 +59,10 @@ class Parameter extends MCSElement {
 	attr int max_deadline;
 	attr int max_running_time;
 	attr float high_vs_low;
+	attr boolean disturbance_open;
+	attr boolean print_process;
+	attr boolean print_result;
 	attr Status init_status;
-}
-
-class SwitchRecord extends MCSElement {
-	attr int switching_time;
-	attr Status source_status;
-	attr Status target_status;
 }
 
 class Disturbance extends MCSElement {

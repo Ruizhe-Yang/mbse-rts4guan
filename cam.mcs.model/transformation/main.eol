@@ -1,63 +1,87 @@
 import "simulation.eol";
 var system : MCS_system;
 "Start...".println();
-main(1);
+multiple_runs(40);
+
+//system = new MCS_system;
+//system.initParameter();
+//system.parameter.init_status = Status#LOW;
+//system.initTasks();
+//system.initCore();
+//restartSystem();
+//run();
+//recordResult("LOW");
+
+
+//system.parameter.init_status = Status#MCP;
+//restartSystem();
+//run();
+//recordResult("MCP");
+//
+//
+//
+//system.parameter.init_status = Status#HIGH;
+//restartSystem();
+//run();
+//recordResult("HIGH");
 "Over.".println();
 
 
-operation main(N : Integer){
-	for (i in 1.to(N)){
-		"______________________________________________".println();
-		("Simulation "+i+":").println();
-		system = new MCS_system;
-		system.initParameter();
-		system.parameter.CPU_rate=0.65;
-		system.print_process = true;
-		system.print_result = true;
-		system.generateTasksAndCriticalSections();
-		for (j in 1.to(4)){
-			j.println();
-			if (j=1){
-				system.status = Status#LOW;
-				updateCstimeAndTimeleft();
-				setSystemPeriodNumber(2);
-				system.initCore();
-				run();
-				var result = system.initResult("LOW");
-				result.recordResult();
-			}
-			else if (j=2){
-				system.status = Status#MCP;
-				updateCstimeAndTimeleft();
-				setSystemPeriodNumber(2);
-				system.initCore();
-				run();
-				var result = system.initResult("MCP");
-				result.recordResult();
-			}
-			else if (j=3){
-				system.status = Status#HIGH;
-				updateCstimeAndTimeleft();
-				setSystemPeriodNumber(2);
-				system.initCore();
-				run();
-				var result = system.initResult("HIGH");
-				result.recordResult();
-			}
-			else if (j=4){
-				system.parameter.init_status = Status#LOW;
-				setSystemPeriodNumber(4);
-				updateCstimeAndTimeleft();
-				system.disturbance.open = true;
-				system.initCore();
-				run();
-				var result = system.initResult("System");
-				result.recordResult();
-			}
-		}
-	}
-	"______________________________________________".println();
-}
+//restartSystem();
+
+//operation main(N : Integer){
+//	for (i in 1.to(N)){
+//		"______________________________________________".println();
+//		("Simulation "+i+":").println();
+//		system = new MCS_system;
+//		system.initParameter();
+//		system.parameter.CPU_rate=0.65;
+//		system.print_process = true;
+//		system.print_result = true;
+//		system.generateTasksAndCriticalSections();
+//		for (j in 1.to(4)){
+//			j.println();
+//			if (j=1){
+//				system.status = Status#LOW;
+//				updateCstimeAndTimeleft();
+//				setSystemPeriodNumber(2);
+//				system.initCore();
+//				run();
+//				var result = system.initResult("LOW");
+//				result.recordResult();
+//			}
+//			else if (j=2){
+//				system.status = Status#MCP;
+//				updateCstimeAndTimeleft();
+//				setSystemPeriodNumber(2);
+//				system.initCore();
+//				run();
+//				var result = system.initResult("MCP");
+//				result.recordResult();
+//			}
+//			else if (j=3){
+//				system.status = Status#HIGH;
+//				updateCstimeAndTimeleft();
+//				setSystemPeriodNumber(2);
+//				system.initCore();
+//				run();
+//				var result = system.initResult("HIGH");
+//				result.recordResult();
+//			}
+//			else if (j=4){
+//				system.parameter.init_status = Status#LOW;
+//				setSystemPeriodNumber(4);
+//				updateCstimeAndTimeleft();
+//				system.disturbance.open = true;
+//				system.initCore();
+//				run();
+//				var result = system.initResult("System");
+//				result.recordResult();
+//			}
+//		}
+//	}
+//	"______________________________________________".println();
+//}
 
 //operation initSystem() {
 //	system = new MCS_system;
