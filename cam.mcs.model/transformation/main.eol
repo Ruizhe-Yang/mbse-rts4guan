@@ -1,7 +1,7 @@
 import "simulation.eol";
 var system : MCS_system;
 "Start...".println();
-main(3);
+main(200);
 "Over.".println();
 
 
@@ -11,7 +11,7 @@ operation main(N : Integer){
 		("Simulation "+i+":").println();
 		system = new MCS_system;
 		system.initParameter();
-		system.parameter.CPU_rate=0.95;
+		system.parameter.CPU_rate=0.65;
 		system.print_process = false;
 		system.print_result = true;
 		system.generateTasksAndCriticalSections();
@@ -62,6 +62,13 @@ operation main(N : Integer){
 operation initSystem() {
 	system = new MCS_system;
 	system.initParameter();
+	parameter.max_cstime_precent = 0.2;
+	parameter.period_number = 4;
+	parameter.task_number = 10;
+	parameter.CPU_rate = 0.5;
+	parameter.high_task_number = 3;
+	parameter.critical_section_number = 6;
+	parameter.max_deadline_limit = 10000;
 	system.initCore();
 	system.initResult();
 	system.print_process = false;

@@ -1,6 +1,6 @@
 //var system : MCS_system;
 //"Start...".println();
-//multiple_runs(10);
+//multiple_runs(1);
 //"Over.".println();
 
 operation multiple_runs(N : Integer){
@@ -293,7 +293,6 @@ operation getWillStartTask(){
 				if (maxTaskPriorityHigh.size() = 1){
 					var task = maxTaskPriorityHigh[0];
 					if (task.critical_section = null or task.critical_section.locked = false or task.wcet_high-task.timeleft < task.cstime){
-						task.get_911();
 						task.IsMandatory = true;
 						return task;
 					}
@@ -556,7 +555,7 @@ operation getRandomTasks(){
 			task.wcet_high = (task.wcet_low * system.parameter.high_vs_low).getInteger();
 			task.getCstime();
 			task.getTimeLeft();
-			if (task.wcet_low <> 0 and task.wcet_high < task.deadline){
+			if (task.wcet_low <> 0 and task.wcet_high < task.deadline and system.tasks.count(e|e.deadline=task.deadline)=1){
 				break;
 			}
 			else{
