@@ -76,7 +76,9 @@ operation recordResult(name : String){
 	result.name = name;
 	result.no_error = (not system.core.error);
 	result.error_time = system.core.error_time;
-	result.actual_occupancy_rate = 1.0*system.core.occupy_time/(system.parameter.max_running_time-system.parameter.max_deadline);
+	result.actual_occupancy_rate = 1.0*system.core.occupy_time/(system.parameter.max_running_time-1);
+	result.low_occupancy_rate = 1.0*system.core.occupy_time_low/system.core.occupy_time;
+	result.high_occupancy_rate = 1.0*system.core.occupy_time_high/system.core.occupy_time;
 	system.results.add(result);
 	result.PrintResult(name);
 }
@@ -91,7 +93,9 @@ operation MCS_system getDisturbance(){
 operation MCS_system initCore(){
 	var core = new Core;
 	core.time = 1;
-	core.occupy_time = 1;
+	core.occupy_time = 0;
+	core.occupy_time_low = 0;
+	core.occupy_time_high = 0;
 	core.error = false;
 	core.error_time = 0;
 	core.current_task = null;
@@ -121,7 +125,9 @@ operation MCS_system initTasks(){
 
 operation MCS_system restart(){
 	self.core.time = 1;
-	self.core.occupy_time = 1;
+	self.core.occupy_time = 0;
+	self.core.occupy_time_low = 0;
+	self.core.occupy_time_high = 0;
 	self.core.error = false;
 	self.core.error_time = 0;
 	self.core.current_task = null;
@@ -190,8 +196,14 @@ operation Task unlock(){
 }
 
 operation counter(){
-	if (system.core.time>system.parameter.max_deadline and system.core.current_task <> null){
+	if (system.core.current_task <> null){
 		system.core.occupy_time++;
+		if (system.core.current_task.criticality = Criticality#lo){
+			system.core.occupy_time_low++;
+		}
+		else{
+			system.core.occupy_time_high++;
+		}
 	}
 }
 
@@ -686,6 +698,8 @@ operation Result PrintResult(name : String){
 	else{
 		('ERROR. Error time: '+self.error_time).println();
 	}
-	("Actual occupancy rate:   "+self.actual_occupancy_rate+"%").println();
+	("Actual both occupancy rate:"+self.actual_occupancy_rate+"%").println();
+	("Low occupancy rate:        "+self.low_occupancy_rate+"%").println();
+	("High occupancy rate:       "+self.high_occupancy_rate+"%").println();
 	"____________________________________".println();
 }

@@ -11,7 +11,9 @@ for (i in 1.to(results.size())){
 //	sheet.high_result = result.select(e|e.name="HIGH").first().recordBoolean();
 //	sheet.high_rate = result.select(e|e.name="HIGH").first().actual_occupancy_rate;
 	sheet.system_result = result.select(e|e.name="System").first().recordBoolean();
-	sheet.system_rate = result.select(e|e.name="System").first().actual_occupancy_rate;
+	sheet.actual_occupancy_rate = result.select(e|e.name="System").first().actual_occupancy_rate;
+	sheet.low_occupancy_rate = result.select(e|e.name="System").first().low_occupancy_rate;
+	sheet.high_occupancy_rate = result.select(e|e.name="System").first().high_occupancy_rate;
 }
 "Record Over".println();
 

@@ -19,6 +19,8 @@ class MCS_system extends MCSElement {
 class Core extends MCSElement {
 	attr int time;
 	attr int occupy_time;
+	attr int occupy_time_low;
+	attr int occupy_time_high;
 	attr boolean error;
 	attr int error_time;
 	ref Task current_task;
@@ -74,6 +76,8 @@ class Result extends MCSElement {
 	attr boolean no_error;
 	attr int error_time;
 	attr float actual_occupancy_rate;
+	attr float low_occupancy_rate;
+	attr float high_occupancy_rate;
 }
 
 enum Status {

@@ -1,10 +1,51 @@
 import "simulation.eol";
 var system : MCS_system;
 "Start...".println();
-main(20);
+//main1(100);
+//main2(100);
+main3(100);
 "Over.".println();
 
-operation main(N : Integer){
+operation MCS_system initParameter(){
+	var parameter = new Parameter;
+	parameter.period_number = 4;
+	parameter.task_number = 20;
+	parameter.CPU_rate = 0.05;
+	parameter.high_task_number = 10;
+	parameter.critical_section_number = 10;
+	parameter.init_status = Status#LOW;
+	parameter.max_deadline_limit = 5000;
+	parameter.min_deadline_limit = 500;
+	parameter.max_cstime_precent = 0.3;
+	parameter.high_vs_low = 1.5;
+	parameter.disturbance_open = true;
+	parameter.print_process = false;
+	parameter.print_result = true;
+	self.parameter = parameter;
+}
+
+operation main1(N : Integer){
+	var CPU_rate = 0.35;
+	var high_task_number = 2;
+	for(i in 1.to(9)){
+		for (j in 1.to(7)){
+			for (k in 1.to(N)){
+				"______________________________________________".println();
+				("Simulation "+i+":").println();
+				system = new MCS_system;
+				system.initParameter();
+				system.parameter.CPU_rate = CPU_rate;
+				system.parameter.high_task_number = high_task_number;
+				system.initTasks();
+				system.initCore();
+				run();
+				recordResult("System");
+			}
+			CPU_rate += 0.1;
+		}
+		CPU_rate = 0.35;
+		high_task_number += 2;
+	}
 //	var CPU_rate = 0.35;
 //	var high_task_number = 1;
 //	for (i in 1.to(9)){
@@ -80,35 +121,52 @@ operation main(N : Integer){
 //				recordResult("System");
 //			}
 //		}
-	var CPU_rate = 0.95;
-	var max_cstime_precent = 0.9;
-	for(i in 1.to(20)){
-		"______________________________________________".println();
-		("Simulation "+i+":").println();
-		system = new MCS_system;
-		system.initParameter();
-		system.parameter.CPU_rate = CPU_rate;
-		system.parameter.max_cstime_precent = max_cstime_precent;
-		system.initTasks();
-		system.initCore();
-		run();
-		recordResult("System");
+}
+
+operation main2(N : Integer){
+	var CPU_rate = 0.35;
+	var critical_section_number = 2;
+	for(i in 1.to(9)){
+		for (j in 1.to(7)){
+			for (k in 1.to(N)){
+				"______________________________________________".println();
+				("Simulation "+i+":").println();
+				system = new MCS_system;
+				system.initParameter();
+				system.parameter.CPU_rate = CPU_rate;
+				system.parameter.critical_section_number = critical_section_number;
+				system.initTasks();
+				system.initCore();
+				run();
+				recordResult("System");
+			}
+			CPU_rate += 0.1;
+		}
+		CPU_rate = 0.35;
+		critical_section_number += 2;
 	}
 }
-operation MCS_system initParameter(){
-	var parameter = new Parameter;
-	parameter.period_number = 4;
-	parameter.task_number = 10;
-	parameter.CPU_rate = 0.05;
-	parameter.high_task_number = 5;
-	parameter.critical_section_number = 5;
-	parameter.init_status = Status#LOW;
-	parameter.max_deadline_limit = 5000;
-	parameter.min_deadline_limit = 500;
-	parameter.max_cstime_precent = 0.3;
-	parameter.high_vs_low = 1.5;
-	parameter.disturbance_open = true;
-	parameter.print_process = false;
-	parameter.print_result = true;
-	self.parameter = parameter;
+
+operation main3(N : Integer){
+	var CPU_rate = 0.35;
+	var max_cstime_precent = 0.1;
+	for(i in 1.to(10)){
+		for (j in 1.to(7)){
+			for (k in 1.to(N)){
+				"______________________________________________".println();
+				("Simulation "+i+":").println();
+				system = new MCS_system;
+				system.initParameter();
+				system.parameter.CPU_rate = CPU_rate;
+				system.parameter.max_cstime_precent = max_cstime_precent;
+				system.initTasks();
+				system.initCore();
+				run();
+				recordResult("System");
+			}
+			CPU_rate += 0.1;
+		}
+		CPU_rate = 0.35;
+		max_cstime_precent += 0.1;
+	}
 }
