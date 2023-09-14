@@ -4,12 +4,12 @@ for (i in 1.to(results.size())){
 	var sheet = new X!Sheet;
 	var result = results.at(i-1);
 	sheet.id = i;
-	sheet.low_result = result.select(e|e.name="LOW").first().recordBoolean();
-	sheet.low_rate = result.select(e|e.name="LOW").first().actual_occupancy_rate;
-	sheet.mcp_result = result.select(e|e.name="MCP").first().recordBoolean();
-	sheet.mcp_rate = result.select(e|e.name="MCP").first().actual_occupancy_rate;
-	sheet.high_result = result.select(e|e.name="HIGH").first().recordBoolean();
-	sheet.high_rate = result.select(e|e.name="HIGH").first().actual_occupancy_rate;
+//	sheet.low_result = result.select(e|e.name="LOW").first().recordBoolean();
+//	sheet.low_rate = result.select(e|e.name="LOW").first().actual_occupancy_rate;
+//	sheet.mcp_result = result.select(e|e.name="MCP").first().recordBoolean();
+//	sheet.mcp_rate = result.select(e|e.name="MCP").first().actual_occupancy_rate;
+//	sheet.high_result = result.select(e|e.name="HIGH").first().recordBoolean();
+//	sheet.high_rate = result.select(e|e.name="HIGH").first().actual_occupancy_rate;
 	sheet.system_result = result.select(e|e.name="System").first().recordBoolean();
 	sheet.system_rate = result.select(e|e.name="System").first().actual_occupancy_rate;
 }

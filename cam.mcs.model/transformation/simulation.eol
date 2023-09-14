@@ -601,6 +601,7 @@ operation Task getCstime(){
 
 operation Real countCstime(){
 	var randomCstime = (self*system.parameter.max_cstime_precent*getRandomDecimal()).getInteger();
+//	var randomCstime = (self*system.parameter.max_cstime_precent).getInteger();
 	if (randomCstime <> 0){
 		return randomCstime;
 	}
