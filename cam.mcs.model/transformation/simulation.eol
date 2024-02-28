@@ -29,6 +29,9 @@ operation MCS_system initParameter(){
 	parameter.min_deadline_limit = 500;
 	parameter.max_cstime_precent = 0.25;
 	parameter.high_vs_low = 1.5;
+	parameter.LOtaskcount = 0;
+	parameter.LO_LOtaskcount = 0;
+	parameter.LOtaskcount_scheduled = 0;
 	parameter.disturbance_open = false;
 	parameter.print_process = false;
 	parameter.print_result = false;
@@ -79,6 +82,8 @@ operation recordResult(name : String){
 	result.actual_occupancy_rate = 1.0*system.core.occupy_time/(system.parameter.max_running_time-1);
 	result.low_occupancy_rate = 1.0*system.core.occupy_time_low/system.core.occupy_time;
 	result.high_occupancy_rate = 1.0*system.core.occupy_time_high/system.core.occupy_time;
+	result.LOtask_scheduled_rate = 1.0*(system.parameter.LOtaskcount_scheduled-system.parameter.LO_LOtaskcount)/system.parameter.LOtaskcount;
+	result.HI_exec_rate_low = 1.0*system.core.HImode_occupy_time_low/system.core.HImode_occupy_time;
 	system.results.add(result);
 	result.PrintResult(name);
 }
@@ -96,6 +101,8 @@ operation MCS_system initCore(){
 	core.occupy_time = 0;
 	core.occupy_time_low = 0;
 	core.occupy_time_high = 0;
+	core.HImode_occupy_time = 0;
+	core.HImode_occupy_time_low = 0;
 	core.error = false;
 	core.error_time = 0;
 	core.current_task = null;
@@ -128,6 +135,8 @@ operation MCS_system restart(){
 	self.core.occupy_time = 0;
 	self.core.occupy_time_low = 0;
 	self.core.occupy_time_high = 0;
+	self.core.HImode_occupy_time = 0;
+	self.core.HImode_occupy_time_low = 0;
 	self.core.error = false;
 	self.core.error_time = 0;
 	self.core.current_task = null;
@@ -200,9 +209,17 @@ operation counter(){
 		system.core.occupy_time++;
 		if (system.core.current_task.criticality = Criticality#lo){
 			system.core.occupy_time_low++;
+			if (system.status = Status#HIGH){
+				system.core.HImode_occupy_time++;
+				system.core.HImode_occupy_time_low++;
+			}
+			
 		}
 		else{
 			system.core.occupy_time_high++;
+			if (system.status = Status#HIGH){
+				system.core.HImode_occupy_time++;
+			}
 		}
 	}
 }
@@ -225,8 +242,15 @@ operation Task updateDynamicPriority(){
 operation updateHanging(){
 	for (task in system.tasks){
 		if(system.core.time.mod(task.period) = 0){
+			if (task.criticality = Criticality#lo and (system.status = Status#MCP or system.status = Status#HIGH)){
+					system.parameter.LOtaskcount++;
+			}
+			if (task.criticality = Criticality#lo and system.status = Status#LOW){
+					system.parameter.LO_LOtaskcount++;
+			}
 			if (task.state = WorkingState#unstart){
 				task.state = WorkingState#hanging;
+				
 			}
 			else{
 				if (system.status = Status#LOW){
@@ -376,7 +400,7 @@ operation Task shouldAvoid(){
 	while((start+visionDistance-system.core.time)<MaxVisionDistance){
 		var HighTaskCanSeen = getHighTaskInVisitionDistance(start, visionDistance);
 		if (HighTaskCanSeen.size()>0){
-			if (HighTaskCanSeen.includeSameCSIn(HighTaskSequence)){
+			if (HighTaskCanSeen.includeSameCSIn(HighTaskSequence) or visionDistance > self.deadline - system.core.time ){
 				return true;
 			}
 			else{
@@ -491,6 +515,9 @@ operation hangCurrentTask(){
 }
 
 operation releaseCurrentTask(){
+	if(system.core.current_task.criticality = Criticality#lo){
+		system.parameter.LOtaskcount_scheduled++;
+	}
 	system.core.current_task.state = WorkingState#unstart;
 	system.core.current_task.getTimeLeft();
 	system.core.current_task = null;
@@ -551,6 +578,7 @@ operation getRandomTasks(){
 	var n = system.parameter.task_number;
 	var n_hi = system.parameter.high_task_number;
 	var sum_u = system.parameter.CPU_rate;
+	var needRedistribution = false;
 	for (i in 1.to(system.parameter.task_number)) {
 		createTask(i);
 	}
@@ -573,6 +601,12 @@ operation getRandomTasks(){
 			else{
 				task.utilisation = sum_u;
 			}
+			
+			if (task.utilisation < 0) {
+           		 needRedistribution = true;
+           		 break;
+      		 }
+      		 
 			task.period = getRandomIntWithFloor(system.parameter.max_deadline_limit, system.parameter.min_deadline_limit);
 			task.deadline = task.period;
 			task.wcet_low = (task.period * task.utilisation).getInteger();
@@ -586,6 +620,16 @@ operation getRandomTasks(){
 				sum_u += task.utilisation;
 			}
 		}
+		
+		if (needRedistribution) {
+ 		    for (task in system.tasks){
+            	task.utilisation = 0;
+        	}
+       		sum_u = system.parameter.CPU_rate;
+        	i = 1;
+       		needRedistribution = false;
+        	continue;
+    	}
 	}
 	for (task in system.tasks){
 		task.priority = system.tasks.count(e|e.deadline > task.deadline) + 1;
@@ -612,8 +656,8 @@ operation Task getCstime(){
 }
 
 operation Real countCstime(){
-	var randomCstime = (self*system.parameter.max_cstime_precent*getRandomDecimal()).getInteger();
-//	var randomCstime = (self*system.parameter.max_cstime_precent).getInteger();
+//	var randomCstime = (self*system.parameter.max_cstime_precent*getRandomDecimal()).getInteger();
+	var randomCstime = (self*system.parameter.max_cstime_precent).getInteger();
 	if (randomCstime <> 0){
 		return randomCstime;
 	}
@@ -701,5 +745,7 @@ operation Result PrintResult(name : String){
 	("Actual both occupancy rate:"+self.actual_occupancy_rate+"%").println();
 	("Low occupancy rate:        "+self.low_occupancy_rate+"%").println();
 	("High occupancy rate:       "+self.high_occupancy_rate+"%").println();
+	("LOtask scheduled rate:       "+self.LOtask_scheduled_rate+"%").println();
+	("HI_exec_rate_low:       "+self.HI_exec_rate_low+"%").println();
 	"____________________________________".println();
 }

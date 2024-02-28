@@ -21,6 +21,8 @@ class Core extends MCSElement {
 	attr int occupy_time;
 	attr int occupy_time_low;
 	attr int occupy_time_high;
+	attr int HImode_occupy_time;
+	attr int HImode_occupy_time_low;
 	attr boolean error;
 	attr int error_time;
 	ref Task current_task;
@@ -65,6 +67,9 @@ class Parameter extends MCSElement {
 	attr boolean print_process;
 	attr boolean print_result;
 	attr Status init_status;
+	attr int LO_LOtaskcount;
+	attr int LOtaskcount;
+	attr int LOtaskcount_scheduled;
 }
 
 class Disturbance extends MCSElement {
@@ -78,6 +83,8 @@ class Result extends MCSElement {
 	attr float actual_occupancy_rate;
 	attr float low_occupancy_rate;
 	attr float high_occupancy_rate;
+	attr float LOtask_scheduled_rate;
+	attr float HI_exec_rate_low;
 }
 
 enum Status {

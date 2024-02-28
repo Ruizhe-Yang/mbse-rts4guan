@@ -21,6 +21,9 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="occupy_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="occupy_time_low" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="occupy_time_high" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HImode_occupy_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HImode_occupy_time_low"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="error" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="error_time" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="current_task" eType="#//Task"/>
@@ -64,6 +67,10 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="print_process" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="print_result" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="init_status" eType="#//Status"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LO_LOtaskcount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LOtaskcount" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LOtaskcount_scheduled"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Disturbance" eSuperTypes="#//MCSElement">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="open" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
@@ -76,6 +83,9 @@
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="low_occupancy_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="high_occupancy_rate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="LOtask_scheduled_rate"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="HI_exec_rate_low" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EFloat"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EEnum" name="Status">
     <eLiterals name="LOW"/>

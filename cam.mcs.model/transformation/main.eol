@@ -1,34 +1,36 @@
 import "simulation.eol";
 var system : MCS_system;
 "Start...".println();
-//main1(100);
-//main2(100);
+main1(100);
+main2(100);
 main3(100);
 "Over.".println();
 
 operation MCS_system initParameter(){
 	var parameter = new Parameter;
-	parameter.period_number = 4;
+	parameter.period_number = 6;
 	parameter.task_number = 20;
 	parameter.CPU_rate = 0.05;
 	parameter.high_task_number = 10;
-	parameter.critical_section_number = 10;
+	parameter.critical_section_number = 5;
 	parameter.init_status = Status#LOW;
+//	parameter.init_status = Status#HIGH;
 	parameter.max_deadline_limit = 5000;
 	parameter.min_deadline_limit = 500;
 	parameter.max_cstime_precent = 0.3;
 	parameter.high_vs_low = 1.5;
 	parameter.disturbance_open = true;
+//	parameter.disturbance_open = false;
 	parameter.print_process = false;
 	parameter.print_result = true;
 	self.parameter = parameter;
 }
 
 operation main1(N : Integer){
-	var CPU_rate = 0.35;
+	var CPU_rate = 0.05;
 	var high_task_number = 2;
-	for(i in 1.to(9)){
-		for (j in 1.to(7)){
+	for(i in 1.to(10)){
+		for (j in 1.to(10)){
 			for (k in 1.to(N)){
 				"______________________________________________".println();
 				("Simulation "+i+":").println();
@@ -43,91 +45,16 @@ operation main1(N : Integer){
 			}
 			CPU_rate += 0.1;
 		}
-		CPU_rate = 0.35;
+		CPU_rate = 0.05;
 		high_task_number += 2;
 	}
-//	var CPU_rate = 0.35;
-//	var high_task_number = 1;
-//	for (i in 1.to(9)){
-//		for (j in 1.to(7)){
-//			for (k in 1.to(N)){
-//				"______________________________________________".println();
-//				("Simulation "+i+":").println();
-//				system = new MCS_system;
-//				system.initParameter();
-//				system.parameter.CPU_rate = CPU_rate;
-//				system.parameter.high_task_number = high_task_number;
-//				system.initTasks();
-//				system.initCore();
-//				run();
-//				recordResult("System");
-//			}
-//			CPU_rate += 0.1;
-//		}
-//		CPU_rate = 0.35;
-//		high_task_number += 1;
-//	}
-	
-//	var CPU_rate = 0.35;
-//	var max_cstime_precent = 0.5;
-//	for (i in 1.to(6)){
-//		for (j in 1.to(7)){
-//			for (k in 1.to(N)){
-//				"______________________________________________".println();
-//				("Simulation "+i+":").println();
-//				system = new MCS_system;
-//				system.initParameter();
-//				system.parameter.CPU_rate = CPU_rate;
-//				system.parameter.max_cstime_precent = max_cstime_precent;
-//				system.initTasks();
-//				system.initCore();
-//				run();
-//				recordResult("System");
-//			}
-//			CPU_rate += 0.1;
-//		}
-//		CPU_rate = 0.35;
-//		max_cstime_precent += 0.1;
-//	}
-//		for (j in 1.to(4)){
-//			j.println();
-//			if (j=1){
-//				system.parameter.init_status = Status#LOW;
-//				system.parameter.disturbance_open = true;
-//				system.restart();
-//				run();
-//				recordResult("LOW");
-//			}
-//			else if (j=2){
-//				system.parameter.init_status = Status#LOW;
-//				system.parameter.disturbance_open = true;
-//				system.restart();
-//				run();
-//				recordResult("MCP");
-//			}
-//			else if (j=3){
-//				system.parameter.init_status = Status#LOW;
-//				system.parameter.disturbance_open = true;
-//				system.restart();
-//				run();
-//				recordResult("HIGH");
-//			}
-//			else if (j=4){
-//				system.parameter.init_status = Status#LOW;
-//				system.parameter.period_number = 4;
-//				system.parameter.disturbance_open = true;
-//				system.restart();
-//				run();
-//				recordResult("System");
-//			}
-//		}
 }
 
 operation main2(N : Integer){
-	var CPU_rate = 0.35;
+	var CPU_rate = 0.05;
 	var critical_section_number = 2;
-	for(i in 1.to(9)){
-		for (j in 1.to(7)){
+	for(i in 1.to(10)){
+		for (j in 1.to(10)){
 			for (k in 1.to(N)){
 				"______________________________________________".println();
 				("Simulation "+i+":").println();
@@ -142,16 +69,16 @@ operation main2(N : Integer){
 			}
 			CPU_rate += 0.1;
 		}
-		CPU_rate = 0.35;
+		CPU_rate = 0.05;
 		critical_section_number += 2;
 	}
 }
 
 operation main3(N : Integer){
-	var CPU_rate = 0.35;
+	var CPU_rate = 0.05;
 	var max_cstime_precent = 0.1;
 	for(i in 1.to(10)){
-		for (j in 1.to(7)){
+		for (j in 1.to(10)){
 			for (k in 1.to(N)){
 				"______________________________________________".println();
 				("Simulation "+i+":").println();
@@ -166,7 +93,7 @@ operation main3(N : Integer){
 			}
 			CPU_rate += 0.1;
 		}
-		CPU_rate = 0.35;
+		CPU_rate = 0.05;
 		max_cstime_precent += 0.1;
 	}
 }
